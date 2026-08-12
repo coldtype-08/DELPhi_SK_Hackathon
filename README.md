@@ -45,7 +45,7 @@ DELPHi는 여기서 이름을 가져왔습니다. 다만 신탁과 달리 **결�
 ## 작동 구조
 
 <p align="center">
-  <img src="./Assets/delphi_작동구조_readme.png" alt="DELPHi 작동 구조 — Sense · Screen · Board · Field가 하나의 Data Contract를 공유한다">
+  <img src="./Assets/작동구조.png" alt="DELPHi 작동 구조 — Sense · Screen · Board · Field가 하나의 Data Contract를 공유한다">
 </p>
 
 네 개의 모듈은 하나의 **Data Contract**를 공유합니다.
@@ -88,15 +88,13 @@ Sense가 도출한 가설 후보와 인사이트를 **전문가 Agent들이 각�
 사실 · 패턴 · AI 해석 · 전략 제안을 구분해 표시하되, **최종 승인과 실행 결정은 권한을 가진 사람이 함께 수행**합니다.
 
 ## 기대 효과
-
+ 
 | 지표 | 목표 | 작동 방식 |
 | :--- | :---: | :--- |
-| **Data Latency** | 70% 이상 단축 | 사람이 매번 다시 읽고 분류하는 대신, AI가 Data Contract에 따라 구조화 후보를 생성하고 사용자는 필요한 부분만 검토 · 승인 |
-| **Insight Latency** | 50% 이상 단축 | 구조화된 내부 신호와 외부 근거를 연결해, 지지 근거 · 반대 근거 · 근거 공백이 포함된 Board-ready Growth Hypothesis를 준비 |
-| **반복 정리 · 재분류 업무** | 70% 이상 감소 | 한 번 승인된 데이터를 재사용하고, 신규 데이터도 동일한 Data Contract에 따라 축적 |
-
-특히 정기 보고, 추가 분석, 회의 준비 때 반복되던 자료 취합과 재가공 시간을 직접적으로 절감합니다.
-
+| **Data Latency** | 70%&nbsp;이상<br>**단축** | 사람이 매번 다시 읽고 분류하는 대신,<br>AI가 Data Contract에 따라 구조화 후보를 생성하고<br>사용자는 필요한 부분만 검토 · 승인 |
+| **Insight Latency** | 50%&nbsp;이상<br>**단축** | 구조화된 내부 신호와 외부 근거를 연결해,<br>지지 근거 · 반대 근거 · 근거 공백이 포함된<br>Board-ready Growth Hypothesis를 준비 |
+| **반복 정리 ·<br>재분류 업무** | 70%&nbsp;이상<br>**감소** | 한 번 승인된 데이터를 재사용하고,<br>신규 데이터도 동일한 Data Contract에 따라 축적 |
+ 
 ## 설계 원칙
 
 - **Evidence-linked by default** — 모든 구조화 값은 원문 위치(evidence pointer)와 extraction version에 연결됩니다. 근거 없는 값은 존재할 수 없습니다.
@@ -105,12 +103,29 @@ Sense가 도출한 가설 후보와 인사이트를 **전문가 Agent들이 각�
 - **이견도 자산입니다** — counter evidence, evidence gap, 보류 · 기각 사유는 모두 이력으로 보존됩니다.
 
 ## 화면 미리보기
-
+ 
+사용자가 만나는 접점은 **DELPHi Console**(데스크톱)과 **DELPHi Field**(모바일) 두 가지입니다.
+ 
 <!-- 목업 이미지 파일명을 실제 파일에 맞게 수정해 주세요 -->
-
-| | |
-| :---: | :---: |
-| <img src="./Assets/console_mockup.png" alt="DELPHi Sense" width="420"> | <img src="./Assets/field_mockup.png" alt="DELPHi Field" width="420"> |
-| **DELPHi Sense** — 구조화 후보 검토 · 승인 | **DELPHi Field** — 실시간 수집과 주요 사항 마크 |
-| <img src="./Assets/mockup_screen.png" alt="DELPHi Screen" width="420"> | <img src="./Assets/mockup_board.png" alt="DELPHi Board" width="420"> |
-| **DELPHi Screen** — 에이전트 교차검증 결과 | **DELPHi Board** — 심의 요약과 승인 화면 |
+ 
+### DELPHi Console — Sense · Screen · Board 통합 대시보드
+ 
+Sense가 구조화한 신호를 대시보드로 확인하고, 같은 화면에서 검증 에이전트를 호출해 근거 보드를 채우며, Board의 심의 결과와 최종 승인까지 하나의 흐름으로 이어집니다.
+ 
+<p align="center">
+  <img src="./Assets/console_mockup.png" alt="DELPHi Console — 개요 대시보드, 근거 보드, AI 심의와 최종 승인" width="900">
+</p>
+<p align="center">
+  <sub>① 개요 대시보드 &nbsp;·&nbsp; ② Screen — 근거 보드 &nbsp;·&nbsp; ③ Board — AI 심의와 최종 승인</sub>
+</p>
+### DELPHi Field — 현장 면담 모바일 앱
+ 
+동의를 전제로 실시간 전사를 수행하고, Sense의 Ontology에 따라 AI가 만든 구조화 후보를 원문과 대조해 그 자리에서 승인합니다.
+ 
+<p align="center">
+  <img src="./Assets/field_mockup.png" alt="DELPHi Field — 실시간 수집과 구조화 후보 승인" width="900">
+</p>
+<p align="center">
+  <sub>① 동의 확인 · 실시간 전사 · 자동 마스킹 · 이상사례 분기 &nbsp;·&nbsp; ② AI 구조화 후보를 원문과 대조해 승인</sub>
+</p>
+> 모든 화면의 인물 · 기관 · 발언은 Synthetic Demo Data입니다.
