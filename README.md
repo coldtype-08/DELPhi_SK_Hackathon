@@ -45,7 +45,7 @@ DELPHi는 여기서 이름을 가져왔습니다. 다만 신탁과 달리 **결�
 ## 작동 구조
 
 <p align="center">
-  <img src="./Assets/delphi_작동구조_readme.png" alt="DELPHi 작동 구조 — Sense · Screen · Board · Field가 하나의 Data Contract를 공유한다">
+  <img src="./Assets/delphi_작동구조_readme.png" alt="DELPHi 작동 구조 — Sense · Screen · Board · Field가 하나의 Data Contract를 공유한다">
 </p>
 
 네 개의 모듈은 하나의 **Data Contract**를 공유합니다.
@@ -110,7 +110,7 @@ Sense가 도출한 가설 후보와 인사이트를 **전문가 Agent들이 각�
 
 | | |
 | :---: | :---: |
-| <img src="./Assets/mockup_sense.png" alt="DELPHi Sense" width="420"> | <img src="./Assets/mockup_field.png" alt="DELPHi Field" width="420"> |
+| <img src="./Assets/console_mockup.png" alt="DELPHi Sense" width="420"> | <img src="./Assets/field_mockup.png" alt="DELPHi Field" width="420"> |
 | **DELPHi Sense** — 구조화 후보 검토 · 승인 | **DELPHi Field** — 실시간 수집과 주요 사항 마크 |
 | <img src="./Assets/mockup_screen.png" alt="DELPHi Screen" width="420"> | <img src="./Assets/mockup_board.png" alt="DELPHi Board" width="420"> |
 | **DELPHi Screen** — 에이전트 교차검증 결과 | **DELPHi Board** — 심의 요약과 승인 화면 |
