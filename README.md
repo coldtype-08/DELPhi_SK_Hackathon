@@ -27,15 +27,20 @@ Insight Latency는 기록이 생성된 시점부터 반복성 · 근거 · 우�
 
 ## 핵심 구조
 
-1. **DELPHi Sense — 정제·구조화**  
+1. **DELPHi Field — 수집·환류 인터페이스**  
+   DELPHi Sense가 확립한 의미 단위·Ontology 구조로 신규 현장 데이터를 수집합니다.
+   동의를 전제로 한 실시간 녹음에서 의미를 캐치하고, 적응증 확장·safety issue 같은 주요사항을 실시간 마크하며, 수집된 신규 데이터를 다시 DELPHi Sense로 보냅니다.
+
+2. **DELPHi Sense — 정제·구조화**  
    사내 비정형 데이터를 AI Readable Data로 전환합니다. 의료진의 comment를 의미 단위로 나누고 미리 정의된 스키마에 맞춰 구조화하며, 모든 값에 원문 evidence pointer와 생성 조건을 연결합니다.
    승인된 데이터를 SQL로 집계하고 그 안에서 Product/Asset의 새로운 성장 가능성을 시사하는 신호와 가설 후보를 도출합니다.
    이 과정에서 확립된 데이터 구조는 Data Contract로 발행되어 신규 데이터 수집 구조에 그대로 적용됩니다.
 
 3. **DELPHi Screen — 근거 스크리닝**  
    승인된 내부 반복 신호를 PubMed, ClinicalTrials.gov, 현재 적용 가능한 공식 라벨 등 외부 근거와 연결하고, 전문 AI 역할이 support·counter evidence와 evidence gap을 구조화합니다.
+   
 4. **DELPHi Board — 판단·실행**  
    사실·패턴·AI 해석·전략 제안을 분리해 제시하고, 권한을 가진 사람이 가설 유형에 맞는 후속 액션과 owner·KPI·due date를 승인합니다.
-5. **DELPHi Field — 수집·환류 인터페이스**  
-   DELPHi Field는 Sense와 Board를 연결하는 상시 학습 인터페이스입니다. 시장별 정책과 필요한 동의를 전제로 interaction을 구조화 항목 + 자유서술로 기록하고, 현재 Data Contract에 따라 AI가 구조화 후보를 제안합니다.
-   사용자가 수정·승인한 값만 분석에 반영하며, 미해결 자료 요청과 역할에 맞는 승인 정보를 다음 interaction 전에 제공합니다.
+   
+
+
