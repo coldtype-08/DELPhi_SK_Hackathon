@@ -1,12 +1,16 @@
 <p align="center">
   <img src="./Assets/logo.png" alt="DELPHi Logo" width="300">
 </p>
-
 <h1 align="center">DELPHi</h1>
-
+ 
 <p align="center">
   <b>Adaptive Data Foundation for Growth Intelligence — XCOPRI®</b><br>
   <i>신탁은 해석을 남겼습니다. DELPHi는 근거를 남깁니다.</i>
+</p>
+<p align="center">
+  <a href="https://coldtype-08.github.io/저장소이름/Demo_Mockup.html">
+    <img src="https://img.shields.io/badge/🖥%20인터랙티브%20목업%20열기-1a2b6d?style=for-the-badge" alt="인터랙티브 목업 열기">
+  </a>
 </p>
 
 ---
