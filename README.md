@@ -27,7 +27,7 @@ Insight Latency는 기록이 생성된 시점부터 반복성 · 근거 · 우�
 
 ## 핵심 구조
 
-<img src="Assets/delphi_작동구조_readme.png" alt="DELPHi 작동 구조 — Sense · Screen · Board · Field가 하나의 Data Contract를 공유한다">
+<img src="Assets/delphi_작동구조_readme.png" alt="DELPHi 작동 구조 — Sense · Screen · Board · Field가 하나의 Data Contract를 공유한다">
 
 1. **DELPHi Sense — 정제 · 구조화**<br>
    비정형 문서와 동의 · 승인이 전제된 interaction을 현재 schema에 따라 구조화하고, 모든 값에 원문 evidence pointer와 extraction version을 연결합니다. 승인된 데이터를 SQL로 집계해 반복성과 추이를 계산하고, 그 안에서 새로운 성장 가능성을 시사하는 신호와 가설 후보를 도출합니다. 기존 schema로 표현되지 않는 반복 개념은 자동 적용하지 않고 Schema Change Proposal로 제안합니다.
