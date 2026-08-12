@@ -129,6 +129,7 @@ Sense가 구조화한 신호를 대시보드로 확인하고, 같은 화면에�
 <p align="center">
   <sub>① 개요 대시보드 &nbsp;·&nbsp; ② Screen — 근거 보드 &nbsp;·&nbsp; ③ Board — AI 심의와 최종 승인</sub>
 </p>
+
 ### DELPHi Field — 현장 면담 모바일 앱
  
 동의를 전제로 실시간 전사를 수행하고, Sense의 Ontology에 따라 AI가 만든 구조화 후보를 원문과 대조해 그 자리에서 승인합니다.
@@ -139,4 +140,5 @@ Sense가 구조화한 신호를 대시보드로 확인하고, 같은 화면에�
 <p align="center">
   <sub>① 동의 확인 · 실시간 전사 · 자동 마스킹 · 이상사례 분기 &nbsp;·&nbsp; ② AI 구조화 후보를 원문과 대조해 승인</sub>
 </p>
+
 > 모든 화면의 인물 · 기관 · 발언은 Synthetic Demo Data입니다.
