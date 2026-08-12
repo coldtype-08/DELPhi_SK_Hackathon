@@ -49,12 +49,23 @@ DELPHi는 여기서 이름을 가져왔습니다. 다만 신탁과 달리 **결�
 </p>
 
 네 개의 모듈은 하나의 **Data Contract**를 공유합니다.
-
+ 
+```mermaid
+flowchart LR
+    F["DELPHi Field<br/>수집 · 재반영"]
+    S["DELPHi Sense<br/>정제 · 구조화"]
+    C["DELPHi Screen<br/>근거 검증"]
+    B["DELPHi Board<br/>심의 · 승인"]
+ 
+    F --> S --> C --> B
+    B -. "승인된 구조 · 결정 재반영" .-> F
 ```
+ 
 <!-- Mermaid를 지원하지 않는 뷰어라면 아래 한 줄로 대체하세요
 **Field** → **Sense** → **Screen** → **Board** → *(승인된 구조 · 결정)* ↺ **Field**
 -->
-```
+ 
+Field에서 수집된 데이터는 Sense가 구조화하고, Screen이 외부 근거로 검증하며, Board의 심의를 거칩니다. 여기서 승인된 구조와 결정은 다시 Field의 수집 항목으로 반영됩니다.
 
 | 모듈 | 역할 | 한 줄 설명 |
 | :--- | :--- | :--- |
