@@ -1,6 +1,6 @@
 # DELPHi 
 <p align="center">
-  <img src="./Assets/DELPHI_logo.png" alt="DELPHI Logo" width="300">
+  <img src="./Assets/logo.png" alt="DELPHI Logo" width="300">
 </p>
 
 > Adaptive Data Foundation for Growth Intelligence for XCOPRI®
