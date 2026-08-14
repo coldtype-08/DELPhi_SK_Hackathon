@@ -1,0 +1,12 @@
+Interaction Note   |   Date: June 3, 2026   |   MSL: Rachel Suh
+HCP: Marcus Boudreaux, MD, Bayou Regional Epilepsy Center, Baton Rouge, LA (RSM)
+
+A longer visit than planned — forty minutes, most of it in the reading room between EEG reviews, and the conversation moved through several topics before settling on the adolescent population.
+
+We began with documentation, since the center switched EHR templates in April and the seizure-frequency field now accepts only one entry per encounter, which the attending finds genuinely unhelpful for patients whose events come in clusters. The workaround has been to put the detail in free text, where nobody can query it afterwards.
+
+On the clinical side, I asked how the referral mix has shifted since last year. Sees a steady trickle of drug-resistant teens and called the 18-plus label 'a waiting room with no exit' for them. There was no suggestion of prescribing outside the approved indication and I did not raise it; the point being made was about the gap itself, and about what to tell families in the interim, which I said I would pass along internally as an observation.
+
+Also mentioned one adult patient reporting persistent dizziness after the last titration step, now being watched closely. I thanked the physician for raising it, explained that I would report the case through our safety process today rather than handle it in this note, and confirmed that pharmacovigilance may follow up directly for details.
+
+Follow-ups: submit the safety report the same day, log the adolescent observation, and return in September when the fellows rotate.

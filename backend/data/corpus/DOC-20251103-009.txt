@@ -1,0 +1,14 @@
+Interaction Note   |   Date: November 3, 2025   |   MSL: Sam Becker
+HCP: Walter Brandt, MD, Flint Hills Neuroscience, Wichita, KS (AR)
+
+Short visit, Flint Hills office in Wichita. 12 min, standing, betwen afternoon blocks. Rescheduled twice before this one.
+
+Main topic was volume. Practice is seeing more new pts this quarter than last, about a third more by the front desk count, mostly referrals from two family medicine groups that lost their own neuro coverage in the spring. Panel is skewing older as a result. Mix has shifted toward general follow up work and away from procedures.
+
+Knock on effect is scheduling. New pt slots now 6 wks out. Some routine f/u appt intervals stretched to 9 months, which the practice is not happy about. Chart prep runs into lunch most days.
+
+Second half was the EHR build. Seizure frequency is still a free text field, so nobody can pull counts across the panel without reading every note. Nursing keeps a paralell spreadsheet, which the practice manager wants stopped. I said I hear the same complaint in other offices but have no template to offer and would not advise on their build.
+
+Nothing clinical raised. No materials requested, none left. No product discussion at all this visit, and I did not introduce any. No safety items; asked and confirmed none.
+
+Next: check back after the vendor training in January.

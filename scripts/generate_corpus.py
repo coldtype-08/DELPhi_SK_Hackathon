@@ -4,18 +4,22 @@ generate_corpus.py — 합성 코퍼스 생성기 v0.1 (2026-08-14)
 
 docs/03 §5 구현:
   1) 각본 dict (문서 63건 × 인사이트 단위 118건, 신호 S1~S6 결정론 배정)
-  2) Claude API 생성 — 단, 신호 문장(verbatim)은 이 스크립트가 소유하고 LLM은 주변 텍스트만 생성
-     → 오프셋·재현성이 LLM 출력 품질에 의존하지 않는다
-  3) 자가검증: verbatim 정확히 1회 포함 + 블록 구조 검사 (실패 시 해당 단위만 재생성, 최대 3회)
+  2) 블록 본문(prose) 확보 — 두 경로, 신호 문장(verbatim)은 항상 이 스크립트가 소유한다
+     (a) scripts/corpus_bodies/*.json 에 이미 작성된 본문을 읽는다  ← 기본 경로 (API 키 불필요)
+     (b) 없으면 Claude API로 생성 (ANTHROPIC_API_KEY 있을 때만)
+     → 어느 경로든 오프셋·재현성이 LLM 출력 품질에 의존하지 않는다
+  3) 자가검증: verbatim 정확히 1회 포함 + 블록 구조 + 성별 대명사 금지 (실패 시 명확한 오류)
   4) 산출: backend/data/corpus/*.txt (정본) + *.docx/*.pdf (포장) + manifest.jsonl + ground_truth.jsonl
   5) 포장 렌더 후 텍스트 재추출 → 정본 대조 자가검증
 
 사용 (레포 루트에서):
-  python3 scripts/generate_corpus.py --dry-run          # 각본 검증만 (API·의존성 불필요)
+  python3 scripts/generate_corpus.py --dry-run          # 각본 검증만 (의존성 불필요)
+  bash scripts/generate.sh                              # 전체 63건 생성
   bash scripts/generate.sh --limit 3                    # 앞 3개 문서만 스모크 테스트
-  bash scripts/generate.sh                              # 전체 63건
 
-API 키: 레포 루트 .env 의 ANTHROPIC_API_KEY (커밋 금지 — docs/06 §5)
+본문 출처: `scripts/corpus_bodies/*.json` — 형식 {"H01": {"1": "본문…", "2": "본문…"}}.
+  이 파일들은 커밋 대상이다 (코퍼스 재생성의 입력이자 재현성의 근거).
+API 키(경로 b용): 레포 루트 .env 의 ANTHROPIC_API_KEY (커밋 금지 — docs/06 §5)
 주의: 모든 인물·기관은 가상이다. 실명·실기관·실데이터 삽입 금지 (docs/03 §0).
 """
 
@@ -30,6 +34,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CORPUS_DIR = ROOT / "backend" / "data" / "corpus"
+BODIES_DIR = ROOT / "scripts" / "corpus_bodies"
 MODEL = "claude-sonnet-5"   # 생성 전용. 추출 파이프라인과 동일 모델 계열 (CLAUDE.md 기술 스택)
 TEMPERATURE = 0.8           # 원문은 다양해야 하므로 여기만 높게 (docs/03 §5)
 PROMPT_VERSION = "corpus-gen@1"  # llm 로깅 규약 대응용 버전 문자열
@@ -106,61 +111,64 @@ S5 = lambda t: sig("S5", "POSITIVE_OUTCOME", "DRE_2PLUS", None, t)
 S6 = lambda t: sig("S6", "TREATMENT_BARRIER", "ELDERLY_65_PLUS", "DDI_CONCERN", t)
 X  = lambda sid, t: sig(sid, "CRITIC_BAIT", None, None, t)               # Critic 차단 시연용 의도 삽입 (docs/03 §3.5)
 
+# 대명사 규칙 (2026-08-14): planted 문장과 생성 본문 모두 HCP를 he/she로 지칭하지 않는다.
+#   이유 ① 가명 HCP의 성별을 이름으로 추정하지 않는다 ② 각본 문장과 HCP 명부 사이의 성별 불일치 버그를
+#   구조적으로 제거한다(실제로 H02·M24 등에서 발생했음). 역할 명사("the physician")·they·무주어를 쓴다.
 PLANTED = {
     # ---- S1: 청소년(12–17) 약물난치성 치료 공백 — 14건 / HCP 9인 / 3권역 ----
-    ("H01", 2): [S1("He keeps a running list of 15- and 16-year-olds with drug-resistant focal seizures who simply have to wait until 18 before cenobamate is even an option.")],
-    ("H02", 2): [S1("Her words were, 'my hardest clinic days are telling parents of a seventeen-year-old that we have nothing new to offer until adulthood.'")],
+    ("H01", 2): [S1("Keeps a running list of 15- and 16-year-olds with drug-resistant focal seizures who simply have to wait until 18 before cenobamate is even an option.")],
+    ("H02", 2): [S1("Said, and I quote, 'my hardest clinic days are telling parents of a seventeen-year-old that we have nothing new to offer until adulthood.'")],
     ("H03", 1): [S1("Mentioned two adolescent patients who failed carbamazepine and levetiracetam and said the treatment options in that age group feel like a dead end.")],
-    ("H05", 4): [S1("He estimated three or four teens in his panel each year hit the same wall: two failed ASMs, still seizing, and no access to cenobamate until age 18.")],
-    ("H07", 2): [S1("Said the 12-to-17 group with refractory focal epilepsy is where he feels the biggest gap, since the adult-only label leaves them waiting.")],
+    ("H05", 4): [S1("Estimated three or four teens in the panel each year hit the same wall: two failed ASMs, still seizing, and no access to cenobamate until age 18.")],
+    ("H07", 2): [S1("Said the 12-to-17 group with refractory focal epilepsy is where the biggest gap sits, since the adult-only label leaves them waiting.")],
     ("H09", 3): [S1("Raised, unprompted, that a 16-year-old with drug-resistant focal seizures had to stay on a failing regimen because cenobamate is not approved below 18.")],
-    ("H11", 1): [S1("Told the team she 'parks' adolescent drug-resistant cases and re-evaluates them at 18, which she called an uncomfortable way to practice.")],
-    ("C01", 2): [S1("During Q&A he described a 17-year-old who failed two ASMs and asked, pointedly, when data below 18 would exist for cenobamate.")],
-    ("C03", 3): [S1("Standing at the poster he asked why the adolescent drug-resistant population is still excluded, saying he sends those families away empty-handed until 18."),
-                 S4y("He closed by requesting whatever adolescent safety or pharmacokinetic data exists, published or pending.")],
-    ("M02", 1): [S1("He said the adolescent transition group is his single biggest unmet need — drug-resistant focal seizures at 15 or 16, and cenobamate out of reach until 18.")],
-    ("M07", 1): [S1("She sees a steady trickle of drug-resistant teens and called the 18-plus label 'a waiting room with no exit' for them."),
-                 S2("She also mentioned one adult patient reporting persistent dizziness after the last titration step, which she is watching closely.")],
-    ("M15", 1): [S1("He asked me to flag internally that adolescent refractory focal epilepsy keeps coming up and that he has no on-label answer for those families.")],
-    ("E03", 1): [S1("Summary of her point: repeated adolescent (12-17) drug-resistant cases, nothing to offer on label, families asking why age expansion data does not exist yet.")],
+    ("H11", 1): [S1("Described the habit of 'parking' adolescent drug-resistant cases until 18, calling it an uncomfortable way to practice.")],
+    ("C01", 2): [S1("During Q&A, described a 17-year-old who failed two ASMs and asked, pointedly, when data below 18 would exist for cenobamate.")],
+    ("C03", 3): [S1("Standing at the poster, asked why the adolescent drug-resistant population is still excluded, describing families sent away empty-handed until 18."),
+                 S4y("Closed by requesting whatever adolescent safety or pharmacokinetic data exists, published or pending.")],
+    ("M02", 1): [S1("Called the adolescent transition group the single biggest unmet need — drug-resistant focal seizures at 15 or 16, and cenobamate out of reach until 18.")],
+    ("M07", 1): [S1("Sees a steady trickle of drug-resistant teens and called the 18-plus label 'a waiting room with no exit' for them."),
+                 S2("Also mentioned one adult patient reporting persistent dizziness after the last titration step, now being watched closely.")],
+    ("M15", 1): [S1("Asked me to flag internally that adolescent refractory focal epilepsy keeps coming up with no on-label answer for those families.")],
+    ("E03", 1): [S1("Summary of the point raised: repeated adolescent (12-17) drug-resistant cases, nothing to offer on label, families asking why age expansion data does not exist yet.")],
     # ---- S2: 이상사례 시사 — 5건 (S1 단위 2건에 동거: M07, V01) ----
-    ("M11", 1): [S2("He brought up an adult who stopped the drug on his own after a week of feeling foggy and unusually sleepy.")],
+    ("M11", 1): [S2("Brought up an adult who stopped the drug unprompted after a week of feeling foggy and unusually sleepy.")],
     ("P04", 1): [S2("Reported an adult patient complaining of dizziness since the dose increase; advised standard follow-up.")],
-    ("H04", 3): [S2("Noted one adult on cenobamate describing daytime somnolence severe enough to affect his commute.")],
+    ("H04", 3): [S2("Noted one adult on cenobamate describing daytime somnolence severe enough to affect the daily commute.")],
     # ---- S3: post-stroke epilepsy (v0.1 enum 부재 → SCP 유도) — 6건 / HCP 4인 ----
-    ("H02", 4): [S3("Asked whether anyone is looking at post-stroke epilepsy, since more of his referrals lately are seizures after stroke.")],
+    ("H02", 4): [S3("Asked whether anyone is looking at post-stroke epilepsy, since more referrals lately are seizures after stroke.")],
     ("H06", 2): [S3("Brought up post-stroke epilepsy again and said these patients do not fit neatly into any of the usual categories.")],
-    ("M09", 1): [S3("He described a growing cluster of post-stroke epilepsy patients and asked what evidence exists for cenobamate in that setting.")],
-    ("M18", 1): [S3("Her interest is post-stroke seizures — she called it an overlooked population in every registry she has seen.")],
-    ("P07", 1): [S3("Quick call, mostly about a post-stroke epilepsy case he wanted to discuss at the next visit.")],
-    ("E08", 1): [S3("Main theme of her email recap: seizures after stroke are rising in her clinic and she wants literature on that population.")],
+    ("M09", 1): [S3("Described a growing cluster of post-stroke epilepsy patients and asked what evidence exists for cenobamate in that setting.")],
+    ("M18", 1): [S3("The interest here is post-stroke seizures — called an overlooked population in every registry reviewed so far.")],
+    ("P07", 1): [S3("Quick call, mostly about a post-stroke epilepsy case to discuss at the next visit.")],
+    ("E08", 1): [S3("Main theme of the email recap: seizures after stroke are rising in this clinic, with a request for literature on that population.")],
     # ---- S4: 자료 요청 — 8건 (청소년 5: H01.4, C03.3동거, M05, E02, V01 / 노인 DDI 3) ----
     ("H01", 4): [S4y("Asked directly whether any adolescent dosing or safety data for cenobamate is on the horizon.")],
     ("M05", 1): [S4y("Requested a literature package on cenobamate in patients under 18, even early-phase or PK work.")],
     ("E02", 1): [S4y("Action item from the email: send any available adolescent safety data or confirm that none exists yet.")],
     ("M20", 1): [S4e("Asked for a concise interaction table for elderly patients on five or more concomitant medications.")],
-    ("P02", 1): [S4e("Wants the DDI summary for geriatric polypharmacy cases before he starts anyone new.")],
+    ("P02", 1): [S4e("Wants the DDI summary for geriatric polypharmacy cases before starting anyone new.")],
     ("E06", 1): [S4e("Follow-up requested: interaction and titration guidance for patients over 65 on multiple medications.")],
     # ---- S5: DRE 성인 긍정 신호 — 7건 ----
     ("H03", 4): [S5("Shared that two drug-resistant adults who had failed multiple ASMs are now several months with markedly fewer seizures on cenobamate.")],
-    ("H10", 1): [S5("Volunteered that his longest-standing refractory patient has had her quietest quarter in years since starting cenobamate.")],
-    ("M12", 1): [S5("He said several DRE adults in his panel finally responded after years of cycling medications."),
-                 X("X2", "She went as far as saying it works for every patient she has tried it on.")],
+    ("H10", 1): [S5("Volunteered that the longest-standing refractory patient in the panel has had the quietest quarter in years since starting cenobamate.")],
+    ("M12", 1): [S5("Said several DRE adults in the panel finally responded after years of cycling medications."),
+                 X("X2", "Went as far as saying it works for every patient tried on it so far.")],
     ("M22", 1): [S5("Described a drug-resistant adult who went from weekly seizures to rare breakthroughs after titration.")],
     ("P09", 1): [S5("Short call — wanted to share that another refractory adult is responding well on the current dose.")],
-    ("C02", 1): [S5("In the hallway she mentioned two treatment-resistant adults doing noticeably better since switching to cenobamate.")],
+    ("C02", 1): [S5("In the hallway, mentioned two treatment-resistant adults doing noticeably better since switching to cenobamate.")],
     # ---- S6: 노인 DDI·적정 부담 (In-label HYP-002) — 10건 / HCP 6인 ----
-    ("H01", 1): [S6("His main hesitation with elderly patients is drug-drug interactions on top of already long medication lists.")],
-    ("H04", 4): [S6("For older adults he worries less about efficacy and more about interaction checks and the burden of slow titration.")],
+    ("H01", 1): [S6("The main hesitation with elderly patients is drug-drug interactions on top of already long medication lists.")],
+    ("H04", 4): [S6("For older adults, the worry is less about efficacy and more about interaction checks and the burden of slow titration.")],
     ("H06", 4): [S6("Called titration in geriatric patients 'a second job' for caregivers and asked for simpler guidance.")],
-    ("H12", 3): [S6("Says he triple-checks interactions before considering cenobamate in anyone over 65, which slows him down.")],
-    ("M04", 1): [S6("Her hesitation is concomitant medications in elderly patients — she wants a cleaner way to rule out interactions.")],
-    ("M10", 1): [S6("He avoids starting older adults unless a pharmacist reviews the full medication list first, citing DDI concerns.")],
-    ("M17", 1): [S6("Elderly polypharmacy came up again: he asked for education materials he can hand to caregivers.")],
-    ("E01", 1): [S6("Recap: geriatric patients on multiple medications remain her main barrier; requests interaction education for staff.")],
-    ("P05", 1): [S6("Brief note — reiterated that interaction burden in patients over 65 keeps him cautious.")],
+    ("H12", 3): [S6("Triple-checks interactions before considering cenobamate in anyone over 65, which slows the decision down.")],
+    ("M04", 1): [S6("The hesitation is concomitant medications in elderly patients, with a request for a cleaner way to rule out interactions.")],
+    ("M10", 1): [S6("Avoids starting older adults unless a pharmacist reviews the full medication list first, citing DDI concerns.")],
+    ("M17", 1): [S6("Elderly polypharmacy came up again, with a request for education materials to hand to caregivers.")],
+    ("E01", 1): [S6("Recap: geriatric patients on multiple medications remain the main barrier; requests interaction education for staff.")],
+    ("P05", 1): [S6("Brief note — reiterated that interaction burden in patients over 65 keeps this prescriber cautious.")],
     # ---- Critic 차단용 의도 삽입 #1 (허가 범위 벗어난 단정) ----
-    ("M24", 1): [X("X1", "He remarked that cenobamate is probably safe for adolescents too and said he does not see why the label stops at 18.")],
+    ("M24", 1): [X("X1", "The comment was that cenobamate is probably safe for adolescents too, and that stopping the label at 18 seems arbitrary.")],
 }
 
 # PII 삽입 (docs/03 §3.4) — 마스킹 정답지 생성 대상. 전부 가상 인물·번호.
@@ -170,7 +178,7 @@ PII = {
     "V01": [("NAME", "김도현"), ("PHONE", "010-4132-7789")],
 }
 PII_SENTENCE = {
-    "M03": "The clinic coordinator, Marcus Delaney, left his direct line (555) 214-8890 for scheduling.",
+    "M03": "The clinic coordinator, Marcus Delaney, left a direct line, (555) 214-8890, for scheduling.",
     "E05": "Please route samples through office manager Elena Vargas, reachable at (555) 730-4416.",
 }
 
@@ -352,6 +360,14 @@ def assert_scenario(docs):
     for d in docs:
         hs = [b["hcp"] for b in d["blocks"]]
         assert len(hs) == len(set(hs)), f"{d['key']}: 문서 내 HCP 중복"
+    # 각본 문장 자체에 성별 대명사가 없어야 한다 (HCP 명부와의 불일치 방지 — 위 주석 참조)
+    for (dk, bi), plist in PLANTED.items():
+        for p in plist:
+            m = GENDERED.search(p["verbatim"])
+            assert not m, f"PLANTED {dk}.{bi}에 성별 대명사 '{m.group(0)}' 포함"
+    for dk, s in PII_SENTENCE.items():
+        m = GENDERED.search(s)
+        assert not m, f"PII_SENTENCE {dk}에 성별 대명사 '{m.group(0)}' 포함"
     # 노이즈 비중 (신호 없는 단위 ≥ 절반)
     signal_units = {(d["key"], b["block_index"]) for d, b in units if b["planted"]}
     signal_units |= {("V01", 1), ("V02", 1), ("V03", 1)}
@@ -424,6 +440,22 @@ def assemble_doc(doc, block_bodies):
 # 6. LLM 생성 (블록 단위) + 자가검증
 # ──────────────────────────────────────────────────────────────────────────────
 
+def load_bodies():
+    """scripts/corpus_bodies/*.json 병합 → {doc_key: {block_index(int): body}}"""
+    bodies = {}
+    if not BODIES_DIR.exists():
+        return bodies
+    for path in sorted(BODIES_DIR.glob("*.json")):
+        data = json.loads(path.read_text(encoding="utf-8"))
+        for doc_key, blocks in data.items():
+            for bi, body in blocks.items():
+                prev = bodies.setdefault(doc_key, {})
+                if int(bi) in prev:
+                    sys.exit(f"본문 중복 정의: {doc_key} 블록 {bi} (여러 shard에 존재)")
+                prev[int(bi)] = body
+    return bodies
+
+
 def load_api_key():
     if os.environ.get("ANTHROPIC_API_KEY"):
         return os.environ["ANTHROPIC_API_KEY"]
@@ -463,10 +495,26 @@ Author persona: {persona['name']} — {persona['style']}. Allow a few natural ty
 Physician context: a {hcp[1].lower().replace('_',' ')} specialist at {hcp[4]} ({hcp[3].lower().replace('_',' ')} setting), {hcp[5]}.
 Product context: XCOPRI (cenobamate), adult (18+) focal-onset seizures in the US. Stay at public-label level.
 Hard rules: never suggest or encourage off-label use; no efficacy exaggeration beyond any sentence given below; no dosing numbers.
+Never refer to the physician as "he" or "she" — use a role noun ("the physician", "this prescriber"), "they", or no subject at all.
 
 {shape}
 {requirement}{pii_line}
 If a required sentence uses quotes, keep them exactly. Return ONLY the text, no preamble."""
+
+def resolve_body(client, bodies, doc, block):
+    """본문 확보: 준비된 파일 우선 → 없으면 API. 준비본이 규칙 위반이면 즉시 실패(조용히 API로 넘어가지 않는다)."""
+    body = bodies.get(doc["key"], {}).get(block["block_index"])
+    if body is not None:
+        ok, err = validate_block(doc, block, body)
+        if not ok:
+            sys.exit(f"본문 검증 실패 — {doc['key']} 블록 {block['block_index']}: {err}\n"
+                     f"→ {BODIES_DIR.relative_to(ROOT)} 의 해당 항목을 고치세요.")
+        return body
+    if client is None:
+        sys.exit(f"본문이 없습니다 — {doc['key']} 블록 {block['block_index']}.\n"
+                 f"→ {BODIES_DIR.relative_to(ROOT)}/*.json 에 본문을 넣거나, .env에 ANTHROPIC_API_KEY를 설정하세요.")
+    return generate_block(client, doc, block)
+
 
 def generate_block(client, doc, block):
     prompt = block_prompt(doc, block)
@@ -483,11 +531,17 @@ def generate_block(client, doc, block):
         time.sleep(0.5)
     raise RuntimeError(f"{doc['key']}.{block['block_index']} 생성 3회 실패: {last_err}")
 
+GENDERED = re.compile(r"\b(he|she|his|her|hers|him|himself|herself)\b", re.IGNORECASE)
+
 def validate_block(doc, block, body):
     for p in block["planted"]:
         n = body.count(p["verbatim"])
         if n != 1:
             return False, f"verbatim {n}회 포함(정확히 1회 필요): {p['verbatim'][:50]}…"
+    if doc["language"] == "EN":
+        m = GENDERED.search(body)
+        if m:
+            return False, f"HCP를 성별 대명사로 지칭함('{m.group(0)}') — 역할 명사·they·무주어를 쓸 것"
     if doc["key"] in PII_SENTENCE and block["block_index"] == 1:
         if body.count(PII_SENTENCE[doc["key"]]) != 1:
             return False, "PII 문장 누락"
@@ -575,11 +629,15 @@ def run(limit=None, dry=False):
         print("dry-run 종료 (생성 안 함). 전체 생성: bash scripts/generate.sh")
         return
 
+    bodies = load_bodies()
+    n_bodies = sum(len(v) for v in bodies.values())
+    print(f"준비된 본문: {n_bodies}개 블록 ({BODIES_DIR.relative_to(ROOT)})")
+
+    client = None
     key = load_api_key()
-    if not key:
-        sys.exit("ANTHROPIC_API_KEY가 없습니다. 레포 루트 .env에 한 줄 추가하세요:\nANTHROPIC_API_KEY=sk-ant-…  (커밋 금지 — .gitignore가 막아줌)")
-    import anthropic
-    client = anthropic.Anthropic(api_key=key)
+    if key:
+        import anthropic
+        client = anthropic.Anthropic(api_key=key)
 
     CORPUS_DIR.mkdir(parents=True, exist_ok=True)
     ids = doc_ids(docs)
@@ -591,10 +649,10 @@ def run(limit=None, dry=False):
         doc_id = ids[doc["key"]]
         t0 = time.time()
         if doc["source_type"] == "VOICE_TRANSCRIPT":
-            bodies = [VOICE_SCRIPTS[doc["key"]]]
+            block_bodies = [VOICE_SCRIPTS[doc["key"]]]
         else:
-            bodies = [generate_block(client, doc, b) for b in doc["blocks"]]
-        txt, spans = assemble_doc(doc, bodies)
+            block_bodies = [resolve_body(client, bodies, doc, b) for b in doc["blocks"]]
+        txt, spans = assemble_doc(doc, block_bodies)
 
         # verbatim 오프셋 (문서 전문 기준 — docs/02 §2) + 블록 범위 검증
         gt_rows = []

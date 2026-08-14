@@ -1,0 +1,12 @@
+Interaction Note   |   Date: December 15, 2025   |   MSL: Sam Becker
+HCP: Stephen Aldrich, MD, Cascade Summit Medical Center, Tacoma, WA (RSM)
+
+Second visit this quarter. Fifteen minutes, hallway then office.
+
+Opened w/ EHR. Template for seizure frequency still forces one number per encounter, so anything episodic gets flattened. Said counts typed into the note do not match what the flowsheet reports, and the IT ticket has been open since Oct. Not our problem but worth knowing — any frequency data coming out of this site will be rough.
+
+Moved to older pts. Panel skews 65+ on the general neuro side. The hesitation is concomitant medications in elderly patients, with a request for a cleaner way to rule out interactions. Current workflow is pharmacy consult first, which adds a week to every decision. Asked whether anything shorter exists. Told the prescriber I would check what is available at label level and bring it, nothing beyond that. No off-label discussion. No AE reported.
+
+Also mentioned two staff changes in Jan, so clinic day may move.
+
+F/u: send interaction section reference from the XCOPRI label, confirm new clinic day, next visit Feb. Note to self — bring a printed copy, netowrk drive is blocked in that building.

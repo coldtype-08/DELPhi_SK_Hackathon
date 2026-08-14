@@ -1,0 +1,5 @@
+Email Summary   |   June 10, 2026   |   Logged by: Priya Menon
+Correspondent: Walter Brandt, MD, Flint Hills Neuroscience, Wichita, KS (AR)
+
+Thread of four messages over two days, now closed on my side. The first two concerned the EHR: the current template pushes seizure frequency into a free-text field, which makes it hard to see a trend across visits without reading every note in sequence. The remaining messages moved to the older patients in this practice. Follow-up requested: interaction and titration guidance for patients over 65 on multiple medications. Three items were agreed in writing: (1) confirm what label-level interaction material may be shared, (2) ask whether a plain-language handout exists for caregivers, and (3) reply by June 19 either way. I stated the approved adult indication for XCOPRI, noted that I cannot comment on individual regimens or on dosing, and made no commitment on content beyond what the label supports.
+Next step: file the medical information request today and confirm the reply date with the practice.
