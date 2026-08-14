@@ -1,101 +1,174 @@
-<div align="center">
-
-<img src="Assets/logo.png" alt="DELPHi" width="320">
-
-**Adaptive Data Foundation for Growth Intelligence for XCOPRI®**
-
-![status](https://img.shields.io/badge/status-개발_중-EF8B1C?style=flat-square)
-![python](https://img.shields.io/badge/Python-3.12-162661?style=flat-square)
-![next](https://img.shields.io/badge/Next.js-15-162661?style=flat-square)
-![llm](https://img.shields.io/badge/Claude_API-structured_output-5B7CFA?style=flat-square)
-![data](https://img.shields.io/badge/data-synthetic_only-1FA97C?style=flat-square)
-
-</div>
+<p align="center">
+  <img src="./Assets/logo.png" alt="DELPHi Logo" width="300">
+</p>
+<h1 align="center">DELPHi</h1>
+ 
+<p align="center">
+  <b>Adaptive Data Foundation for Growth Intelligence — XCOPRI®</b><br>
+  <i>신탁은 해석을 남겼습니다. DELPHi는 근거를 남깁니다.</i>
+</p>
+<p align="center">
+  <a href="https://coldtype-08.github.io/DELPhi_SK_Hackathon/Demo_Mockup.html">
+    <img src="https://img.shields.io/badge/🖥%20인터랙티브%20목업%20열기-1a2b6d?style=for-the-badge" alt="인터랙티브 목업 열기">
+  </a>
+</p>
 
 ---
 
-## 개요
+DELPHi는 흩어진 **비정형 내부 데이터를 원문 근거가 연결된 AI-readable 데이터로 전환**하고, 그 위에서 **내부 신호와 외부 과학 근거를 교차검증**하는 XCOPRI 매출 성장 플랫폼입니다.
 
-DELPHi는 사내 비정형 데이터를 원문 근거가 연결된 데이터로 바꾸고, 그 데이터에서 찾은 신호를 외부 과학 근거와 맞춰본 뒤 사람이 승인하는 XCOPRI 성장 지원 플랫폼입니다.
+핵심 차별점은 문서를 한 번 잘 분석하는 데 있지 않습니다. 과거 데이터에서 발견한 반복 개념을 사람이 검토할 수 있는 **스키마 변경안**으로 만들고, 승인된 구조를 다시 현장 데이터 수집에 반영하는 **폐쇄형 학습 루프**에 있습니다.
 
-이름은 고대 델포이와 Delphi method에서 가져왔습니다. 여러 전문가의 의견을 반복해서 모아 판단을 구조화하는 방식처럼, DELPHi도 흩어진 신호와 서로 다른 관점을 정리합니다. 다만 결론만 남기지 않고 그 근거와 반대 의견까지 함께 남깁니다.
+## 목차
 
-## 문제
+- [이름의 유래](#이름의-유래)
+- [문제 정의 — Insight Latency](#문제-정의--insight-latency)
+- [작동 구조](#작동-구조)
+- [기대 효과](#기대-효과)
+- [설계 원칙](#설계-원칙)
+- [화면 미리보기](#화면-미리보기)
+- [저장소 구성](#저장소-구성)
+- [데이터에 관하여](#데이터에-관하여)
 
-데이터는 쌓이지만 다시 쓸 수 있는 형태로 축적되지 않습니다. 면담 기록, Medical Information 문의, 회의록은 담당자마다 다른 형식과 표현으로 저장됩니다. 그래서 같은 이야기가 몇 번 반복되었는지 셀 수 없고, 분석이 필요할 때마다 사람이 문서를 다시 읽어야 합니다. 한 번 정리해도 새 기록이 다시 자유서술로 쌓이면 같은 일을 반복하게 됩니다.
+## 이름의 유래
 
-XCOPRI의 다음 성장 신호는 이미 면담과 문서, 논문과 임상 데이터 안에 있습니다. 문제는 정보가 부족한 게 아니라, 그 정보들이 서로 연결되지 않는다는 것입니다. DELPHi가 줄이려는 것은 기록이 생긴 시점부터 그것이 근거와 우선순위를 갖춘 판단 재료로 조직에 인지되기까지의 시간입니다.
+고대 델포이는 중요한 결정을 앞둔 사람들이 질문을 가져오던 장소였습니다. 현대의 **Delphi method**는 익명성 · 반복 · 통제된 피드백을 통해, 불확실성이 큰 문제에서 여러 전문가의 판단을 하나의 합의로 구조화합니다.
 
-## 구성
+DELPHi는 여기서 이름을 가져왔습니다. 다만 신탁과 달리 **결론만 남기지 않습니다.** 흩어진 신호와 서로 다른 관점을 구조화하되, 그 근거와 이견까지 추적 가능한 형태로 보존합니다.
 
-<img src="Assets/delphi_작동구조_readme.png" alt="DELPHi 작동 구조">
+## 문제 정의 — Insight Latency
 
-**Sense — 구조화**
-비정형 문서를 의미 단위로 나누고 정해진 스키마에 맞춰 구조화합니다. 모든 값에는 원문 위치가 함께 저장됩니다. 승인된 데이터만 SQL로 집계해 반복 횟수와 추이를 계산하고, 여기서 성장 가설 후보를 뽑습니다. 기존 스키마로 담기지 않는 개념이 반복되면 자동으로 반영하지 않고 스키마 변경안으로 제안합니다.
+우리의 핵심 Pain Point는 데이터 부족이 아닙니다. 현장에서 생성된 의미 있는 신호가 조직의 판단으로 전환되기까지 걸리는 **긴 잠복기간**입니다.
 
-**Screen — 근거 검증**
-가설을 PubMed, ClinicalTrials.gov, 공개된 허가·안전성 자료와 맞춰봅니다. 역할이 다른 AI 에이전트가 지지 근거와 반대 근거, 그리고 아직 근거가 없는 부분을 각각 정리합니다. 근거 없는 주장이나 허가 범위를 벗어난 단정은 검증 담당 에이전트가 걸러내고 그 기록을 남깁니다.
+> **Insight Latency**<br>
+> 기록이 생성된 시점부터, 반복성 · 근거 · 우선순위를 갖춘 의사결정 정보로 조직이 인지하는 시점까지의 간격.
 
-**Board — 심의와 승인**
-관점이 다른 AI 에이전트가 가설을 심의하고 최종 권고를 정리합니다. 사실과 통계, AI의 해석, 전략 제안은 섞지 않고 구분해서 보여줍니다. 승인 권한은 사람에게 있고, 승인·보류·기각과 그 이유는 모두 기록으로 남습니다.
+데이터는 계속 쌓이지만 비정형 · 자유서술 형태로 분산되어 있어, 중요한 신호 하나가 발견되고 검증되기까지 많은 시간이 필요합니다. 문제의 본질은 **정보의 부재가 아니라, 축적된 비정형 정보가 검증 · 집계 · 재사용 가능한 근거로 전환되지 않는다는 것**입니다.
 
-**Field — 현장 수집**
-모바일에서 면담 내용을 기록합니다. 동의를 확인한 뒤 녹음이나 텍스트로 기록하면 개인정보를 가린 전사가 만들어지고, 부작용을 시사하는 내용은 일반 분석과 분리해 안전성 경로로 보냅니다. AI가 만든 구조화 후보는 원문 인용과 함께 카드로 보여주고, 사용자가 확인해 승인한 값만 저장됩니다. 입력 항목은 코드에 고정되어 있지 않고 승인된 스키마에서 그때그때 만들어집니다.
+> XCOPRI의 다음 성장 신호는 이미 대화 · 문서 · 논문 · 임상 데이터 속에 있습니다.<br>
+> 문제는 그것들이 서로 연결되지 않는다는 것입니다.
 
-이 네 가지가 하나의 스키마를 공유하기 때문에 루프가 닫힙니다. 과거 데이터 분석에서 나온 스키마 변경안이 승인되면, 그 구조가 다음 현장 기록의 입력 항목으로 바로 적용됩니다.
+## 작동 구조
 
-## 작동 방식
+<p align="center">
+  <img src="./Assets/작동구조.png" alt="DELPHi 작동 구조 — Sense · Screen · Board · Field가 하나의 Data Contract를 공유한다">
+</p>
 
-**Data Contract**
-어떤 정보를 어떤 항목과 규칙으로 저장할지 정리한 문서이자 설정 파일입니다. 하나의 정의를 AI 추출 스키마, 서버 검증, DB 구조, Field 입력 폼, 대시보드 집계 기준, 에이전트 입력 형식이 함께 씁니다. AI는 이 파일을 스스로 바꿀 수 없습니다. 원문 사례와 반복 횟수, 영향 범위를 담은 변경안을 사람이 승인해야 새 버전이 적용되고, 과거 데이터는 만들어질 때의 버전을 그대로 유지합니다.
-
-**원문 근거**
-추출값에는 인용문과 원문에서의 위치가 함께 저장됩니다. 서버는 그 인용문이 실제 원문에 있는 문장인지 확인하고, 확인되지 않으면 저장하지 않습니다.
-
-```json
-{ "verbatim_quote": "어르신들은 약이 워낙 많아서 상호작용부터 걱정된다고 하셨다",
-  "evidence": { "doc_id": "INT-20250912-001", "char_start": 412, "char_end": 448 } }
+네 개의 모듈은 하나의 **Data Contract**를 공유합니다.
+ 
+```mermaid
+flowchart LR
+    F["DELPHi Field<br/>수집 · 재반영"]
+    S["DELPHi Sense<br/>정제 · 구조화"]
+    C["DELPHi Screen<br/>근거 검증"]
+    B["DELPHi Board<br/>심의 · 승인"]
+ 
+    F --> S --> C --> B
+    B -. "승인된 구조 · 결정 재반영" .-> F
 ```
+ 
+<!-- Mermaid를 지원하지 않는 뷰어라면 아래 한 줄로 대체하세요
+**Field** → **Sense** → **Screen** → **Board** → *(승인된 구조 · 결정)* ↺ **Field**
+-->
+ 
+Field에서 수집된 데이터는 Sense가 구조화하고, Screen이 외부 근거로 검증하며, Board의 심의를 거칩니다. 여기서 승인된 구조와 결정은 다시 Field의 수집 항목으로 반영됩니다.
 
-**승인 전에는 집계에 들어가지 않는다**
-AI가 만든 값은 후보 상태로 시작합니다. 사람이 승인하면 집계와 가설, 심의에 쓰이고 반려된 값은 기록만 남고 집계에서 빠집니다. 검토 등급(상·중·하)은 상태가 아니라 참고용 라벨이며, 원문과 일치하는지, 용어 매핑이 됐는지, 규칙을 통과했는지로 계산합니다. 모델이 스스로 매긴 확신도가 아니고, 등급이 높아도 자동 승인은 없습니다.
+| 모듈 | 역할 | 한 줄 설명 |
+| :--- | :--- | :--- |
+| **Sense** | 정제 · 구조화 | 비정형 데이터를 evidence pointer가 연결된 의미 단위로 전환하고 가설 후보를 도출 |
+| **Field** | 수집 · 재반영 | Sense의 Ontology로 현장 데이터를 실시간 수집하고 다시 Sense로 환류 |
+| **Screen** | 다중 에이전트 근거 검증 | 전문가 Agent들이 공개 근거를 조회해 support · counter evidence와 gap을 구조화 |
+| **Board** | AI 심의와 사람의 승인 | BoardAgent가 종합 심의하고, 최종 승인과 실행 결정은 사람이 수행 |
 
-**숫자는 SQL이 계산한다**
-반복 횟수, 출처 수, 빈도, 추이는 모두 SQL과 일반 코드로 계산합니다. AI는 구조화와 근거 분류, 요약, 가설 생성만 하고 집계 결과는 읽어서 쓰기만 합니다.
+### 1. DELPHi Sense — 정제 · 구조화
 
-**허가 범위 안과 밖을 나눈다**
-환자군이 현재 허가 범위를 벗어나면 해당 값에 표시가 붙고, 그 값을 근거로 한 가설은 개발 검토용으로 분류되어 현장 영업 활동과 연결되지 않습니다. 화면에만 표시하는 게 아니라 데이터와 조회 단계에서 막습니다. 부작용 후보도 같은 방식으로 일반 분석에서 분리됩니다.
+비정형 문서와 동의 · 승인이 전제된 interaction을 의미 단위 · Ontology 구조로 정제하고, **모든 값에 원문 evidence pointer와 extraction version을 연결**합니다.
 
-**정보의 출처를 구분해서 보여준다**
-화면의 모든 정보는 누가 만든 것인지 구분해 표시합니다. 원문에서 확인한 사실, SQL로 집계한 패턴, AI의 해석, 전략 제안, 사람이 승인한 실행 다섯 가지입니다. 심사자나 사용자가 색과 라벨만 보고 어디까지가 사실이고 어디부터 AI의 판단인지 알 수 있게 하는 것이 목적입니다.
+승인된 데이터를 집계해 반복성과 추이를 계산하고 성장 가설 후보를 도출합니다. 기존 schema로 표현되지 않는 반복 개념은 자동 적용하지 않고 **Schema Change Proposal**로 제안합니다.
 
-## 화면
+### 2. DELPHi Field — 수집 · 데이터 재반영
 
-<img src="Assets/field_mockup.png" alt="Field 목업">
+DELPHi Sense가 확립한 **의미 단위 · Ontology 구조로 신규 현장 데이터를 수집**합니다.
 
-Field. 동의 확인, 실시간 전사, 부작용 발언 분리, 구조화 후보 승인.
+동의를 전제로 한 실시간 녹음에서 의미를 캐치하고, 적응증 확장 · safety issue 같은 주요 사항을 실시간으로 마크한 뒤, 수집된 신규 데이터를 다시 Sense로 보냅니다.
 
-<img src="Assets/console_mockup.png" alt="Console 목업">
+### 3. DELPHi Screen — 다중 에이전트 근거 검증
 
-Console. 가설 하나에 대한 정보 구분 표시, 지지·반대·공백 근거, 에이전트 조사 결과, 심의 기록, 승인 버튼.
+Sense가 도출한 가설 후보와 인사이트를 **전문가 Agent들이 각자 Research로 교차검증**합니다.
 
-인터랙티브 목업은 `demo/Demo_Mockup.html`을 브라우저에서 열면 됩니다.
+각 에이전트는 PubMed, ClinicalTrials.gov, 공식 허가 · 안전성 자료 등 공개 근거를 조회해 support · counter evidence와 evidence gap을 구조화합니다.
 
-## 기술 스택
+### 4. DELPHi Board — AI 심의와 사람의 승인
 
-| 영역 | 선택 |
-|---|---|
-| 백엔드 | Python 3.12 · FastAPI · SQLAlchemy |
-| DB | SQLite. 사내 데이터 플랫폼 이관을 고려해 ANSI SQL 범위로만 작성 |
-| LLM | Claude API. 추출·분류 `claude-sonnet-5`, 심의 `claude-opus-5`. JSON schema 기반 출력 |
-| 프론트엔드 | Next.js 15 · Tailwind v4 · shadcn/ui · framer-motion · Recharts |
-| 외부 데이터 | PubMed E-utilities · ClinicalTrials.gov v2 · openFDA. 응답은 캐시에 저장 |
-| 기록 | 모든 LLM 호출은 단일 래퍼를 거치며 모델·프롬프트 버전·스키마·소요시간을 남김 |
+**BoardAgent**들이 모든 정보를 종합 심의해 후속 action item을 제안하고, **CEO Agent**가 최종 권고 의견을 제시합니다.
 
-## 하지 않는 것
+사실 · 패턴 · AI 해석 · 전략 제안을 구분해 표시하되, **최종 승인과 실행 결정은 권한을 가진 사람이 함께 수행**합니다.
 
-매출 예측, 개별 의료진의 처방성향 점수화, 프로모션 메시지 생성은 만들지 않습니다. AI는 구조화와 검증, 심의와 권고까지만 하고 승인은 사람이 합니다.
+## 기대 효과
+ 
+| 지표 | 목표 | 작동 방식 |
+| :--- | :---: | :--- |
+| **Data Latency** | 70%&nbsp;이상<br>**단축** | 사람이 매번 다시 읽고 분류하는 대신,<br>AI가 Data Contract에 따라 구조화 후보를 생성하고<br>사용자는 필요한 부분만 검토 · 승인 |
+| **Insight Latency** | 50%&nbsp;이상<br>**단축** | 구조화된 내부 신호와 외부 근거를 연결해,<br>지지 근거 · 반대 근거 · 근거 공백이 포함된<br>Board-ready Growth Hypothesis를 준비 |
+| **반복 정리 ·<br>재분류 업무** | 70%&nbsp;이상<br>**감소** | 한 번 승인된 데이터를 재사용하고,<br>신규 데이터도 동일한 Data Contract에 따라 축적 |
+ 
+## 설계 원칙
 
-## 면책
+- **Evidence-linked by default** — 모든 구조화 값은 원문 위치(evidence pointer)와 extraction version에 연결됩니다. 근거 없는 값은 존재할 수 없습니다.
+- **Human-in-the-loop** — AI는 후보와 권고를 제안하고, 최종 승인은 사람이 합니다. 승인되지 않은 값은 분석에 반영되지 않습니다.
+- **Schema는 자동으로 바뀌지 않습니다** — 새로운 반복 개념은 Schema Change Proposal → 검토 → 승인을 거쳐야 Data Contract에 반영됩니다.
+- **이견도 자산입니다** — counter evidence, evidence gap, 보류 · 기각 사유는 모두 이력으로 보존됩니다.
 
-이 레포의 면담록·음성·의료진·환자 데이터는 실제 기록의 구조만 참고해 만든 합성 데이터입니다. 외부 근거는 공개 데이터만 사용합니다. 이 프로토타입은 의학적 조언이나 처방 판단을 제공하지 않으며, 허가 범위를 벗어난 가설은 내부 검토용으로만 쓰이고 판촉 목적으로 사용될 수 없습니다. XCOPRI®는 SK바이오팜의 등록 상표이고, 이 레포는 2026 SK AI 해커톤 참가 프로젝트로 회사의 공식 입장이나 제품 계획을 나타내지 않습니다.
+## 화면 미리보기
+ 
+사용자가 만나는 접점은 **DELPHi Console**(데스크톱)과 **DELPHi Field**(모바일) 두 가지입니다.
+ 
+<!-- 목업 이미지 파일명을 실제 파일에 맞게 수정해 주세요 -->
+ 
+### DELPHi Console — Sense · Screen · Board 통합 대시보드
+ 
+Sense가 구조화한 신호를 대시보드로 확인하고, 같은 화면에서 검증 에이전트를 호출해 근거 보드를 채우며, Board의 심의 결과와 최종 승인까지 하나의 흐름으로 이어집니다.
+ 
+<p align="center">
+  <img src="./Assets/console_mockup.png" alt="DELPHi Console — 개요 대시보드, 근거 보드, AI 심의와 최종 승인" width="900">
+</p>
+<p align="center">
+  <sub>① 개요 대시보드 &nbsp;·&nbsp; ② Screen — 근거 보드 &nbsp;·&nbsp; ③ Board — AI 심의와 최종 승인</sub>
+</p>
+
+### DELPHi Field — 현장 면담 모바일 앱
+ 
+동의를 전제로 실시간 전사를 수행하고, Sense의 Ontology에 따라 AI가 만든 구조화 후보를 원문과 대조해 그 자리에서 승인합니다.
+ 
+<p align="center">
+  <img src="./Assets/field_mockup.png" alt="DELPHi Field — 실시간 수집과 구조화 후보 승인" width="900">
+</p>
+<p align="center">
+  <sub>① 동의 확인 · 실시간 전사 · 자동 마스킹 · 이상사례 분기 &nbsp;·&nbsp; ② AI 구조화 후보를 원문과 대조해 승인</sub>
+</p>
+
+> 모든 화면의 인물 · 기관 · 발언은 Synthetic Demo Data입니다.
+
+## 저장소 구성
+
+| 경로 | 내용 |
+| :--- | :--- |
+| `docs/` | 스펙 = 단일 진실. 개발 계획 · 아키텍처 · Data Contract · API · 디자인 시스템 · 배포 |
+| `backend/` | FastAPI + SQLite + 추출 · 에이전트 (개발 예정) |
+| `apps/console/`, `apps/field/` | 대시보드 · 모바일 웹 (개발 예정) |
+| `scripts/` | 합성 코퍼스 생성기와 검증 도구 |
+| `backend/data/corpus/` | 합성 코퍼스 63건 — [설명과 고지](./backend/data/corpus/README.md) |
+| `Demo_Mockup.html` | 인터랙티브 목업 (위 배지로 바로 열람) |
+
+문서는 `docs/00_MASTER_PLAN.md`(2주 계획)부터 읽으면 전체 그림이 잡힙니다.
+
+## 데이터에 관하여
+
+**이 저장소에는 실제 데이터가 없습니다.** 화면 · 문서 · 코퍼스에 등장하는 인물, 기관, 발언, 날짜는 전부 **생성기가 만들어낸 허구**이며, 실제 의료진 면담 기록이나 사내 문서에서 가져오거나 변형한 내용은 한 건도 포함되어 있지 않습니다.
+
+- 원석 문서(Word · PDF)의 **양식은 업계에서 흔한 현장 기록 형식을 흉내 낸 것**이고, 특정 조직의 실제 문서를 복제한 것이 아닙니다.
+- 코퍼스의 모든 파일은 **첫 줄에 합성 데이터 고지**를 담고 있습니다.
+- 실데이터 · 실명 · 상용 처방 데이터는 프로젝트 규칙상 반입하지 않습니다. 외부 근거는 PubMed · ClinicalTrials.gov · openFDA 등 **공개 API**만 사용합니다.
+- API 키를 비롯한 비밀값은 저장소에 포함되지 않습니다 (로컬 `.env`, `.gitignore` 처리).
+
+정량 지표(Data Latency 70% 단축 등)는 **목표치**이며, 파일럿 단계에서 baseline과 비교해 검증할 대상입니다.
