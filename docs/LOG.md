@@ -16,7 +16,8 @@
 - 08/12 건태: v10 — 대표 가설을 청소년(12–17세) 연령 확대로 교체(Development 정합), 노인 DDI는 In-label HYP-002로 분리. Field 대본·Screen 근거·Board 회의록·코퍼스 각본·API 예시 전면 정합 + label_scope 필드 신설
 - 08/13 건태: 최종 기획안(0812) 기준 docs 전체 동기화 — 마스터플랜 재작성(완료 기준·Closed-loop 7항목·방법 비교 규칙·리스크 5종 정합), 목적·권한 분리(purpose_domain) 신설, NOT_BOARD_READY 결정론화, 외부 근거 caveat 고정, 추적 필드(parser·external_as_of) 보강, Console 다크 표기 잔존분 제거 (다음: 8/14–15 팀 정독 + 코퍼스 생성 착수)
 - 08/14 건태: 배포(Railway 상시 접속)·코퍼스(영문 원석 + HIGHLIGHT_DOC + HCP 블록 분리 + docx/pdf 포장)·Contract 부트스트랩·시각화 2종 확정 → docs 00/02/03/04 개정 + 07 신설 + DECISIONS 8건 기록 (다음: 팀 정독 회람 + 코퍼스 생성 착수)
-- 08/14 건태: PDF 원석을 합성 학회 보고서로 확정(CONGRESS_REPORT 신설, 02·03 반영) + 솔루션 흐름도·개발 가이드 아티팩트 팀 공유 준비 (다음: 팀 정독 회람)
+- 08/14 건태: PDF 원석을 합성 학회 보고서로 확정(CONGRESS_REPORT 신설, 02·03 반영) + 솔루션 흐름도·개발 가이드 아티팩트 팀 공유 준비
+- 08/14 건태: git 레포 초기화 + **합성 코퍼스 63건 생성 완료** (인사이트 118단위, 신호 각본 전항목 일치, 오프셋 오류 0, docx 20·pdf 3 포장). 본문은 세션 내 작성분을 corpus_bodies로 커밋(API 키 불필요·완전 재현). 검수 페이지 REVIEW.html 생성 (다음: 8/15–18 3인 리얼리티 검수 + GitHub 원격 연결)
 
 ## Week 1 (8/21–8/27)
 
