@@ -1,3 +1,5 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
 Call Memo   |   October 20, 2025   |   Tom Alvarez
 HCP: Walter Brandt, MD, Flint Hills Neuroscience, Wichita, KS (AR)
 

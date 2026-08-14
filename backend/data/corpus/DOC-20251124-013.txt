@@ -1,3 +1,5 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
 Call Memo   |   November 24, 2025   |   Rachel Suh
 HCP: Priya Raghavan, MD, North Star Neurology, Minneapolis, MN (RSM)
 

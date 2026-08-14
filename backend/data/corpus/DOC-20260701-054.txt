@@ -1,3 +1,5 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
 Call Memo   |   July 1, 2026   |   Dana Cho
 HCP: Jorge Maldonado, MD, Redwood Basin Medical Group, Sacramento, CA (RSM)
 

@@ -18,3 +18,4 @@ out/
 
 # OS · 에디터
 .DS_Store
+~$*          # Word/Excel 임시 잠금 파일 (docx 검수 중 생김)

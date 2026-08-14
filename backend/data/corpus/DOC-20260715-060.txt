@@ -1,3 +1,5 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
 Interaction Note   |   Date: July 15, 2026   |   MSL: Dana Cho
 HCP: Caleb Munson, MD, Cedar Ridge Medical Group, Springfield, IL (AR)
 

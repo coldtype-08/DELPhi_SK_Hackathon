@@ -393,29 +393,39 @@ def congress_heading(hcp_ref):
     name, _, _, _, inst, _ = HCPS[hcp_ref]
     return f"Conversation — {name}, MD ({inst})"
 
+# 합성 데이터 고지 (2026-08-14) — 문서를 단독으로 열어도 즉시 보이도록 모든 원문의 첫 줄에 넣는다.
+# 레포가 public이므로 "실제 기록이 아니다"가 파일 자체에 붙어 있어야 한다.
+NOTICE_EN = ("[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. "
+             "Names, institutions, and statements are invented; the layout imitates a generic "
+             "field-medical format. Not a real document and not derived from any real record.")
+NOTICE_KO = ("[합성 샘플] DELPHi 프로토타입 데모용으로 생성된 가상 기록입니다. "
+             "인물·기관·발언은 모두 실재하지 않으며, 양식은 일반적인 현장 기록 형식을 흉내 낸 것입니다.")
+
+
 def doc_header_lines(doc):
     authors = ", ".join(MSLS[a]["name"] for a in doc["authors"])
     date_h = month_name(doc["date"])
     st = doc["source_type"]
+    notice = [NOTICE_KO if doc["language"] == "KO" else NOTICE_EN, ""]
     if st == "HIGHLIGHT_DOC":
-        return [f"Field Medical Highlights — XCOPRI (cenobamate)",
-                f"Date: {date_h}   |   From: {authors}", "", "FIELD MEDICAL INSIGHTS", ""]
+        return notice + [f"Field Medical Highlights — XCOPRI (cenobamate)",
+                         f"Date: {date_h}   |   From: {authors}", "", "FIELD MEDICAL INSIGHTS", ""]
     if st == "CONGRESS_REPORT":
-        return [f"Congress Attendance Report — Annual Epilepsy Care Symposium",
-                f"Date: {date_h}   |   Author: {authors}", "",
-                "This report summarizes scientific sessions attended and unsolicited conversations held on-site.", ""]
+        return notice + [f"Congress Attendance Report — Annual Epilepsy Care Symposium",
+                         f"Date: {date_h}   |   Author: {authors}", "",
+                         "This report summarizes scientific sessions attended and unsolicited conversations held on-site.", ""]
     if st == "MEETING_NOTE":
-        return [f"Interaction Note   |   Date: {date_h}   |   MSL: {authors}",
-                f"HCP: {heading_line(doc['blocks'][0]['hcp'])}", ""]
+        return notice + [f"Interaction Note   |   Date: {date_h}   |   MSL: {authors}",
+                         f"HCP: {heading_line(doc['blocks'][0]['hcp'])}", ""]
     if st == "CALL_NOTE":
-        return [f"Call Memo   |   {date_h}   |   {authors}",
-                f"HCP: {heading_line(doc['blocks'][0]['hcp'])}", ""]
+        return notice + [f"Call Memo   |   {date_h}   |   {authors}",
+                         f"HCP: {heading_line(doc['blocks'][0]['hcp'])}", ""]
     if st == "EMAIL_SUMMARY":
-        return [f"Email Summary   |   {date_h}   |   Logged by: {authors}",
-                f"Correspondent: {heading_line(doc['blocks'][0]['hcp'])}", ""]
+        return notice + [f"Email Summary   |   {date_h}   |   Logged by: {authors}",
+                         f"Correspondent: {heading_line(doc['blocks'][0]['hcp'])}", ""]
     if st == "VOICE_TRANSCRIPT":
-        return [f"음성 면담 전사   |   {doc['date']}   |   작성: {authors}",
-                f"HCP: {heading_line(doc['blocks'][0]['hcp'])}", "동의 확인: 예 (녹음 전 구두 동의)", ""]
+        return notice + [f"음성 면담 전사   |   {doc['date']}   |   작성: {authors}",
+                         f"HCP: {heading_line(doc['blocks'][0]['hcp'])}", "동의 확인: 예 (녹음 전 구두 동의)", ""]
     raise ValueError(st)
 
 def assemble_doc(doc, block_bodies):
