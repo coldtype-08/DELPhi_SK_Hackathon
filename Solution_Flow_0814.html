@@ -1,0 +1,250 @@
+<title>DELPHi 솔루션 흐름</title>
+<style>
+  /* Paper & Glass — 팀 확정 브랜드 (라이트 고정) */
+  :root {
+    --paper:#FAF7F1; --card:#FFFFFF; --ink:#232A47; --navy:#162661; --muted:#5C6485;
+    --line:rgba(22,38,97,.13); --orange:#EF8B1C; --orange-deep:#C56E0D; --orange-soft:#FCF1E0;
+    --sky:#46639F; --sky-soft:#EEF2F9; --rust:#B4552D; --rust-soft:#F8ECE4; --code-bg:#F3EFE6;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic","Segoe UI",sans-serif;
+    font-size:15px; line-height:1.78; letter-spacing:-0.005em; }
+  .wrap { max-width:920px; margin:0 auto; padding:52px 26px 90px; }
+  @media (max-width:640px){ .wrap{ padding:36px 16px 64px; } }
+  a { color:var(--sky); text-underline-offset:3px; }
+  strong { color:var(--navy); }
+  p { margin:0 0 14px; }
+  .eyebrow { font-size:12px; font-weight:700; letter-spacing:.14em; color:var(--muted); margin:0 0 12px; }
+  .eyebrow .dot{ color:var(--orange); }
+  h1 { margin:0 0 12px; color:var(--navy); font-size:clamp(26px,4.4vw,36px); font-weight:800; line-height:1.25; letter-spacing:-.022em; }
+  h2 { margin:56px 0 6px; color:var(--navy); font-size:clamp(19px,3vw,23px); font-weight:800; letter-spacing:-.018em; }
+  .sub { color:var(--muted); font-size:13.5px; margin:0 0 18px; max-width:64ch; }
+  .lede { font-size:16px; max-width:66ch; }
+  .lede b { color:var(--orange-deep); }
+
+  figure { margin:20px 0 8px; }
+  .fig { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 14px 10px; overflow-x:auto; }
+  .fig svg { display:block; height:auto; width:100%; }
+  figcaption { font-size:12.5px; color:var(--muted); line-height:1.65; margin:10px 4px 0; }
+  figcaption b { color:var(--navy); }
+
+  .tbl-wrap { overflow-x:auto; margin:14px 0 6px; border:1px solid var(--line); border-radius:14px; background:var(--card); }
+  table { border-collapse:collapse; width:100%; font-size:13.5px; min-width:640px; }
+  th { text-align:left; font-size:11.5px; letter-spacing:.08em; color:var(--muted); font-weight:700; padding:11px 14px;
+       border-bottom:1px solid var(--line); background:rgba(22,38,97,.025); white-space:nowrap; }
+  td { padding:10px 14px; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.6; }
+  tr:last-child td { border-bottom:none; }
+  td.n { font-weight:800; color:var(--orange-deep); white-space:nowrap; }
+  td.who { white-space:nowrap; color:var(--navy); font-weight:700; }
+
+  .terms { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:10px; margin:14px 0; }
+  .term { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:13px 15px; }
+  .term .w { font-weight:800; color:var(--navy); font-size:13.5px; }
+  .term .d { font-size:12.5px; color:var(--ink); line-height:1.6; margin-top:3px; }
+  .term .d em { color:var(--muted); font-style:normal; }
+
+  .foot { margin-top:56px; padding-top:20px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted); line-height:1.8; }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">DELPHi <span class="dot">●</span> 솔루션 흐름 한 장</p>
+    <h1>데이터가 들어와서, 결정이 되어, 다시 돌아오기까지</h1>
+    <p class="lede">
+      30초 요약: <b>윗줄</b>에서 영문 원석과 한국어 현장 기록이 <strong>근거가 연결된 카드</strong>가 되고(사람이 승인),
+      <b>가운데줄</b>에서 SQL이 센 숫자로 가설이 만들어져 AI 에이전트·이사회의 검증을 거쳐 <strong>사람이 최종 결정</strong>하고,
+      <b>아랫줄</b>에서 그 결정이 다음 면담의 질문과 입력 폼을 바꿔 <strong>루프가 닫힙니다</strong>.
+      규칙은 하나예요 — <strong>AI는 제안하고, 사람이 확정하고, 숫자는 SQL이 셉니다.</strong>
+    </p>
+  </header>
+
+  <figure>
+    <div class="fig">
+      <svg viewBox="0 0 940 648" role="img" style="min-width:880px"
+           aria-label="DELPHi 폐쇄 루프 흐름도. 위: 영문 원석과 한국어 Field 수집이 Sense에서 구조화되고 사람이 검토·승인하면 SQL이 집계한다. 가운데: 집계에서 가설 후보가 만들어져 Screen 4개 에이전트와 Board AI 이사회를 거쳐 사람이 최종 승인한다. 아래: 승인된 후속 질문이 Field 체크리스트로, 스키마 변경 제안이 Contract v0.2로 이어져 다음 수집을 바꾼다.">
+      <defs>
+        <marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#162661"/>
+        </marker>
+        <marker id="fo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#C56E0D"/>
+        </marker>
+        <marker id="fr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#B4552D"/>
+        </marker>
+      </defs>
+
+      <!-- ===== Contract roof ===== -->
+      <rect x="30" y="26" width="880" height="46" rx="12" fill="#162661"/>
+      <text x="48" y="46" font-size="12" font-weight="800" fill="#fff">Data Contract v0.1 — 스키마 하나를 여섯 곳이 공유 (추출 · 검증 · DB · Field 폼 · 필터 · 에이전트)</text>
+      <text x="48" y="63" font-size="10" fill="rgba(255,255,255,.78)">사람(Data Steward)이 승인해야 활성화 = 데모 ① · 아래 루프를 한 바퀴 돌면 v0.2로 진화 = 데모 ⑥</text>
+
+      <!-- ===== legend ===== -->
+      <text x="30" y="97" font-size="10.5" fill="#5C6485" font-weight="700">테두리 색 = 누가 확정하나 :</text>
+      <rect x="196" y="87" width="12" height="12" rx="3" fill="#EEF2F9" stroke="#46639F" stroke-width="1.6"/>
+      <text x="214" y="97" font-size="10.5" fill="#5C6485">AI가 제안</text>
+      <rect x="288" y="87" width="12" height="12" rx="3" fill="#FCF1E0" stroke="#C56E0D" stroke-width="1.6"/>
+      <text x="306" y="97" font-size="10.5" fill="#5C6485">사람이 확정</text>
+      <rect x="392" y="87" width="12" height="12" rx="3" fill="#fff" stroke="#162661" stroke-width="1.6"/>
+      <text x="410" y="97" font-size="10.5" fill="#5C6485">SQL·결정론 코드</text>
+      <circle cx="530" cy="93" r="8" fill="#EF8B1C"/>
+      <text x="530" y="96.5" font-size="9" font-weight="800" fill="#fff" text-anchor="middle">②</text>
+      <text x="544" y="97" font-size="10.5" fill="#5C6485">= 데모 6장면 번호</text>
+
+      <!-- ===== Lane 1 : Sense ===== -->
+      <!-- sources -->
+      <rect x="30" y="118" width="150" height="52" rx="10" fill="#FAF7F1" stroke="#162661" stroke-width="1.3"/>
+      <text x="44" y="139" font-size="11" font-weight="800" fill="#162661">영문 원석 63건 (EN)</text>
+      <text x="44" y="156" font-size="9" fill="#5C6485">HIGHLIGHT docx · 면담 txt/pdf</text>
+
+      <rect x="30" y="180" width="150" height="52" rx="10" fill="#FAF7F1" stroke="#162661" stroke-width="1.3"/>
+      <circle cx="45" cy="196" r="8" fill="#EF8B1C"/><text x="45" y="199.5" font-size="9" font-weight="800" fill="#fff" text-anchor="middle">③</text>
+      <text x="58" y="200" font-size="11" font-weight="800" fill="#162661">Field 신규 수집 (KO)</text>
+      <text x="44" y="218" font-size="9" fill="#5C6485">음성 → 전사 → 카드 승인</text>
+
+      <!-- Sense -->
+      <rect x="225" y="118" width="175" height="114" rx="12" fill="#EEF2F9" stroke="#46639F" stroke-width="1.6"/>
+      <circle cx="241" cy="136" r="8" fill="#EF8B1C"/><text x="241" y="139.5" font-size="9" font-weight="800" fill="#fff" text-anchor="middle">②</text>
+      <text x="255" y="140" font-size="12" font-weight="800" fill="#162661">Sense — 구조화</text>
+      <text x="241" y="162" font-size="9.5" fill="#232A47">· HCP 블록 분리 (하이라이트형)</text>
+      <text x="241" y="179" font-size="9.5" fill="#232A47">· claim 카드 + evidence pointer</text>
+      <text x="241" y="196" font-size="9.5" fill="#232A47">· 정규화: EN·KO → 같은 코드</text>
+      <text x="241" y="218" font-size="9" fill="#46639F" font-weight="700">AI 제안 (CANDIDATE로 시작)</text>
+
+      <!-- Review -->
+      <rect x="445" y="118" width="170" height="114" rx="12" fill="#FCF1E0" stroke="#C56E0D" stroke-width="1.6"/>
+      <text x="461" y="140" font-size="12" font-weight="800" fill="#162661">검토·승인 — /review</text>
+      <text x="461" y="162" font-size="9.5" fill="#232A47">· 원문 하이라이트로 대조</text>
+      <text x="461" y="179" font-size="9.5" fill="#232A47">· 승인 / 수정 / 반려</text>
+      <text x="461" y="196" font-size="9.5" fill="#232A47">· 리플레이 연출로 과정 표시</text>
+      <text x="461" y="218" font-size="9" fill="#C56E0D" font-weight="700">사람이 확정 → APPROVED</text>
+
+      <!-- Aggregate -->
+      <rect x="660" y="118" width="160" height="114" rx="12" fill="#fff" stroke="#162661" stroke-width="1.6"/>
+      <text x="676" y="140" font-size="12" font-weight="800" fill="#162661">집계 — SQL</text>
+      <text x="676" y="162" font-size="9.5" fill="#232A47">· 반복 수 · 독립 HCP · 권역</text>
+      <text x="676" y="179" font-size="9.5" fill="#232A47">· APPROVED만 계산</text>
+      <text x="676" y="196" font-size="9.5" fill="#232A47">· LLM은 숫자 계산 금지</text>
+      <text x="676" y="218" font-size="9" fill="#162661" font-weight="700">결정론 (절대규칙 #1·#3)</text>
+
+      <!-- lane1 arrows -->
+      <line x1="180" y1="144" x2="221" y2="158" stroke="#162661" stroke-width="1.3" marker-end="url(#fa)"/>
+      <line x1="180" y1="206" x2="221" y2="196" stroke="#162661" stroke-width="1.3" marker-end="url(#fa)"/>
+      <line x1="400" y1="175" x2="441" y2="175" stroke="#162661" stroke-width="1.3" marker-end="url(#fa)"/>
+      <line x1="615" y1="175" x2="656" y2="175" stroke="#162661" stroke-width="1.3" marker-end="url(#fa)"/>
+
+      <!-- AE branch -->
+      <line x1="280" y1="232" x2="280" y2="248" stroke="#B4552D" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#fr)"/>
+      <rect x="225" y="250" width="240" height="34" rx="9" fill="#F8ECE4" stroke="rgba(180,85,45,.5)"/>
+      <text x="241" y="271" font-size="10" fill="#B4552D" font-weight="700">AE 후보 → Safety 별도 경로 (일반 흐름과 분리)</text>
+
+      <!-- Agg down to Hyp -->
+      <line x1="740" y1="232" x2="740" y2="296" stroke="#162661" stroke-width="1.3" marker-end="url(#fa)"/>
+      <text x="750" y="268" font-size="9.5" fill="#5C6485">신호가 쌓이면</text>
+
+      <!-- ===== Lane 2 : Growth (오른쪽 → 왼쪽) ===== -->
+      <rect x="660" y="300" width="160" height="122" rx="12" fill="#fff" stroke="#162661" stroke-width="1.6"/>
+      <text x="676" y="322" font-size="12" font-weight="800" fill="#162661">가설 후보</text>
+      <text x="676" y="344" font-size="9.5" fill="#232A47">· HYP-001 Development</text>
+      <text x="676" y="361" font-size="9.5" fill="#232A47">· HYP-002 In-label</text>
+      <text x="676" y="378" font-size="9.5" fill="#232A47">· 근거 부족 → 순위 없음</text>
+      <text x="676" y="400" font-size="9" fill="#162661" font-weight="700">SQL 조건으로 생성·정렬</text>
+
+      <rect x="445" y="300" width="170" height="122" rx="12" fill="#EEF2F9" stroke="#46639F" stroke-width="1.6"/>
+      <circle cx="461" cy="318" r="8" fill="#EF8B1C"/><text x="461" y="321.5" font-size="9" font-weight="800" fill="#fff" text-anchor="middle">④</text>
+      <text x="475" y="322" font-size="12" font-weight="800" fill="#162661">Screen — 교차검증</text>
+      <text x="461" y="344" font-size="9.5" fill="#232A47">· FieldSignal(SQL) · Evidence</text>
+      <text x="461" y="361" font-size="9.5" fill="#232A47">· Safety(라벨) · Critic(차단)</text>
+      <text x="461" y="378" font-size="9.5" fill="#232A47">· PubMed·CT.gov·openFDA+캐시</text>
+      <text x="461" y="400" font-size="9" fill="#46639F" font-weight="700">지지/반대/공백 + 한계 문구</text>
+
+      <rect x="225" y="300" width="175" height="122" rx="12" fill="#EEF2F9" stroke="#46639F" stroke-width="1.6"/>
+      <circle cx="241" cy="318" r="8" fill="#EF8B1C"/><text x="241" y="321.5" font-size="9" font-weight="800" fill="#fff" text-anchor="middle">⑤</text>
+      <text x="255" y="322" font-size="12" font-weight="800" fill="#162661">Board — AI 이사회</text>
+      <text x="241" y="344" font-size="9.5" fill="#232A47">· 5개 롤 심의 + CEO 권고</text>
+      <text x="241" y="361" font-size="9.5" fill="#232A47">· 회의록 전문 기록</text>
+      <text x="241" y="378" font-size="9.5" fill="#232A47">· 승인 권한 없음 — 권고까지</text>
+      <text x="241" y="400" font-size="9" fill="#46639F" font-weight="700">AI 제안</text>
+
+      <rect x="30" y="300" width="150" height="122" rx="12" fill="#FCF1E0" stroke="#C56E0D" stroke-width="1.6"/>
+      <text x="46" y="322" font-size="12" font-weight="800" fill="#162661">최종 승인</text>
+      <text x="46" y="344" font-size="9.5" fill="#232A47">· 승인 / 보류 / 기각</text>
+      <text x="46" y="361" font-size="9.5" fill="#232A47">· In-label → 실행</text>
+      <text x="46" y="378" font-size="9.5" fill="#232A47">· Development → 전문조직</text>
+      <text x="58" y="392" font-size="9" fill="#B4552D">검토만 (상업 액션 차단)</text>
+      <text x="46" y="411" font-size="9" fill="#C56E0D" font-weight="700">사람이 확정 (데모 ⑤)</text>
+
+      <!-- lane2 arrows (오른쪽→왼쪽) -->
+      <line x1="660" y1="361" x2="619" y2="361" stroke="#162661" stroke-width="1.3" marker-end="url(#fa)"/>
+      <line x1="445" y1="361" x2="404" y2="361" stroke="#162661" stroke-width="1.3" marker-end="url(#fa)"/>
+      <line x1="225" y1="361" x2="184" y2="361" stroke="#162661" stroke-width="1.3" marker-end="url(#fa)"/>
+
+      <!-- ===== Lane 3 : 루프 백 ===== -->
+      <rect x="280" y="486" width="210" height="86" rx="12" fill="#fff" stroke="#C56E0D" stroke-width="1.4"/>
+      <text x="296" y="510" font-size="11.5" font-weight="800" fill="#162661">후속 질문 → Field 체크리스트</text>
+      <text x="296" y="530" font-size="9.5" fill="#232A47">승인된 질문이 다음 면담의</text>
+      <text x="296" y="546" font-size="9.5" fill="#232A47">기본 입력이 된다</text>
+
+      <rect x="540" y="486" width="280" height="86" rx="12" fill="#fff" stroke="#C56E0D" stroke-width="1.4"/>
+      <circle cx="556" cy="504" r="8" fill="#EF8B1C"/><text x="556" y="507.5" font-size="9" font-weight="800" fill="#fff" text-anchor="middle">⑥</text>
+      <text x="570" y="508" font-size="11.5" font-weight="800" fill="#162661">SCP → Contract v0.2</text>
+      <text x="556" y="530" font-size="9.5" fill="#232A47">AI: 스키마에 없는 개념 반복 감지 → 변경 제안</text>
+      <text x="556" y="546" font-size="9.5" fill="#232A47">사람(Steward) 승인 → v0.2 발행 → Field 폼이 바뀜</text>
+
+      <!-- 승인 → 후속질문 -->
+      <line x1="140" y1="422" x2="296" y2="482" stroke="#C56E0D" stroke-width="1.3" marker-end="url(#fo)"/>
+      <text x="196" y="462" font-size="9.5" fill="#C56E0D">승인된 액션</text>
+
+      <!-- Sense unmapped → SCP (dashed, 오른쪽 회랑) -->
+      <path d="M400,226 L635,276 L635,470 L636,470 L622,486" fill="none" stroke="#46639F" stroke-width="1.2" stroke-dasharray="5 4" marker-end="url(#fa)"/>
+      <text x="643" y="452" font-size="9" fill="#46639F">unmapped 반복</text>
+
+      <!-- SCP → Contract band (오른쪽 상승) -->
+      <path d="M820,520 L878,520 L878,78" fill="none" stroke="#C56E0D" stroke-width="1.3" marker-end="url(#fo)"/>
+      <text x="872" y="106" font-size="9.5" fill="#C56E0D" text-anchor="end">v0.2로 진화</text>
+
+      <!-- 루프 회랑 (왼쪽으로 → Field 수집) -->
+      <path d="M600,572 L600,598 L200,598 L200,206 L186,206" fill="none" stroke="#C56E0D" stroke-width="1.4" marker-end="url(#fo)"/>
+      <line x1="280" y1="540" x2="200" y2="540" stroke="#C56E0D" stroke-width="1.4"/>
+      <text x="230" y="622" font-size="10.5" fill="#C56E0D" font-weight="800">루프가 닫힌다 — 다음 수집과 다음 폼이 실제로 바뀐다</text>
+      </svg>
+    </div>
+    <figcaption><b>읽는 법</b>: 파란 테두리는 AI가 <b>제안</b>하는 곳, 오렌지 테두리는 사람이 <b>확정</b>하는 곳, 네이비는 SQL·결정론 코드가 계산하는 곳.
+    오렌지 굵은 선이 이 제품의 정체성인 <b>폐쇄 루프</b> — 오른쪽 아래 SCP가 지붕(Contract)을 v0.2로 밀어 올리고, 왼쪽 회랑이 Field의 다음 수집으로 되돌아간다.
+    빨간 점선은 이상사례(AE)가 일반 흐름에서 <b>분리</b>되는 별도 경로.</figcaption>
+  </figure>
+
+  <h2>데모 6장면과 1:1 대응</h2>
+  <p class="sub">모든 기능은 이 6장면에 복무한다 (CLAUDE.md 데모 시나리오). 흐름도의 ①~⑥ 뱃지와 같은 번호다.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>장면</th><th>무슨 일이 일어나나</th><th>확정자</th><th>화면 (오너)</th></tr></thead>
+    <tbody>
+      <tr><td class="n">①</td><td>Data Contract v0.1 승인 — 시드 스키마(부트스트랩 AI 초안 → 사람 확정) 활성화</td><td class="who">사람 (Steward)</td><td>Console /contract (건태)</td></tr>
+      <tr><td class="n">②</td><td>영문 원석 구조화 — 하이라이트 문서가 HCP별 카드로 분리되고, 원문 형광펜과 대조해 승인</td><td class="who">사람</td><td>Console /review (건태)</td></tr>
+      <tr><td class="n">③</td><td>한국어 면담 수집 — 음성→전사→AE 분기→카드 승인. <strong>영문 원석과 같은 집계에 +1</strong> (다국어 시연)</td><td class="who">사람 (현장)</td><td>Field /capture (소정)</td></tr>
+      <tr><td class="n">④</td><td>Screen 교차검증 — 4개 에이전트가 외부 공개 근거로 지지/반대/공백 수집 (한계 문구 자동 부착)</td><td class="who">자동 (결정론 순서)</td><td>Console 가설 상세 (건태 · 프롬프트 소정)</td></tr>
+      <tr><td class="n">⑤</td><td>Board 심의 + CEO 권고 → 사람이 승인/보류/기각. Development(HYP-001)는 상업 액션 차단 표시</td><td class="who">사람</td><td>Console 가설 상세 (건태)</td></tr>
+      <tr><td class="n">⑥</td><td>SCP 승인 → v0.2 발행 → Field 입력 폼에 POST_STROKE 항목이 실제로 나타남</td><td class="who">사람 (Steward)</td><td>Console /contract + Field 폼 (인혁·소정)</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>헷갈리는 말 7개, 한 줄씩</h2>
+  <div class="terms">
+    <div class="term"><div class="w">원석</div><div class="d">아직 구조화 안 된 사내 기록 (영문 하이라이트 워드 등 63건 합성). <em>우리의 입력물.</em></div></div>
+    <div class="term"><div class="w">Data Contract</div><div class="d">"어떤 항목을 어떤 허용값으로 뽑을지"의 계약서. 추출·Field 폼·집계가 전부 이걸 따르고, <em>AI는 못 바꾸고 사람이 승인.</em></div></div>
+    <div class="term"><div class="w">Sense</div><div class="d">원석을 읽어 카드(claim)로 만드는 AI 단계. <em>모든 카드에 원문 위치가 필수.</em></div></div>
+    <div class="term"><div class="w">evidence pointer</div><div class="d">카드 ↔ 원문 문자 위치의 링크. <em>클릭하면 원문에 형광펜이 그어지는 그것.</em></div></div>
+    <div class="term"><div class="w">Screen</div><div class="d">가설을 4개 AI 에이전트가 외부 공개 근거(PubMed 등)로 검증하는 단계. <em>지지·반대·공백을 다 모은다.</em></div></div>
+    <div class="term"><div class="w">Board</div><div class="d">AI 이사회(5개 롤 + CEO)가 심의해 <em>권고까지만</em> 하는 단계. 확정은 사람.</div></div>
+    <div class="term"><div class="w">SCP</div><div class="d">스키마에 없는 개념이 반복되면 AI가 올리는 "스키마 바꾸자" 제안서. <em>Steward 승인 → v0.2.</em></div></div>
+  </div>
+
+  <footer class="foot">
+    이 전체 흐름은 노트북 한 대에서 돈다 (로컬 = 발표 정본). 같은 것을 Railway 클라우드에 올려 심사위원이 URL로 상시 접속한다 —
+    배포·브랜치·일정은 <a href="https://claude.ai/code/artifact/22c71eed-3f15-47d4-b260-4cbd869eeddb">개발 실행 가이드</a>, 상세 스펙은 docs/01(아키텍처)·02(Contract)·03(코퍼스)·07(배포).<br>
+    2026-08-14 · DELPHi 팀 — Growth Intelligence for XCOPRI
+  </footer>
+
+</div>

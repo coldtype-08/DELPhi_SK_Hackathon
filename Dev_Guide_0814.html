@@ -1,0 +1,699 @@
+<title>DELPHi 개발 실행 가이드 — 흐름·브랜치·배포</title>
+<style>
+  /* Paper & Glass — 팀 확정 브랜드 (라이트 고정, docs/05 · DECISIONS 08/12).
+     페이퍼 라이트 단일 테마 커밋: 배경·색상 전부 명시적으로 칠한다. */
+  :root {
+    --paper: #FAF7F1;
+    --card: #FFFFFF;
+    --ink: #232A47;
+    --navy: #162661;
+    --muted: #5C6485;
+    --line: rgba(22, 38, 97, 0.13);
+    --orange: #EF8B1C;
+    --orange-deep: #C56E0D;
+    --orange-soft: #FCF1E0;
+    --green: #2F7D52;
+    --green-soft: #E9F3EC;
+    --rust: #B4552D;
+    --rust-soft: #F8ECE4;
+    --code-bg: #F3EFE6;
+    --sky: #46639F;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+      "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.78;
+    letter-spacing: -0.005em;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 56px 28px 96px; }
+  @media (max-width: 640px) { .wrap { padding: 40px 18px 72px; } }
+
+  a { color: var(--sky); text-decoration-color: rgba(70,99,159,.4); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  strong { color: var(--navy); font-weight: 700; }
+  p { margin: 0 0 14px; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 7px; }
+  li::marker { color: var(--orange-deep); }
+
+  /* ---------- header ---------- */
+  .doc-head { padding-bottom: 30px; border-bottom: 1px solid var(--line); margin-bottom: 36px; }
+  .eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--muted); text-transform: uppercase; margin: 0 0 12px;
+  }
+  .eyebrow .dot { color: var(--orange); }
+  h1 {
+    margin: 0 0 14px; color: var(--navy);
+    font-size: clamp(27px, 4.6vw, 38px); font-weight: 800;
+    line-height: 1.25; letter-spacing: -0.022em; text-wrap: balance;
+  }
+  .doc-meta { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 12.5px; color: var(--muted); }
+  .doc-meta b { color: var(--navy); font-weight: 700; }
+  .lede { font-size: 16px; color: var(--ink); max-width: 62ch; margin-top: 16px; }
+
+  /* ---------- section head ---------- */
+  section { margin-top: 64px; }
+  .sec-head { display: flex; gap: 16px; align-items: baseline; margin-bottom: 6px; }
+  .sec-num {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 14px; font-weight: 700; color: var(--orange); letter-spacing: 0.06em;
+    flex: none; transform: translateY(-1px);
+  }
+  h2 {
+    margin: 0; color: var(--navy); font-size: clamp(20px, 3vw, 25px);
+    font-weight: 800; letter-spacing: -0.018em; line-height: 1.35; text-wrap: balance;
+  }
+  .sec-sub { margin: 6px 0 20px 30px; color: var(--muted); font-size: 13.5px; max-width: 64ch; }
+  @media (max-width: 640px) { .sec-sub { margin-left: 0; } }
+  h3 { margin: 30px 0 10px; color: var(--navy); font-size: 16.5px; font-weight: 800; letter-spacing: -0.01em; }
+  h3 .h3-tag { margin-left: 8px; vertical-align: 2px; }
+
+  /* ---------- pills ---------- */
+  .pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 2px 10px; border-radius: 999px;
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.01em;
+    white-space: nowrap; vertical-align: 1px;
+  }
+  .pill--plan { color: var(--navy); border: 1px solid rgba(22,38,97,.3); background: #fff; }
+  .pill--new  { color: var(--orange-deep); background: var(--orange-soft); border: 1px solid rgba(239,139,28,.35); }
+  .pill--ok   { color: var(--green); background: var(--green-soft); border: 1px solid rgba(47,125,82,.28); }
+  .pill--no   { color: var(--rust); background: var(--rust-soft); border: 1px solid rgba(180,85,45,.28); }
+
+  /* ---------- cards ---------- */
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 2px rgba(22,38,97,.04), 0 8px 24px -18px rgba(22,38,97,.18);
+  }
+  .tldr { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr)); gap: 12px; margin-top: 22px; }
+  .tldr .card { padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
+  .tldr .q { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); }
+  .tldr .a { font-size: 15.5px; font-weight: 800; color: var(--navy); line-height: 1.45; }
+  .tldr .why { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .tldr .a .hit { color: var(--orange-deep); }
+
+  .callout { background: var(--orange-soft); border: 1px solid rgba(239,139,28,.32); border-radius: 14px; padding: 16px 20px; margin: 18px 0; }
+  .callout .t { font-weight: 800; color: var(--orange-deep); font-size: 13px; letter-spacing: .06em; margin-bottom: 4px; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  @media (max-width: 680px) { .duo { grid-template-columns: 1fr; } }
+  .duo .card { padding: 16px 18px; }
+  .duo .card .t { font-weight: 800; color: var(--navy); margin-bottom: 8px; font-size: 14.5px; display: flex; align-items: center; gap: 8px; }
+  .duo .card ul { margin-bottom: 0; }
+  .duo .card li { font-size: 13.5px; line-height: 1.65; }
+
+  /* ---------- figure ---------- */
+  figure { margin: 20px 0 26px; }
+  .fig {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 16px 12px; overflow-x: auto;
+  }
+  .fig svg { display: block; height: auto; }
+  figcaption { font-size: 12.5px; color: var(--muted); line-height: 1.65; margin: 10px 4px 0; }
+  figcaption b { color: var(--navy); }
+
+  /* ---------- table ---------- */
+  .tbl-wrap { overflow-x: auto; margin: 16px 0 8px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 560px; }
+  th {
+    text-align: left; font-size: 11.5px; letter-spacing: 0.08em; color: var(--muted);
+    font-weight: 700; padding: 12px 16px; border-bottom: 1px solid var(--line);
+    background: rgba(22,38,97,.025); white-space: nowrap;
+  }
+  td { padding: 11px 16px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.6; }
+  tr:last-child td { border-bottom: none; }
+  td.d { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 12.5px; color: var(--navy); font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.own { color: var(--muted); white-space: nowrap; }
+
+  /* ---------- code / prompt ---------- */
+  pre.block {
+    background: var(--code-bg); border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 18px; margin: 12px 0 20px;
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 12.5px; line-height: 1.75; color: var(--ink);
+    white-space: pre-wrap; word-break: break-word; overflow-x: auto;
+  }
+  .block-label { font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; color: var(--muted); margin: 18px 0 -4px; }
+  code.inline {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.88em; background: var(--code-bg); border: 1px solid var(--line);
+    border-radius: 6px; padding: 1px 6px; color: var(--navy); white-space: nowrap;
+  }
+
+  /* ---------- verdict rows (맥스튜디오) ---------- */
+  .verdict { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
+  .verdict .row { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px; }
+  .verdict .mark { flex: none; width: 26px; height: 26px; border-radius: 999px; display: grid; place-items: center; font-size: 13px; font-weight: 800; margin-top: 2px; }
+  .verdict .mark.no { background: var(--rust-soft); color: var(--rust); }
+  .verdict .mark.ok { background: var(--green-soft); color: var(--green); }
+  .verdict .b { font-weight: 800; color: var(--navy); }
+  .verdict p { margin: 0; font-size: 13.5px; }
+
+  /* ---------- checklist ---------- */
+  .checks { list-style: none; padding: 0; margin: 14px 0; display: flex; flex-direction: column; gap: 9px; }
+  .checks li { display: flex; gap: 12px; margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; font-size: 14px; }
+  .checks .when { flex: none; width: 92px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; font-weight: 700; color: var(--orange-deep); padding-top: 2px; font-variant-numeric: tabular-nums; }
+  .checks .what b { color: var(--navy); }
+  .checks .what { line-height: 1.65; }
+
+  .foot { margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); line-height: 1.8; }
+
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+
+  <!-- ============ HEADER ============ -->
+  <header class="doc-head">
+    <p class="eyebrow">DELPHi <span class="dot">●</span> 실행 가이드 <span class="dot">●</span> 제안 문서</p>
+    <h1>개발 큰 흐름 · 브랜치 · 배포, 한 장으로</h1>
+    <div class="doc-meta">
+      <span>작성 <b>2026-08-14</b> (본선 D-7)</span>
+      <span>근거 <b>docs/00 · 06 · DECISIONS</b> + 질의 3건</span>
+      <span>상태 <b>확정 · docs 반영 완료</b> (08/14 중앙 결정)</span>
+    </div>
+    <p class="lede">
+      결론부터: <strong>마스터플랜은 그대로 간다.</strong> 이 가이드가 더하는 건 딱 두 겹 —
+      심사위원 접속 요건에 대응하는 <strong>배포 레일 한 줄</strong>과,
+      비정형 데이터가 구조화되는 순간을 보여주는 <strong>연출 장치</strong>다.
+      전부 "비개발자 3인 + Claude Code"가 감당 가능한 크기로 잘랐다.
+    </p>
+  </header>
+
+  <!-- ============ 00 TL;DR ============ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">00</span><h2>다섯 가지 질문, 다섯 줄 결론</h2></div>
+    <div class="tldr">
+      <div class="card">
+        <span class="q">개발 흐름</span>
+        <span class="a">docs/00 그대로 + <span class="hit">8/24 첫 배포</span>만 추가</span>
+        <span class="why">계획은 이미 날짜 단위로 완성돼 있다. 빠진 건 "심사위원 접속" 요건 하나 — 그 레일만 끼워 넣는다.</span>
+      </div>
+      <div class="card">
+        <span class="q">브랜치</span>
+        <span class="a">main 하나, 그대로 유지</span>
+        <span class="why">08/11 팀 결정이 옳다. 배포가 생겨도 브랜치를 늘리지 않고 <b>태그 + 플랫폼 롤백</b> 두 장치로 안전을 확보한다.</span>
+      </div>
+      <div class="card">
+        <span class="q">Vercel?</span>
+        <span class="a">방향은 맞지만 <span class="hit">Railway 하나로</span></span>
+        <span class="why">FastAPI + SQLite 백엔드는 Vercel(서버리스)에 못 올린다. 셋 다 올라가는 플랫폼 하나가 비개발자 팀에 정답.</span>
+      </div>
+      <div class="card">
+        <span class="q">맥스튜디오</span>
+        <span class="a">개발서버 ✕ · 심사 호스팅 ✕</span>
+        <span class="why">이 아키텍처엔 공유 개발 서버가 필요 없고, 집 네트워크는 심사 기간의 단일 장애점이다. 발표장 백업 머신으로만.</span>
+      </div>
+      <div class="card">
+        <span class="q">비정형 시각화</span>
+        <span class="a">evidence pointer가 이미 자산 + <span class="hit">"추출 리플레이"</span> 연출</span>
+        <span class="why">절대 규칙 #2(원문 문자 위치)가 곧 시각화 재료다. 처리 결과를 순차 재생하면 "처리되는 순간"이 보인다.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 큰 흐름 ============ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>큰 개발 흐름 — 기존 계획 위에 배포 레일 한 줄</h2></div>
+    <p class="sec-sub">위 줄(네이비)은 docs/00 마스터플랜 그대로. 아래 줄(오렌지)이 이 가이드가 추가하는 전부다.</p>
+
+    <figure>
+      <div class="fig">
+        <svg viewBox="0 0 940 286" role="img" style="min-width:860px"
+             aria-label="8월 14일부터 9월 4일까지 타임라인. 위쪽은 기존 마스터플랜 일정, 아래쪽은 이 가이드가 추가하는 배포 관련 작업 5건.">
+          <!-- legend -->
+          <circle cx="640" cy="20" r="4" fill="#162661"/>
+          <text x="650" y="24" font-size="11" fill="#5C6485">기존 마스터플랜</text>
+          <circle cx="756" cy="20" r="4" fill="#EF8B1C"/>
+          <text x="766" y="24" font-size="11" fill="#5C6485">이 가이드 추가분</text>
+          <rect x="858" y="14" width="9" height="9" transform="rotate(45 862.5 18.5)" fill="#fff" stroke="#162661" stroke-width="1.5"/>
+          <text x="874" y="24" font-size="11" fill="#5C6485">체크포인트</text>
+
+          <!-- phase bands -->
+          <rect x="44"  y="40" width="276" height="222" rx="10" fill="rgba(22,38,97,0.030)"/>
+          <rect x="326" y="40" width="274" height="222" rx="10" fill="rgba(22,38,97,0.055)"/>
+          <rect x="606" y="40" width="274" height="222" rx="10" fill="rgba(22,38,97,0.030)"/>
+          <rect x="886" y="40" width="46"  height="222" rx="10" fill="rgba(239,139,28,0.10)"/>
+          <text x="182" y="60" font-size="11" font-weight="700" fill="#5C6485" text-anchor="middle" letter-spacing="1">준비 8/14–20</text>
+          <text x="463" y="60" font-size="11" font-weight="700" fill="#162661" text-anchor="middle" letter-spacing="1">WEEK 1 · 데이터 기반</text>
+          <text x="743" y="60" font-size="11" font-weight="700" fill="#162661" text-anchor="middle" letter-spacing="1">WEEK 2 · 루프 완결</text>
+          <text x="909" y="60" font-size="11" font-weight="700" fill="#C56E0D" text-anchor="middle">발표</text>
+
+          <!-- weekend emphasis (개발량 60%) -->
+          <rect x="362" y="152" width="76" height="36" rx="6" fill="rgba(239,139,28,0.13)"/>
+          <rect x="642" y="152" width="76" height="36" rx="6" fill="rgba(239,139,28,0.13)"/>
+
+          <!-- axis -->
+          <line x1="48" y1="170" x2="912" y2="170" stroke="#162661" stroke-width="1.6"/>
+          <text x="60"  y="203" font-size="10.5" fill="#5C6485" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">8/14</text>
+          <text x="340" y="203" font-size="10.5" fill="#5C6485" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">8/21</text>
+          <text x="620" y="203" font-size="10.5" fill="#5C6485" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">8/28</text>
+          <text x="900" y="203" font-size="10.5" fill="#5C6485" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">9/4</text>
+          <line x1="340" y1="165" x2="340" y2="175" stroke="#162661" stroke-width="1.2"/>
+          <line x1="620" y1="165" x2="620" y2="175" stroke="#162661" stroke-width="1.2"/>
+
+          <!-- ===== 기존 계획 (위) ===== -->
+          <!-- 8/16 레포 생성 -->
+          <line x1="140" y1="170" x2="140" y2="106" stroke="rgba(22,38,97,.35)" stroke-width="1"/>
+          <circle cx="140" cy="170" r="4.5" fill="#162661"/>
+          <text x="140" y="98" font-size="11.5" fill="#232A47" text-anchor="middle" font-weight="600">레포 생성·셋업 (인혁)</text>
+          <!-- 8/21 킥오프 -->
+          <line x1="340" y1="170" x2="340" y2="136" stroke="rgba(22,38,97,.35)" stroke-width="1"/>
+          <circle cx="340" cy="170" r="4.5" fill="#162661"/>
+          <text x="340" y="128" font-size="11.5" fill="#232A47" text-anchor="middle" font-weight="600">킥오프·스캐폴딩</text>
+          <!-- 8/23 CP1 -->
+          <rect x="415.5" y="165.5" width="9" height="9" transform="rotate(45 420 170)" fill="#fff" stroke="#162661" stroke-width="1.6"/>
+          <line x1="420" y1="163" x2="420" y2="106" stroke="rgba(22,38,97,.35)" stroke-width="1"/>
+          <text x="420" y="98" font-size="11.5" fill="#232A47" text-anchor="middle" font-weight="600">CP#1 구조화 관통</text>
+          <!-- 8/27 W1 Exit -->
+          <rect x="575.5" y="165.5" width="9" height="9" transform="rotate(45 580 170)" fill="#fff" stroke="#162661" stroke-width="1.6"/>
+          <line x1="580" y1="163" x2="580" y2="136" stroke="rgba(22,38,97,.35)" stroke-width="1"/>
+          <text x="580" y="128" font-size="11.5" fill="#232A47" text-anchor="middle" font-weight="600">W1 Exit</text>
+          <!-- 8/30 CP2 -->
+          <rect x="695.5" y="165.5" width="9" height="9" transform="rotate(45 700 170)" fill="#fff" stroke="#162661" stroke-width="1.6"/>
+          <line x1="700" y1="163" x2="700" y2="106" stroke="rgba(22,38,97,.35)" stroke-width="1"/>
+          <text x="700" y="98" font-size="11.5" fill="#232A47" text-anchor="middle" font-weight="600">CP#2 가설 관통</text>
+          <!-- 8/31 리허설1 -->
+          <line x1="740" y1="170" x2="740" y2="136" stroke="rgba(22,38,97,.35)" stroke-width="1"/>
+          <circle cx="740" cy="170" r="4.5" fill="#162661"/>
+          <text x="736" y="128" font-size="11.5" fill="#232A47" text-anchor="middle" font-weight="600">리허설#1</text>
+          <!-- 9/1 freeze -->
+          <line x1="780" y1="170" x2="780" y2="76" stroke="rgba(22,38,97,.35)" stroke-width="1"/>
+          <circle cx="780" cy="170" r="4.5" fill="#162661"/>
+          <text x="783" y="88" font-size="11.5" fill="#B4552D" text-anchor="middle" font-weight="700">Freeze</text>
+          <!-- 9/3 리허설2 -->
+          <line x1="860" y1="170" x2="860" y2="136" stroke="rgba(22,38,97,.35)" stroke-width="1"/>
+          <circle cx="860" cy="170" r="4.5" fill="#162661"/>
+          <text x="856" y="128" font-size="11.5" fill="#232A47" text-anchor="middle" font-weight="600">리허설#2</text>
+          <!-- 9/4 본선 -->
+          <rect x="895" y="165" width="10" height="10" transform="rotate(45 900 170)" fill="#EF8B1C" stroke="#C56E0D" stroke-width="1.4"/>
+          <text x="902" y="98" font-size="11.5" fill="#C56E0D" text-anchor="end" font-weight="800">본선 발표</text>
+          <line x1="900" y1="163" x2="900" y2="106" stroke="rgba(197,110,13,.4)" stroke-width="1"/>
+
+          <!-- ===== 추가 제안 (아래, 오렌지) ===== -->
+          <!-- 8/16 모노레포 -->
+          <line x1="140" y1="170" x2="140" y2="216" stroke="rgba(239,139,28,.5)" stroke-width="1"/>
+          <circle cx="140" cy="170" r="0" fill="none"/>
+          <circle cx="140" cy="216" r="3.5" fill="#EF8B1C"/>
+          <text x="140" y="234" font-size="11.5" fill="#C56E0D" text-anchor="middle" font-weight="600">모노레포·.gitignore 확정</text>
+          <!-- 8/24 첫 배포 -->
+          <line x1="460" y1="170" x2="460" y2="216" stroke="rgba(239,139,28,.6)" stroke-width="1.4"/>
+          <circle cx="460" cy="216" r="5" fill="#EF8B1C"/>
+          <text x="460" y="234" font-size="12" fill="#C56E0D" text-anchor="middle" font-weight="800">첫 배포 — Railway 3서비스</text>
+          <!-- 8/26 스냅샷 -->
+          <line x1="540" y1="170" x2="540" y2="248" stroke="rgba(239,139,28,.5)" stroke-width="1"/>
+          <circle cx="540" cy="248" r="3.5" fill="#EF8B1C"/>
+          <text x="548" y="266" font-size="11.5" fill="#C56E0D" text-anchor="middle" font-weight="600">외부 API 스냅샷 → fixtures 커밋</text>
+          <!-- 9/1 점검 -->
+          <line x1="790" y1="170" x2="790" y2="216" stroke="rgba(239,139,28,.5)" stroke-width="1"/>
+          <circle cx="790" cy="216" r="3.5" fill="#EF8B1C"/>
+          <text x="778" y="234" font-size="11.5" fill="#C56E0D" text-anchor="middle" font-weight="600">리셋·noindex·오프라인 점검</text>
+          <!-- 9/3 URL 공유 -->
+          <line x1="866" y1="170" x2="866" y2="248" stroke="rgba(239,139,28,.5)" stroke-width="1"/>
+          <circle cx="866" cy="248" r="3.5" fill="#EF8B1C"/>
+          <text x="906" y="266" font-size="11.5" fill="#C56E0D" text-anchor="end" font-weight="600">심사 URL 공유 + demo-final 태그</text>
+        </svg>
+      </div>
+      <figcaption><b>기존 계획(위)은 한 글자도 안 바꾼다.</b> 오렌지 5건이 추가분이며 각각 30–60분짜리 작업이다.
+      옅은 오렌지 박스는 두 번의 주말(8/22–23, 8/29–30) — 마스터플랜이 명시한 "전체 개발량의 60%" 구간이라 배포 작업을 일부러 피해서 배치했다.</figcaption>
+    </figure>
+
+    <h3>흐름을 지배하는 세 가지 원칙 (docs/00에서 그대로)</h3>
+    <ul>
+      <li><strong>문서 → 코드 순서.</strong> 새 기능은 docs를 먼저 고치고 Claude Code에게 "이 스펙대로"라고 시킨다. 스펙이 정확할수록 바이브 코딩 결과물이 정확하다.</li>
+      <li><strong>루프 완결 &gt; 기능 수.</strong> 대표 가설 HYP-001 한 건이 ①~⑥ 시나리오를 끊김 없이 관통하는 것만이 완료 기준이다. 망설여지면 cut line 드랍 순서를 기계적으로 적용.</li>
+      <li><strong>라이브 발표의 정본은 로컬.</strong> 클라우드 배포는 심사위원의 "자유 접속"용이고, 무대 위 시연은 지금 계획대로 노트북 로컬 + <code class="inline">DEMO_OFFLINE=1</code> 캐시로 돌린다. 배포가 실패해도 발표는 무사하다.</li>
+    </ul>
+
+    <div class="callout">
+      <div class="t">거버넌스 — 08/14 처리 완료</div>
+      <p>클라우드 배포는 08/14 중앙 결정(팀 배정 전 팀장 결정 체제)으로 <strong>P2 → P0 승격이 확정</strong>되었고,
+      docs/00(일정)·<strong>docs/07(배포 문서 신설)</strong>·DECISIONS에 반영 완료. 팀원은 정독 시 docs/07을 함께 읽으면 된다.
+      같은 날 코퍼스 방향(영문 원석 + 하이라이트형 + HCP 블록 분리 + docx/pdf 포장)도 확정되어 docs/02·03·04가 개정되었다.</p>
+    </div>
+  </section>
+
+  <!-- ============ 02 브랜치 ============ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>브랜치 흐름 — main 하나를 지키고, 안전장치 둘만 얹는다</h2></div>
+    <p class="sec-sub">"main 단일 + 폴더 오너십"은 08/11에 이미 기록된 팀 결정이고, 비개발자 3인에겐 여전히 정답이다. 배포가 붙으면 딱 하나가 달라진다: <b>push가 곧 화면이 된다.</b></p>
+
+    <figure>
+      <div class="fig">
+        <svg viewBox="0 0 900 302" role="img" style="min-width:760px"
+             aria-label="세 팀원이 main 브랜치 하나로 push하면 Railway가 자동 배포해 스테이징 URL이 갱신되는 흐름. 9월 3일부터는 같은 URL이 심사위원 화면이 된다.">
+          <defs>
+            <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#162661"/>
+            </marker>
+            <marker id="arwO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#C56E0D"/>
+            </marker>
+          </defs>
+
+          <!-- devs -->
+          <g font-size="12">
+            <rect x="30" y="30"  width="185" height="52" rx="10" fill="#FAF7F1" stroke="rgba(22,38,97,.25)"/>
+            <text x="46" y="52"  font-weight="700" fill="#162661">건태 · console</text>
+            <text x="46" y="70"  font-size="10.5" fill="#5C6485">pull → 작업 → commit</text>
+            <rect x="30" y="112" width="185" height="52" rx="10" fill="#FAF7F1" stroke="rgba(22,38,97,.25)"/>
+            <text x="46" y="134" font-weight="700" fill="#162661">소정 · field·프롬프트</text>
+            <text x="46" y="152" font-size="10.5" fill="#5C6485">pull → 작업 → commit</text>
+            <rect x="30" y="194" width="185" height="52" rx="10" fill="#FAF7F1" stroke="rgba(22,38,97,.25)"/>
+            <text x="46" y="216" font-weight="700" fill="#162661">인혁 · backend·데이터</text>
+            <text x="46" y="234" font-size="10.5" fill="#5C6485">pull → 작업 → commit</text>
+          </g>
+
+          <!-- arrows to main -->
+          <line x1="215" y1="56"  x2="298" y2="122" stroke="#162661" stroke-width="1.4" marker-end="url(#arw)"/>
+          <line x1="215" y1="138" x2="298" y2="138" stroke="#162661" stroke-width="1.4" marker-end="url(#arw)"/>
+          <line x1="215" y1="220" x2="298" y2="154" stroke="#162661" stroke-width="1.4" marker-end="url(#arw)"/>
+          <text x="256" y="126" font-size="10.5" fill="#5C6485" text-anchor="middle">push 하루 1회+</text>
+
+          <!-- main -->
+          <rect x="300" y="104" width="168" height="70" rx="12" fill="#162661"/>
+          <text x="384" y="134" font-size="13.5" font-weight="800" fill="#FFFFFF" text-anchor="middle">GitHub · main</text>
+          <text x="384" y="154" font-size="10.5" fill="rgba(255,255,255,.75)" text-anchor="middle">단일 브랜치 (08/11 결정 유지)</text>
+
+          <!-- main -> railway -->
+          <line x1="468" y1="139" x2="560" y2="139" stroke="#162661" stroke-width="1.4" marker-end="url(#arw)"/>
+          <text x="514" y="128" font-size="10.5" fill="#5C6485" text-anchor="middle">자동 빌드·배포 ≈3분</text>
+
+          <!-- railway -->
+          <rect x="562" y="104" width="150" height="70" rx="12" fill="#fff" stroke="#162661" stroke-width="1.4"/>
+          <text x="637" y="134" font-size="13" font-weight="800" fill="#162661" text-anchor="middle">Railway</text>
+          <text x="637" y="154" font-size="10.5" fill="#5C6485" text-anchor="middle">3개 서비스 재배포</text>
+
+          <!-- railway -> url -->
+          <line x1="712" y1="139" x2="762" y2="139" stroke="#162661" stroke-width="1.4" marker-end="url(#arw)"/>
+
+          <!-- url -->
+          <rect x="764" y="96" width="112" height="86" rx="12" fill="#FCF1E0" stroke="rgba(239,139,28,.5)"/>
+          <text x="820" y="126" font-size="12" font-weight="800" fill="#C56E0D" text-anchor="middle">스테이징</text>
+          <text x="820" y="144" font-size="12" font-weight="800" fill="#C56E0D" text-anchor="middle">= 심사 URL</text>
+          <text x="820" y="164" font-size="10" fill="#5C6485" text-anchor="middle">폰에서 Field 테스트</text>
+
+          <!-- rollback -->
+          <path d="M820,96 C820,44 637,44 637,102" fill="none" stroke="#C56E0D" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#arwO)"/>
+          <text x="729" y="38" font-size="10.5" fill="#C56E0D" text-anchor="middle" font-weight="600">사고 시: 대시보드에서 직전 배포로 롤백 (클릭 2번)</text>
+
+          <!-- eras -->
+          <rect x="30"  y="258" width="416" height="36" rx="10" fill="rgba(22,38,97,.05)"/>
+          <text x="46" y="281" font-size="11.5" fill="#232A47"><tspan font-weight="800" fill="#162661">8/24 – 9/2</tspan>  push = 팀 스테이징 → 부담 없이 자주 올린다</text>
+          <rect x="460" y="258" width="416" height="36" rx="10" fill="#FCF1E0" stroke="rgba(239,139,28,.4)"/>
+          <text x="476" y="281" font-size="11.5" fill="#232A47"><tspan font-weight="800" fill="#C56E0D">9/3 – 9/4</tspan>  push = 심사위원 화면 → 리허설 통과본만</text>
+        </svg>
+      </div>
+      <figcaption><b>브랜치 그림이 이렇게 단순한 게 우리 팀의 강점이다.</b> 충돌은 브랜치 전략이 아니라 폴더 오너십이 막고,
+      배포 사고는 브랜치가 아니라 Railway의 배포 이력 롤백이 막는다.</figcaption>
+    </figure>
+
+    <div class="duo">
+      <div class="card">
+        <div class="t"><span class="pill pill--plan">그대로 유지</span> 이미 있는 규칙</div>
+        <ul>
+          <li>세션 리듬: 시작 <code class="inline">git pull</code> → 작업 → 기능 단위 커밋 → 종료 push + LOG 한 줄</li>
+          <li>커밋 메시지: <code class="inline">feat|fix|docs: 한국어 설명 (영역)</code></li>
+          <li>오너십 밖 수정은 <code class="inline">[cross]</code> 태그 + 즉시 공유</li>
+          <li>금지: <code class="inline">--force</code> push, .env·*.db 커밋</li>
+          <li>충돌 나면 Claude에게 그대로 맡긴다 — "충돌 났어, 내 변경은 ○○야, 해결해줘"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="t"><span class="pill pill--new">새로 추가</span> 배포 시대의 두 장치</div>
+        <ul>
+          <li><strong>① 마일스톤 태그.</strong> 체크포인트 통과 순간마다 Claude에게 "지금 커밋에 <code class="inline">w1-exit</code> 태그 달아줘". 되는 상태로 언제든 돌아갈 수 있는 북마크다. 마지막은 <code class="inline">demo-final</code>.</li>
+          <li><strong>② push 승격 규칙.</strong> 9/3 심사 URL 공유 후엔 "로컬에서 시나리오 한 바퀴 돈 커밋"만 push. 그래도 깨지면 브랜치로 고민하지 말고 Railway에서 직전 배포로 롤백.</li>
+        </ul>
+      </div>
+    </div>
+    <p>feature 브랜치·PR을 쓰지 않는 이유도 기록해 두자: 리뷰어가 없는 3인 팀에서 PR은 의식(儀式)이지 안전망이 아니다.
+    우리의 실제 안전망은 <strong>폴더 오너십(충돌 방지) + 태그(복구 지점) + 롤백(배포 복구)</strong> 세 개다.</p>
+  </section>
+
+  <!-- ============ 03 배포 ============ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>배포 — Vercel이 아니라 Railway 하나로 가는 이유</h2></div>
+    <p class="sec-sub">질문 주신 Vercel은 방향 자체는 맞다. 다만 우리 스택의 한 조각이 Vercel에 올라가지 않는다.</p>
+
+    <p><strong>Vercel은 Next.js 프론트 2개(console·field)는 완벽하게 받아주지만, 백엔드가 문제다.</strong>
+    우리 백엔드는 FastAPI + <strong>SQLite 파일</strong>(<code class="inline">backend/data/delphi.db</code>)인데, Vercel은 서버리스 방식이라
+    요청이 끝나면 파일이 사라지는 임시 디스크 위에서 돈다. 즉 DB가 못 산다. 백엔드는 <strong>디스크가 붙는 상시 서버</strong>가 필요하고,
+    그런 서버를 주는 플랫폼(Railway)은 Next.js도 같이 돌릴 수 있다. 그러면 답은 자연스럽다:
+    <strong>플랫폼 두 개를 배우지 말고, 셋 다 올라가는 하나만 배우자.</strong></p>
+
+    <figure>
+      <div class="fig">
+        <svg viewBox="0 0 900 474" role="img" style="min-width:760px"
+             aria-label="GitHub 모노레포가 Railway 프로젝트의 세 서비스(console, field, backend)로 자동 배포되고, backend에는 SQLite와 캐시가 담긴 볼륨이 붙는다. 심사위원 브라우저는 console과 field URL로 접속하고, backend는 Claude API와 외부 공개 API를 캐시 우선으로 호출한다.">
+          <defs>
+            <marker id="arw2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#162661"/>
+            </marker>
+          </defs>
+
+          <!-- github -->
+          <rect x="30" y="150" width="188" height="118" rx="12" fill="#162661"/>
+          <text x="124" y="180" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">GitHub 모노레포</text>
+          <text x="124" y="203" font-size="10.5" fill="rgba(255,255,255,.8)" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">apps/console</text>
+          <text x="124" y="221" font-size="10.5" fill="rgba(255,255,255,.8)" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">apps/field</text>
+          <text x="124" y="239" font-size="10.5" fill="rgba(255,255,255,.8)" text-anchor="middle" font-family="ui-monospace,Menlo,monospace">backend/</text>
+          <text x="124" y="258" font-size="10" fill="rgba(255,255,255,.6)" text-anchor="middle">private · 합성 데이터만</text>
+
+          <!-- arrow github->railway -->
+          <line x1="218" y1="209" x2="272" y2="209" stroke="#162661" stroke-width="1.5" marker-end="url(#arw2)"/>
+          <text x="245" y="196" font-size="10" fill="#5C6485" text-anchor="middle">main push</text>
+
+          <!-- railway container -->
+          <rect x="274" y="34" width="392" height="356" rx="14" fill="rgba(22,38,97,.03)" stroke="rgba(22,38,97,.35)" stroke-dasharray="6 5"/>
+          <text x="292" y="60" font-size="12" font-weight="800" fill="#162661">Railway 프로젝트 · 싱가포르 리전</text>
+          <text x="292" y="77" font-size="10" fill="#5C6485">환경변수는 대시보드에서만 관리 (.env 커밋 금지 그대로)</text>
+
+          <!-- console svc -->
+          <rect x="292" y="92" width="250" height="56" rx="10" fill="#fff" stroke="rgba(22,38,97,.35)"/>
+          <text x="308" y="115" font-size="12" font-weight="700" fill="#162661">Console — Next.js</text>
+          <text x="308" y="133" font-size="9.5" fill="#5C6485" font-family="ui-monospace,Menlo,monospace">delphi-console.up.railway.app</text>
+          <!-- field svc -->
+          <rect x="292" y="160" width="250" height="56" rx="10" fill="#fff" stroke="rgba(22,38,97,.35)"/>
+          <text x="308" y="183" font-size="12" font-weight="700" fill="#162661">Field — Next.js (모바일)</text>
+          <text x="308" y="201" font-size="9.5" fill="#5C6485" font-family="ui-monospace,Menlo,monospace">delphi-field.up.railway.app</text>
+          <!-- backend svc -->
+          <rect x="292" y="228" width="250" height="80" rx="10" fill="#fff" stroke="rgba(22,38,97,.35)"/>
+          <text x="308" y="251" font-size="12" font-weight="700" fill="#162661">Backend — FastAPI</text>
+          <text x="308" y="269" font-size="9.5" fill="#5C6485" font-family="ui-monospace,Menlo,monospace">delphi-api.up.railway.app</text>
+          <text x="308" y="287" font-size="9.5" fill="#5C6485">ANTHROPIC_API_KEY · DEMO_OFFLINE · RESET_TOKEN</text>
+
+          <!-- volume -->
+          <rect x="380" y="330" width="256" height="44" rx="10" fill="#FCF1E0" stroke="rgba(239,139,28,.5)"/>
+          <text x="396" y="349" font-size="11" font-weight="700" fill="#C56E0D">볼륨 (영구 디스크) — 이게 Vercel에 없는 것</text>
+          <text x="396" y="365" font-size="9.5" fill="#5C6485" font-family="ui-monospace,Menlo,monospace">delphi.db · data/cache/ (스냅샷)</text>
+          <line x1="440" y1="330" x2="418" y2="308" stroke="#C56E0D" stroke-width="1.3"/>
+
+          <!-- frontends -> backend (트렁크) -->
+          <line x1="542" y1="120" x2="566" y2="120" stroke="#162661" stroke-width="1.2"/>
+          <line x1="542" y1="188" x2="566" y2="188" stroke="#162661" stroke-width="1.2"/>
+          <line x1="566" y1="120" x2="566" y2="252" stroke="#162661" stroke-width="1.2"/>
+          <line x1="566" y1="252" x2="550" y2="252" stroke="#162661" stroke-width="1.2" marker-end="url(#arw2)"/>
+          <text x="576" y="162" font-size="9.5" fill="#5C6485">REST · CORS</text>
+
+          <!-- judges -->
+          <rect x="726" y="92" width="146" height="124" rx="12" fill="#FCF1E0" stroke="rgba(239,139,28,.5)"/>
+          <text x="799" y="122" font-size="12.5" font-weight="800" fill="#C56E0D" text-anchor="middle">심사위원 · 팀</text>
+          <text x="799" y="140" font-size="10.5" fill="#5C6485" text-anchor="middle">브라우저 · 폰</text>
+          <text x="799" y="162" font-size="10" fill="#5C6485" text-anchor="middle">URL 두 개만 전달:</text>
+          <text x="799" y="179" font-size="10" fill="#5C6485" text-anchor="middle">Console + Field</text>
+          <text x="799" y="200" font-size="9.5" fill="#5C6485" text-anchor="middle">noindex · 언제 와도 데모 상태</text>
+          <line x1="726" y1="126" x2="672" y2="122" stroke="#162661" stroke-width="1.3" marker-end="url(#arw2)"/>
+          <line x1="726" y1="182" x2="672" y2="186" stroke="#162661" stroke-width="1.3" marker-end="url(#arw2)"/>
+
+          <!-- external -->
+          <rect x="292" y="414" width="170" height="48" rx="10" fill="#fff" stroke="rgba(22,38,97,.35)"/>
+          <text x="377" y="434" font-size="11.5" font-weight="700" fill="#162661" text-anchor="middle">Claude API</text>
+          <text x="377" y="450" font-size="9.5" fill="#5C6485" text-anchor="middle">sonnet-5 추출 · opus-5 Board</text>
+          <rect x="486" y="414" width="240" height="48" rx="10" fill="#fff" stroke="rgba(22,38,97,.35)"/>
+          <text x="606" y="434" font-size="11.5" font-weight="700" fill="#162661" text-anchor="middle">공개 API — PubMed · CT.gov · openFDA</text>
+          <text x="606" y="450" font-size="9.5" fill="#C56E0D" text-anchor="middle" font-weight="600">캐시 우선 · DEMO_OFFLINE=1이면 캐시만</text>
+          <line x1="322" y1="308" x2="350" y2="410" stroke="#162661" stroke-width="1.2" marker-end="url(#arw2)"/>
+          <path d="M542,296 L648,296 L648,410" fill="none" stroke="#162661" stroke-width="1.2" marker-end="url(#arw2)"/>
+        </svg>
+      </div>
+      <figcaption><b>레포 하나 → 서비스 셋 → URL 셋.</b> 심사위원에게는 Console·Field 두 URL만 전달한다.
+      오렌지 볼륨이 이 그림의 핵심 — SQLite와 API 캐시가 배포 사이에도 살아남는 영구 디스크이며, 이것이 "Vercel만으로 안 되는" 이유의 전부다.</figcaption>
+    </figure>
+
+    <h3>셋업은 4번에 나눠서, 한 번에 30–60분</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>날짜</th><th>담당</th><th>무엇을</th></tr></thead>
+      <tbody>
+        <tr><td class="d">8/14–16</td><td class="own">인혁 (레포 생성 때)</td><td>github.com <strong>private 레포</strong> + 3인 초대. <code class="inline">.gitignore</code>에 <code class="inline">.env*</code>·<code class="inline">*.db</code>·<code class="inline">node_modules</code>·<code class="inline">data/cache</code> 확인. Railway 가입(GitHub 로그인)만 해두기.</td></tr>
+        <tr><td class="d">8/24 월</td><td class="own">인혁 + 건태</td><td><strong>첫 배포.</strong> 체크포인트 #1을 통과한 코드를 그대로 올린다. 아래 프롬프트를 Claude Code에 붙여넣는 것으로 시작. 완료 기준: 폰에서 Field URL이 열리고 Console에 문서 목록이 뜬다.</td></tr>
+        <tr><td class="d">8/26 수</td><td class="own">인혁</td><td>외부 API 스냅샷을 <code class="inline">backend/data/fixtures/</code>로 <strong>커밋 대상에 포함</strong>시키고, 시드 스크립트가 이를 캐시로 복사하게 한다 → 배포본도 오프라인 폴백 가능.</td></tr>
+        <tr><td class="d">9/1 화</td><td class="own">인혁 (freeze 날 기존 담당 작업과 동일 맥락)</td><td>심사용 마감 점검: <code class="inline">RESET_TOKEN</code> 보호 리셋 엔드포인트(= <code class="inline">reset_demo.sh</code>의 서버판), 프론트 <code class="inline">noindex</code> 메타, <code class="inline">DEMO_OFFLINE</code> 동작 확인, 자정 자동 리셋(선택).</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="block-label">8/24 배포 데이 — Claude Code에 붙여넣을 프롬프트</p>
+    <pre class="block">CLAUDE.md 읽고 시작해. 오늘 작업: Railway 배포 세팅 (docs/07 참고).
+목표: backend / apps/console / apps/field 3개 서비스를 Railway 한 프로젝트(싱가포르 리전)에 올린다.
+- backend: uvicorn 시작 명령, /data 볼륨에 SQLite·캐시, 환경변수 ANTHROPIC_API_KEY · ALLOWED_ORIGINS · DEMO_OFFLINE · RESET_TOKEN
+- console·field: NEXT_PUBLIC_API_BASE_URL로 backend 공개 URL 연결, backend CORS에 두 프론트 도메인 허용
+- 완료 기준: 배포된 Console에서 문서 목록이 뜨고, 내 폰에서 Field URL이 열린다
+필요한 설정 파일은 네가 만들고, 내가 Railway 대시보드에서 클릭해야 하는 건 순서대로 하나씩 알려줘.</pre>
+
+    <h3>운영 원칙 세 가지</h3>
+    <ul>
+      <li><strong>심사위원은 언제 와도 "데모 시작 상태"를 본다.</strong> 여러 명이 눌러보면 승인 상태가 뒤섞이므로, 리셋 엔드포인트로 매일 아침(또는 자동으로 자정마다) 시드 상태로 되돌린다. 이미 만들 <code class="inline">reset_demo.sh</code>의 재활용이라 신규 개발이 거의 없다.</li>
+      <li><strong>비용: 해커톤 전체 ≈ 1~2만 원.</strong> Hobby 플랜 $5/월 + 소형 서비스 3개 사용량. 무료 체험 크레딧으로 시작하고 늦어도 9/1 전에 전환(무료 상태로 심사 맞으면 콜드스타트로 첫 화면이 30초 걸릴 수 있다). 끝나면 바로 해지.</li>
+      <li><strong>요건이 어떻게 확정되든 이 설계는 유효하다.</strong> "상시 접속"이면 그대로 쓰고, "발표 당일만"으로 확정되면 같은 배포를 유지한 채 URL 공유만 당일에 하면 된다. 손해 보는 시나리오가 없다.</li>
+    </ul>
+    <p style="font-size:13.5px;color:var(--muted)">대안 참고: 프론트 2개만 Vercel + 백엔드만 Railway로 나누는 조합도 기술적으로는 가능하지만,
+    대시보드·환경변수·도메인 관리 지점이 두 배가 된다. 비개발자 3인 팀에는 "배울 플랫폼 하나"가 더 큰 가치다.</p>
+  </section>
+
+  <!-- ============ 04 맥스튜디오 ============ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>맥스튜디오 — 개발서버로 쓰지 않는 게 맞다</h2></div>
+    <p class="sec-sub">좋은 장비지만, 이 프로젝트의 아키텍처가 공유 개발 서버를 필요 없게 설계돼 있다.</p>
+
+    <div class="verdict">
+      <div class="row"><span class="mark no">✕</span>
+        <p><span class="b">공유 개발 서버</span> — 필요가 없다. DB가 SQLite <em>파일</em>이라 각자 노트북에서 <code class="inline">seed_db.py</code>로 자기 DB를 만들어 풀스택을 돌리는 게 설계 의도다. 중앙 dev 서버를 두면 오히려 서로의 테스트 데이터를 밟는다. LLM도 Claude API(클라우드)라 로컬 연산력이 쓰일 곳이 없다.</p>
+      </div>
+      <div class="row"><span class="mark no">✕</span>
+        <p><span class="b">심사위원용 호스팅</span> (Cloudflare Tunnel 등) — 가능은 하지만, 집 공유기 재부팅·정전·ISP 순단이 심사 기간 내내 단일 장애점이 된다. 서버 상태를 지켜보는 일 자체가 비개발자에게 새 업무다. 유료 OK라고 하셨으니 월 $5 클라우드가 모든 면에서 우위.</p>
+      </div>
+      <div class="row"><span class="mark ok">○</span>
+        <p><span class="b">발표장 백업 머신</span> — 이건 좋다. 발표 노트북과 동일한 로컬 스택 + DB 스냅샷 + 리허설 녹화 영상을 넣어 두면, 인혁 담당의 "장비·환경 백업 대기"(9/4) 그 자체가 된다. 합성 코퍼스 대량 생성 같은 배치 작업용으로도 소소하게 유용.</p>
+      </div>
+    </div>
+    <p>정리하면: <strong>맥스튜디오에 시간을 쓰지 말고, 그 시간을 8/24 첫 배포에 쓰자.</strong></p>
+  </section>
+
+  <!-- ============ 05 시각화 ============ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>"비정형이 처리되는 부분"은 이렇게 보여준다</h2></div>
+    <p class="sec-sub">걱정하신 지점이 사실은 우리 제품의 최대 시각화 자산이다. 절대 규칙 #2가 모든 추출값에 원문 문자 위치를 강제해 놨기 때문에, 그릴 재료가 이미 데이터에 있다.</p>
+
+    <p>보여줄 것은 두 층이다. <strong>결과의 시각화</strong>(구조화된 값이 원문 어디서 왔는지)는 이미 P0 계획에 있고,
+    빠져 있던 <strong>과정의 시각화</strong>(처리되는 순간)는 "추출 리플레이" 연출 하나로 채운다.</p>
+
+    <figure>
+      <div class="fig">
+        <svg viewBox="0 0 900 322" role="img" style="min-width:760px"
+             aria-label="왼쪽 원문 패널의 형광펜 구간과 오른쪽 구조화 카드가 evidence pointer로 연결되고, 아래에 리플레이 연출 3단계가 표시된 개념도.">
+          <defs>
+            <marker id="arw3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#C56E0D"/>
+            </marker>
+          </defs>
+
+          <!-- left: source doc -->
+          <rect x="30" y="30" width="392" height="196" rx="12" fill="#fff" stroke="rgba(22,38,97,.35)"/>
+          <text x="48" y="58" font-size="12" font-weight="800" fill="#162661">원문 — 면담 기록 IV-014</text>
+          <text x="404" y="58" font-size="10" fill="#5C6485" text-anchor="end">Console /review</text>
+          <g fill="rgba(22,38,97,.16)">
+            <rect x="48" y="76"  width="330" height="9" rx="4.5"/>
+            <rect x="48" y="97"  width="352" height="9" rx="4.5"/>
+            <rect x="48" y="139" width="341" height="9" rx="4.5"/>
+            <rect x="48" y="160" width="290" height="9" rx="4.5"/>
+            <rect x="48" y="181" width="352" height="9" rx="4.5"/>
+            <rect x="48" y="202" width="180" height="9" rx="4.5"/>
+          </g>
+          <!-- highlighted span -->
+          <rect x="48" y="112" width="284" height="20" rx="5" fill="rgba(239,139,28,.22)" stroke="rgba(239,139,28,.65)"/>
+          <text x="58" y="126" font-size="10.5" fill="#C56E0D" font-weight="700">"12–17세에서는 쓸 수 있는 선택지가 마땅치…"</text>
+
+          <!-- right: claim card -->
+          <rect x="486" y="30" width="384" height="196" rx="12" fill="#fff" stroke="rgba(22,38,97,.35)"/>
+          <text x="504" y="58" font-size="12" font-weight="800" fill="#162661">구조화 후보 카드</text>
+          <rect x="758" y="42" width="96" height="22" rx="11" fill="rgba(22,38,97,.06)"/>
+          <text x="806" y="57" font-size="10" font-weight="700" fill="#162661" text-anchor="middle">CANDIDATE</text>
+          <g font-size="11">
+            <text x="504" y="90"  fill="#5C6485">개념</text><text x="600" y="90"  fill="#232A47" font-weight="700">치료 선택지 공백</text>
+            <text x="504" y="114" fill="#5C6485">환자군</text><text x="600" y="114" fill="#232A47" font-weight="700">12–17세 · 약물난치성 초점발작</text>
+            <text x="504" y="138" fill="#5C6485">label_scope</text>
+            <rect x="600" y="125" width="112" height="20" rx="10" fill="#F8ECE4"/>
+            <text x="656" y="139" fill="#B4552D" font-weight="800" text-anchor="middle" font-size="10">OUT_OF_LABEL</text>
+            <text x="504" y="164" fill="#5C6485">근거</text>
+            <text x="600" y="164" fill="#46639F" font-weight="700" font-family="ui-monospace,Menlo,monospace" font-size="10.5">IV-014 · 412–466자 ↗</text>
+            <text x="504" y="190" fill="#5C6485">표시 구분</text><text x="600" y="190" fill="#232A47" font-weight="700">관찰된 사실 (5단계 중 1)</text>
+          </g>
+
+          <!-- evidence link -->
+          <path d="M332,122 C420,122 420,158 486,160" fill="none" stroke="#C56E0D" stroke-width="1.6" marker-end="url(#arw3)"/>
+          <path d="M486,166 C430,170 430,130 340,124" fill="none" stroke="#C56E0D" stroke-width="1" stroke-dasharray="4 4" marker-end="url(#arw3)"/>
+          <text x="454" y="106" font-size="10.5" fill="#C56E0D" font-weight="800" text-anchor="middle">evidence pointer</text>
+          <text x="454" y="120" font-size="9.5" fill="#C56E0D" text-anchor="middle">양방향: 카드 클릭 ↔ 원문 하이라이트</text>
+
+          <!-- replay steps -->
+          <text x="30" y="262" font-size="11.5" font-weight="800" fill="#162661">리플레이 연출 (추출은 이미 끝났고, 화면이 결과를 재생한다)</text>
+          <rect x="30"  y="274" width="262" height="36" rx="10" fill="#FCF1E0" stroke="rgba(239,139,28,.4)"/>
+          <text x="46" y="297" font-size="11" fill="#232A47"><tspan font-weight="800" fill="#C56E0D">①</tspan> 원문에 형광펜이 그어지고</text>
+          <line x1="292" y1="292" x2="314" y2="292" stroke="#C56E0D" stroke-width="1.4" marker-end="url(#arw3)"/>
+          <rect x="316" y="274" width="262" height="36" rx="10" fill="#FCF1E0" stroke="rgba(239,139,28,.4)"/>
+          <text x="332" y="297" font-size="11" fill="#232A47"><tspan font-weight="800" fill="#C56E0D">②</tspan> 카드가 옆에 날아와 꽂히고</text>
+          <line x1="578" y1="292" x2="600" y2="292" stroke="#C56E0D" stroke-width="1.4" marker-end="url(#arw3)"/>
+          <rect x="602" y="274" width="268" height="36" rx="10" fill="#FCF1E0" stroke="rgba(239,139,28,.4)"/>
+          <text x="618" y="297" font-size="11" fill="#232A47"><tspan font-weight="800" fill="#C56E0D">③</tspan> 0.4초 간격으로 다음 claim 반복</text>
+        </svg>
+      </div>
+      <figcaption><b>HYP-001 데모 장면 그대로의 개념도.</b> 형광펜 구간과 카드를 잇는 오렌지 선이 절대 규칙 #2(evidence pointer)의 화면 번역이다.
+      심사 체크리스트 1·2·3번("일관 구조화 / 역추적 / 원문 대조 승인")이 전부 이 한 화면에서 증명된다.</figcaption>
+    </figure>
+
+    <h3>네 가지 장치 — 셋은 이미 계획에 있다</h3>
+    <ul>
+      <li><span class="pill pill--plan">P0 · 이미 계획</span> <strong>원문↔카드 양방향 하이라이트</strong> (8/22, 건태). 카드 클릭 → 원문 스크롤+형광펜, 원문 클릭 → 카드 포커스. 위 그림의 뼈대이자 심사 증명 화면.</li>
+      <li><span class="pill pill--new">신규 제안</span> <strong>추출 리플레이 연출.</strong> 백엔드 추출은 사전에 끝내 두고, 화면은 저장된 claim들을 0.4초 간격으로 순차 등장시키며 형광펜이 좌→우로 그어지는 모션을 건다(framer-motion stagger + 이미 있는 문자 오프셋). <strong>LLM 스트리밍이 아니라 저장 결과의 재생이라 데모에서 절대 실패하지 않는다.</strong> 라벨은 정직하게 "추출 완료 · 결과 재생" — 심사위원이 물어도 떳떳하다. 자리: 8/26 "원문 추적 UX" 날 또는 9/1 폴리시 날, 반나절.</li>
+      <li><span class="pill pill--new">신규 제안</span> <strong>파이프라인 상태 보드.</strong> 대시보드 홈(8/24)에 문서 63건의 <code class="inline">RAW → CANDIDATE → APPROVED</code> 단계별 카운트 스트립 한 줄. Field에서 승인하는 순간 숫자가 +1 카운트업되는 게 "루프가 닫히는" 순간의 시각화다. 숫자는 물론 SQL.</li>
+      <li><span class="pill pill--plan">P1 · 이미 계획</span> <strong>Screen 에이전트 animated beam + Board 심의 스트리밍.</strong> 4개 에이전트가 근거를 물어오는 장면과 이사회 회의록 — 후반부 "처리 시각화"는 이 둘이 담당하며 P1 최우선 순위 그대로 지킨다.</li>
+    </ul>
+
+    <div class="callout">
+      <div class="t">연출에도 절대 규칙</div>
+      <p>등장하는 모든 숫자는 SQL 집계값(#1), 카드엔 5단계 구분 뱃지(#8), "AI가 지금 생각 중" 같은 과장 문구 대신 사실 그대로의 라벨.
+      화려함은 모션에서 얻고, 문구는 감사(audit) 가능해야 한다 — 이게 심사에서 "일반 요약 도구와 다른 이유"를 지키는 방식이다.</p>
+    </div>
+  </section>
+
+  <!-- ============ 06 다음 액션 ============ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><h2>다음 액션 — 오늘부터 순서대로</h2></div>
+
+    <ol class="checks" style="list-style:none">
+      <li><span class="when">✅ 8/14</span><span class="what"><b>완료 — 중앙 결정으로 배포 승격 확정 + docs 반영</b> (00·02·03·04 개정, 07 신설, DECISIONS 8건). 남은 것: 주최측에 접속 요건(상시 vs 당일) 공식 확인.</span></li>
+      <li><span class="when">8/14–16</span><span class="what">인혁 님 레포 생성 시 <b>모노레포 구조·.gitignore·main 단일</b> 그대로 + Railway 가입만.</span></li>
+      <li><span class="when">8/24 월</span><span class="what"><b>첫 배포</b> (§03 프롬프트). 이후 push마다 자동 반영 — 소정 님이 폰으로 Field를 매일 실물 테스트할 수 있게 된다는 게 즉시 이득.</span></li>
+      <li><span class="when">8/26 수</span><span class="what">외부 API 스냅샷 → <b>fixtures 커밋</b> → 배포본 캐시 시드.</span></li>
+      <li><span class="when">9/1 화</span><span class="what">리셋 엔드포인트·noindex·오프라인 모드 점검 + 유료 플랜 전환.</span></li>
+      <li><span class="when">9/3 목</span><span class="what">리허설 #2 통과본에 <b>demo-final 태그</b> → 리셋 실행 → <b>심사 URL 공유</b>. 이후 push 금지(핫픽스만).</span></li>
+    </ol>
+
+    <p class="block-label">docs/DECISIONS.md 반영 완료 (08/14) — 아래는 기록 사본</p>
+    <pre class="block">- 08/14 [건태] 심사위원 접속 요건 대응으로 클라우드 배포를 P2에서 필수로 승격 — Railway 단일 플랫폼(3서비스+볼륨), 첫 배포 8/24. 라이브 발표 정본은 여전히 로컬+캐시
+- 08/14 [건태] 배포 후에도 main 단일 브랜치 유지, 안정성은 마일스톤 태그 + Railway 배포 롤백으로 확보 — 브랜치 추가는 08/11 결정대로 과함. 9/3 심사 URL 공유 후에는 리허설 통과본만 push
+- 08/14 [건태] 맥스튜디오는 개발서버·심사 호스팅으로 쓰지 않음(발표장 백업 머신으로만) — 가정용 네트워크는 심사 기간의 단일 장애점
+- 08/14 [건태] Sense 시각화에 '추출 리플레이' 연출 추가(P1 폴리시) — 사전 추출된 결과를 순차 재생하는 결정론적 연출, 라벨은 "추출 완료·결과 재생"으로 정직하게</pre>
+
+    <p class="block-label">문서화 반영 완료 — docs/00·02·03·04 개정 + docs/07 신설 (08/14)</p>
+    <pre class="block">반영 내역: docs/07_DEPLOYMENT.md 신설(배포 구성·일정·운용·맥스튜디오 판정) · docs/00 P2→P0 승격 + 일정 반영
+· docs/02 HIGHLIGHT_DOC·language·블록 필드·다국어 정규화 · docs/03 전면 개정(영문 원석·양식 명세·docx/pdf 렌더)
+· docs/04 문서 응답 1:N 개정 · DECISIONS 8건 · CLAUDE.md 배포·언어 행 추가</pre>
+  </section>
+
+  <footer class="foot">
+    근거: docs/00_MASTER_PLAN.md(일정·cut line·리스크) · docs/06_TEAM_WORKFLOW.md(main 단일·세션 리듬) · docs/DECISIONS.md(08/11 브랜치, 08/12 브랜드) ·
+    CLAUDE.md(절대 규칙 8개) · 질의응답(접속 요건 미확정 → 상시 기준 설계, github.com 가능, 소액 유료 가능).<br>
+    08/14 중앙 결정으로 확정되어 docs에 반영 완료 (자세한 근거는 docs/DECISIONS.md 08/14 항목). — 2026-08-14, DELPHi 팀 · Growth Intelligence for XCOPRI
+  </footer>
+
+</div>

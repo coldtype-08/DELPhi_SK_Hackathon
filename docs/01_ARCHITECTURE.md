@@ -1,0 +1,152 @@
+# 01. 시스템 아키텍처
+
+> 원칙: 2주 안에 비개발자 3인이 Claude Code로 완성할 수 있는 **가장 단순한 구조**.
+> Graph DB, 메시지 큐, 마이크로서비스 없음. FastAPI 하나 + SQLite 하나 + Next.js 둘.
+
+## 1. 전체 구성
+
+```
+┌─────────────────┐         ┌─────────────────┐
+│  apps/field      │         │  apps/console    │
+│  모바일 웹 (3001) │         │  대시보드 (3000)  │
+│  현장 수집·승인   │         │  검토·가설·심의    │
+└────────┬────────┘         └────────┬────────┘
+         │      REST (JSON)          │
+         └──────────┬────────────────┘
+                    ▼
+        ┌───────────────────────┐        ┌──────────────────┐
+        │  backend (FastAPI)     │──────▶│  Claude API       │
+        │  :8000                 │        │  (structured out) │
+        │  sense/screen/board    │        └──────────────────┘
+        │  contract/connectors   │        ┌──────────────────┐
+        └──────────┬────────────┘──────▶│  PubMed·CT.gov·   │
+                   ▼                     │  openFDA·Drugs@FDA│
+                                         │  (+캐시)           │
+        ┌───────────────────────┐        └──────────────────┘
+        │  SQLite (delphi.db)    │
+        │  + corpus/ + cache/    │
+        └───────────────────────┘
+```
+
+## 2. 데이터 3계층 (기획서 4-3 그대로)
+
+| 계층 | 테이블/저장소 | 내용 |
+|---|---|---|
+| **Source Layer** | `documents`, `interactions`, `backend/data/corpus/*.txt` | 원본 문서·면담 원문. 절대 수정하지 않는다 |
+| **Evidence & Structured** | `claims`, `evidence_pointers`, `vocab_terms`, `safety_candidates` | AI 추출 후보 + 원문 위치 + 검토 상태 |
+| **Analytics & Decision** | `signal_aggregates`(SQL 뷰), `hypotheses`, `screen_findings`, `board_minutes`, `decisions` | 승인 데이터 기반 집계와 가설·심의·결정 |
+
+**목적 영역 분리 (기획서 4-3·차별점 ②) — 문서상의 원칙이 아니라 조회 단계의 제약**: 모든 Evidence & Structured 레코드는 `purpose_domain`(`MEDICAL`·`COMMERCIAL`·`SAFETY`·`PUBLIC_EVIDENCE`)을 갖고, 데이터 접근은 라우터가 아니라 **단일 조회 게이트(`backend/app/access.py`)**를 통과해야 한다. 롤별 허용 범위는 docs/02 §9의 매트릭스가 유일한 정의이며, 위반 쿼리는 코드에서 예외를 던진다(빈 결과 반환 금지 — 조용한 누락이 더 위험하다). *기획서가 "일반 요약 도구와 구분되는 기술적 근거"로 명시한 지점이므로 시연에서 쿼리 레벨로 보여준다.*
+
+**이관 대비 규칙 (기획서 4-3 반영)**: 데이터 계층은 **ANSI SQL 범위**로만 구현한다 — SQLite 전용 함수(`strftime` 등), 동적 타입 의존, 벤더 확장 문법 금지. 날짜는 ISO 8601 문자열 + 명시적 캐스팅, 집계는 표준 `GROUP BY`/윈도우 함수로 작성. 이유: 파일럿 단계에서 같은 스키마·같은 질의를 사내 데이터 플랫폼(Snowflake 등)으로 그대로 옮기기 위함. 새 쿼리를 짤 때 "이 문법이 Snowflake에도 있나"를 확인한다.
+
+## 3. 핵심 상태 머신
+
+### Claim (추출값)
+```
+CANDIDATE ──승인──▶ APPROVED ──┐
+    │                          ├─▶ 집계·분석에 포함 (APPROVED만!)
+    ├─수정 후 승인─▶ APPROVED ──┘
+    └─반려──▶ REJECTED (보존, 집계 제외)
+```
+- 검토등급(H/M/L)은 상태가 아니라 **참고 라벨**: `원문일치 + 용어매핑성공 + 규칙통과` 조합으로 결정론적 계산.
+- H등급도 자동 승인 없음. 사람이 누른다.
+- 기획서 4-3의 `Candidate → Reviewed → Approved` 3단계와의 관계: **`REVIEWED`를 별도 상태로 두지 않는다.** 검토 행위는 `reviewed_by`/`reviewed_at`으로 기록되고, 검토 결과가 `APPROVED`·`REJECTED` 전이 그 자체다(= 검토됨 ⟺ 두 필드가 채워짐). 상태를 하나 줄이는 대신 "검토했지만 판단 보류" 케이스는 `CANDIDATE` + 검토 큐 후순위로 처리한다. 기획서 문장을 바꾼 것이 아니라 같은 절차를 2전이로 구현한 것이며, 발표에서도 이 대응관계로 설명한다.
+
+### Hypothesis (성장 가설)
+```
+DRAFT(Sense 생성) → SCREENING(에이전트 조사 중) → BOARD_READY → IN_REVIEW(사람)
+                          └─ 근거 부족 → NOT_BOARD_READY (순위 없음, 사유 표시)
+IN_REVIEW → APPROVED / HOLD / REJECTED   (+ In-label vs Development 라벨 필수)
+```
+**NOT_BOARD_READY 판정도 결정론적이다** (기획서 4-2 ③ "근거가 충분하지 않으면 순위를 부여하지 않는다"). 아래 중 하나라도 걸리면 Board로 넘기지 않고 사유 코드를 화면에 표시한다.
+
+| 사유 코드 | 조건 |
+|---|---|
+| `NO_APPROVED_BASIS` | 참조 claim 중 APPROVED가 0건 |
+| `SINGLE_SOURCE` | 독립 HCP < 2 또는 단일 권역 |
+| `NO_EXTERNAL_EVIDENCE` | Evidence Agent의 SUPPORT·COUNTER 결과가 둘 다 0건 (조회 실패 포함) |
+| `CRITIC_BLOCKED` | 재시도 2회 후에도 Critic 차단 잔존 |
+
+- 순위(정렬)는 반복 수·독립 출처 수·권역 수의 **SQL 계산값**으로만 매긴다. LLM이 점수를 부여하지 않는다.
+
+### Data Contract
+```
+v0.1 ACTIVE ──[SCP 등록: 반복 개념 + 원문 사례 + 영향 분석]──▶ Steward 승인 ──▶ v0.2 ACTIVE, v0.1 RETIRED
+```
+- 과거 claim은 생성 당시 contract_version을 유지. 재추출은 덮어쓰지 않고 새 레코드.
+
+## 4. 백엔드 모듈 구조
+
+```
+backend/app/
+├── main.py            # FastAPI 앱, 라우터 등록, CORS(3000·3001 허용)
+├── models.py          # SQLAlchemy 테이블 전부 (docs/02 §4 그대로)
+├── access.py          # 목적·권한 조회 게이트 (docs/02 §9) — 모든 claim/집계 조회가 경유
+├── llm.py             # Claude 호출 단일 래퍼: 모델·프롬프트버전·스키마·parser버전·소요시간 로깅
+├── prompts/           # *.md 프롬프트 (버전 헤더 필수) [오너: 소정]
+├── contract/          # contract 로드·검증·버전·SCP 로직
+├── sense/             # extract.py(구조화) · normalize.py(용어) · grade.py(H/M/L) · aggregate.py(SQL 집계·가설 후보)
+├── screen/            # orchestrator.py + agents/{field_signal, evidence, safety, critic}.py
+├── board/             # deliberate.py (Board 다중 관점 + CEO 종합)
+├── connectors/        # pubmed.py · ctgov.py · openfda.py — 전부 cache.py 경유
+└── routers/           # documents · claims · aggregates · hypotheses · contract · field
+```
+
+### 에이전트 실행 규칙 (기획서 반영)
+- 오케스트레이션은 **결정론적 순서**: FieldSignal → Evidence → Safety → Critic. LLM이 순서를 정하지 않는다.
+- 에이전트 간 메시지는 자유 대화가 아니라 **타입 있는 구조체**: `{type: SUPPORT|COUNTER|GAP|SAFETY_SIGNAL, statement, source_url, source_locator}`.
+- Critic이 차단하면 해당 항목은 `blocked_log`에 남고 재추출 경로로. **재시도 한도 2회**, 초과 시 NOT_BOARD_READY.
+- 수치가 필요한 곳(반복 수 등)은 에이전트가 SQL 결과를 **읽기만** 한다. 계산 금지.
+
+## 5. 프론트 화면 맵
+
+### Console (페이퍼 라이트, 데스크톱 우선) — 건태
+| 라우트 | 화면 | 핵심 컴포넌트 |
+|---|---|---|
+| `/` | 홈 대시보드 | KPI 스트립(승인 데이터 수·신호 수·가설 수), 신호 추이 차트, 최근 활동 |
+| `/review` | Data Review | 문서 리스트 → claim 카드 ↔ 원문 하이라이트 양분할, 승인/수정/반려 |
+| `/hypotheses` | 가설 보드 | 가설 카드 그리드 (상태별), Not Board-ready 별도 표시 |
+| `/hypotheses/[id]` | 가설 상세 | **5단계 구분 카드**, 지지/반대/공백 근거 리스트(원문·출처 링크), 에이전트 활동 시각화, Board 회의록, 승인·보류·기각 |
+| `/contract` | Data Contract | 현재 버전 스키마 뷰, SCP 목록·승인, 버전 diff |
+| `/safety` | 안전성·차단 로그 | 분기된 AE 후보, Critic 차단 이력 |
+
+### Field (페이퍼 라이트, 모바일 우선 390px) — 소정
+| 라우트 | 화면 | 핵심 컴포넌트 |
+|---|---|---|
+| `/` | 오늘의 면담 | 방문 예정·미해결 질문 체크리스트(Board에서 내려온 것 포함) |
+| `/capture` | 면담 기록 | 동의 확인 → 녹음/텍스트 입력 → 실시간 전사 → AE 자동 분기 배지 |
+| `/capture/review` | 구조화 승인 | AI가 만든 카드(환자군·신호·근거 인용) 스와이프/탭 승인·수정·제외 |
+| `/history` | 내 기록 | 승인 완료 interaction 목록 |
+
+- Field의 입력 항목은 하드코딩 금지 — 반드시 `GET /api/field/form-config`(활성 contract 버전) 기반 렌더. **v0.2 전환 데모가 여기서 터진다.**
+
+## 6. 환경 변수 (.env)
+
+```
+ANTHROPIC_API_KEY=...
+DELPHI_MODEL_EXTRACT=claude-sonnet-5
+DELPHI_MODEL_BOARD=claude-opus-5
+DEMO_OFFLINE=0          # 1이면 외부 API 캐시만 사용 (시연 모드)
+DATABASE_URL=sqlite:///./data/delphi.db
+```
+
+## 7. 추적성 (기획서 5-1 품질 목표)
+
+기획서가 요구하는 기록 항목은 **모델 · prompt · schema · parser · 외부 데이터 기준 시점** 다섯 가지다. 하나라도 빠지면 "결과의 생성 조건 추적" 주장이 성립하지 않는다.
+
+`llm_runs` 테이블에 모든 호출 기록: `purpose, model, prompt_file, prompt_version, schema_name, parser_version, external_data_as_of, input_hash, output_hash, latency_ms, created_at`.
+- `parser_version`: 구조화 출력 파싱·정규화 로직의 버전 문자열(`sense.extract@3` 형식). 파서를 고치면 반드시 올린다.
+- `external_data_as_of`: 그 호출이 참조한 캐시 스냅샷 일시. 외부 근거를 안 쓰는 호출은 null.
+- 외부 데이터는 `cache/` 파일명에 소스·쿼리·스냅샷 일시 포함(docs/03 §7), 화면의 근거 카드에도 스냅샷 일자를 표기.
+- 화면의 AI 산출물에는 "생성 조건 보기" 링크(P1) → `GET /llm-runs/{id}`.
+
+## 8. 모델 계층 교체 가능성 (기획서 4-3)
+
+기획서에는 "프로토타입에서는 OpenAI 및 Claude API를 사용할 예정"이라고 썼다. **MVP 구현은 Claude 단일**(추출·분류 `claude-sonnet-5`, 심의 `claude-opus-5`)로 간다 — 2주 안에 두 벤더의 structured output 차이를 관리할 여유가 없고, 재현성 비교 대상이 늘어난다.
+
+기획서와 모순이 아닌 이유이자 발표 답변: **모델 호출은 `llm.py` 한 곳만 경유하므로 벤더 교체는 이 파일의 구현체 변경**이다. 파일럿 단계의 사내 승인 LLM 환경 전환도 같은 지점에서 끝난다. 프롬프트는 `prompts/*.md`로, 스키마는 Contract에서 생성되므로 업무 로직은 그대로 남는다.
+
+## 9. 검색 확장 순서 (기획서 4-3)
+
+정확 일치 검색 + 구조화 항목 필터로 시작한다. **의미 기반(임베딩) 검색은 핵심 루프가 안정적으로 작동하고 원문 추적성이 유지되는 것을 확인한 뒤**에만 붙인다(P2, 기본값 안 함). 이 순서를 지키는 이유는 성능이 아니라 추적성이다 — 유사도로 찾은 근거는 원문 위치를 보장하지 않는다.
