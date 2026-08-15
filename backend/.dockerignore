@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+data/delphi.db
+data/cache/
+.env
+.env.*

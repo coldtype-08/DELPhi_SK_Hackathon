@@ -5,7 +5,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from .config import ALLOWED_ORIGINS
+from .config import ALLOWED_ORIGINS, SEED_ON_STARTUP
 from .db import init_db
 from .routers import aggregates, claims, contract, documents, field, hypotheses, safety, system
 
@@ -36,6 +36,12 @@ async def validation_error(request: Request, exc: RequestValidationError):
 @app.on_event("startup")
 def startup():
     init_db()
+    if SEED_ON_STARTUP:
+        # 배포본의 빈 볼륨 대응 — 이미 데이터가 있으면 아무것도 하지 않는다 (docs/07 §2)
+        from .seed import ensure_seeded
+
+        if ensure_seeded():
+            print("[startup] 빈 DB를 감지해 코퍼스를 시드했습니다.")
 
 
 for r in (documents, claims, aggregates, hypotheses, contract, field, safety, system):

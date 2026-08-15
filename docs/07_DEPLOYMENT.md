@@ -9,6 +9,21 @@
 - 그런 서버를 주는 Railway는 Next.js 두 개도 같이 돌린다 → 비개발자 3인 팀은 **플랫폼 하나만** 배우면 된다 (대시보드·환경변수·로그·도메인 관리 지점 1곳).
 - 대안(프론트 Vercel + 백엔드 Railway 분리)은 관리 지점이 두 배라 기각.
 
+## 1.5 레포에 이미 들어있는 배포 설정 (08/15 — 스캐폴딩과 함께 선행)
+
+Railway 대시보드에서 클릭할 것을 최소화하도록 설정 파일을 미리 커밋해 두었다.
+
+| 파일 | 역할 |
+|---|---|
+| `backend/Dockerfile` | python:3.12-slim + uv로 `pyproject.toml`(+`uv.lock`) 설치 → `uvicorn --host 0.0.0.0 --port $PORT` |
+| `backend/railway.json` | 빌더를 DOCKERFILE로 고정 (자동 감지에 맡기지 않는다) |
+| `apps/console/railway.json`, `apps/field/railway.json` | `npm ci && npm run build` → `npm run start` (Next는 `PORT` 환경변수를 따른다) |
+| `backend/.dockerignore` | `.venv`·로컬 `delphi.db`·`cache/`·`.env` 제외 (코퍼스와 fixtures는 이미지에 포함) |
+
+**서버가 스스로 시드한다**: 배포하면 볼륨이 비어 있으므로, 기동 시 `documents`가 0건이면 코퍼스를 자동 적재한다(`app/seed.py: ensure_seeded`). 이미 데이터가 있으면 아무것도 하지 않으므로 심사 중 승인 상태를 덮어쓸 위험이 없다. 끄려면 `SEED_ON_STARTUP=0`.
+
+**리셋은 API로 한다**: `POST /api/system/reset` + `X-Reset-Token` 헤더 → 시드 상태로 복원. `RESET_TOKEN`이 비어 있으면 엔드포인트 자체가 비활성(503)이라 실수로 초기화될 수 없다.
+
 ## 2. 구성
 
 ```
@@ -23,15 +38,28 @@ GitHub 모노레포 (private, 합성 데이터만)
 
 - 서비스별 root directory: `apps/console` / `apps/field` / `backend`. 프론트는 `NEXT_PUBLIC_API_BASE_URL`로 backend 공개 URL을 보고, backend CORS는 두 프론트 도메인을 허용.
 - 환경변수는 Railway 대시보드에서만 관리 — `.env`·API 키 커밋 금지 규칙(docs/06 §5) 그대로.
-  - backend: `ANTHROPIC_API_KEY` `ALLOWED_ORIGINS` `DEMO_OFFLINE` `RESET_TOKEN` `DATABASE_URL(볼륨 경로)`
-  - console·field: `NEXT_PUBLIC_API_BASE_URL`
+
+| 서비스 | 환경변수 | 값 |
+|---|---|---|
+| backend | `DATABASE_URL` | `sqlite:////data/delphi.db` (슬래시 4개 = 절대경로) |
+| | `DELPHI_CACHE_DIR` | `/data/cache` |
+| | `ALLOWED_ORIGINS` | console·field 공개 URL 두 개, 쉼표 구분 |
+| | `RESET_TOKEN` | 임의 문자열 (리셋 API 보호) |
+| | `ANTHROPIC_API_KEY` | 추출·Screen·Board 구현 이후 필요 |
+| | `DEMO_OFFLINE` | 시연 시 `1` (외부 API 캐시 강제) |
+| console·field | `NEXT_PUBLIC_API_BASE_URL` | `https://<backend>.up.railway.app/api` |
+
+> `NEXT_PUBLIC_*`는 **빌드 시점에 번들에 박힌다.** 값을 바꾸면 반드시 재배포해야 반영된다.
+
+- 볼륨은 backend 서비스에 `/data`로 마운트한다 (SQLite + 외부 API 캐시가 재배포 사이에 살아남는 자리).
 
 ## 3. 일정 (담당: 인혁, 건태 보조 — docs/00 표에 반영됨)
 
 | 날짜 | 할 일 | 완료 기준 |
 |---|---|---|
-| 8/14–16 | 레포 생성 시 모노레포 구조·`.gitignore`(.env·*.db·cache) 확인 + Railway 가입(GitHub 로그인) | — |
-| **8/24** | **첫 배포**: 체크포인트 #1 통과 코드를 3서비스로 올림 + 볼륨·환경변수·CORS | 폰에서 Field URL이 열리고 Console에 문서 목록이 뜬다 |
+| 8/14–16 | 레포 생성 시 모노레포 구조·`.gitignore`(.env·*.db·cache) 확인 + Railway 가입(GitHub 로그인) | ✅ 8/14 완료 |
+| **8/15** | **배포 설정 선행 커밋** (§1.5) — Dockerfile·railway.json·자동 시드·리셋 API | ✅ 완료 |
+| **8/15–16** | **첫 배포**: 워킹 스켈레톤을 3서비스로 올림 + 볼륨·환경변수·CORS (원래 8/24 예정이었으나 스켈레톤 단계에서 앞당김 — 배포까지 관통해야 진짜 스켈레톤이고, 빈 껍데기일 때 붙이는 게 가장 싸다) | 폰에서 Field URL이 열리고 Console에 문서 목록이 뜬다 |
 | 8/26 | 외부 API 스냅샷 → `backend/data/fixtures/` 커밋 → 시드가 볼륨 cache/로 복사 | 배포본에서 `DEMO_OFFLINE=1` 동작 |
 | 9/1 | 심사용 마감 점검: `RESET_TOKEN` 보호 리셋 엔드포인트(reset_demo.sh의 서버판) · 프론트 `noindex` 메타 · 유료 플랜 전환 | `GET /health`로 육안 확인 |
 | **9/3** | 리허설 #2 통과본에 `demo-final` 태그 → 리셋 실행 → **심사 URL 공유**. 이후 push는 핫픽스만 | 새 시크릿 창에서 시나리오 완주 |
