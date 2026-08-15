@@ -1,0 +1,65 @@
+# Data Contract v0.1 (Seed Schema) — docs/02와 항상 동기화한다. 이 파일이 곧 제품이다.
+# 여섯 곳(추출 출력·서버 검증·DB·Field 폼·대시보드 필터·에이전트 입력)이 이 정의를 공유한다.
+# 변경은 SCP → Steward 승인 → 새 버전 파일로만 (추가만 허용, docs/02 §7.5). AI 자동 변경 금지 (절대 규칙 #4).
+# v0.1에는 의도적으로 POST_STROKE가 없다 — SCP → v0.2 승격 시연 각본 (DECISIONS 08/11).
+
+version: "0.1"
+product: XCOPRI
+
+fields:
+  signal_type:
+    label_ko: 신호 유형
+    required: true
+    field_form: true          # Field 앱 입력 폼에 노출
+    values:
+      - { value: UNMET_NEED,        label_ko: 미충족 수요 }
+      - { value: TREATMENT_BARRIER, label_ko: 치료 장벽 }
+      - { value: INFO_REQUEST,      label_ko: 자료 요청 }
+      - { value: POSITIVE_OUTCOME,  label_ko: 긍정 경과 }
+      - { value: ACCESS_ISSUE,      label_ko: 접근성 문제 }
+      - { value: SAFETY_CANDIDATE,  label_ko: 안전성 후보(자동 분기) }
+      - { value: OTHER,             label_ko: 기타 }
+
+  patient_segment:
+    label_ko: 환자군
+    required: true
+    field_form: true
+    values:
+      - { value: PEDIATRIC_TRANSITION, label_ko: 청소년(12–17세) 전환기, label_scope: OUT_OF_LABEL }
+      - { value: ELDERLY_65_PLUS,      label_ko: 노인(65세 이상) }
+      - { value: DRE_2PLUS,            label_ko: 약물난치성(2제 이상 실패) }
+      - { value: COMORBID_PSYCH,       label_ko: 정신과 동반질환 }
+      - { value: FEMALE_CHILDBEARING,  label_ko: 가임기 여성 }
+      - { value: NEW_ONSET_ADULT,      label_ko: 신규 진단 성인 }
+      - { value: UNSPECIFIED,          label_ko: 미지정 }
+
+  journey_stage:
+    label_ko: 여정 단계
+    required: false
+    field_form: true
+    values:
+      - { value: DIAGNOSIS,       label_ko: 진단 }
+      - { value: INITIATION,      label_ko: 시작 }
+      - { value: TITRATION,       label_ko: 용량 적정 }
+      - { value: MAINTENANCE,     label_ko: 유지 }
+      - { value: SWITCH,          label_ko: 전환 }
+      - { value: DISCONTINUATION, label_ko: 중단 }
+
+  barrier_type:
+    label_ko: 장벽 유형
+    required_if: { field: signal_type, equals: TREATMENT_BARRIER }
+    field_form: true
+    values:
+      - { value: TITRATION_COMPLEXITY, label_ko: 적정 복잡성 }
+      - { value: DDI_CONCERN,          label_ko: 약물 상호작용 우려 }
+      - { value: MONITORING_BURDEN,    label_ko: 모니터링 부담 }
+      - { value: REIMBURSEMENT,        label_ko: 급여·보험 }
+      - { value: AWARENESS_GAP,        label_ko: 인지 격차 }
+      - { value: FORMULATION_NEED,     label_ko: 제형 요구 }
+
+# 자동판정 규칙 (LLM이 아니라 서버가 결정론적으로 계산)
+derivations:
+  label_scope:
+    rule: patient_segment의 values에 label_scope가 명시된 값이면 그 값, 아니면 IN_LABEL
+  purpose_domain:
+    rule: "signal_type 기준: ACCESS_ISSUE → COMMERCIAL, SAFETY_CANDIDATE → SAFETY(별도 경로), 그 외 → MEDICAL"

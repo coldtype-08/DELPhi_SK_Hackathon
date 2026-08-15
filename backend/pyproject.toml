@@ -1,0 +1,15 @@
+[project]
+name = "delphi-backend"
+version = "0.1.0"
+description = "DELPHi backend — FastAPI + SQLite (docs/01 아키텍처)"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "sqlalchemy>=2.0",
+    "pyyaml>=6.0",
+    "anthropic>=0.40",
+]
+
+[tool.uv]
+package = false

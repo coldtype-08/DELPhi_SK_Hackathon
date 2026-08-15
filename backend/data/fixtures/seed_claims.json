@@ -1,0 +1,34 @@
+{
+  "_comment": "개발·데모용 사전 추출 CANDIDATE 시드 (스캐폴딩 단계 — 실제 추출 파이프라인이 8/21 stub을 교체하기 전까지 /review 화면이 굴러가게 한다). verbatim은 코퍼스에 실재하는 문장이며, 시드 스크립트가 문서 전문에서 위치를 찾아 evidence 오프셋을 계산·검증한다. ground_truth.jsonl은 읽지 않는다 (docs/03 §4).",
+  "claims": [
+    {
+      "verbatim": "Called the adolescent transition group the single biggest unmet need — drug-resistant focal seizures at 15 or 16, and cenobamate out of reach until 18.",
+      "signal_type": "UNMET_NEED",
+      "patient_segment": "PEDIATRIC_TRANSITION",
+      "journey_stage": "INITIATION",
+      "summary_ko": "청소년(12–17) 약물난치성에서 치료 선택지 공백 — 성인 허가로 18세까지 대기"
+    },
+    {
+      "verbatim": "Said, and I quote, 'my hardest clinic days are telling parents of a seventeen-year-old that we have nothing new to offer until adulthood.'",
+      "signal_type": "UNMET_NEED",
+      "patient_segment": "PEDIATRIC_TRANSITION",
+      "journey_stage": "DIAGNOSIS",
+      "summary_ko": "17세 환자 보호자 상담에서 반복되는 '성인까지 대안 없음' — 독립 HCP의 동일 공백 신호"
+    },
+    {
+      "verbatim": "The main hesitation with elderly patients is drug-drug interactions on top of already long medication lists.",
+      "signal_type": "TREATMENT_BARRIER",
+      "patient_segment": "ELDERLY_65_PLUS",
+      "journey_stage": "INITIATION",
+      "barrier_type": "DDI_CONCERN",
+      "summary_ko": "노인 다약제 환자에서 상호작용 우려로 시작 주저 (In-label 장벽)"
+    },
+    {
+      "verbatim": "Said several DRE adults in the panel finally responded after years of cycling medications.",
+      "signal_type": "POSITIVE_OUTCOME",
+      "patient_segment": "DRE_2PLUS",
+      "journey_stage": "MAINTENANCE",
+      "summary_ko": "약물난치성 성인에서 수년 만의 반응 경험 보고 (긍정 신호)"
+    }
+  ]
+}
