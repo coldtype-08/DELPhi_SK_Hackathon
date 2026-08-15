@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* Paper & Glass — 페이퍼 라이트 고정 (다크 금지, 팀장 확정). 토큰 상세: docs/05_DESIGN_SYSTEM.md */
+:root {
+  --paper: #FAF7F1;
+  --card: #FFFFFF;
+  --ink: #232A47;
+  --navy: #162661;
+  --muted: #5C6485;
+  --line: rgba(22, 38, 97, 0.13);
+  --orange: #EF8B1C;
+  --orange-deep: #C56E0D;
+  --orange-soft: #FCF1E0;
+  --rust: #B4552D;
+  --rust-soft: #F8ECE4;
+  --green: #2F7D52;
+  --green-soft: #E9F3EC;
+  --sky: #46639F;
+  --sky-soft: #EEF2F9;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-navy: var(--navy);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-orange: var(--orange);
+  --color-orange-deep: var(--orange-deep);
+  --color-orange-soft: var(--orange-soft);
+  --color-rust: var(--rust);
+  --color-rust-soft: var(--rust-soft);
+  --color-green: var(--green);
+  --color-green-soft: var(--green-soft);
+  --color-sky: var(--sky);
+  --color-sky-soft: var(--sky-soft);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  letter-spacing: -0.005em;
+}
+
+mark.evidence {
+  background: rgba(239, 139, 28, 0.28);
+  box-shadow: inset 0 -2px 0 var(--orange);
+  border-radius: 3px;
+  padding: 1px 2px;
+}

@@ -27,8 +27,8 @@ AI 이사회 심의 + **사람의 승인**을 거쳐(Board), 그 결과가 **다
 | 백엔드 | Python 3.12 + FastAPI + SQLAlchemy | `backend/` |
 | DB | SQLite (파일: `backend/data/delphi.db`) | system of record. **ANSI SQL만 사용** — SQLite 전용 함수·타입 금지 (향후 Snowflake 등 사내 플랫폼 이관 대비) |
 | LLM | Claude API — 추출·분류: `claude-sonnet-5`, Board 심의: `claude-opus-5` | JSON schema structured output 필수 |
-| Console(대시보드) | Next.js 15 + Tailwind v4 + shadcn/ui | `apps/console/`, 포트 3000, **페이퍼 라이트 테마 고정** (다크 금지 — 팀장 확정) |
-| Field(모바일 웹) | Next.js 15 + Tailwind v4 + shadcn/ui | `apps/field/`, 포트 3001, **페이퍼 라이트 테마 고정** |
+| Console(대시보드) | Next.js 16 + Tailwind v4 + shadcn/ui | `apps/console/`, 포트 3000, **페이퍼 라이트 테마 고정** (다크 금지 — 팀장 확정). Next 16 문서는 `node_modules/next/dist/docs/` 번들 참조 |
+| Field(모바일 웹) | Next.js 16 + Tailwind v4 + shadcn/ui | `apps/field/`, 포트 3001, **페이퍼 라이트 테마 고정** |
 | 아이콘 | **Lucide** (shadcn 기본, 오픈소스) | 직접 그리지 말 것. `lucide-react` 사용 |
 | 브랜드 | 공식 HEX — 네이비 `#162661` + 오렌지 `#EF8B1C` (+확장 팔레트) | 룩은 "Paper & Glass" — `docs/05_DESIGN_SYSTEM.md` 토큰만 사용 |
 | 애니메이션 | framer-motion(motion) + Magic UI 컴포넌트 | `docs/05_DESIGN_SYSTEM.md` 준수 |
