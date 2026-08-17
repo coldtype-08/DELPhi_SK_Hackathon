@@ -29,6 +29,21 @@
       "patient_segment": "DRE_2PLUS",
       "journey_stage": "MAINTENANCE",
       "summary_ko": "약물난치성 성인에서 수년 만의 반응 경험 보고 (긍정 신호)"
+    },
+    {
+      "_comment": "아래 2건은 같은 블록(C03 포스터 장면)의 한 발언에서 나온 서로 다른 신호 — '하나의 코멘트에 다양한 정보'(1 interaction → N claims) 시연용",
+      "verbatim": "Standing at the poster, asked why the adolescent drug-resistant population is still excluded, describing families sent away empty-handed until 18.",
+      "signal_type": "UNMET_NEED",
+      "patient_segment": "PEDIATRIC_TRANSITION",
+      "journey_stage": "INITIATION",
+      "summary_ko": "학회 포스터 세션에서 청소년 난치성 배제 문제 제기 — 18세까지 대안 부재 (치료 공백)"
+    },
+    {
+      "verbatim": "Closed by requesting whatever adolescent safety or pharmacokinetic data exists, published or pending.",
+      "signal_type": "INFO_REQUEST",
+      "patient_segment": "PEDIATRIC_TRANSITION",
+      "journey_stage": "INITIATION",
+      "summary_ko": "같은 대화에서 이어진 청소년 안전성·PK 자료 요청 (자료 요청)"
     }
   ]
 }
