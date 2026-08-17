@@ -45,6 +45,8 @@ Railway 대시보드에서 클릭할 것을 최소화하도록 설정 파일을 
 | "Application failed to respond" | 도메인이 바라보는 포트 불일치. Railway가 주는 `$PORT`는 **8080** — Generate Domain 시 8080을 넣는다. 실제 값은 Deploy Logs의 `Uvicorn running on 0.0.0.0:XXXX`로 확인 |
 | 프론트 빌드 실패 (EBADENGINE / EBUSY) | Nixpacks가 Node 18 선택 → `package.json`에 `engines.node >= 20` 명시. `buildCommand`의 중복 `npm ci` 제거(설치는 Nixpacks가 이미 함) |
 | **Chrome에서만 흰 화면** (사파리·curl은 정상) | Next 자체 gzip이 Railway 엣지와 겹쳐 chunked 종료 청크가 유실 → `net::ERR_INVALID_CHUNKED_ENCODING`. **`next.config.ts`에 `compress: false`**. 심사위원 대다수가 Chrome이라 데모 치명 버그였다 |
+| push해도 배포가 안 됨 (몇 시간째 옛 커밋) | **Settings → Source의 레포 연결이 끊어져 있었음** (레포 이름 변경 시점과 겹침). Disconnect→Connect로 재연결. 증상: Deployments에 새 항목이 아예 안 생김(실패도 아님) |
+| 재연결 직후 크래시 루프: `'$PORT' is not a valid integer` | 재연결로 Dockerfile 빌드가 살아나자, 예전 railpack 시절 넣어둔 **대시보드 Start Command가 셸 없이 실행되며 `$PORT`가 안 풀림**. Dockerfile을 쓸 때는 **Custom Start Command를 비워둔다** (CMD가 이미 처리) |
 
 > 교훈: **브라우저를 하나만 보고 "된다"고 판단하지 말 것.** 사파리에서 멀쩡한 화면이 Chrome에서는 백지였다.
 
