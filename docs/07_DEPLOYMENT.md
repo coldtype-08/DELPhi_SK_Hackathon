@@ -24,6 +24,30 @@ Railway 대시보드에서 클릭할 것을 최소화하도록 설정 파일을 
 
 **리셋은 API로 한다**: `POST /api/system/reset` + `X-Reset-Token` 헤더 → 시드 상태로 복원. `RESET_TOKEN`이 비어 있으면 엔드포인트 자체가 비활성(503)이라 실수로 초기화될 수 없다.
 
+## 1.6 실제 배포 결과 (08/17 완료) — 이 표가 현재 상태다
+
+| 서비스 | Railway 이름 | 공개 주소 | Root Directory |
+|---|---|---|---|
+| 백엔드 (FastAPI) | `DELPHi_Backend` | `https://delphiskhackathon-production.up.railway.app` | `/backend` |
+| Console (Next.js) | `DELPHi_Console` | `https://delphi-console-production.up.railway.app` | `/apps/console` |
+| Field (Next.js) | `DELPHi_Field` | `https://delphi-field-production.up.railway.app` | `/apps/field` |
+
+프로젝트: `glistening-fascination` / 환경: `production` / 볼륨: `delphi_sk_hackathon-volume` → `/data` (백엔드에만)
+
+**검증 완료(08/17)**: 헬스 200 · Console·Field 로드 · CORS 두 주소만 허용(그 외 차단) · 화면에서 승인 클릭 → KPI 즉시 반영.
+
+### 배포하며 실제로 막힌 지점 5개 (같은 데서 또 막히지 말 것)
+
+| 증상 | 원인·해결 |
+|---|---|
+| 빌드 실패 "could not determine how to build" | Root Directory 미설정. **`/backend` 처럼 슬래시를 붙여야** 인식됐다 |
+| "No start command detected" | Railway가 `railway.json`·Dockerfile을 무시하고 railpack으로 빌드. **Settings → Deploy → Start Command**에 `uvicorn app.main:app --host 0.0.0.0 --port $PORT` 직접 입력 |
+| "Application failed to respond" | 도메인이 바라보는 포트 불일치. Railway가 주는 `$PORT`는 **8080** — Generate Domain 시 8080을 넣는다. 실제 값은 Deploy Logs의 `Uvicorn running on 0.0.0.0:XXXX`로 확인 |
+| 프론트 빌드 실패 (EBADENGINE / EBUSY) | Nixpacks가 Node 18 선택 → `package.json`에 `engines.node >= 20` 명시. `buildCommand`의 중복 `npm ci` 제거(설치는 Nixpacks가 이미 함) |
+| **Chrome에서만 흰 화면** (사파리·curl은 정상) | Next 자체 gzip이 Railway 엣지와 겹쳐 chunked 종료 청크가 유실 → `net::ERR_INVALID_CHUNKED_ENCODING`. **`next.config.ts`에 `compress: false`**. 심사위원 대다수가 Chrome이라 데모 치명 버그였다 |
+
+> 교훈: **브라우저를 하나만 보고 "된다"고 판단하지 말 것.** 사파리에서 멀쩡한 화면이 Chrome에서는 백지였다.
+
 ## 2. 구성
 
 ```

@@ -22,6 +22,7 @@
 
 - 08/15 건태: 스캐폴딩 완료 — backend 뼈대(14테이블·조회 게이트·라우터 8종·시드) + console/field 셸(Next 16·페이퍼라이트·form-config 동적 폼) + **수직 슬라이스 화면 완주**(문서→형광펜→승인 클릭→KPI 갱신). stub마다 오너·일정 주석 (다음: 팀원 초대 + 8/18 Contract 부트스트랩)
 - 08/15 건태: Railway 배포 설정 선행 커밋 — Dockerfile(uv)·railway.json 3종·자동 시드(빈 볼륨 대응)·리셋 API. 로컬 재검증 완료(시드 CLI·자동시드·리셋 401/200·수직 슬라이스) (다음: railway login 후 3서비스 생성·볼륨·환경변수)
+- 08/17 건태: **Railway 3서비스 배포 완료 — 워킹 스켈레톤이 클라우드에서 완주**. Backend·Console·Field 전부 Online, CORS 허용 목록 검증, 화면에서 승인→KPI 반영 확인. 배포 중 5개 함정 해결(Root Directory 슬래시·Start Command·포트 8080·Node 20·**Chrome 백지=Next gzip**) → docs/07 §1.5–1.6 기록 (다음: 리전 싱가포르 이동 · 9/1 전 유료 전환 · 팀원 초대)
 
 ## Week 1 (8/21–8/27)
 
