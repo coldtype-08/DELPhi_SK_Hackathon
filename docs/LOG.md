@@ -25,7 +25,8 @@
 - 08/17 건태: **Railway 3서비스 배포 완료 — 워킹 스켈레톤이 클라우드에서 완주**. Backend·Console·Field 전부 Online, CORS 허용 목록 검증, 화면에서 승인→KPI 반영 확인. 배포 중 5개 함정 해결(Root Directory 슬래시·Start Command·포트 8080·Node 20·**Chrome 백지=Next gzip**) → docs/07 §1.5–1.6 기록 (다음: 리전 싱가포르 이동 · 9/1 전 유료 전환 · 팀원 초대)
 - 08/17 건태: 배포 자동화 복구 — 레포 연결 끊김 발견·재연결(→Dockerfile 빌드 정상화), 옛 Start Command와 충돌한 $PORT 크래시 루프 해결. '1코멘트→2카드' 시연 시드 배포본 검증 완료(포스터 발언 1건 → UNMET_NEED+INFO_REQUEST). 함정 2종 docs/07 추가 (다음: 팀원 초대·크레딧 확인·Hobby 전환)
 
+- 08/19 건태: **Contract 부트스트랩 실행·확정** — 신규 9항목 반영(yaml·모델·API·docs/02·04), AI 초안 원문 레포 보존, 로컬 검증 통과(저장·직렬화·파생규칙·폼 불변). contract-v0.1-final 태그 (다음: 배포 반영 + 8/21 킥오프)
+
 ## Week 1 (8/21–8/27)
 
 ## Week 2 (8/28–9/4)
-- 08/19 건태: **Contract 부트스트랩 실행·확정** — 신규 9항목 반영(yaml·모델·API·docs/02·04), AI 초안 원문 레포 보존, 로컬 검증 통과(저장·직렬화·파생규칙·폼 불변). contract-v0.1-final 태그 (다음: 배포 반영 + 8/21 킥오프)
