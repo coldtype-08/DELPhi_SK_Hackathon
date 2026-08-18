@@ -1,0 +1,294 @@
+<title>DELPHi 협업 매뉴얼</title>
+<style>
+  /* Paper & Glass — 팀 확정 브랜드 (docs/05). 라이트 단일 테마로 의도적 커밋: 모든 색을 명시적으로 칠한다. */
+  :root {
+    --paper:#FAF7F1; --card:#FFFFFF; --ink:#232A47; --navy:#162661; --muted:#5C6485;
+    --line:rgba(22,38,97,.13); --line-strong:rgba(22,38,97,.24);
+    --orange:#EF8B1C; --orange-deep:#C56E0D; --orange-soft:#FCF1E0;
+    --sky:#46639F; --sky-soft:#EAF0F8;
+    --green:#2F7D52; --green-soft:#E7F2EB;
+    --rust:#B4552D; --rust-soft:#F8ECE4;
+    --code:#F2EEE5;
+  }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,
+      "Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic","Segoe UI",sans-serif;
+    font-size:15px; line-height:1.72; letter-spacing:-.005em;
+  }
+  .wrap { max-width:900px; margin:0 auto; padding:48px 24px 80px; }
+  @media (max-width:640px){ .wrap{ padding:32px 16px 60px; } }
+  :focus-visible { outline:2px solid var(--orange); outline-offset:2px; }
+  strong { color:var(--navy); font-weight:700; }
+  code {
+    font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:12.5px; background:var(--code); border-radius:5px; padding:1px 5px;
+    color:var(--navy); white-space:nowrap;
+  }
+
+  /* header */
+  header { border-bottom:2px solid var(--navy); padding-bottom:22px; margin-bottom:8px; }
+  .eyebrow { font-size:12px; font-weight:700; letter-spacing:.16em; color:var(--muted); margin:0 0 10px; }
+  h1 { margin:0 0 10px; color:var(--navy); font-size:clamp(25px,4vw,33px); font-weight:800;
+       letter-spacing:-.022em; line-height:1.22; text-wrap:balance; }
+  .lede { margin:0; font-size:15px; max-width:62ch; color:var(--ink); }
+  .lede b { color:var(--orange-deep); }
+
+  /* sections */
+  section { margin-top:44px; }
+  h2 { margin:0 0 4px; color:var(--navy); font-size:19px; font-weight:800; letter-spacing:-.015em; }
+  .sub { margin:0 0 16px; color:var(--muted); font-size:13px; max-width:64ch; }
+
+  /* 역할 카드 */
+  .roles { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+  .role { background:var(--card); border:1px solid var(--line); border-top:4px solid var(--c);
+          border-radius:12px; padding:15px 17px; }
+  .role .who { font-size:16px; font-weight:800; color:var(--navy); }
+  .role .layer { font-size:12px; font-weight:700; color:var(--c); letter-spacing:.05em; margin-top:1px; }
+  .role ul { margin:10px 0 0; padding-left:17px; }
+  .role li { font-size:13px; line-height:1.6; margin-bottom:5px; }
+  .role li::marker { color:var(--c); }
+  .role .only { margin-top:10px; padding-top:9px; border-top:1px dashed var(--line);
+                font-size:12px; color:var(--muted); }
+
+  /* 표 */
+  .tbl { overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--card); }
+  table { border-collapse:collapse; width:100%; font-size:13px; min-width:520px; }
+  th { text-align:left; font-size:12px; letter-spacing:.06em; color:var(--muted); font-weight:700;
+       padding:10px 14px; border-bottom:1px solid var(--line-strong); background:rgba(22,38,97,.03); white-space:nowrap; }
+  td { padding:9px 14px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  tr:last-child td { border-bottom:none; }
+  td.path { font-family:ui-monospace,Menlo,Consolas,monospace; font-size:12.5px; color:var(--navy); }
+  .tag { display:inline-block; font-size:12px; font-weight:700; padding:2px 9px; border-radius:999px; white-space:nowrap; }
+  .t-g { background:var(--orange-soft); color:var(--orange-deep); }
+  .t-i { background:var(--sky-soft); color:var(--sky); }
+  .t-s { background:var(--green-soft); color:var(--green); }
+
+  /* 리듬 */
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
+  .step { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:13px 15px; }
+  .step .n { font-family:ui-monospace,Menlo,monospace; font-size:12px; font-weight:700; color:var(--orange-deep); }
+  .step .t { font-size:13.5px; font-weight:700; color:var(--navy); margin-top:2px; }
+  .step .d { font-size:12.5px; color:var(--muted); line-height:1.55; margin-top:4px; }
+
+  /* 목록형 */
+  .rules { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .rules li { background:var(--card); border:1px solid var(--line); border-radius:11px;
+              padding:11px 15px; font-size:13.5px; line-height:1.6; }
+  .rules b { color:var(--navy); }
+  .rules .lead { display:inline-block; min-width:74px; font-size:12px; font-weight:700;
+                 color:var(--orange-deep); font-variant-numeric:tabular-nums; }
+
+  /* 그림 */
+  figure { margin:14px 0 0; }
+  .fig { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 12px 8px; overflow-x:auto; }
+  .fig svg { display:block; width:100%; height:auto; }
+  figcaption { font-size:12.5px; color:var(--muted); margin:9px 3px 0; line-height:1.6; }
+  figcaption b { color:var(--navy); }
+
+  .note { background:var(--orange-soft); border:1px solid rgba(239,139,28,.3); border-radius:11px;
+          padding:12px 16px; font-size:13.5px; line-height:1.62; margin-top:14px; }
+  .note b { color:var(--orange-deep); }
+
+  footer { margin-top:52px; padding-top:18px; border-top:1px solid var(--line);
+           font-size:12.5px; color:var(--muted); line-height:1.7; }
+  @media (prefers-reduced-motion:reduce){ *{ animation:none!important; transition:none!important; } }
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">DELPHi · 본선 2주 (8/21 – 9/4)</p>
+  <h1>협업 매뉴얼</h1>
+  <p class="lede">셋 다 개발자가 아니다. 그래서 규칙을 <b>딱 세 개</b>로 줄였다 —
+    <b>내 파일만 고친다 · 하루 한 번 올린다 · 30분 막히면 묻는다.</b>
+    나머지는 Claude Code가 한다.</p>
+</header>
+
+<section>
+  <h2>1. 역할 — 층으로 나눴다</h2>
+  <p class="sub">화면·기능으로 자르지 않고 층으로 잘랐다. 그래야 같은 파일을 안 밟는다.</p>
+  <div class="roles">
+    <div class="role" style="--c:var(--orange-deep)">
+      <div class="who">건태</div>
+      <div class="layer">도메인 층</div>
+      <ul>
+        <li>Data Contract 스키마 설계</li>
+        <li>추출·에이전트 프롬프트</li>
+        <li>추출 결과 평가 (정답지 대조)</li>
+        <li>가설·Contract 화면</li>
+        <li>데모 각본 · 발표</li>
+      </ul>
+      <div class="only">실데이터를 읽어본 유일한 사람 — 대체 불가한 판단을 맡는다</div>
+    </div>
+    <div class="role" style="--c:var(--sky)">
+      <div class="who">인혁</div>
+      <div class="layer">엔진 층</div>
+      <ul>
+        <li>추출 파이프라인 (LLM 호출·검증·저장)</li>
+        <li>집계 SQL · 가설 후보 생성</li>
+        <li>Screen 4에이전트 · Board 심의</li>
+        <li>SCP → v0.2 발행</li>
+        <li>외부 API 커넥터 · 배포 운용</li>
+      </ul>
+      <div class="only">8/21–25 첫 관문(추출)은 건태와 페어로 — 여기만 뚫리면 나머지는 같은 패턴</div>
+    </div>
+    <div class="role" style="--c:var(--green)">
+      <div class="who">소정</div>
+      <div class="layer">화면 층</div>
+      <ul>
+        <li>Field 앱 전체 (수집·승인·음성)</li>
+        <li>디자인 토큰 · 공통 부품</li>
+        <li>Console 홈 · Review · Safety</li>
+      </ul>
+      <div class="only">Week 1은 Field에 집중, Console은 Week 2에 합류</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>2. 파일 소유 — 이 표가 충돌을 막는다</h2>
+  <p class="sub">내 줄에 있는 파일만 고친다. 남의 줄을 고쳐야 하면 아래 3번 규칙.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>경로</th><th>오너</th><th>무엇</th></tr></thead>
+      <tbody>
+        <tr><td class="path">docs/02_DATA_CONTRACT.md<br>backend/app/contract/*.yaml</td>
+            <td><span class="tag t-g">건태</span></td><td>스키마 정의</td></tr>
+        <tr><td class="path">backend/app/prompts/*.md</td>
+            <td><span class="tag t-g">건태</span></td><td>AI에게 주는 지시문</td></tr>
+        <tr><td class="path">backend/app/**/*.py<br>scripts/**</td>
+            <td><span class="tag t-i">인혁</span></td><td>엔진 구현 전부</td></tr>
+        <tr><td class="path">apps/field/**</td>
+            <td><span class="tag t-s">소정</span></td><td>현장 수집 앱</td></tr>
+        <tr><td class="path">apps/console/app/hypotheses/**<br>apps/console/app/contract/**</td>
+            <td><span class="tag t-g">건태</span></td><td>5단계 구분·SCP 승인 (제품 논리)</td></tr>
+        <tr><td class="path">apps/console/app/page.tsx<br>apps/console/app/review/**<br>apps/console/app/safety/**</td>
+            <td><span class="tag t-s">소정</span></td><td>대시보드·검토 화면</td></tr>
+        <tr><td class="path">apps/*/app/globals.css<br>layout.tsx · nav.tsx · 공통 컴포넌트</td>
+            <td><span class="tag t-s">소정</span></td><td>디자인 일관성은 한 사람이</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note"><b>왜 이렇게까지 나누나</b> — 두 사람이 같은 파일을 고치면 git이 충돌을 내고,
+    그걸 푸는 데 초보는 한 시간을 쓴다. 화면마다 파일이 따로인 구조라, 표만 지키면 충돌은 0이다.</div>
+</section>
+
+<section>
+  <h2>3. 규칙 세 개</h2>
+  <ul class="rules">
+    <li><span class="lead">규칙 1</span><b>남의 파일을 고쳤으면</b> 짧게 고치고 <b>즉시 올린다</b>. 커밋 메시지에 <code>[cross]</code> 붙이고 메신저에 한 줄. 오래 붙들고 있으면 상대가 받을 때 충돌한다.</li>
+    <li><span class="lead">규칙 2</span><b>API 응답 모양을 바꾸면</b> <code>docs/04_API_SPEC.md</code>를 <b>같은 커밋에서</b> 고친다. 문서가 먼저, 코드가 나중.</li>
+    <li><span class="lead">규칙 3</span><b>스키마는 아무도 코드로 못 바꾼다.</b> 새 항목이 필요하면 SCP(변경 제안) → 승인 → 새 버전. 이게 제품의 정체성이다.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>4. 하루 리듬</h2>
+  <p class="sub">git 명령을 외울 필요 없다. 전부 Claude에게 말로 시킨다.</p>
+  <div class="steps">
+    <div class="step"><div class="n">시작</div><div class="t">“git pull 하고 시작해”</div>
+      <div class="d">남이 올린 최신 코드를 받는다. 이걸 빼먹으면 충돌한다.</div></div>
+    <div class="step"><div class="n">작업</div><div class="t">하루 한 덩어리</div>
+      <div class="d">완료 기준이 분명한 것 하나. “화면 만들기”가 아니라 “입력하면 카드가 뜬다”.</div></div>
+    <div class="step"><div class="n">끝</div><div class="t">“커밋하고 푸시해줘”</div>
+      <div class="d">＋ <code>docs/LOG.md</code>에 한 줄. 길게 쓰지 말 것.</div></div>
+    <div class="step"><div class="n">3분 뒤</div><div class="t">배포에 반영</div>
+      <div class="d">올린 코드가 실제 주소에 뜬다. 폰으로 열어서 확인.</div></div>
+  </div>
+  <div class="note"><b>30분 룰</b> — 30분 막히면 혼자 붙들지 말고 에러 메시지를 <b>통째로</b> 복사해서 메신저에.
+    요약해서 보내지 말 것. 대부분 5분이면 풀린다.</div>
+</section>
+
+<section>
+  <h2>5. 둘 이상이 맞물리는 날 — 네 번뿐이다</h2>
+  <p class="sub">나머지 날은 각자 자기 층에서 끝난다. 이 네 날만 아침에 순서를 정한다.</p>
+  <ul class="rules">
+    <li><span class="lead">8/18</span><b>Contract v0.1 확정</b> — 전원. 여기서 정한 스키마가 추출 품질의 상한이다</li>
+    <li><span class="lead">8/25</span><b>Field 수집 연결</b> — 소정(화면) + 인혁(<code>POST /field/interactions</code>)</li>
+    <li><span class="lead">8/28–29</span><b>Screen · Board</b> — 인혁(오케스트레이션) + 건태(프롬프트) + 소정(화면)</li>
+    <li><span class="lead">8/30–31</span><b>SCP → v0.2 → Field 폼</b> — 전원. 데모의 클라이맥스</li>
+  </ul>
+</section>
+
+<section>
+  <h2>6. 배포 — 9월 1일에 규칙이 바뀐다</h2>
+  <p class="sub">지금은 속도가, 심사 기간엔 안전이 우선이다.</p>
+  <figure>
+    <div class="fig">
+      <svg viewBox="0 0 880 250" role="img" style="min-width:620px"
+        aria-label="9월 1일 전에는 세 사람이 main에 직접 푸시하면 곧바로 자동 배포된다. 9월 1일부터는 팀원이 dev 브랜치에 푸시하고 건태가 확인한 뒤 main에 병합해야 배포된다.">
+        <defs>
+          <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#162661"/></marker>
+          <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#C56E0D"/></marker>
+        </defs>
+
+        <!-- 지금 -->
+        <text x="16" y="20" font-size="12.5" font-weight="800" fill="#162661">지금 ~ 8/31 · 속도 우선</text>
+        <rect x="16" y="32" width="120" height="56" rx="9" fill="#FAF7F1" stroke="rgba(22,38,97,.24)"/>
+        <text x="76" y="56" font-size="12.5" fill="#232A47" text-anchor="middle">세 사람 누구든</text>
+        <text x="76" y="74" font-size="12.5" font-weight="700" fill="#162661" text-anchor="middle">main에 push</text>
+        <line x1="140" y1="60" x2="196" y2="60" stroke="#162661" stroke-width="1.4" marker-end="url(#a1)"/>
+        <text x="168" y="50" font-size="12" fill="#5C6485" text-anchor="middle">자동</text>
+        <rect x="200" y="32" width="112" height="56" rx="9" fill="#162661"/>
+        <text x="256" y="65" font-size="12.5" font-weight="700" fill="#fff" text-anchor="middle">3분 뒤 배포</text>
+        <line x1="316" y1="60" x2="372" y2="60" stroke="#162661" stroke-width="1.4" marker-end="url(#a1)"/>
+        <rect x="376" y="32" width="200" height="56" rx="9" fill="#E7F2EB" stroke="rgba(47,125,82,.35)"/>
+        <text x="476" y="56" font-size="12.5" fill="#232A47" text-anchor="middle">깨져도 괜찮다 — 심사위원 없음</text>
+        <text x="476" y="74" font-size="12" font-weight="700" fill="#2F7D52" text-anchor="middle">롤백 1분 · 데이터는 리셋 API</text>
+
+        <line x1="16" y1="112" x2="864" y2="112" stroke="rgba(22,38,97,.13)" stroke-width="1"/>
+
+        <!-- 9/1 이후 -->
+        <text x="16" y="140" font-size="12.5" font-weight="800" fill="#C56E0D">9/1 ~ 9/4 · 안전 우선 (main = 심사위원 화면)</text>
+        <rect x="16" y="152" width="120" height="56" rx="9" fill="#FAF7F1" stroke="rgba(22,38,97,.24)"/>
+        <text x="76" y="176" font-size="12.5" fill="#232A47" text-anchor="middle">인혁 · 소정</text>
+        <text x="76" y="194" font-size="12.5" font-weight="700" fill="#162661" text-anchor="middle">dev에 push</text>
+        <line x1="140" y1="180" x2="196" y2="180" stroke="#C56E0D" stroke-width="1.4" marker-end="url(#a2)"/>
+        <rect x="200" y="152" width="132" height="56" rx="9" fill="#FCF1E0" stroke="rgba(239,139,28,.5)"/>
+        <text x="266" y="176" font-size="12.5" font-weight="700" fill="#C56E0D" text-anchor="middle">건태가 확인</text>
+        <text x="266" y="194" font-size="12" fill="#5C6485" text-anchor="middle">로컬에서 한 바퀴</text>
+        <line x1="336" y1="180" x2="392" y2="180" stroke="#C56E0D" stroke-width="1.4" marker-end="url(#a2)"/>
+        <rect x="396" y="152" width="132" height="56" rx="9" fill="#FAF7F1" stroke="rgba(22,38,97,.24)"/>
+        <text x="462" y="185" font-size="12.5" font-weight="700" fill="#162661" text-anchor="middle">main에 병합</text>
+        <line x1="532" y1="180" x2="588" y2="180" stroke="#162661" stroke-width="1.4" marker-end="url(#a1)"/>
+        <rect x="592" y="152" width="112" height="56" rx="9" fill="#162661"/>
+        <text x="648" y="185" font-size="12.5" font-weight="700" fill="#fff" text-anchor="middle">배포</text>
+        <text x="716" y="177" font-size="12" fill="#5C6485">확인한 것만</text>
+        <text x="716" y="193" font-size="12" fill="#5C6485">세상에 나간다</text>
+      </svg>
+    </div>
+    <figcaption><b>바뀌는 건 한 가지뿐</b> — 팀원이 올리는 곳이 <code>main</code>에서 <code>dev</code>로 바뀐다.
+      Railway는 계속 <code>main</code>만 보므로 설정은 손대지 않는다.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>7. 지금 도는 것 · 아직 없는 것</h2>
+  <p class="sub">8/17 기준. 뼈대와 배포는 끝났고, 알맹이가 남았다.</p>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>영역</th><th>상태</th></tr></thead>
+      <tbody>
+        <tr><td>합성 코퍼스 63건 (인사이트 118)</td><td><span class="tag t-s">완료</span> 원문·정답지·docx/pdf</td></tr>
+        <tr><td>DB · API · 조회 권한 게이트</td><td><span class="tag t-s">완료</span> 14테이블, 라우터 8종</td></tr>
+        <tr><td>Console · Field 셸 + 클라우드 배포</td><td><span class="tag t-s">완료</span> 3개 주소 상시 접속</td></tr>
+        <tr><td>추출 파이프라인 (문서 → 카드)</td><td><span class="tag t-i">8/21 인혁</span> 지금은 stub</td></tr>
+        <tr><td>Field 수집 · 음성 · AE 분기</td><td><span class="tag t-s">8/25·8/30 소정</span> 화면 셸만</td></tr>
+        <tr><td>Screen 에이전트 · Board 심의</td><td><span class="tag t-i">8/28–29</span></td></tr>
+        <tr><td>SCP → v0.2 → Field 폼 변경</td><td><span class="tag t-g">8/30–31</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  상세는 레포의 <code>docs/</code> — 계획 <code>00</code> · 구조 <code>01</code> · 스키마 <code>02</code> · API <code>04</code> · 디자인 <code>05</code> · 협업 <code>06</code> · 배포 <code>07</code>.<br>
+  문서가 코드보다 먼저다. 스펙을 고치고 Claude에게 “이대로 구현해줘”라고 시킨다.
+</footer>
+
+</div>
