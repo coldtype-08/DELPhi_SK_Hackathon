@@ -30,7 +30,10 @@ def enum_values(contract: dict, field: str) -> list[str]:
     return [v["value"] for v in contract["fields"].get(field, {}).get("values", [])]
 
 
-def derive_label_scope(contract: dict, patient_segment: str) -> str:
+def derive_label_scope(contract: dict, patient_segment: str, signal_type: str | None = None) -> str:
+    # 리퍼포징 신호(미허가 적응증)는 환자군과 무관하게 허가 범위 밖 (08/19 부트스트랩)
+    if signal_type == "REPURPOSING_SIGNAL":
+        return "OUT_OF_LABEL"
     for v in contract["fields"]["patient_segment"]["values"]:
         if v["value"] == patient_segment:
             return v.get("label_scope", "IN_LABEL")
@@ -48,7 +51,7 @@ def derive_purpose_domain(signal_type: str) -> str:
 def validate_claim_fields(contract: dict, fields: dict) -> list[str]:
     """enum 위반 목록을 돌려준다 (빈 리스트 = 통과). 검토등급 체크 C의 일부 (docs/02 §5)."""
     errors = []
-    for key in ("signal_type", "patient_segment", "journey_stage", "barrier_type"):
+    for key in ("signal_type", "patient_segment", "journey_stage", "barrier_type", "solicitation", "sentiment"):
         val = fields.get(key)
         if val is None:
             continue

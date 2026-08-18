@@ -136,8 +136,12 @@ def seed() -> dict:
                 claim_id=f"CLM-{i:04d}", interaction_id=inter["interaction_id"],
                 product="XCOPRI", signal_type=s["signal_type"],
                 patient_segment=s["patient_segment"],
-                label_scope=derive_label_scope(contract, s["patient_segment"]),
+                label_scope=derive_label_scope(contract, s["patient_segment"], s["signal_type"]),
                 journey_stage=s.get("journey_stage"), barrier_type=s.get("barrier_type"),
+                solicitation=s.get("solicitation"), sentiment=s.get("sentiment"),
+                indication_mention=s.get("indication_mention"),
+                concomitant_drugs=s.get("concomitant_drugs"),
+                administration_note=s.get("administration_note"),
                 purpose_domain=derive_purpose_domain(s["signal_type"]),
                 verbatim_quote=s["verbatim"], summary_ko=s["summary_ko"],
                 evidence_json=json.dumps(

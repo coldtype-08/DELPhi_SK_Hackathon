@@ -3,6 +3,8 @@
 > 이 문서가 곧 제품이다. 여섯 곳(추출 출력·서버 검증·DB·Field 폼·대시보드 필터·에이전트 입력)이 이 하나의 정의를 공유한다.
 > 코드화: `backend/app/contract/contract_v0_1.yaml`로 그대로 옮기고, 이 문서와 항상 동기화한다.
 > **v0.1에는 의도적으로 `POST_STROKE`(뇌졸중 후 뇌전증)가 없다** — 코퍼스에 반복 등장시켜 SCP → v0.2 승격을 시연하기 위함.
+> **08/19 부트스트랩 반영**: 격리 AI 초안(`docs/assets/bootstrap-ai-draft.md`) × 36컬럼 원안 × v0.1 3자 대조로 신규 9항목 채택(§2·§6),
+> 용량 수치 5종·AI 사족 컬럼은 사유와 함께 제외, 직함·msl_response 등은 SCP 보류 (DECISIONS 08/19).
 
 ## 1. Interaction (면담 레코드)
 
@@ -32,11 +34,16 @@
 | claim_id | string | ✓ | `CLM-{seq}` |
 | interaction_id | FK | ✓ | |
 | product | enum | ✓ | `XCOPRI` (MVP 고정) |
-| signal_type | enum | ✓ | `UNMET_NEED` `TREATMENT_BARRIER` `INFO_REQUEST` `POSITIVE_OUTCOME` `ACCESS_ISSUE` `SAFETY_CANDIDATE` `OTHER` |
+| signal_type | enum | ✓ | `UNMET_NEED` `TREATMENT_BARRIER` `INFO_REQUEST` `POSITIVE_OUTCOME` `ACCESS_ISSUE` `REPURPOSING_SIGNAL`(미허가 적응증 언급 — 08/19, 자동 `OUT_OF_LABEL`) `SAFETY_CANDIDATE` `OTHER` |
 | patient_segment | enum | ✓* | `PEDIATRIC_TRANSITION`(청소년 12–17세 전환기 — **허가 범위 밖**) `ELDERLY_65_PLUS` `DRE_2PLUS`(2제 이상 실패 약물난치성) `COMORBID_PSYCH` `FEMALE_CHILDBEARING` `NEW_ONSET_ADULT` `UNSPECIFIED` |
-| label_scope | enum | 자동판정 | `IN_LABEL` `OUT_OF_LABEL` — patient_segment가 허가 범위 밖(현재 `PEDIATRIC_TRANSITION`)이면 `OUT_OF_LABEL`로 태깅되고, 이 값을 참조하는 가설은 자동으로 `kind=DEVELOPMENT`가 되어 상업 액션 경로에서 제외된다 (절대 규칙 #5의 코드화) |
+| label_scope | enum | 자동판정 | `IN_LABEL` `OUT_OF_LABEL` — `signal_type=REPURPOSING_SIGNAL`이거나 patient_segment가 허가 범위 밖(현재 `PEDIATRIC_TRANSITION`)이면 `OUT_OF_LABEL`로 태깅되고, 이 값을 참조하는 가설은 자동으로 `kind=DEVELOPMENT`가 되어 상업 액션 경로에서 제외된다 (절대 규칙 #5의 코드화) |
 | journey_stage | enum | | `DIAGNOSIS` `INITIATION` `TITRATION` `MAINTENANCE` `SWITCH` `DISCONTINUATION` |
 | barrier_type | enum | signal_type=TREATMENT_BARRIER면 ✓ | `TITRATION_COMPLEXITY` `DDI_CONCERN`(상호작용) `MONITORING_BURDEN` `REIMBURSEMENT` `AWARENESS_GAP` `FORMULATION_NEED` |
+| solicitation | enum | | `UNSOLICITED` `SOLICITED_BY_MSL` `UNCLEAR` — 오프라벨 언급의 컴플라이언스 의미가 갈리는 축 (08/19, AI 부트스트랩 초안의 발견) |
+| sentiment | enum | | `POSITIVE` `NEUTRAL` `NEGATIVE` `MIXED` — 발언 논조. **HCP 개인별 집계 금지**(절대 규칙 #7) — 세그먼트·토픽 단위 집계만 (08/19, 도메인 오너 판단으로 채택) |
+| indication_mention | text | | 언급된 적응증·질환 원문 (autism, Lennox-Gastaut 등). **enum이 아님** — patient_segment의 SCP 각본(POST_STROKE)과 분리 유지 (08/19) |
+| concomitant_drugs | text | | 병용 약물명, 쉼표 구분 (lamotrigine 등) — "특정 약물 병용 언급 N회" 집계용. 정규화는 vocab 계층 (08/19) |
+| administration_note | text | | 투여법·제형 관찰 (분쇄 투여 등). **용량 수치는 의도적 제외** — 허위 정밀도·규제 민감 (08/19) |
 | purpose_domain | enum | 자동판정 | `MEDICAL` `COMMERCIAL` `SAFETY` `PUBLIC_EVIDENCE` — 조회 권한의 단위 (§9). signal_type에서 결정론적으로 파생: `ACCESS_ISSUE`→`COMMERCIAL`, `SAFETY_CANDIDATE`→`SAFETY`(§6로 분리), 그 외→`MEDICAL` |
 | verbatim_quote | text | ✓ | **원문에서 그대로 복사한 문장** — 원문 substring 여부를 서버가 검증 |
 | summary_ko | string | ✓ | 한 줄 요약 (LLM 생성, 화면 표시용) |
@@ -70,7 +77,9 @@ interactions(§1 필드 전부, document_id FK nullable)
 claims(§2 필드 전부)
 vocab_terms(§3)
 unmapped_terms(surface_form, first_seen_claim_id, occurrence_count)
-safety_candidates(id, interaction_id, verbatim_quote, evidence_json, routed_at, status: OPEN|ACKNOWLEDGED)
+safety_candidates(id, interaction_id, verbatim_quote, evidence_json,
+                  event_terms, severity_note, product_named,     # 08/19 추가 — §6
+                  routed_at, status: OPEN|ACKNOWLEDGED)
 contract_versions(version, body_yaml, status: DRAFT|ACTIVE|RETIRED, approved_by, approved_at)
 schema_change_proposals(id, kind: NEW_ENUM_VALUE|NEW_FIELD, target_field, proposed_value, rationale_ko,
                         example_claim_ids_json, occurrence_count, distinct_hcp_count, impact_note_ko,
@@ -111,6 +120,7 @@ llm_runs(id, purpose, model, prompt_file, prompt_version, schema_name, parser_ve
 - Field 화면에는 "안전성 검토 경로로 전달됨" 배지만 표시, 일반 카드 목록에서 제외.
 - 집계·가설·Screen 에이전트는 이 테이블을 읽지 않는다 (Safety Agent만 별도 조회).
 - 판정 트리거 예: 부작용 경험 서술("복용 후 어지러움"), 중단 사유가 이상반응, 제품 품질 불만.
+- **08/19 추가 필드**: `event_terms`(보고된 용어 — dizziness·간수치 등), `severity_note`(**원문에 언급된 심각성 표현 그대로** — "출퇴근에 지장" 등. 등급 판정·인과관계·MedDRA 코딩은 저장하지 않는다: PV 시스템 관할), `product_named`(제품명 실명 언급 여부 — False면 PV 인계 전 사람 확인 필수).
 
 ## 7. Schema Change Proposal 승격 조건 (기획서 5-3 §4)
 

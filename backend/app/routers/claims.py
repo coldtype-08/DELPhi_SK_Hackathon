@@ -25,6 +25,11 @@ def _to_dict(c: Claim) -> dict:
         "patientSegment": c.patient_segment,
         "journeyStage": c.journey_stage,
         "barrierType": c.barrier_type,
+        "solicitation": c.solicitation,
+        "sentiment": c.sentiment,
+        "indicationMention": c.indication_mention,
+        "concomitantDrugs": c.concomitant_drugs,
+        "administrationNote": c.administration_note,
         "summaryKo": c.summary_ko,
         "verbatimQuote": c.verbatim_quote,
         "evidence": _camel_evidence(json.loads(c.evidence_json)),
@@ -109,6 +114,8 @@ def review_claim(
             "patient_segment": am.get("patientSegment", c.patient_segment),
             "journey_stage": am.get("journeyStage", c.journey_stage),
             "barrier_type": am.get("barrierType", c.barrier_type),
+            "solicitation": am.get("solicitation", c.solicitation),
+            "sentiment": am.get("sentiment", c.sentiment),
         }
         errors = validate_claim_fields(contract, fields)
         if errors:
@@ -117,10 +124,15 @@ def review_claim(
         c.patient_segment = fields["patient_segment"]
         c.journey_stage = fields["journey_stage"]
         c.barrier_type = fields["barrier_type"]
+        c.solicitation = fields["solicitation"]
+        c.sentiment = fields["sentiment"]
+        c.indication_mention = am.get("indicationMention", c.indication_mention)
+        c.concomitant_drugs = am.get("concomitantDrugs", c.concomitant_drugs)
+        c.administration_note = am.get("administrationNote", c.administration_note)
         if am.get("summaryKo"):
             c.summary_ko = am["summaryKo"]
         # 수정 후에도 자동판정 재계산 (절대 규칙 #5 코드화)
-        c.label_scope = derive_label_scope(contract, c.patient_segment)
+        c.label_scope = derive_label_scope(contract, c.patient_segment, c.signal_type)
         c.purpose_domain = derive_purpose_domain(c.signal_type)
 
     c.status = "APPROVED" if action in ("approve", "amend") else "REJECTED"

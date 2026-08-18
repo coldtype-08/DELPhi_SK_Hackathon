@@ -49,6 +49,8 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 { "id": "CLM-0042", "interactionId": "INT-20250912-001",
   "signalType": "TREATMENT_BARRIER", "patientSegment": "ELDERLY_65_PLUS",
   "journeyStage": "TITRATION", "barrierType": "DDI_CONCERN",
+  "solicitation": "UNSOLICITED", "sentiment": null,
+  "indicationMention": null, "concomitantDrugs": null, "administrationNote": null,
   "summaryKo": "고령 병용환자에서 상호작용 걱정으로 시작을 주저함",
   "verbatimQuote": "어르신들은 약이 워낙 많아서 상호작용부터 걱정된다고 하셨다",
   "evidence": { "docId": "DOC-20250912-001", "charStart": 412, "charEnd": 448 },

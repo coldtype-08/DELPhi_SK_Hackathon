@@ -6,6 +6,7 @@
       "signal_type": "UNMET_NEED",
       "patient_segment": "PEDIATRIC_TRANSITION",
       "journey_stage": "INITIATION",
+      "solicitation": "SOLICITED_BY_MSL",
       "summary_ko": "청소년(12–17) 약물난치성에서 치료 선택지 공백 — 성인 허가로 18세까지 대기"
     },
     {
@@ -13,6 +14,7 @@
       "signal_type": "UNMET_NEED",
       "patient_segment": "PEDIATRIC_TRANSITION",
       "journey_stage": "DIAGNOSIS",
+      "solicitation": "UNSOLICITED",
       "summary_ko": "17세 환자 보호자 상담에서 반복되는 '성인까지 대안 없음' — 독립 HCP의 동일 공백 신호"
     },
     {
@@ -21,6 +23,7 @@
       "patient_segment": "ELDERLY_65_PLUS",
       "journey_stage": "INITIATION",
       "barrier_type": "DDI_CONCERN",
+      "solicitation": "UNSOLICITED",
       "summary_ko": "노인 다약제 환자에서 상호작용 우려로 시작 주저 (In-label 장벽)"
     },
     {
@@ -28,6 +31,7 @@
       "signal_type": "POSITIVE_OUTCOME",
       "patient_segment": "DRE_2PLUS",
       "journey_stage": "MAINTENANCE",
+      "sentiment": "POSITIVE",
       "summary_ko": "약물난치성 성인에서 수년 만의 반응 경험 보고 (긍정 신호)"
     },
     {
@@ -36,6 +40,7 @@
       "signal_type": "UNMET_NEED",
       "patient_segment": "PEDIATRIC_TRANSITION",
       "journey_stage": "INITIATION",
+      "solicitation": "UNSOLICITED",
       "summary_ko": "학회 포스터 세션에서 청소년 난치성 배제 문제 제기 — 18세까지 대안 부재 (치료 공백)"
     },
     {
@@ -43,6 +48,7 @@
       "signal_type": "INFO_REQUEST",
       "patient_segment": "PEDIATRIC_TRANSITION",
       "journey_stage": "INITIATION",
+      "solicitation": "UNSOLICITED",
       "summary_ko": "같은 대화에서 이어진 청소년 안전성·PK 자료 요청 (자료 요청)"
     }
   ]

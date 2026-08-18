@@ -21,7 +21,9 @@ def list_safety(db: Session = Depends(get_db), role: str = Depends(get_role)):
     rows = db.execute(select(SafetyCandidate).order_by(SafetyCandidate.id)).scalars().all()
     return {"data": [{
         "id": s.id, "interactionId": s.interaction_id, "verbatimQuote": s.verbatim_quote,
-        "evidence": json.loads(s.evidence_json), "routedAt": s.routed_at, "status": s.status,
+        "evidence": json.loads(s.evidence_json),
+        "eventTerms": s.event_terms, "severityNote": s.severity_note, "productNamed": s.product_named,
+        "routedAt": s.routed_at, "status": s.status,
     } for s in rows]}
 
 

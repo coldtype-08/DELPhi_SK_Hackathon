@@ -52,6 +52,12 @@ class Claim(Base):
     journey_stage: Mapped[str | None] = mapped_column(Text, nullable=True)
     barrier_type: Mapped[str | None] = mapped_column(Text, nullable=True)
     purpose_domain: Mapped[str] = mapped_column(Text)                # 조회 게이트의 단위 (docs/02 §9)
+    # ── 08/19 부트스트랩 추가 (docs/02 §2) ──
+    solicitation: Mapped[str | None] = mapped_column(Text, nullable=True)        # UNSOLICITED | SOLICITED_BY_MSL | UNCLEAR
+    indication_mention: Mapped[str | None] = mapped_column(Text, nullable=True)  # 언급된 적응증 원문 (autism, LGS…)
+    concomitant_drugs: Mapped[str | None] = mapped_column(Text, nullable=True)   # 병용 약물명 (쉼표 구분)
+    administration_note: Mapped[str | None] = mapped_column(Text, nullable=True) # 투여법·제형 관찰
+    sentiment: Mapped[str | None] = mapped_column(Text, nullable=True)           # 발언 논조 — HCP별 집계 금지 (절대규칙 #7)
     verbatim_quote: Mapped[str] = mapped_column(Text)
     summary_ko: Mapped[str] = mapped_column(Text)
     evidence_json: Mapped[str] = mapped_column(Text)                 # {doc_id, char_start, char_end} — 문서 전문 기준
@@ -87,6 +93,10 @@ class SafetyCandidate(Base):
     interaction_id: Mapped[str] = mapped_column(Text)
     verbatim_quote: Mapped[str] = mapped_column(Text)
     evidence_json: Mapped[str] = mapped_column(Text)
+    # ── 08/19 부트스트랩 추가: 보고 용어·제품 실명 여부 (중증도·인과관계는 PV 관할 — 저장 금지) ──
+    event_terms: Mapped[str | None] = mapped_column(Text, nullable=True)     # 예: "dizziness, somnolence"
+    severity_note: Mapped[str | None] = mapped_column(Text, nullable=True)   # 원문에 언급된 심각성 표현 그대로 — 등급 "판정"은 PV 관할
+    product_named: Mapped[bool | None] = mapped_column(Boolean, nullable=True)  # False면 PV 인계 전 사람 확인 필수
     routed_at: Mapped[str] = mapped_column(Text)
     status: Mapped[str] = mapped_column(Text, default="OPEN")        # OPEN | ACKNOWLEDGED
 
