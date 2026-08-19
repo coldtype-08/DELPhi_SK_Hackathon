@@ -50,6 +50,31 @@ Railway 대시보드에서 클릭할 것을 최소화하도록 설정 파일을 
 
 > 교훈: **브라우저를 하나만 보고 "된다"고 판단하지 말 것.** 사파리에서 멀쩡한 화면이 Chrome에서는 백지였다.
 
+## 1.7 사내망(SK 오피스)에서 railway.com 자체가 안 열릴 때 (08/19 원인 확정)
+
+**증상**: 크롬에서 railway.com(대시보드·로그인 확인 페이지 전부)이 백지 + `net::ERR_INVALID_CHUNKED_ENCODING`. **배포된 우리 앱 3개와는 무관** — 그쪽은 `compress: false`로 이미 해결됐고 사내 크롬에서도 정상.
+
+**원인**: 사내 보안장비(Palo Alto SSL Forward Proxy — 인증서 발급자가 `Forward Trust CA`로 바뀌어 있음)가 TLS를 복호화·재암호화하면서 railway.com의 chunked 응답을 깨뜨린다. GlobalProtect VPN이 모든 트래픽을 터널(utun)로 회사에 되돌려 보내므로 **휴대폰 테더링으로도 우회 불가** — 검사가 망이 아니라 노트북을 따라다닌다. Render·Fly·Vercel도 같은 장비를 통과함을 확인(08/19) → **플랫폼 이사는 해결책이 아님**.
+
+**우회 3단** (위에서부터 시도):
+1. **사파리** — 깨진 응답에 관대해서 대부분 열린다 (느릴 수 있음).
+2. **휴대폰 브라우저** — VPN이 없는 유일하게 깨끗한 경로. CLI 로그인 승인 페이지는 이걸로 여는 게 확실.
+3. **IT 티켓(근본 해결)** — `railway.com, *.railway.com, *.up.railway.app` SSL 복호화 예외 요청.
+
+**일상 운용은 CLI로 한다** (대시보드 접속 자체가 거의 불필요해짐 — CLI↔Railway API 통신은 검사망 아래서도 정상):
+
+```bash
+brew install railway
+railway login --browserless   # 터미널에 링크+코드 → 휴대폰/사파리에서 코드 승인 (1회)
+railway link --project glistening-fascination --environment production   # 레포 루트에서 1회
+railway status                              # 3서비스 상태·URL 한눈에
+railway logs --service DELPHi_Backend      # 배포 로그 (DELPHi_Console·DELPHi_Field 동일)
+railway variables --service DELPHi_Backend # 환경변수 확인/설정
+railway redeploy --service DELPHi_Backend  # 강제 재배포
+```
+
+**대시보드가 꼭 필요한 일만 사파리/휴대폰으로**: 플랜 전환·결제, 볼륨/도메인 생성, 이전 배포로 롤백 클릭, Watch Paths 설정.
+
 ## 2. 구성
 
 ```
