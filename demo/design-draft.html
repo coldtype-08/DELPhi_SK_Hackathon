@@ -266,6 +266,8 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>추이</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="p-safe">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>안전성</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-data">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>데이터</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="p-field">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>Field 앱</button>
   </div>
@@ -833,6 +835,46 @@
     </div></details>
   </div>
 
+  <!-- ═══ 데이터 원장 ═══ -->
+  <div class="panel" id="p-data" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>데이터 원장</h1>
+      <div class="desc">화면 뒤에서 실제로 쌓이는 SQL 테이블 — 모든 조회는 권한 게이트를 지나갑니다.</div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">파이프라인</div><div class="v" style="font-size:17px;line-height:1.5">문서 63 → 단위 118<br>→ 후보 62 → 승인 27</div></div>
+      <div class="kpi"><div class="k">반려 · 안전성 분리</div><div class="v">3 <small>·</small> 5<small>건</small></div><div class="s">반려도 보존 — 삭제 없음</div></div>
+      <div class="kpi"><div class="k">LLM 호출 기록</div><div class="v">67<small>회</small></div><div class="s">모델·프롬프트 버전 전부 기록</div></div>
+      <div class="kpi"><div class="k">활성 Contract</div><div class="v">v0.1</div><div class="s">시드 2026-08-19 · DEMO_OFFLINE=0</div></div>
+    </div>
+
+    <div class="filters" style="margin-top:14px">
+      <span class="lbl">테이블</span>
+      <button class="fchip on" data-t="documents">documents</button>
+      <button class="fchip" data-t="interactions">interactions</button>
+      <button class="fchip" data-t="claims">claims</button>
+      <button class="fchip" data-t="safety">safety_candidates</button>
+      <button class="fchip" data-t="llm">llm_runs</button>
+      <button class="fchip" data-t="contract">contract_versions</button>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2 id="dtTitle" style="font-family:var(--mono);font-size:13.5px">documents</h2><span class="d" id="dtDesc">원본 문서 — 마스킹 후 불변, 모든 문자 오프셋의 기준</span></div>
+      <div style="padding:4px 16px 8px;overflow-x:auto" id="dtBody"></div>
+      <div style="padding:0 16px 14px">
+        <div style="font-size:9.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-bottom:4px">이 화면의 쿼리 (롤: CLINICAL_STRATEGY)</div>
+        <pre id="dtSql" style="font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--navy);background:var(--sky-soft);border-radius:10px;padding:9px 12px;overflow-x:auto;margin:0"></pre>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      모든 조회는 <b>단일 게이트(access.py)</b>를 지나며, 권한 밖 테이블은 빈 배열이 아니라 <b>403으로 명시 거부</b>한다(조용한 누락 금지).
+      COMMERCIAL 롤에는 raw_text·hcp_ref 필드 자체가 응답에서 사라진다. SQL은 <b>ANSI 범위만</b> 사용 — 같은 스키마·쿼리를 Snowflake로 그대로 이관하기 위함(docs/01 §2).
+      추출값은 CANDIDATE로 태어나 사람 승인 후에만 집계에 들어간다.
+    </div></details>
+  </div>
+
   <!-- ═══ Field 앱 ═══ -->
   <div class="panel" id="p-field" role="tabpanel">
     <div style="padding-top:20px">
@@ -992,6 +1034,87 @@
       d.textContent = st;
       map.appendChild(d);
     });
+  })();
+
+  // 데이터 원장 — 테이블 전환 (합성 데이터 예시, 검산 일치)
+  (function () {
+    var T = {
+      documents: { d: "원본 문서 — 마스킹 후 불변, 모든 문자 오프셋의 기준",
+        sql: "SELECT id, source_type, source_format, language, sha256, imported_at\nFROM documents ORDER BY imported_at DESC;",
+        h: ["id", "source_type", "format", "lang", "sha256", "imported_at"],
+        r: [
+          ["DOC-20251201-001", "HIGHLIGHT_DOC", "DOCX", "EN", "a3f2…9c", "2026-08-19 21:02"],
+          ["DOC-20260315-007", "CONGRESS_REPORT", "PDF", "EN", "77b0…e1", "2026-08-19 21:02"],
+          ["DOC-20260702-041", "MEETING_NOTE", "TXT", "EN", "c19d…44", "2026-08-19 21:02"],
+          ["DOC-20260714-061", "VOICE_TRANSCRIPT", "TXT", "KO", "f08a…b7", "2026-08-19 21:02"],
+          ["… 59행 더", "", "", "", "", "합계 63"]] },
+      interactions: { d: "면담 단위 — 다중 HCP 문서는 블록으로 분리되어 여러 행",
+        sql: "SELECT interaction_id, hcp_ref, hcp_specialty, region, source_type, occurred_on\nFROM interactions ORDER BY occurred_on DESC;",
+        h: ["interaction_id", "hcp_ref", "specialty", "region", "source_type", "occurred_on"],
+        r: [
+          ["INT-20260714-001", "HCP-021", "NEUROLOGY", "WEST", "VOICE_TRANSCRIPT", "2026-07-14"],
+          ["INT-20260702-003", "HCP-005", "EPILEPTOLOGY", "SOUTH", "HIGHLIGHT_DOC", "2026-07-02"],
+          ["INT-20260628-002", "HCP-009", "GENERAL", "MIDWEST", "MEETING_NOTE", "2026-06-28"],
+          ["INT-20260615-004", "HCP-012", "NEUROLOGY", "NORTHEAST", "CALL_NOTE", "2026-06-15"],
+          ["… 114행 더", "", "", "", "", "합계 118"]] },
+      claims: { d: "추출값 — verbatim은 원문 substring 검증을 통과해야만 저장된다",
+        sql: "SELECT claim_id, signal_type, patient_segment, label_scope, review_grade, status\nFROM claims\nWHERE purpose_domain IN ('MEDICAL','PUBLIC_EVIDENCE')  -- access.py 게이트\nORDER BY claim_id;",
+        h: ["claim_id", "signal_type", "patient_segment", "label_scope", "evidence", "grade", "status"],
+        r: [
+          ["CLM-0042", "UNMET_NEED", "PEDIATRIC_TRANSITION", "OUT_OF_LABEL", "{doc_id, 412, 448}", "H", "APPROVED"],
+          ["CLM-0047", "UNMET_NEED", "PEDIATRIC_TRANSITION", "OUT_OF_LABEL", "{doc_id, 120, 163}", "M", "CANDIDATE"],
+          ["CLM-0038", "TREATMENT_BARRIER", "ELDERLY_65_PLUS", "IN_LABEL", "{doc_id, 88, 131}", "M", "CANDIDATE"],
+          ["CLM-0051", "INFO_REQUEST", "PEDIATRIC_TRANSITION", "OUT_OF_LABEL", "{doc_id, 301, 340}", "H", "APPROVED"],
+          ["… 58행 더", "", "", "", "", "", "후보 62 = 승인 27 + 대기 32 + 반려 3"]] },
+      safety: { locked: true, d: "이상사례 후보 — 물리적으로 분리된 테이블",
+        sql: "SELECT * FROM safety_candidates;\n-- 403 PURPOSE_SCOPE_VIOLATION" },
+      llm: { d: "생성 조건 5종(모델·프롬프트·스키마·파서·외부시점) — 재현성의 근거",
+        sql: "SELECT id, purpose, model, prompt_file, prompt_version, schema_name, parser_version, latency_ms\nFROM llm_runs ORDER BY id DESC;",
+        h: ["id", "purpose", "model", "prompt_file", "ver", "schema", "parser", "ms"],
+        r: [
+          ["67", "field.extract", "claude-sonnet-5", "extract_ko.md", "v1", "claim_cand_v0_1", "sense.extract@3", "2,140"],
+          ["66", "sense.extract", "claude-sonnet-5", "extract.md", "v1", "claim_cand_v0_1", "sense.extract@3", "1,980"],
+          ["65", "sense.extract", "claude-sonnet-5", "extract.md", "v1", "claim_cand_v0_1", "sense.extract@3", "2,310"],
+          ["64", "sense.extract", "claude-sonnet-5", "extract.md", "v1", "claim_cand_v0_1", "sense.extract@3", "2,050"],
+          ["… 63행 더", "", "", "", "", "", "", "합계 67"]] },
+      contract: { d: "스키마 버전 — AI는 바꿀 수 없고, 과거 버전은 보존된다",
+        sql: "SELECT version, status, approved_by, approved_at FROM contract_versions;",
+        h: ["version", "status", "approved_by", "approved_at"],
+        r: [
+          ["0.1", "ACTIVE", "건태 (Data Steward 대행)", "2026-08-19"],
+          ["0.2", "— (SCP 승인 시 생성)", "", ""]] }
+    };
+    var title = document.getElementById("dtTitle"), desc = document.getElementById("dtDesc"),
+        body = document.getElementById("dtBody"), sqlEl = document.getElementById("dtSql");
+    function render(key) {
+      var t = T[key];
+      title.textContent = key === "safety" ? "safety_candidates" : key === "llm" ? "llm_runs" : key === "contract" ? "contract_versions" : key;
+      desc.textContent = t.d;
+      sqlEl.textContent = t.sql.replace(/\\n/g, "\n");
+      if (t.locked) {
+        body.innerHTML = '<div style="border:1.5px dashed rgba(228,83,107,.5);background:var(--rust-soft);border-radius:12px;padding:14px 16px;margin:8px 0">' +
+          '<div style="font-family:var(--mono);font-size:12px;font-weight:800;color:var(--rust)">403 PURPOSE_SCOPE_VIOLATION</div>' +
+          '<div style="font-size:12px;color:var(--ink);margin-top:4px;line-height:1.6">현재 롤(CLINICAL_STRATEGY)은 SAFETY 도메인을 조회할 수 없습니다. ' +
+          '빈 배열로 감추지 않고 명시적으로 거부합니다 — 조용한 누락은 데이터가 없는 것과 구분되지 않기 때문입니다. SAFETY 롤로 전환하면 안전성 탭에서 열람됩니다.</div></div>';
+        return;
+      }
+      var html = "<table><thead><tr>" + t.h.map(function (h) { return "<th>" + h + "</th>"; }).join("") + "</tr></thead><tbody>";
+      t.r.forEach(function (row) {
+        html += "<tr>" + row.map(function (c, i) {
+          var cls = i === 0 ? ' style="font-family:var(--mono);font-size:11px;font-weight:700;color:var(--navy)"' : ' style="font-family:var(--mono);font-size:11px"';
+          return "<td" + cls + ">" + c + "</td>";
+        }).join("") + "</tr>";
+      });
+      body.innerHTML = html + "</tbody></table>";
+    }
+    document.querySelectorAll('#p-data .fchip').forEach(function (ch) {
+      ch.addEventListener("click", function () {
+        document.querySelectorAll('#p-data .fchip').forEach(function (x) { x.classList.remove("on"); });
+        ch.classList.add("on");
+        render(ch.dataset.t);
+      });
+    });
+    render("documents");
   })();
 
   // Field 캡처 라이브 데모 — 대화 재생 + 실시간 스키마 캐치 (연출)
