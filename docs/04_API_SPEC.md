@@ -6,7 +6,7 @@
 
 ## 0. 공통 헤더 — 롤과 목적 권한 (docs/02 §9)
 
-모든 요청에 `X-Delphi-Role` 헤더를 붙인다. 값: `MEDICAL_AFFAIRS` `CLINICAL_STRATEGY` `SAFETY` `COMMERCIAL` `DATA_STEWARD`. 미지정 시 `CLINICAL_STRATEGY`로 간주(MVP 편의).
+모든 요청에 `X-Delphi-Role` 헤더를 붙인다. 값: `ADMIN`(시연·운영, 열람 전용 — 08/20) `MEDICAL_AFFAIRS` `CLINICAL_STRATEGY` `SAFETY` `COMMERCIAL` `DATA_STEWARD`. 미지정 시 `CLINICAL_STRATEGY`로 간주(MVP 편의). 시연 로그인 화면은 페르소나 선택 = 헤더 값 결정 장치이며 실제 인증은 파일럿(SSO) 몫이다.
 
 - 서버는 롤에 허용된 `purpose_domain`으로만 조회한다. 권한 밖 리소스는 **`403` + `{"error":{"code":"PURPOSE_SCOPE_VIOLATION"}}`** — 빈 배열로 감추지 않는다.
 - `COMMERCIAL` 롤 응답에서는 `rawText`·`verbatimQuote`·`hcpRef`가 **필드 자체로 존재하지 않고**, 집계는 `distinctHcp ≥ 3` 그룹만 반환된다.

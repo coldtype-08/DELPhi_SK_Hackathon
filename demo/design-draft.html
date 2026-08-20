@@ -245,13 +245,56 @@
   .rec{width:8px;height:8px;border-radius:50%;background:var(--rust);display:inline-block;animation:blink 1.2s infinite}
   @keyframes blink{50%{opacity:.25}}
   @media (prefers-reduced-motion:reduce){.cline{transition:none}.dchip{animation:none}.rec{animation:none}}
+  /* 시연 로그인 */
+  .login-ov{position:fixed;inset:0;z-index:60;background:rgba(14,27,77,.38);backdrop-filter:blur(7px);display:flex;align-items:center;justify-content:center;padding:20px}
+  .login-card{background:#F4F6FC;border:1px solid rgba(255,255,255,.9);border-radius:24px;max-width:720px;width:100%;padding:30px 30px 24px;box-shadow:0 44px 90px -30px rgba(14,27,77,.55)}
+  .login-card h2{font-size:20px;font-weight:900;color:var(--navy);letter-spacing:-.01em}
+  .login-card .sub{font-size:12px;color:var(--muted);margin-top:3px}
+  .personas{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:18px}
+  .persona{text-align:left;cursor:pointer;font:inherit;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;transition:border-color .15s,transform .15s}
+  .persona:hover{border-color:var(--sky);transform:translateY(-1px)}
+  .persona.main{border-color:var(--orange);background:linear-gradient(165deg,#fff,#FFF7EC)}
+  .persona .nm{font-size:13.5px;font-weight:800;color:var(--navy)}
+  .persona .rd{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5}
+  .login-note{font-size:10.5px;color:var(--muted);margin-top:14px;line-height:1.6}
+  /* 데이터 원장 그리드 (Snowflake풍) */
+  .sfgrid th{white-space:nowrap}
+  .sfgrid th small{display:block;font-size:8.5px;font-weight:600;color:#9aa3c4;text-transform:none;letter-spacing:0}
+  .sfgrid td{white-space:nowrap;font-family:var(--mono);font-size:10.5px;max-width:260px;overflow:hidden;text-overflow:ellipsis}
+  .sfgrid td.rownum,.sfgrid th.rownum{color:#B3BAD4;font-size:9.5px;text-align:right;padding-right:6px}
+  .nullv{color:#B3BAD4;font-style:italic}
+  .grid-foot{display:flex;gap:10px;font-size:10.5px;color:var(--muted);padding:8px 2px 0;font-variant-numeric:tabular-nums}
 </style>
 <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<div class="login-ov" id="loginOv">
+  <div class="login-card">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="width:10px;height:10px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 5px rgba(239,139,28,.18)"></span>
+      <h2>DELPHi Console — 시연 로그인</h2>
+    </div>
+    <div class="sub">계정을 선택하면 그 롤의 눈으로 화면이 렌더링됩니다. 상단에서 언제든 전환할 수 있습니다.</div>
+    <div class="personas">
+      <button class="persona main" data-role="ADMIN"><div class="nm">관리자 <span style="font-size:10px;color:var(--orange-deep)">시연 기본</span></div><div class="rd">전 영역 열람 전용 — 쓰기·승인 권한 없음. 롤 대조 시연의 출발점</div></button>
+      <button class="persona" data-role="CLINICAL_STRATEGY"><div class="nm">임상·Medical 전략</div><div class="rd">MEDICAL·공개근거 조회, 가설 승인 권한. 안전성 테이블은 403</div></button>
+      <button class="persona" data-role="MEDICAL_AFFAIRS"><div class="nm">현장 MSL</div><div class="rd">자기 수집분 원문 + 승인 데이터. AE는 "분기됨" 사실만</div></button>
+      <button class="persona" data-role="SAFETY"><div class="nm">PV (안전성)</div><div class="rd">safety_candidates의 유일한 열람자 — 나머지 원장은 403</div></button>
+      <button class="persona" data-role="COMMERCIAL"><div class="nm">상업 전략</div><div class="rd">원문·개인 식별 불가, 집계만(distinct_hcp ≥ 3) · Development 가설 비노출</div></button>
+    </div>
+    <div class="login-note">MVP 구현은 <b>X-Delphi-Role 헤더 주입</b>(docs/04 §0) — 이 화면은 그 선택 장치이자 파일럿 SSO의 자리. 권한 강제는 프론트가 아니라 서버의 조회 게이트(access.py)가 한다.</div>
+  </div>
+</div>
 <div class="topbar"><div class="topbar-in">
   <div class="brand">
     <span class="nm">DELPHi</span><span class="sub">Growth Intelligence · Console</span>
     <span class="chip-draft">디자인 초안 · 합성 데이터</span>
-    <span class="chip-role">롤: CLINICAL_STRATEGY</span>
+    <select id="roleSel" class="chip-role" style="border:none;cursor:pointer;font:inherit;font-size:10.5px;font-weight:700">
+      <option value="ADMIN">롤: 관리자 (전체 열람)</option>
+      <option value="CLINICAL_STRATEGY">롤: CLINICAL_STRATEGY</option>
+      <option value="MEDICAL_AFFAIRS">롤: MEDICAL_AFFAIRS</option>
+      <option value="SAFETY">롤: SAFETY (PV)</option>
+      <option value="COMMERCIAL">롤: COMMERCIAL</option>
+    </select>
   </div>
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" aria-selected="true" data-panel="p-home">
@@ -527,7 +570,10 @@
     </div>
 
     <div class="card" style="padding-top:12px;padding-bottom:6px">
-      <div class="hyp">
+      <div id="hypSuppressed" class="hide" style="margin:0 16px 12px;border:1.5px dashed var(--line);border-radius:12px;padding:11px 14px;font-size:12px;color:var(--muted)">
+        COMMERCIAL 롤 — Development 가설 1건이 목록에서 억제되었습니다 (suppressedRowCount: 1). 숨겼다는 사실은 숨기지 않습니다.
+      </div>
+      <div class="hyp" id="hypDev">
         <div class="top">
           <span class="pill pill-auto">자동 생성 · 14건/9인</span>
           <span class="pill pill-dev">DEVELOPMENT</span>
@@ -773,6 +819,12 @@
       <div class="desc">부작용 의심 보고는 여기로만 모입니다 — 일반 분석과 완전히 분리.</div>
     </div>
 
+    <div id="safeDenied" class="hide" style="margin-top:16px;border:1.5px dashed rgba(228,83,107,.5);background:var(--rust-soft);border-radius:14px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:12.5px;font-weight:800;color:var(--rust)">403 PURPOSE_SCOPE_VIOLATION</div>
+      <div style="font-size:12.5px;margin-top:5px;line-height:1.65">현재 롤은 SAFETY 도메인을 조회할 수 없습니다. 상단 스위처에서 <b>관리자</b> 또는 <b>SAFETY</b> 롤로 전환하세요 — 빈 화면으로 감추지 않고 명시적으로 거부합니다.</div>
+    </div>
+    <div id="safeBody">
+
     <div class="kpis">
       <div class="kpi"><div class="k">들어온 보고</div><div class="v">5<small>건</small></div><div class="s">일반 집계·가설에 0건 혼입</div></div>
       <div class="kpi"><div class="k">PV 전달 대기</div><div class="v">3<small>건</small></div><div class="s">OPEN</div></div>
@@ -833,13 +885,14 @@
     <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
       심각도 지수·가중 점수를 만들지 않는다 — <b>등급·인과 판정은 PV 시스템의 관할</b>이고, 여기는 보고 용어와 원문의 심각성 표현만 보존해 라우팅 상태를 추적한다. AE 후보는 claims와 물리적으로 분리된 테이블에만 저장되며 일반 집계·가설·레이더 어디에도 섞이지 않는다.
     </div></details>
+    </div>
   </div>
 
   <!-- ═══ 데이터 원장 ═══ -->
   <div class="panel" id="p-data" role="tabpanel">
     <div style="padding-top:20px">
       <h1>데이터 원장</h1>
-      <div class="desc">화면 뒤에서 실제로 쌓이는 SQL 테이블 — 모든 조회는 권한 게이트를 지나갑니다.</div>
+      <div class="desc">화면 뒤의 SQL 원장 — 테이블 14개, 전 컬럼 생짜 출력. 모든 조회가 권한 게이트를 지나며, 롤을 바꾸면 보이는 것이 달라집니다.</div>
     </div>
 
     <div class="kpis">
@@ -854,16 +907,24 @@
       <button class="fchip on" data-t="documents">documents</button>
       <button class="fchip" data-t="interactions">interactions</button>
       <button class="fchip" data-t="claims">claims</button>
-      <button class="fchip" data-t="safety">safety_candidates</button>
-      <button class="fchip" data-t="llm">llm_runs</button>
-      <button class="fchip" data-t="contract">contract_versions</button>
+      <button class="fchip" data-t="vocab_terms">vocab_terms</button>
+      <button class="fchip" data-t="unmapped_terms">unmapped_terms</button>
+      <button class="fchip" data-t="safety_candidates">safety_candidates</button>
+      <button class="fchip" data-t="contract_versions">contract_versions</button>
+      <button class="fchip" data-t="schema_change_proposals">schema_change_proposals</button>
+      <button class="fchip" data-t="hypotheses">hypotheses</button>
+      <button class="fchip" data-t="screen_findings">screen_findings</button>
+      <button class="fchip" data-t="board_minutes">board_minutes</button>
+      <button class="fchip" data-t="decisions">decisions</button>
+      <button class="fchip" data-t="blocked_log">blocked_log</button>
+      <button class="fchip" data-t="llm_runs">llm_runs</button>
     </div>
 
     <div class="card">
       <div class="card-h"><h2 id="dtTitle" style="font-family:var(--mono);font-size:13.5px">documents</h2><span class="d" id="dtDesc">원본 문서 — 마스킹 후 불변, 모든 문자 오프셋의 기준</span></div>
       <div style="padding:4px 16px 8px;overflow-x:auto" id="dtBody"></div>
       <div style="padding:0 16px 14px">
-        <div style="font-size:9.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-bottom:4px">이 화면의 쿼리 (롤: CLINICAL_STRATEGY)</div>
+        <div style="font-size:9.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-bottom:4px">이 화면의 쿼리 — 롤 게이트는 SQL 주석으로 표시</div>
         <pre id="dtSql" style="font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--navy);background:var(--sky-soft);border-radius:10px;padding:9px 12px;overflow-x:auto;margin:0"></pre>
       </div>
     </div>
@@ -1036,77 +1097,142 @@
     });
   })();
 
-  // 데이터 원장 — 테이블 전환 (합성 데이터 예시, 검산 일치)
+  // 데이터 원장 — 14개 테이블 전 컬럼 (Snowflake풍) · 롤 반응형 (합성 데이터 예시, 검산 일치)
   (function () {
+    var N = null; // NULL 표기
     var T = {
-      documents: { d: "원본 문서 — 마스킹 후 불변, 모든 문자 오프셋의 기준",
-        sql: "SELECT id, source_type, source_format, language, sha256, imported_at\nFROM documents ORDER BY imported_at DESC;",
-        h: ["id", "source_type", "format", "lang", "sha256", "imported_at"],
-        r: [
-          ["DOC-20251201-001", "HIGHLIGHT_DOC", "DOCX", "EN", "a3f2…9c", "2026-08-19 21:02"],
-          ["DOC-20260315-007", "CONGRESS_REPORT", "PDF", "EN", "77b0…e1", "2026-08-19 21:02"],
-          ["DOC-20260702-041", "MEETING_NOTE", "TXT", "EN", "c19d…44", "2026-08-19 21:02"],
-          ["DOC-20260714-061", "VOICE_TRANSCRIPT", "TXT", "KO", "f08a…b7", "2026-08-19 21:02"],
-          ["… 59행 더", "", "", "", "", "합계 63"]] },
-      interactions: { d: "면담 단위 — 다중 HCP 문서는 블록으로 분리되어 여러 행",
-        sql: "SELECT interaction_id, hcp_ref, hcp_specialty, region, source_type, occurred_on\nFROM interactions ORDER BY occurred_on DESC;",
-        h: ["interaction_id", "hcp_ref", "specialty", "region", "source_type", "occurred_on"],
-        r: [
-          ["INT-20260714-001", "HCP-021", "NEUROLOGY", "WEST", "VOICE_TRANSCRIPT", "2026-07-14"],
-          ["INT-20260702-003", "HCP-005", "EPILEPTOLOGY", "SOUTH", "HIGHLIGHT_DOC", "2026-07-02"],
-          ["INT-20260628-002", "HCP-009", "GENERAL", "MIDWEST", "MEETING_NOTE", "2026-06-28"],
-          ["INT-20260615-004", "HCP-012", "NEUROLOGY", "NORTHEAST", "CALL_NOTE", "2026-06-15"],
-          ["… 114행 더", "", "", "", "", "합계 118"]] },
-      claims: { d: "추출값 — verbatim은 원문 substring 검증을 통과해야만 저장된다",
-        sql: "SELECT claim_id, signal_type, patient_segment, label_scope, review_grade, status\nFROM claims\nWHERE purpose_domain IN ('MEDICAL','PUBLIC_EVIDENCE')  -- access.py 게이트\nORDER BY claim_id;",
-        h: ["claim_id", "signal_type", "patient_segment", "label_scope", "evidence", "grade", "status"],
-        r: [
-          ["CLM-0042", "UNMET_NEED", "PEDIATRIC_TRANSITION", "OUT_OF_LABEL", "{doc_id, 412, 448}", "H", "APPROVED"],
-          ["CLM-0047", "UNMET_NEED", "PEDIATRIC_TRANSITION", "OUT_OF_LABEL", "{doc_id, 120, 163}", "M", "CANDIDATE"],
-          ["CLM-0038", "TREATMENT_BARRIER", "ELDERLY_65_PLUS", "IN_LABEL", "{doc_id, 88, 131}", "M", "CANDIDATE"],
-          ["CLM-0051", "INFO_REQUEST", "PEDIATRIC_TRANSITION", "OUT_OF_LABEL", "{doc_id, 301, 340}", "H", "APPROVED"],
-          ["… 58행 더", "", "", "", "", "", "후보 62 = 승인 27 + 대기 32 + 반려 3"]] },
-      safety: { locked: true, d: "이상사례 후보 — 물리적으로 분리된 테이블",
-        sql: "SELECT * FROM safety_candidates;\n-- 403 PURPOSE_SCOPE_VIOLATION" },
-      llm: { d: "생성 조건 5종(모델·프롬프트·스키마·파서·외부시점) — 재현성의 근거",
-        sql: "SELECT id, purpose, model, prompt_file, prompt_version, schema_name, parser_version, latency_ms\nFROM llm_runs ORDER BY id DESC;",
-        h: ["id", "purpose", "model", "prompt_file", "ver", "schema", "parser", "ms"],
-        r: [
-          ["67", "field.extract", "claude-sonnet-5", "extract_ko.md", "v1", "claim_cand_v0_1", "sense.extract@3", "2,140"],
-          ["66", "sense.extract", "claude-sonnet-5", "extract.md", "v1", "claim_cand_v0_1", "sense.extract@3", "1,980"],
-          ["65", "sense.extract", "claude-sonnet-5", "extract.md", "v1", "claim_cand_v0_1", "sense.extract@3", "2,310"],
-          ["64", "sense.extract", "claude-sonnet-5", "extract.md", "v1", "claim_cand_v0_1", "sense.extract@3", "2,050"],
-          ["… 63행 더", "", "", "", "", "", "", "합계 67"]] },
-      contract: { d: "스키마 버전 — AI는 바꿀 수 없고, 과거 버전은 보존된다",
-        sql: "SELECT version, status, approved_by, approved_at FROM contract_versions;",
-        h: ["version", "status", "approved_by", "approved_at"],
-        r: [
-          ["0.1", "ACTIVE", "건태 (Data Steward 대행)", "2026-08-19"],
-          ["0.2", "— (SCP 승인 시 생성)", "", ""]] }
+      documents: { d: "원본 문서 — 마스킹 후 불변, 모든 문자 오프셋의 기준", count: "63 rows",
+        cols: [["id","TEXT PK"],["filename","TEXT"],["source_format","TEXT"],["language","TEXT"],["raw_text","TEXT"],["sha256","TEXT"],["imported_at","TEXT"]],
+        rows: [
+          ["DOC-20251201-001","DOC-20251201-001.docx","DOCX","EN","[Northbrook] Medical Affairs Highlights…","a3f29c11…","2026-08-19 21:02:11"],
+          ["DOC-20260315-007","DOC-20260315-007.pdf","PDF","EN","Annual Epilepsy Care Symposium — field report…","77b0e1d4…","2026-08-19 21:02:11"],
+          ["DOC-20260702-041","DOC-20260702-041.txt","TXT","EN","Meeting note. Dr. ___ raised titration…","c19d4402…","2026-08-19 21:02:12"],
+          ["DOC-20260714-061","DOC-20260714-061.txt","TXT","KO","MSL: 안녕하세요 선생님… (전사 전문)","f08ab791…","2026-08-19 21:02:12"]] },
+      interactions: { d: "면담 단위 — 다중 HCP 문서는 블록으로 분리", count: "118 rows",
+        cols: [["interaction_id","TEXT PK"],["document_id","FK"],["occurred_on","DATE"],["hcp_ref","TEXT"],["hcp_specialty","ENUM"],["region","ENUM"],["setting","ENUM"],["source_type","ENUM"],["market","ENUM"],["consent_confirmed","BOOL"],["language","ENUM"],["block_index","INT"],["doc_char_start","INT"],["doc_char_end","INT"],["raw_text","TEXT"],["masked_spans","JSON"]],
+        rows: [
+          ["INT-20260714-001","DOC-20260714-061","2026-07-14","HCP-021","NEUROLOGY","WEST","PRIVATE_PRACTICE","VOICE_TRANSCRIPT","US","true","KO",N,N,N,"MSL: 안녕하세요…","[{240,252,PHONE}]"],
+          ["INT-20260702-003","DOC-20260702-041","2026-07-02","HCP-005","EPILEPTOLOGY","SOUTH","ACADEMIC","HIGHLIGHT_DOC","US","true","EN","3","912","1304","➤ my hardest clinic days…",N],
+          ["INT-20260628-002","DOC-20260628-038","2026-06-28","HCP-009","GENERAL","MIDWEST","COMMUNITY","MEETING_NOTE","US","true","EN",N,N,N,"Panel skewing older…",N],
+          ["INT-20260615-004","DOC-20260615-033","2026-06-15","HCP-012","NEUROLOGY","NORTHEAST","COMMUNITY","CALL_NOTE","US","true","EN",N,N,N,"~6 min call. DDI question…",N]] },
+      claims: { d: "추출값 — verbatim은 원문 substring 검증 통과 시에만 저장 (23컬럼)", count: "62 rows · 승인 27 + 대기 32 + 반려 3",
+        cols: [["claim_id","TEXT PK"],["interaction_id","FK"],["product","ENUM"],["signal_type","ENUM"],["patient_segment","ENUM"],["label_scope","ENUM"],["journey_stage","ENUM"],["barrier_type","ENUM"],["purpose_domain","ENUM"],["solicitation","ENUM"],["indication_mention","TEXT"],["concomitant_drugs","TEXT"],["administration_note","TEXT"],["sentiment","ENUM"],["verbatim_quote","TEXT"],["summary_ko","TEXT"],["evidence_json","JSON"],["review_grade","ENUM"],["status","ENUM"],["contract_version","TEXT"],["reviewed_by","TEXT"],["reviewed_at","TEXT"],["created_at","TEXT"]],
+        rows: [
+          ["CLM-0042","INT-20260702-003","XCOPRI","UNMET_NEED","PEDIATRIC_TRANSITION","OUT_OF_LABEL",N,N,"MEDICAL","UNSOLICITED",N,N,N,N,"my hardest clinic days are telling parents of a seventeen-year-old…","청소년 약물난치성 — 성인 허가로 인한 치료 공백","{doc:DOC-…-041, 412, 448}","HIGH","APPROVED","0.1","건태","2026-08-19 22:10","2026-08-19 21:40"],
+          ["CLM-0047","INT-20260615-004","XCOPRI","UNMET_NEED","PEDIATRIC_TRANSITION","OUT_OF_LABEL",N,N,"MEDICAL","SOLICITED_BY_MSL",N,N,N,N,"can't use it until 18…","청소년 공백 — 용어 매핑 실패분","{doc:DOC-…-033, 120, 163}","MEDIUM","CANDIDATE","0.1",N,N,"2026-08-19 21:41"],
+          ["CLM-0038","INT-20260628-002","XCOPRI","TREATMENT_BARRIER","ELDERLY_65_PLUS","IN_LABEL","TITRATION","DDI_CONCERN","MEDICAL","UNSOLICITED",N,"lamotrigine, clobazam",N,"NEUTRAL","with older patients already on five or six meds…","노인 병용 — 상호작용 우려로 시작 주저","{doc:DOC-…-038, 88, 131}","MEDIUM","CANDIDATE","0.1",N,N,"2026-08-19 21:41"],
+          ["CLM-0051","INT-20260714-001","XCOPRI","INFO_REQUEST","PEDIATRIC_TRANSITION","OUT_OF_LABEL",N,N,"MEDICAL","UNSOLICITED",N,N,N,N,"청소년 용량이나 안전성 자료가 있으면…","청소년 용량·안전성 자료 요청","{doc:DOC-…-061, 301, 340}","HIGH","APPROVED","0.1","건태","2026-08-19 22:12","2026-08-19 21:42"]] },
+      vocab_terms: { d: "동의어 정규화 — EN·KO가 같은 canonical로 수렴", count: "44 rows",
+        cols: [["id","INT PK"],["surface_form","TEXT"],["lang","ENUM"],["canonical_id","TEXT"],["canonical_label_ko","TEXT"],["source","ENUM"]],
+        rows: [
+          ["12","seventeen-year-old","EN","PEDIATRIC_TRANSITION","청소년(12–17) 전환기","CUSTOM"],
+          ["13","17세 환자","KO","PEDIATRIC_TRANSITION","청소년(12–17) 전환기","CUSTOM"],
+          ["21","older adults","EN","ELDERLY_65_PLUS","노인(65+)","MESH_REF"],
+          ["29","타이트레이션 부담","KO","TITRATION_COMPLEXITY","적정 복잡성","CUSTOM"]] },
+      unmapped_terms: { d: "매핑 실패 표현 — 반복되면 SCP 후보 신호", count: "2 rows",
+        cols: [["surface_form","TEXT"],["first_seen_claim_id","FK"],["occurrence_count","INT"]],
+        rows: [["post-stroke epilepsy","CLM-0061","6"],["catamenial epilepsy","CLM-0060","1"]] },
+      safety_candidates: { d: "이상사례 후보 — claims와 물리적으로 분리, PV 인계 추적", count: "5 rows",
+        cols: [["id","TEXT PK"],["interaction_id","FK"],["verbatim_quote","TEXT"],["evidence_json","JSON"],["event_terms","TEXT"],["severity_note","TEXT"],["product_named","BOOL"],["routed_at","TEXT"],["status","ENUM"]],
+        rows: [
+          ["SF-001","INT-20260714-001","복용 시작하고 어지러움하고 졸림이 꽤 있다고…","{doc:DOC-…-061, 512, 549}","dizziness; somnolence","출퇴근에 지장이 있다고","false","2026-08-19 21:42","OPEN"],
+          ["SF-002","INT-20260610-007","낮에 계속 졸리다고…","{doc:DOC-…-029, 210, 231}","somnolence","낮에 계속 졸리다고","true","2026-08-19 21:42","SENT_TO_PV"],
+          ["SF-003","INT-20260522-011","발진 비슷한 게 올라왔다고…","{doc:DOC-…-024, 77, 99}","rash (suspected)","발진 비슷한 게","false","2026-08-19 21:42","OPEN"]] },
+      contract_versions: { d: "스키마 버전 — AI 자동 변경 불가, 과거 버전 보존", count: "1 row",
+        cols: [["version","TEXT PK"],["body_yaml","TEXT"],["status","ENUM"],["approved_by","TEXT"],["approved_at","TEXT"]],
+        rows: [["0.1","(YAML 3.1 KB) fields: signal_type, patient_segment, …","ACTIVE","건태 (Steward 대행)","2026-08-19"]] },
+      schema_change_proposals: { d: "스키마 변경 제안 — 조건(≥3회·≥2인) 충족 시 자동 생성", count: "1 row",
+        cols: [["id","TEXT PK"],["kind","ENUM"],["target_field","TEXT"],["proposed_value","TEXT"],["rationale_ko","TEXT"],["example_claim_ids_json","JSON"],["occurrence_count","INT"],["distinct_hcp_count","INT"],["impact_note_ko","TEXT"],["status","ENUM"],["decided_by","TEXT"],["decided_at","TEXT"]],
+        rows: [["SCP-001","NEW_ENUM_VALUE","patient_segment","POST_STROKE","뇌졸중 후 뇌전증 표현 반복 — 기존 enum과 비동의어","[CLM-0061, CLM-0058, CLM-0049]","6","4","Field 폼 옵션 +1 · 화면 2곳 · 소급 없음","PROPOSED",N,N]] },
+      hypotheses: { d: "가설 — 임계값 자동 생성, 순위 점수 없음", count: "2 rows",
+        cols: [["id","TEXT PK"],["title_ko","TEXT"],["kind","ENUM"],["status","ENUM"],["segment","ENUM"],["driver_summary_ko","TEXT"],["created_from_aggregate_json","JSON"],["not_board_ready_reason","TEXT"]],
+        rows: [
+          ["HYP-001","청소년(12–17) 약물난치성 초점발작 — 연령 확대 근거 생성 우선 검토","DEVELOPMENT","SCREENING","PEDIATRIC_TRANSITION","치료 선택지 공백 반복","{cand:14, hcp:9, regions:3}",N],
+          ["HYP-002","노인(65+) 병용약물 상호작용·적정 부담 — 자료·교육으로 해소","IN_LABEL","DRAFT","ELDERLY_65_PLUS","DDI 우려 반복","{cand:10, hcp:6, regions:2}",N]] },
+      screen_findings: { d: "외부 교차검증 결과 — 출처·스냅샷·해석 한계 문구 필수", count: "1 row · Evidence 조회 중",
+        cols: [["id","INT PK"],["hypothesis_id","FK"],["agent","ENUM"],["finding_type","ENUM"],["statement_ko","TEXT"],["source_url","TEXT"],["source_locator","TEXT"],["source_as_of","TEXT"],["caveat_ko","TEXT"],["created_at","TEXT"]],
+        rows: [["1","HYP-001","EVIDENCE","SUPPORT","청소년 약물난치성 초점발작의 치료 선택지 제한 보고","pubmed.ncbi.nlm.nih.gov/38…","PMID:38…","2026-08-26","초록 기준 요약입니다…","2026-08-19 23:01"]] },
+      board_minutes: { d: "Board 심의 회의록 — BOARD_READY 진입 후 생성", count: "0 rows",
+        cols: [["id","INT PK"],["hypothesis_id","FK"],["role","ENUM"],["position_ko","TEXT"],["action_item_json","JSON"],["seq","INT"]],
+        rows: [] },
+      decisions: { d: "사람의 결정 — 승인/보류/기각 + 후속 질문", count: "0 rows",
+        cols: [["id","INT PK"],["hypothesis_id","FK"],["decision","ENUM"],["decided_by","TEXT"],["rationale_ko","TEXT"],["follow_up_json","JSON"],["decided_at","TEXT"]],
+        rows: [] },
+      blocked_log: { d: "Critic 차단 이력 — 막은 것을 보여주는 게 신뢰의 근거", count: "2 rows",
+        cols: [["id","TEXT PK"],["source","ENUM"],["reason_code","TEXT"],["detail_ko","TEXT"],["payload_json","JSON"],["created_at","TEXT"]],
+        rows: [
+          ["BLK-01","CRITIC","LABEL_SCOPE_ASSERTION","“safe for adolescents too” — 허가 범위 밖 단정","{claim_ref:…}","2026-08-19 23:05"],
+          ["BLK-02","CRITIC","OVERGENERALIZATION","“works for every patient” — 과일반화","{claim_ref:…}","2026-08-19 23:06"]] },
+      llm_runs: { d: "생성 조건 5종(모델·프롬프트·스키마·파서·외부시점) — 재현성의 근거", count: "67 rows",
+        cols: [["id","INT PK"],["purpose","TEXT"],["model","TEXT"],["prompt_file","TEXT"],["prompt_version","TEXT"],["schema_name","TEXT"],["parser_version","TEXT"],["external_data_as_of","TEXT"],["input_hash","TEXT"],["output_hash","TEXT"],["latency_ms","INT"],["created_at","TEXT"]],
+        rows: [
+          ["67","field.extract","claude-sonnet-5","extract_ko.md","v1","claim_candidates_v0_1","sense.extract@3",N,"9f31…","b7a2…","2140","2026-08-19 23:14"],
+          ["66","sense.extract","claude-sonnet-5","extract.md","v1","claim_candidates_v0_1","sense.extract@3",N,"11de…","0c9f…","1980","2026-08-19 23:12"],
+          ["65","sense.extract","claude-sonnet-5","extract.md","v1","claim_candidates_v0_1","sense.extract@3",N,"e042…","77aa…","2310","2026-08-19 23:12"],
+          ["64","screen.evidence","claude-sonnet-5","evidence.md","v1","screen_finding_v1","screen.parse@1","2026-08-26","5b77…","d310…","3420","2026-08-19 23:01"]] }
     };
+
+    // 롤별 접근 규칙 (docs/02 §9의 요약판)
+    function rule(role, name) {
+      if (role === "ADMIN") return { mode: "full", note: "-- 롤: ADMIN — 열람 전용, 접근 로그 기록" };
+      if (role === "SAFETY")
+        return (name === "safety_candidates" || name === "blocked_log")
+          ? { mode: "full", note: "-- 롤: SAFETY — SAFETY 도메인" }
+          : { mode: "deny", msg: "SAFETY 롤은 SAFETY 도메인만 조회합니다. 성장 신호·가설 원장은 접근 대상이 아닙니다." };
+      if (role === "COMMERCIAL") {
+        if (name === "hypotheses") return { mode: "redact", note: "-- 롤: COMMERCIAL — kind='DEVELOPMENT' 행 억제" };
+        if (name === "contract_versions") return { mode: "full", note: "-- 롤: COMMERCIAL — 스키마 메타는 열람 가능" };
+        return { mode: "deny", msg: "COMMERCIAL 롤은 원문·개인 식별 원장을 직접 조회할 수 없습니다. 집계 API만 제공되며(distinct_hcp ≥ 3), raw_text·hcp_ref는 응답에 필드 자체가 없습니다." };
+      }
+      // CLINICAL_STRATEGY · MEDICAL_AFFAIRS
+      if (name === "safety_candidates")
+        return { mode: "deny", msg: "이 롤은 SAFETY 도메인을 조회할 수 없습니다 — AE는 '분기됨' 사실만 보입니다. 관리자 또는 SAFETY 롤로 전환하세요." };
+      return { mode: "full", note: "-- 롤 게이트: purpose_domain IN ('MEDICAL','PUBLIC_EVIDENCE')" };
+    }
+
     var title = document.getElementById("dtTitle"), desc = document.getElementById("dtDesc"),
         body = document.getElementById("dtBody"), sqlEl = document.getElementById("dtSql");
+    var current = "documents";
+
+    function cellHtml(v) {
+      if (v === null) return '<span class="nullv">NULL</span>';
+      return String(v);
+    }
     function render(key) {
-      var t = T[key];
-      title.textContent = key === "safety" ? "safety_candidates" : key === "llm" ? "llm_runs" : key === "contract" ? "contract_versions" : key;
+      current = key;
+      var t = T[key], role = window.DELPHI_ROLE || "ADMIN";
+      var r = rule(role, key);
+      title.textContent = key;
       desc.textContent = t.d;
-      sqlEl.textContent = t.sql.replace(/\\n/g, "\n");
-      if (t.locked) {
-        body.innerHTML = '<div style="border:1.5px dashed rgba(228,83,107,.5);background:var(--rust-soft);border-radius:12px;padding:14px 16px;margin:8px 0">' +
-          '<div style="font-family:var(--mono);font-size:12px;font-weight:800;color:var(--rust)">403 PURPOSE_SCOPE_VIOLATION</div>' +
-          '<div style="font-size:12px;color:var(--ink);margin-top:4px;line-height:1.6">현재 롤(CLINICAL_STRATEGY)은 SAFETY 도메인을 조회할 수 없습니다. ' +
-          '빈 배열로 감추지 않고 명시적으로 거부합니다 — 조용한 누락은 데이터가 없는 것과 구분되지 않기 때문입니다. SAFETY 롤로 전환하면 안전성 탭에서 열람됩니다.</div></div>';
+      var sql = "SELECT " + t.cols.map(function (c) { return c[0]; }).join(", ") + "\nFROM " + key + " LIMIT " + Math.max(t.rows.length, 1) + ";";
+      if (r.mode === "deny") {
+        sqlEl.textContent = "SELECT * FROM " + key + ";\n-- 403 PURPOSE_SCOPE_VIOLATION (롤: " + role + ")";
+        body.innerHTML = '<div style="border:1.5px dashed rgba(228,83,107,.5);background:var(--rust-soft);border-radius:12px;padding:14px 16px;margin:8px 0">'
+          + '<div style="font-family:var(--mono);font-size:12px;font-weight:800;color:var(--rust)">403 PURPOSE_SCOPE_VIOLATION</div>'
+          + '<div style="font-size:12px;margin-top:4px;line-height:1.6">' + r.msg + " 빈 배열로 감추지 않고 명시적으로 거부합니다.</div></div>";
         return;
       }
-      var html = "<table><thead><tr>" + t.h.map(function (h) { return "<th>" + h + "</th>"; }).join("") + "</tr></thead><tbody>";
-      t.r.forEach(function (row) {
-        html += "<tr>" + row.map(function (c, i) {
-          var cls = i === 0 ? ' style="font-family:var(--mono);font-size:11px;font-weight:700;color:var(--navy)"' : ' style="font-family:var(--mono);font-size:11px"';
-          return "<td" + cls + ">" + c + "</td>";
-        }).join("") + "</tr>";
+      sqlEl.textContent = sql + "\n" + (r.note || "");
+      var rows = t.rows;
+      var suppressed = 0;
+      if (r.mode === "redact" && key === "hypotheses") {
+        rows = rows.filter(function (row) { return row[2] !== "DEVELOPMENT"; });
+        suppressed = t.rows.length - rows.length;
+      }
+      var html = '<table class="sfgrid"><thead><tr><th class="rownum">#</th>'
+        + t.cols.map(function (c) { return "<th>" + c[0] + "<small>" + c[1] + "</small></th>"; }).join("") + "</tr></thead><tbody>";
+      if (rows.length === 0) {
+        html += '<tr><td class="rownum"></td><td colspan="' + t.cols.length + '" style="color:var(--muted);font-family:inherit">0 rows — ' + (t.count || "") + "</td></tr>";
+      }
+      rows.forEach(function (row, i) {
+        html += '<tr><td class="rownum">' + (i + 1) + "</td>" + row.map(function (c) { return "<td>" + cellHtml(c) + "</td>"; }).join("") + "</tr>";
       });
-      body.innerHTML = html + "</tbody></table>";
+      body.innerHTML = html + "</tbody></table>"
+        + '<div class="grid-foot"><span>' + t.cols.length + " columns</span><span>·</span><span>" + t.count + "</span>"
+        + (suppressed ? '<span>·</span><span style="color:var(--orange-deep);font-weight:700">suppressedRowCount: ' + suppressed + "</span>" : "")
+        + '<span style="margin-left:auto">ANSI SQL only — Snowflake 이관 대비 (docs/01 §2)</span></div>';
     }
+    window.__renderData = function () { render(current); };
     document.querySelectorAll('#p-data .fchip').forEach(function (ch) {
       ch.addEventListener("click", function () {
         document.querySelectorAll('#p-data .fchip').forEach(function (x) { x.classList.remove("on"); });
@@ -1115,6 +1241,29 @@
       });
     });
     render("documents");
+  })();
+
+  // 롤 상태 — 로그인·스위처가 화면 전체에 반영
+  (function () {
+    window.DELPHI_ROLE = "ADMIN";
+    var sel = document.getElementById("roleSel");
+    var ov = document.getElementById("loginOv");
+    function apply(role) {
+      window.DELPHI_ROLE = role;
+      if (sel.value !== role) sel.value = role;
+      var safeOK = role === "ADMIN" || role === "SAFETY";
+      document.getElementById("safeBody").classList.toggle("hide", !safeOK);
+      document.getElementById("safeDenied").classList.toggle("hide", safeOK);
+      var comm = role === "COMMERCIAL";
+      document.getElementById("hypDev").classList.toggle("hide", comm);
+      document.getElementById("hypSuppressed").classList.toggle("hide", !comm);
+      if (window.__renderData) window.__renderData();
+    }
+    sel.addEventListener("change", function () { apply(sel.value); });
+    document.querySelectorAll(".persona").forEach(function (p) {
+      p.addEventListener("click", function () { apply(p.dataset.role); ov.classList.add("hide"); });
+    });
+    apply("ADMIN");
   })();
 
   // Field 캡처 라이브 데모 — 대화 재생 + 실시간 스키마 캐치 (연출)

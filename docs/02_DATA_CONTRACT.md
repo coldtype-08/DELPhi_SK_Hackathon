@@ -168,6 +168,7 @@ Steward 승인 시: 새 `contract_versions` 레코드 ACTIVE화 → `GET /api/fi
 | `SAFETY` (PV 담당) | SAFETY | `safety_candidates`의 유일한 조회자. 성장 가설 화면 접근 불필요 |
 | `COMMERCIAL` (상업 전략) | COMMERCIAL | **원문(raw_text)·verbatim_quote 접근 불가.** 지역·기관 단위 집계 행만 (`distinct_hcp ≥ 3`인 그룹만 반환 — 개인 역추정 차단). Development 가설 목록 접근 불가 |
 | `DATA_STEWARD` (거버넌스) | 전 영역의 **스키마·SCP·버전** | 값 자체가 아니라 구조를 다룸. SCP의 원문 사례는 열람 가능(승인 판단에 필요) |
+| `ADMIN` (시연·운영 — 08/20 추가) | 전 영역 **열람 전용** | 데모·운영 점검용 전체 열람 계정. **쓰기·승인 권한 없음**(승인은 각 롤의 행위로만 기록). 시연 기본 계정이며, 롤 전환 스위처로 "각 롤에게 보이는 것"을 대조 시연한다. 파일럿에서는 사내 SSO + 접근 로그 필수 |
 
 - 절대 규칙 #7의 코드화: `COMMERCIAL` 롤에는 개별 HCP 식별자(`hcp_ref`)를 어떤 응답에서도 내보내지 않는다.
 - MVP 구현: 로그인 없이 헤더 `X-Delphi-Role`로 롤을 주입(docs/04 §0). 시연은 `CLINICAL_STRATEGY`가 기본, 권한 분리 장면에서만 `COMMERCIAL`로 전환.
