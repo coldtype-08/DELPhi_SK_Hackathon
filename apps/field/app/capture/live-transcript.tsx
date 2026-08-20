@@ -101,6 +101,15 @@ export default function LiveTranscript({ onComplete }: { onComplete: (rawText: s
         <span className="text-[10px] font-semibold text-muted">대본 재생 폴백 · ko-KR</span>
       </div>
 
+      {/* 하이라이트 범례 — 견본이 곧 안내: 전사 속 구간과 감지 칩이 이 색으로 짝지어진다 */}
+      <div className="mt-1.5 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-[9.5px] font-semibold text-muted">
+        <span>하이라이트</span>
+        <mark className="ev on ev-segment">환자군</mark>
+        <mark className="ev on ev-signal">신호</mark>
+        <mark className="ev on ev-ae">안전성 분리</mark>
+        <mark className="ev on ev-info">자료 요청</mark>
+      </div>
+
       <div ref={scrollRef} className="mt-2 max-h-56 space-y-1.5 overflow-y-auto pr-1">
         {shown === 0 && (
           <p className="py-4 text-center text-[11px] text-muted">

@@ -226,13 +226,15 @@
   .sp-msl{background:var(--sky-soft);color:var(--sky)}
   .sp-doc{background:rgba(22,38,97,.09);color:var(--navy)}
   .cline .tx{font-size:11.5px;line-height:1.55;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:11px;padding:7px 10px}
-  .cline .tx mark.ev{background:transparent;border-radius:3px;padding:1px 2px;transition:background .45s ease,box-shadow .45s ease}
-  .cline .tx mark.ev.on.ev-seg{background:rgba(239,139,28,.22);box-shadow:inset 0 -2px 0 var(--orange)}
-  .cline .tx mark.ev.on.ev-sig{background:rgba(91,124,250,.18);box-shadow:inset 0 -2px 0 var(--sky)}
-  .cline .tx mark.ev.on.ev-ae{background:rgba(228,83,107,.18);box-shadow:inset 0 -2px 0 var(--rust)}
-  .cline .tx mark.ev.on.ev-info{background:rgba(31,169,124,.16);box-shadow:inset 0 -2px 0 var(--green)}
+  mark.ev{background:transparent;border-radius:3px;padding:1px 2px;transition:background .45s ease,box-shadow .45s ease}
+  mark.ev.on.ev-seg{background:rgba(239,139,28,.22);box-shadow:inset 0 -2px 0 var(--orange)}
+  mark.ev.on.ev-sig{background:rgba(91,124,250,.18);box-shadow:inset 0 -2px 0 var(--sky)}
+  mark.ev.on.ev-ae{background:rgba(228,83,107,.18);box-shadow:inset 0 -2px 0 var(--rust)}
+  mark.ev.on.ev-info{background:rgba(31,169,124,.16);box-shadow:inset 0 -2px 0 var(--green)}
   .dchip.info{background:var(--green-soft);color:var(--green)}
   .dchip.meta{background:#F0F1F7;color:var(--muted)}
+  .hl-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:6px 14px;border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,.55);font-size:9px;font-weight:700;color:var(--muted)}
   .detect{border-top:1px solid var(--line);background:rgba(255,255,255,.82);padding:8px 12px;min-height:92px}
   .detect .lbl{font-size:9.5px;font-weight:800;color:var(--muted);letter-spacing:.06em}
   .dchips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
@@ -868,6 +870,9 @@
         <div class="phone"><div class="screen">
           <div class="p-status"><span>9:47</span><span><span class="rec"></span> 녹음 중</span></div>
           <div class="p-head"><div class="t">면담 기록</div><div class="s">동의 확인됨 · ko-KR 전사 · HCP-021</div></div>
+          <div class="hl-legend">하이라이트
+            <mark class="ev on ev-seg">환자군</mark><mark class="ev on ev-sig">신호</mark><mark class="ev on ev-ae">안전성 분리</mark><mark class="ev on ev-info">자료 요청</mark>
+          </div>
           <div class="p-body" id="fChat"><div style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px" id="fHint">▶ 를 누르면 대화가 재생됩니다</div></div>
           <div class="detect">
             <span class="lbl">실시간 감지 — 스키마 캐치</span>
