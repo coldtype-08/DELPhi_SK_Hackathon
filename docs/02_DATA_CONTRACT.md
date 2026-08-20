@@ -166,7 +166,7 @@ Steward 승인 시: 새 `contract_versions` 레코드 ACTIVE화 → `GET /api/fi
 | `MEDICAL_AFFAIRS` (면담 담당) | MEDICAL, PUBLIC_EVIDENCE | 자신이 수집한 interaction의 원문 + 승인 데이터. AE는 "분기됨" 사실만 보이고 내용은 못 봄 |
 | `CLINICAL_STRATEGY` (임상·Medical 전략) | MEDICAL, PUBLIC_EVIDENCE | 가설 승인·보류·기각 권한 보유. Development Hypothesis 검토 대상 |
 | `SAFETY` (PV 담당) | SAFETY | `safety_candidates`의 유일한 조회자. 성장 가설 화면 접근 불필요 |
-| `COMMERCIAL` (상업 전략) | COMMERCIAL | **원문(raw_text)·verbatim_quote 접근 불가.** 지역·기관 단위 집계 행만 (`distinct_hcp ≥ 3`인 그룹만 반환 — 개인 역추정 차단). Development 가설 목록 접근 불가 |
+| `COMMERCIAL` (상업 전략) | COMMERCIAL, PUBLIC_EVIDENCE | **원문(raw_text)·verbatim_quote 접근 불가.** 지역·기관 단위 집계 행만 (`distinct_hcp ≥ 3`인 그룹만 반환 — 개인 역추정 차단). Development 가설 목록 접근 불가. `PUBLIC_EVIDENCE`는 08/20 추가 — 외부 공개 근거(시장·경쟁 화면)는 개인도 사내 원문도 없어 막을 근거가 없다. 단 **DEVELOPMENT 가설에 연결된 근거는 여전히 억제**한다 |
 | `DATA_STEWARD` (거버넌스) | 전 영역의 **스키마·SCP·버전** | 값 자체가 아니라 구조를 다룸. SCP의 원문 사례는 열람 가능(승인 판단에 필요) |
 | `ADMIN` (시연·운영 — 08/20 추가) | 전 영역 **열람 전용** | 데모·운영 점검용 전체 열람 계정. **쓰기·승인 권한 없음**(승인은 각 롤의 행위로만 기록). 시연 기본 계정이며, 롤 전환 스위처로 "각 롤에게 보이는 것"을 대조 시연한다. 파일럿에서는 사내 SSO + 접근 로그 필수 |
 

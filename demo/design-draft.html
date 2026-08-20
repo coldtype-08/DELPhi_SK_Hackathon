@@ -307,6 +307,8 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>전문가 관여</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="p-trend">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>추이</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-market">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12" y="8" width="3" height="10" rx="1"/><rect x="17" y="5" width="3" height="13" rx="1"/></svg>시장·경쟁</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="p-safe">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>안전성</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="p-data">
@@ -809,6 +811,157 @@
     <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
       사내 추이·증감은 전부 <b>승인 데이터 기준 SQL 비교</b>다(잠정 신규만 레이더 라벨 병기). v0.2에서 새 항목이 생기면 "v0.2부터 수집" 주석을 달고 <b>버전 경계를 넘는 추이 비교는 하지 않는다</b>.
       외부 문헌 추이는 <b>PUBLIC_EVIDENCE 도메인 — Screen의 캐시 스냅샷을 코드로 집계</b>한 것이며 사내 신호와 같은 차트에 합치지 않는다(소스가 다르면 축도 다르다). 신규/가속 판정은 관찰 표시일 뿐, 순위·점수를 만들지 않는다.
+    </div></details>
+  </div>
+
+  <!-- ═══ 시장·경쟁 ═══ -->
+  <div class="panel" id="p-market" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>시장·경쟁</h1>
+      <div class="desc">경쟁 약물은 어디까지 갔나 — 전부 공개 자료이고, 개인은 한 명도 등장하지 않습니다.</div>
+    </div>
+
+    <div class="filters" style="margin-top:14px">
+      <span class="lbl" style="background:var(--green-soft);color:var(--green);border-radius:8px;padding:4px 10px;font-weight:700">공개 출처만 · 개인 식별 0건 · 예측·추세선 없음</span>
+      <span class="lbl" style="background:var(--orange-soft);color:var(--orange-deep);border-radius:8px;padding:4px 10px;font-weight:700">경쟁 약물 값은 8/26 외부 스냅샷 이후 채워짐 — 지금은 질의 명세만</span>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k">우리 라벨 연령 하한</div><div class="v">18<small>세+</small></div><div class="s">초점발작 · 단독/병용</div></div>
+      <div class="kpi"><div class="k">공백 구간</div><div class="v">12–17<small>세</small></div><div class="s">허가 범위 밖 = Development</div></div>
+      <div class="kpi"><div class="k">이 공백을 말한 전문가</div><div class="v">9<small>인</small></div><div class="s">언급 14건 · 4개 권역 (승인 기준)</div></div>
+      <div class="kpi"><div class="k">추적 대상 경쟁 약물</div><div class="v">5<small>종</small></div><div class="s">항경련제 클래스 · 공개 라벨 기준</div></div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="card-h"><h2>허가 연령 지도</h2><span class="pill pill-gray">관찰된 사실</span><span class="d">우리 라벨은 확정값, 경쟁 약물 행은 openFDA 스냅샷 대기</span></div>
+      <div class="chartbox">
+        <svg viewBox="0 0 880 236" width="100%" role="img" aria-label="허가 연령 지도: XCOPRI는 18세 이상, 12에서 17세 구간이 공백. 경쟁 약물 5종은 외부 스냅샷 대기">
+          <defs>
+            <pattern id="wait" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="7" stroke="rgba(22,38,97,.10)" stroke-width="3"/>
+            </pattern>
+          </defs>
+
+          <!-- 12–17 공백 밴드 -->
+          <rect x="252.0" y="38" width="61.0" height="184" fill="var(--orange-soft)"/>
+          <line x1="252.0" y1="38" x2="252.0" y2="222" stroke="var(--orange)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <line x1="313.0" y1="38" x2="313.0" y2="222" stroke="var(--orange)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="282.5" y="30" font-size="10.5" font-weight="800" fill="var(--orange-deep)" text-anchor="middle">공백 12–17</text>
+
+          <!-- 연령 축 -->
+          <g font-size="9" fill="#5C6485" text-anchor="middle">
+            <text x="130.0" y="234">0</text><text x="170.7" y="234">4</text>
+            <text x="252.0" y="234">12</text><text x="313.0" y="234">18</text>
+            <text x="435.0" y="234">30</text><text x="638.3" y="234">50</text><text x="790.8" y="234">65+</text>
+            <text x="496" y="20" font-size="9.5" font-weight="700" fill="#5C6485">허가 연령 (세)</text>
+          </g>
+
+          <!-- XCOPRI (확정) -->
+          <text x="118" y="57" font-size="11" font-weight="800" fill="var(--navy)" text-anchor="end">XCOPRI</text>
+          <text x="118" y="68" font-size="8.5" fill="#5C6485" text-anchor="end">cenobamate · SK</text>
+          <rect x="313.0" y="46" width="549.0" height="16" rx="4" fill="var(--navy)"/>
+          <text x="322.0" y="58" font-size="9.5" font-weight="800" fill="#fff">18세+ · 초점발작 · 단독/병용</text>
+
+          <!-- 경쟁 약물 5행 (값 미확인 → 대기 트랙) -->
+          <g font-size="10.5" font-weight="700" fill="#5C6485" text-anchor="end">
+            <text x="118" y="86">brivaracetam</text><text x="118" y="118">lacosamide</text>
+            <text x="118" y="150">perampanel</text><text x="118" y="182">cannabidiol</text>
+            <text x="118" y="214">fenfluramine</text>
+          </g>
+          <g fill="url(#wait)" stroke="rgba(22,38,97,.16)" stroke-dasharray="5 4">
+            <rect x="130" y="76" width="732" height="14" rx="4"/><rect x="130" y="108" width="732" height="14" rx="4"/>
+            <rect x="130" y="140" width="732" height="14" rx="4"/><rect x="130" y="172" width="732" height="14" rx="4"/>
+            <rect x="130" y="204" width="732" height="14" rx="4"/>
+          </g>
+          <text x="496" y="87" font-size="9" font-weight="700" fill="#5C6485" text-anchor="middle">openFDA 라벨 스냅샷 대기 — 8/26</text>
+          <g font-size="8" font-weight="800" fill="#8A90AC" text-anchor="end">
+            <text x="854" y="119">대기</text><text x="854" y="151">대기</text>
+            <text x="854" y="183">대기</text><text x="854" y="215">대기</text>
+          </g>
+        </svg>
+        <p style="font-size:11px;color:var(--muted);margin-top:2px">경쟁 약물의 허가 연령은 <b>추정하지 않았습니다</b> — 라벨은 수시로 개정되고, 틀린 값이 한 번 화면에 오르면 시장 판단을 오염시킵니다. 8/26 스냅샷이 각 행을 채우면, 우리 공백이 남는 공백인지 뒤처진 공백인지가 이 한 장으로 판정됩니다.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>외부 공개 데이터에 던지는 질문 네 개</h2><span class="d">출처·질의·반영 위치가 정해져 있어야 숫자에 근거가 붙습니다</span></div>
+      <div style="padding:0 16px 8px;overflow-x:auto">
+        <table>
+          <thead><tr><th>질문</th><th>출처</th><th>질의 · 핵심 필드</th><th>화면 반영</th><th>상태</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="nm-cell">경쟁 약물의 허가 연령은 어디까지인가</td>
+              <td>openFDA<br><span style="font-size:10.5px;color:var(--muted)">drug/label</span></td>
+              <td style="font-family:var(--mono);font-size:10.5px">openfda.generic_name + pediatric_use<br>· indications_and_usage 원문 보존</td>
+              <td>위 연령 지도</td>
+              <td><span class="pill pill-auto">스냅샷 대기</span></td>
+            </tr>
+            <tr>
+              <td class="nm-cell">경쟁사는 청소년 시험을 언제 시작했나</td>
+              <td>ClinicalTrials.gov v2<br><span style="font-size:10.5px;color:var(--muted)">/api/v2/studies</span></td>
+              <td style="font-family:var(--mono);font-size:10.5px">query.intr=&lt;약물&gt; · minimumAge/maximumAge<br>· overallStatus · startDate · leadSponsor</td>
+              <td>가설 상세 HYP-001<br>“왜 지금인가”</td>
+              <td><span class="pill pill-auto">스냅샷 대기</span></td>
+            </tr>
+            <tr>
+              <td class="nm-cell">이 주제의 문헌은 어느 약물에서 먼저 쌓였나</td>
+              <td>PubMed E-utilities<br><span style="font-size:10.5px;color:var(--muted)">esearch + esummary</span></td>
+              <td style="font-family:var(--mono);font-size:10.5px">term=&lt;약물&gt; AND adolescent[MeSH]<br>· 연도별 count (계산은 SQL)</td>
+              <td>추이 탭 오버레이</td>
+              <td><span class="pill pill-auto">스냅샷 대기</span></td>
+            </tr>
+            <tr>
+              <td class="nm-cell">그 환자군의 모수는 얼마인가</td>
+              <td>HIRA 공개통계 · CMS Part D<br><span style="font-size:10.5px;color:var(--muted)">약물 단위 집계 파일</span></td>
+              <td style="font-family:var(--mono);font-size:10.5px">뇌전증(G40) 연령대별 환자수<br>· 약물별 연간 총 처방수 (개인 없음)</td>
+              <td>가설 상세 “규모” 근거</td>
+              <td><span class="pill pill-gray">검토 중 — 예측선 금지</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>경쟁사 활동 강도 — 집계 축을 개인에서 제조사로</h2><span class="pill pill-st">통계적 패턴</span><span class="d">같은 공개 데이터, 반대 방향</span></div>
+      <div style="padding:2px 16px 14px">
+        <div class="grid2" style="gap:12px">
+          <div style="border:1.5px solid rgba(180,85,45,.35);background:var(--rust-soft);border-radius:12px;padding:12px 14px">
+            <div style="font-size:10px;font-weight:900;letter-spacing:.05em;color:var(--rust)">하지 않는 축 — 개인</div>
+            <div style="font-size:12.5px;margin-top:5px;line-height:1.6">“이 의사가 얼마 받았고 얼마 처방하나”. 지불 기록과 처방 행태를 개인 단위로 잇는 것은 절대 규칙 #7이 이름으로 금지한 항목이고, 실무에서도 반부패 조사가 가장 먼저 보는 패턴입니다.</div>
+          </div>
+          <div style="border:1.5px solid rgba(47,125,82,.35);background:var(--green-soft);border-radius:12px;padding:12px 14px">
+            <div style="font-size:10px;font-weight:900;letter-spacing:.05em;color:var(--green)">쓰는 축 — 제조사</div>
+            <div style="font-size:12.5px;margin-top:5px;line-height:1.6">“경쟁사가 뇌전증 전문의 대상 연구비를 어느 영역에 늘리고 있나”. 개인은 0건이고, 임상시험 등록보다 지출이 먼저 움직이므로 <b>파이프라인 의도의 선행지표</b>가 됩니다.</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;font-size:9.5px;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase">질의 — 개인 식별자를 select 목록에 두지 않는다</div>
+        <pre style="font-family:var(--mono);font-size:10.5px;line-height:1.6;color:var(--navy);background:var(--sky-soft);border-radius:10px;padding:9px 12px;overflow-x:auto;margin:4px 0 0">SELECT manufacturer, payment_category, specialty, year, SUM(amount), COUNT(DISTINCT recipient_key)
+FROM open_payments_research
+WHERE specialty IN ('NEUROLOGY','EPILEPTOLOGY')
+GROUP BY manufacturer, payment_category, specialty, year
+HAVING COUNT(DISTINCT recipient_key) &gt;= 3;   -- 개인 역추정 차단 · recipient_key 는 출력하지 않음</pre>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h2>이 화면이 만드는 질문</h2><span class="d">경쟁 정보가 다음 수집·가설로 이어지는 지점</span></div>
+      <div class="queue">
+        <div class="qrow"><span class="id">HYP-001</span>경쟁 약물이 이미 청소년 라벨을 갖고 있다면, 우리 공백은 “미개척”이 아니라 “뒤처짐”이다 — 근거 생성의 시급성이 달라진다<span class="why">연령 지도 채워지면 자동 재평가</span></div>
+        <div class="qrow"><span class="id">SCREEN</span>경쟁사 청소년 시험의 1차 평가변수를 확인해야 우리 근거 설계가 비교 가능해진다<span class="why">CT.gov outcomeMeasures</span></div>
+        <div class="qrow"><span class="id">FIELD</span>“경쟁 약물은 청소년에 쓸 수 있는데 왜 이건 안 되나”는 현장 질문이 될 수 있다 — 자료 요청 체크리스트 후보<span class="why">Medical Information 회신 경로</span></div>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      전부 <b>공개 출처</b>이고 응답은 캐시에 남으며 각 숫자에 <code>as_of</code> 기준일이 붙는다. 네 가지를 하지 않는다.
+      ① <b>개인이 등장하지 않는다</b> — Open Payments도 제조사·전문과·연도로만 집계하고 수령자 키는 출력하지 않는다(절대 규칙 #7).
+      ② <b>예측선을 긋지 않는다</b> — 과거 실측값만 그리고 외삽·추세 연장은 금지(“매출 예측” 금지 조항).
+      ③ <b>FAERS로 경쟁사 안전성을 비교하지 않는다</b> — 자발보고는 분모(노출 환자수)가 없어 발생률 비교에 쓸 수 없다. 라벨 대조 용도로만 쓴다.
+      ④ <b>경쟁 약물의 오프라벨 사용을 기회로 프레이밍하지 않는다</b>(절대 규칙 #5) — 관찰된 공개 사실로만 적고, 해석은 5단계 라벨로 분리한다.
+      경쟁 약물의 값을 추정해 채우지 않은 것도 같은 이유다 — 틀린 시장 사실은 틀린 가설보다 되돌리기 어렵다.
+      한 가지 더: <b>이 화면은 COMMERCIAL 권한에도 열려 있다.</b> 개인도 원문도 없는 공개 집계이기 때문이다. 권한 분리가 “상업은 무조건 차단”이 아니라 “목적에 맞는 범위만”이라는 것을 이 탭과 데이터 원장 탭을 나란히 보면 알 수 있다.
     </div></details>
   </div>
 
