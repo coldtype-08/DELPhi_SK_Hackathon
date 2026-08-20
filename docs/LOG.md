@@ -33,3 +33,5 @@
 - 08/20 건태(Claude 세션): **Console에 Contract 유래(Provenance) 화면 신설** — `/contract/provenance`: 부트스트랩 판정(채택 9·제외·보류)의 인터랙티브 렌더링(반복 매트릭스 → 원문 인용·판정 → YAML·DB 컬럼·여섯 소비처 → "한 문장 따라가기" 5단계). 데이터는 DECISIONS 08/19·bootstrap-ai-draft를 옮긴 정적 모듈, LLM 호출 없음 (다음: 팀 리뷰 후 발표 각본 ①에 편입 여부 결정)
 
 ## Week 2 (8/28–9/4)
+- 08/20 인혁(Claude 세션): **STT 3종 비교 랩 구현** — `apps/stt-lab`(Next 16.3.1·React 19.2.8, Field와 동일 스택·페이퍼 라이트 토큰) + `lib/stt/` provider 3종·오디오(마이크·WAV→16kHz PCM16)·핵심 토큰 채점. 빌드·타입체크·린트 통과. `scripts/stt_eval/` 대본 2종 + espeak-ng 음성 생성기. 실행법은 `apps/stt-lab/README.md` (다음: 키 발급 후 실측 → Gladia 화자분리 판정 · Soniox WS 경로 교정 · provider 확정 후 Field 이식)
+
