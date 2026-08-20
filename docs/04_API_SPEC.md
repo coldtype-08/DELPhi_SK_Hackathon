@@ -76,6 +76,20 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 - 집계 대상은 `status = APPROVED`만. CANDIDATE·REJECTED는 어떤 숫자에도 들어가지 않는다 (절대 규칙 #3).
 - `COMMERCIAL` 롤: `hcpRef` 없음 + `distinctHcp ≥ 3` 그룹만 반환 (docs/02 §9). 억제된 행 수는 `suppressedRowCount`로 알려준다 — 숨겼다는 사실 자체는 숨기지 않는다.
 
+`GET /aggregates/radar` — **후보 레이더** (docs/02 §5.6 · 08/20). `MEDICAL_AFFAIRS`·`CLINICAL_STRATEGY` 전용, 그 외 롤은 `403 PURPOSE_SCOPE_VIOLATION`.
+```json
+{ "data": { "computedBy": "SQL", "provisional": true,
+  "labelKo": "승인 전 잠정 수치 — 공식 집계 아님", "asOf": "2026-08-24T21:00:00+09:00",
+  "rows": [
+    { "patientSegment": "PEDIATRIC_TRANSITION", "signalType": "UNMET_NEED",
+      "candidateCount": 11, "approvedCount": 3, "distinctHcpProvisional": 7,
+      "thresholdMet": true, "hypothesisId": "HYP-001" }
+] } }
+```
+- `provisional: true`와 `labelKo`는 **필수** — 프론트는 이 라벨 없이 렌더하지 않는다 (docs/02 §5.6 화면 표기 규칙).
+- `thresholdMet`·`hypothesisId`로 "이 잠정 신호가 어느 가설을 낳았는지"를 홈 카드에서 가설 상세로 바로 연결한다. 임계 미달 행은 `thresholdMet: false`, `hypothesisId: null`.
+- 이 응답만 예외적으로 CANDIDATE를 센다. 용도는 docs/02 §5.6의 두 가지뿐이며, `/aggregates/signals`·`/aggregates/kpis`는 변함없이 APPROVED만 계산한다.
+
 ## 4. Hypotheses & Screen & Board
 
 | 메서드 | 경로 | 설명 |
