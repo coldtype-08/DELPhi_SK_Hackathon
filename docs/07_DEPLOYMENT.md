@@ -36,6 +36,15 @@ Railway 대시보드에서 클릭할 것을 최소화하도록 설정 파일을 
 
 **검증 완료(08/17)**: 헬스 200 · Console·Field 로드 · CORS 두 주소만 허용(그 외 차단) · 화면에서 승인 클릭 → KPI 즉시 반영.
 
+**디자인 초안도 같은 주소에서 본다 (08/20 추가)**: `https://delphi-console-production.up.railway.app/draft.html`
+— 8탭 목업(`demo/design-draft.html`)을 `apps/console/public/draft.html`로 **복사해** 정적 서빙한다. 실 Console 앱과 코드가 섞이지 않고, 팀원이 링크 하나로 폰에서도 열어볼 수 있다. 두 파일은 바이트 동일해야 하며, 목업을 고치면 같은 커밋에서 다시 복사한다:
+
+```bash
+cp demo/design-draft.html apps/console/public/draft.html   # 목업 수정 시 반드시 함께
+```
+
+> 목업을 `demo/`에만 두면 Railway 어느 서비스의 root directory에도 들어가지 않아 배포되지 않는다(서비스 root는 `apps/console`·`apps/field`·`backend` 세 곳뿐). 초안은 합성 데이터·가짜 로그인이므로 루트(`/`)가 아닌 `/draft.html`에만 둔다 — 심사위원의 첫 화면은 언제나 실제 Console이다.
+
 ### 배포하며 실제로 막힌 지점 5개 (같은 데서 또 막히지 말 것)
 
 | 증상 | 원인·해결 |
