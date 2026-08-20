@@ -197,6 +197,46 @@
   .sbar{display:flex;height:18px;border-radius:6px;overflow:hidden;background:rgba(22,38,97,.05)}
   .sbar i{height:100%}
   .sbar-meta{font-size:10.5px;color:var(--muted);white-space:nowrap}
+  /* ── Field 폰 프레임 ── */
+  .phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,310px));gap:22px;justify-content:center;padding:18px 8px 4px}
+  .phonecol{display:flex;flex-direction:column;gap:8px;align-items:center}
+  .phonecap{font-size:11px;color:var(--muted);text-align:center;max-width:290px;line-height:1.5}
+  .phonecap b{color:var(--navy)}
+  .phone{background:#10173A;border-radius:38px;padding:10px;box-shadow:0 26px 54px -26px rgba(14,27,77,.5);width:100%}
+  .screen{background:#F4F6FC;border-radius:28px;overflow:hidden;height:568px;display:flex;flex-direction:column}
+  .p-status{display:flex;justify-content:space-between;align-items:center;padding:9px 16px 3px;font-size:10px;font-weight:700;color:var(--muted)}
+  .p-head{padding:4px 14px 10px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.62)}
+  .p-head .t{font-size:15px;font-weight:900;color:var(--navy)}
+  .p-head .s{font-size:10.5px;color:var(--muted)}
+  .p-body{flex:1;overflow-y:auto;padding:12px 12px 8px;display:flex;flex-direction:column;gap:8px}
+  .p-cta{padding:10px 12px 13px;border-top:1px solid var(--line);background:rgba(255,255,255,.72);display:flex;gap:8px}
+  .btn{border:none;border-radius:12px;padding:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;flex:1;text-align:center}
+  .btn-navy{background:var(--navy);color:#fff}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-sky{background:var(--sky-soft);color:var(--sky)}
+  .btn-ghost{background:transparent;border:1.5px solid var(--line);color:var(--muted);flex:0 0 auto;padding:11px 14px}
+  .fcard{background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:14px;padding:11px 13px}
+  .fcard .k{font-size:9.5px;font-weight:800;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+  .chk{display:flex;gap:8px;align-items:flex-start;font-size:12px;padding:7px 0;border-top:1px solid var(--line);line-height:1.5}
+  .chk:first-of-type{border-top:none;padding-top:2px}
+  .chk .box{width:15px;height:15px;border:2px solid var(--sky);border-radius:5px;flex:none;margin-top:2px}
+  .cline{display:flex;gap:7px;align-items:flex-start;opacity:0;transform:translateY(8px);transition:.35s cubic-bezier(.16,1,.3,1)}
+  .cline.show{opacity:1;transform:none}
+  .cline .sp{flex:none;font-size:9px;font-weight:800;border-radius:6px;padding:2px 6px;margin-top:3px}
+  .sp-msl{background:var(--sky-soft);color:var(--sky)}
+  .sp-doc{background:rgba(22,38,97,.09);color:var(--navy)}
+  .cline .tx{font-size:11.5px;line-height:1.55;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:11px;padding:7px 10px}
+  .cline.ae .tx{border-color:rgba(228,83,107,.5);background:var(--rust-soft)}
+  .detect{border-top:1px solid var(--line);background:rgba(255,255,255,.82);padding:8px 12px;min-height:92px}
+  .detect .lbl{font-size:9.5px;font-weight:800;color:var(--muted);letter-spacing:.06em}
+  .dchips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+  .dchip{font-size:10px;font-weight:800;border-radius:999px;padding:3px 9px;background:var(--sky-soft);color:var(--sky);animation:pop .32s cubic-bezier(.16,1,.3,1)}
+  .dchip.warn{background:var(--orange-soft);color:var(--orange-deep)}
+  .dchip.ae{background:var(--rust-soft);color:var(--rust)}
+  @keyframes pop{from{transform:scale(.6);opacity:0}}
+  .rec{width:8px;height:8px;border-radius:50%;background:var(--rust);display:inline-block;animation:blink 1.2s infinite}
+  @keyframes blink{50%{opacity:.25}}
+  @media (prefers-reduced-motion:reduce){.cline{transition:none}.dchip{animation:none}.rec{animation:none}}
 </style>
 <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="topbar"><div class="topbar-in">
@@ -218,6 +258,8 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>추이</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="p-safe">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>안전성</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-field">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>Field 앱</button>
   </div>
 </div></div>
 
@@ -783,6 +825,91 @@
     </div></details>
   </div>
 
+  <!-- ═══ Field 앱 ═══ -->
+  <div class="panel" id="p-field" role="tabpanel">
+    <div style="padding-top:20px">
+      <h1>Field 앱</h1>
+      <div class="desc">현장 수집 — 모바일(390px), 같은 디자인 토큰. 가운데 화면에서 <b style="color:var(--navy)">▶ 면담 재생</b>을 눌러보세요.</div>
+    </div>
+
+    <div class="phones">
+      <div class="phonecol">
+        <div class="phone"><div class="screen">
+          <div class="p-status"><span>9:41</span><span>DELPHi Field</span></div>
+          <div class="p-head"><div class="t">오늘의 면담</div><div class="s">8월 20일 (목) · 방문 1건</div></div>
+          <div class="p-body">
+            <div class="fcard">
+              <div class="k">방문 예정</div>
+              <div style="font-size:13.5px;font-weight:800;color:var(--navy);margin-top:3px">HCP-021 <span style="font-weight:600;color:var(--muted);font-size:11px">· NEUROLOGY · WEST</span></div>
+              <div style="font-size:11px;color:var(--muted)">마지막 만남 2026-07 · 확정 신호 2건</div>
+            </div>
+            <div class="fcard">
+              <div class="k">방문 전 체크리스트</div>
+              <div class="chk" style="margin-top:6px"><span class="box"></span><span>청소년 사례 시 이전 실패 약물 수 확인 <span class="pill pill-auto" style="margin-left:4px">NEW · Board 후속</span></span></div>
+              <div class="chk"><span class="box"></span><span>청소년 용량·안전성 자료 회신 전달 (미해결 질문)</span></div>
+            </div>
+            <div class="fcard" style="border-style:dashed">
+              <div class="k">입력 항목 안내</div>
+              <div style="font-size:11px;color:var(--muted);line-height:1.55;margin-top:3px">이 폼은 활성 Contract(v0.1)에서 렌더됩니다. v0.2가 승인되면 새 항목이 자동으로 나타납니다.</div>
+            </div>
+          </div>
+          <div class="p-cta"><button class="btn btn-navy">면담 시작</button></div>
+        </div></div>
+        <div class="phonecap"><b>/</b> — 브리핑 · Board 승인 질문이 현장 체크리스트로</div>
+      </div>
+
+      <div class="phonecol">
+        <div class="phone"><div class="screen">
+          <div class="p-status"><span>9:47</span><span><span class="rec"></span> 녹음 중</span></div>
+          <div class="p-head"><div class="t">면담 기록</div><div class="s">동의 확인됨 · ko-KR 전사 · HCP-021</div></div>
+          <div class="p-body" id="fChat"><div style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px" id="fHint">▶ 를 누르면 대화가 재생됩니다</div></div>
+          <div class="detect">
+            <span class="lbl">실시간 감지 — 스키마 캐치</span>
+            <div class="dchips" id="fChips"><span style="font-size:10.5px;color:var(--muted)">아직 감지된 신호 없음</span></div>
+          </div>
+          <div class="p-cta">
+            <button class="btn btn-navy" id="fPlay">▶ 면담 재생</button>
+            <button class="btn btn-ghost" id="fReset" title="처음부터">↺</button>
+          </div>
+        </div></div>
+        <div class="phonecap"><b>/capture</b> — 대화가 흐르며 스키마가 잡히고, 부작용 발언은 그 자리에서 분리됩니다 <br>(라이브 감지는 연출 — 정본 추출은 제출 시 1회)</div>
+      </div>
+
+      <div class="phonecol">
+        <div class="phone"><div class="screen">
+          <div class="p-status"><span>9:58</span><span>DELPHi Field</span></div>
+          <div class="p-head"><div class="t">구조화 승인</div><div class="s">카드 1 / 2 · 스와이프로 넘기기</div></div>
+          <div class="p-body">
+            <div class="fcard">
+              <div style="display:flex;gap:5px;flex-wrap:wrap">
+                <span class="pill pill-sky" style="background:var(--sky-soft);color:var(--sky)">미충족 수요</span>
+                <span class="pill pill-dev">청소년(12–17) · 허가 범위 밖</span>
+              </div>
+              <div style="font-size:13px;font-weight:800;color:var(--navy);margin-top:8px;line-height:1.5">청소년 약물난치성 환자에서 성인 허가로 인한 치료 공백</div>
+              <div class="k" style="margin-top:9px">원문 그대로</div>
+              <div style="font-size:12px;line-height:1.6;margin-top:3px">…<mark class="evidence" style="background:rgba(239,139,28,.28);box-shadow:inset 0 -2px 0 var(--orange);border-radius:3px;padding:1px 2px">2제 실패한 17세 환자가 있는데, 성인 허가라 손을 쓸 수가 없어요</mark>…</div>
+              <div style="font-size:10px;color:var(--muted);margin-top:6px">원문 위치 연결됨 · 발언 경위: MSL 질문에 답변</div>
+            </div>
+            <div class="fcard" style="border-style:dashed">
+              <div style="font-size:11px;color:var(--muted);line-height:1.55">부작용 발언은 카드로 나오지 않습니다 — 안전성 경로로 이미 분리되었습니다.</div>
+            </div>
+          </div>
+          <div class="p-cta">
+            <button class="btn btn-ghost">제외</button>
+            <button class="btn btn-sky">수정</button>
+            <button class="btn btn-green">승인</button>
+          </div>
+        </div></div>
+        <div class="phonecap"><b>/capture/review</b> — 승인 = CANDIDATE→APPROVED, 그 순간 Console 집계 +1</div>
+      </div>
+    </div>
+
+    <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
+      입력 폼은 하드코딩하지 않고 <b>활성 Contract(form-config)에서 렌더</b>한다 — v0.2 승인 장면에서 폼이 실제로 바뀐다(데모 ⑥). 음성 전사는 Web Speech(ko-KR) + 대본 재생 폴백.
+      부작용 의심 발언은 화면에 "분리됨" 표시만 남기고 <b>안전성 경로로만 저장</b>되며(절대 규칙 #6), 실시간 감지는 데모 연출이고 <b>정본 추출은 제출 시 1회</b>다(재현성). 저장 전 PII 마스킹, 동의 미확인 시 저장 거부.
+    </div></details>
+  </div>
+
   <footer class="foot">
     합성 데이터 예시 스냅샷 — docs/03 §2 심은 신호와 검산(승인 27 = 9+6+5+3+4 · 대기 32 · 반려 3 · 수용률 27/30).
     계약: <code>GET /aggregates/kpis·signals·radar</code> · <code>GET /claims?queue=review</code> · <code>GET /safety/candidates</code> · 규칙: docs/01 §3 · 02 §5.6·§6 · 04 §3.
@@ -854,6 +981,63 @@
       d.textContent = st;
       map.appendChild(d);
     });
+  })();
+
+  // Field 캡처 라이브 데모 — 대화 재생 + 실시간 스키마 캐치 (연출)
+  (function () {
+    var FLOW = [
+      { sp: "MSL", t: "안녕하세요 선생님, 지난 학회는 잘 다녀오셨어요?" },
+      { sp: "의사", t: "네, 다녀오고 나니 외래가 밀려서 정신이 없네요." },
+      { sp: "MSL", t: "요즘 약물난치성 환자분들은 좀 어떠세요?" },
+      { sp: "의사", t: "2제 실패한 17세 환자가 있는데, 성인 허가라 손을 쓸 수가 없어요. 18세까지 기다리는 수밖에요.",
+        c: [["환자군 · 청소년(12–17)", "warn"], ["허가 범위 밖 → 의료 검토 전용", "warn"], ["신호 · 미충족 수요", ""], ["경위 · MSL 질문에 답변", ""]] },
+      { sp: "의사", t: "아, 그리고 성인 환자 한 분은 복용 시작하고 어지러움하고 졸림이 꽤 있다고 하셨어요.",
+        ae: true, c: [["부작용 의심 → 안전성 경로로 분리 · 일반 카드 제외", "ae"]] },
+      { sp: "의사", t: "혹시 청소년 용량이나 안전성 자료가 있으면 보내주실 수 있어요?",
+        c: [["신호 · 자료 요청", ""], ["→ 체크리스트 후보", ""]] },
+      { sp: "MSL", t: "확인해서 다음 방문 때 정리해 드리겠습니다.", end: true }
+    ];
+    var chat = document.getElementById("fChat"), chips = document.getElementById("fChips");
+    var play = document.getElementById("fPlay"), reset = document.getElementById("fReset");
+    var idx = 0, timer = null, running = false;
+
+    function clearDemo() {
+      clearTimeout(timer); idx = 0; running = false;
+      chat.innerHTML = '<div style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px">▶ 를 누르면 대화가 재생됩니다</div>';
+      chips.innerHTML = '<span style="font-size:10.5px;color:var(--muted)">아직 감지된 신호 없음</span>';
+      play.textContent = "▶ 면담 재생"; play.disabled = false;
+    }
+    function addChip(txt, cls) {
+      if (idx <= 1 && chips.firstChild && chips.firstChild.tagName !== "SPAN") {} // noop
+      if (chips.querySelector("span") && chips.textContent.indexOf("아직") >= 0) chips.innerHTML = "";
+      var c = document.createElement("span");
+      c.className = "dchip" + (cls ? " " + cls : "");
+      c.textContent = txt; chips.appendChild(c);
+    }
+    function step() {
+      if (idx >= FLOW.length) { running = false; play.textContent = "↺ 다시 재생"; play.disabled = false; return; }
+      var m = FLOW[idx];
+      if (idx === 0) chat.innerHTML = "";
+      var line = document.createElement("div");
+      line.className = "cline" + (m.ae ? " ae" : "");
+      line.innerHTML = '<span class="sp ' + (m.sp === "MSL" ? "sp-msl" : "sp-doc") + '">' + m.sp + '</span><span class="tx"></span>';
+      line.querySelector(".tx").textContent = m.t;
+      chat.appendChild(line);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { line.classList.add("show"); }); });
+      (m.c || []).forEach(function (cc, i) { setTimeout(function () { addChip(cc[0], cc[1]); }, 450 + i * 220); });
+      if (m.end) setTimeout(function () { addChip("제출 → 카드 2건 · 안전성 1건 분리", "warn"); }, 900);
+      chat.scrollTop = chat.scrollHeight;
+      idx++;
+      timer = setTimeout(step, 1500);
+    }
+    play.addEventListener("click", function () {
+      if (running) return;
+      if (idx >= FLOW.length) clearDemo();
+      running = true; play.textContent = "재생 중…"; play.disabled = true;
+      setTimeout(function () { play.disabled = false; play.textContent = "재생 중…"; }, 300);
+      step();
+    });
+    reset.addEventListener("click", clearDemo);
   })();
 
   // 전문가 관여 검색
