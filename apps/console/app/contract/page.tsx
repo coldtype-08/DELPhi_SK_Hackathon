@@ -1,4 +1,5 @@
 import { api } from "@/lib/api";
+import ContractTabs from "./tabs";
 
 type Contract = {
   version: string;
@@ -34,6 +35,7 @@ export default async function ContractPage() {
         추출·검증·DB·Field 폼·필터·에이전트 여섯 곳이 이 정의 하나를 공유한다. AI는 이걸 바꿀 수 없고,
         변경은 SCP → Steward 승인으로만 (절대 규칙 #4).
       </p>
+      <ContractTabs active="schema" />
       {error && <div className="mt-4 rounded-lg bg-rust-soft px-4 py-2 text-sm text-rust">{error}</div>}
 
       {contract && (

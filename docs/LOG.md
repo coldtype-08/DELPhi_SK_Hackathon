@@ -30,4 +30,6 @@
 
 ## Week 1 (8/21–8/27)
 
+- 08/20 건태(Claude 세션): **Console에 Contract 유래(Provenance) 화면 신설** — `/contract/provenance`: 부트스트랩 판정(채택 9·제외·보류)의 인터랙티브 렌더링(반복 매트릭스 → 원문 인용·판정 → YAML·DB 컬럼·여섯 소비처 → "한 문장 따라가기" 5단계). 데이터는 DECISIONS 08/19·bootstrap-ai-draft를 옮긴 정적 모듈, LLM 호출 없음 (다음: 팀 리뷰 후 발표 각본 ①에 편입 여부 결정)
+
 ## Week 2 (8/28–9/4)

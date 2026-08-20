@@ -109,6 +109,7 @@ backend/app/
 | `/hypotheses` | 가설 보드 | 가설 카드 그리드 (상태별), Not Board-ready 별도 표시 |
 | `/hypotheses/[id]` | 가설 상세 | **5단계 구분 카드**, 지지/반대/공백 근거 리스트(원문·출처 링크), 에이전트 활동 시각화, Board 회의록, 승인·보류·기각 |
 | `/contract` | Data Contract | 현재 버전 스키마 뷰, SCP 목록·승인, 버전 diff |
+| `/contract/provenance` | Contract 유래 | 부트스트랩 판정 기록의 결정론적 렌더링(LLM 없음): 반복 매트릭스 → 원문 인용·판정 → 스키마·DB 반영 → 한 문장 추적. 데이터 원천: DECISIONS 08/19 + `docs/assets/bootstrap-ai-draft.md` (동기화 대상: `apps/console/lib/provenance.ts`) |
 | `/safety` | 안전성·차단 로그 | 분기된 AE 후보, Critic 차단 이력 |
 
 ### Field (페이퍼 라이트, 모바일 우선 390px) — 소정
