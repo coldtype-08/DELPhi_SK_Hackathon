@@ -20,3 +20,6 @@ out/
 .DS_Store
 .claude/settings.local.json   # 개인 로컬 설정 — launch.json은 커밋(팀 공유 실행 설정)
 ~$*          # Word/Excel 임시 잠금 파일 (docx 검수 중 생김)
+
+# STT 테스트 음성 (생성물 — scripts/stt_eval/gen_test_audio.py로 재생성)
+scripts/stt_eval/audio/
