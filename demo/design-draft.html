@@ -226,7 +226,13 @@
   .sp-msl{background:var(--sky-soft);color:var(--sky)}
   .sp-doc{background:rgba(22,38,97,.09);color:var(--navy)}
   .cline .tx{font-size:11.5px;line-height:1.55;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:11px;padding:7px 10px}
-  .cline.ae .tx{border-color:rgba(228,83,107,.5);background:var(--rust-soft)}
+  .cline .tx mark.ev{background:transparent;border-radius:3px;padding:1px 2px;transition:background .45s ease,box-shadow .45s ease}
+  .cline .tx mark.ev.on.ev-seg{background:rgba(239,139,28,.22);box-shadow:inset 0 -2px 0 var(--orange)}
+  .cline .tx mark.ev.on.ev-sig{background:rgba(91,124,250,.18);box-shadow:inset 0 -2px 0 var(--sky)}
+  .cline .tx mark.ev.on.ev-ae{background:rgba(228,83,107,.18);box-shadow:inset 0 -2px 0 var(--rust)}
+  .cline .tx mark.ev.on.ev-info{background:rgba(31,169,124,.16);box-shadow:inset 0 -2px 0 var(--green)}
+  .dchip.info{background:var(--green-soft);color:var(--green)}
+  .dchip.meta{background:#F0F1F7;color:var(--muted)}
   .detect{border-top:1px solid var(--line);background:rgba(255,255,255,.82);padding:8px 12px;min-height:92px}
   .detect .lbl{font-size:9.5px;font-weight:800;color:var(--muted);letter-spacing:.06em}
   .dchips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
@@ -990,11 +996,14 @@
       { sp: "의사", t: "네, 다녀오고 나니 외래가 밀려서 정신이 없네요." },
       { sp: "MSL", t: "요즘 약물난치성 환자분들은 좀 어떠세요?" },
       { sp: "의사", t: "2제 실패한 17세 환자가 있는데, 성인 허가라 손을 쓸 수가 없어요. 18세까지 기다리는 수밖에요.",
-        c: [["환자군 · 청소년(12–17)", "warn"], ["허가 범위 밖 → 의료 검토 전용", "warn"], ["신호 · 미충족 수요", ""], ["경위 · MSL 질문에 답변", ""]] },
+        s: [["2제 실패한 17세 환자", "seg"], ["성인 허가라 손을 쓸 수가 없어요", "sig"]],
+        c: [["환자군 · 청소년(12–17) — 허가 범위 밖", "warn"], ["신호 · 미충족 수요", ""], ["경위 · MSL 질문에 답변", "meta"]] },
       { sp: "의사", t: "아, 그리고 성인 환자 한 분은 복용 시작하고 어지러움하고 졸림이 꽤 있다고 하셨어요.",
-        ae: true, c: [["부작용 의심 → 안전성 경로로 분리 · 일반 카드 제외", "ae"]] },
+        s: [["어지러움하고 졸림", "ae"]],
+        c: [["부작용 의심 → 안전성 경로로 분리 · 일반 카드 제외", "ae"]] },
       { sp: "의사", t: "혹시 청소년 용량이나 안전성 자료가 있으면 보내주실 수 있어요?",
-        c: [["신호 · 자료 요청", ""], ["→ 체크리스트 후보", ""]] },
+        s: [["청소년 용량이나 안전성 자료", "info"]],
+        c: [["자료 요청 → 체크리스트 후보", "info"]] },
       { sp: "MSL", t: "확인해서 다음 방문 때 정리해 드리겠습니다.", end: true }
     ];
     var chat = document.getElementById("fChat"), chips = document.getElementById("fChips");
@@ -1019,11 +1028,13 @@
       var m = FLOW[idx];
       if (idx === 0) chat.innerHTML = "";
       var line = document.createElement("div");
-      line.className = "cline" + (m.ae ? " ae" : "");
-      line.innerHTML = '<span class="sp ' + (m.sp === "MSL" ? "sp-msl" : "sp-doc") + '">' + m.sp + '</span><span class="tx"></span>';
-      line.querySelector(".tx").textContent = m.t;
+      line.className = "cline";
+      var tx = m.t;
+      (m.s || []).forEach(function (sp2) { tx = tx.replace(sp2[0], '<mark class="ev ev-' + sp2[1] + '">' + sp2[0] + "</mark>"); });
+      line.innerHTML = '<span class="sp ' + (m.sp === "MSL" ? "sp-msl" : "sp-doc") + '">' + m.sp + '</span><span class="tx">' + tx + "</span>";
       chat.appendChild(line);
       requestAnimationFrame(function () { requestAnimationFrame(function () { line.classList.add("show"); }); });
+      setTimeout(function () { line.querySelectorAll("mark.ev").forEach(function (mm) { mm.classList.add("on"); }); }, 550);
       (m.c || []).forEach(function (cc, i) { setTimeout(function () { addChip(cc[0], cc[1]); }, 450 + i * 220); });
       if (m.end) setTimeout(function () { addChip("제출 → 카드 2건 · 안전성 1건 분리", "warn"); }, 900);
       chat.scrollTop = chat.scrollHeight;
