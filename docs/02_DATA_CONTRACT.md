@@ -36,13 +36,13 @@
 | interaction_id | FK | ✓ | |
 | product | enum | ✓ | `XCOPRI` (MVP 고정) |
 | signal_type | enum | ✓ | `UNMET_NEED` `TREATMENT_BARRIER` `INFO_REQUEST` `POSITIVE_OUTCOME` `ACCESS_ISSUE` `REPURPOSING_SIGNAL`(미허가 적응증 언급 — 08/19, 자동 `OUT_OF_LABEL`) `SAFETY_CANDIDATE` `OTHER` |
-| patient_segment | enum | ✓* | `PEDIATRIC_TRANSITION`(청소년 12–17세 전환기 — **허가 범위 밖**) `ELDERLY_65_PLUS` `DRE_2PLUS`(2제 이상 실패 약물난치성) `COMORBID_PSYCH` `FEMALE_CHILDBEARING` `NEW_ONSET_ADULT` `UNSPECIFIED` |
-| label_scope | enum | 자동판정 | `IN_LABEL` `OUT_OF_LABEL` — `signal_type=REPURPOSING_SIGNAL`이거나 patient_segment가 허가 범위 밖(현재 `PEDIATRIC_TRANSITION`)이면 `OUT_OF_LABEL`로 태깅되고, 이 값을 참조하는 가설은 자동으로 `kind=DEVELOPMENT`가 되어 상업 액션 경로에서 제외된다 (절대 규칙 #5의 코드화) |
+| patient_segment | enum | ✓* | `PEDIATRIC_TRANSITION`(청소년 12–17세 전환기 — **허가 범위 밖**) `GENERALIZED_PGTC`(전신 강직-간대발작 — **허가 범위 밖**, 08/21) `LGS`(레녹스-가스토 증후군 — **허가 범위 밖**, 08/21) `ELDERLY_65_PLUS` `DRE_2PLUS`(2제 이상 실패 약물난치성) `COMORBID_PSYCH` `FEMALE_CHILDBEARING` `NEW_ONSET_ADULT` `UNSPECIFIED` |
+| label_scope | enum | 자동판정 | `IN_LABEL` `OUT_OF_LABEL` — `signal_type=REPURPOSING_SIGNAL`이거나 patient_segment가 허가 범위 밖(현재 `PEDIATRIC_TRANSITION` `GENERALIZED_PGTC` `LGS`)이면 `OUT_OF_LABEL`로 태깅되고, 이 값을 참조하는 가설은 자동으로 `kind=DEVELOPMENT`가 되어 상업 액션 경로에서 제외된다 (절대 규칙 #5의 코드화) |
 | journey_stage | enum | | `DIAGNOSIS` `INITIATION` `TITRATION` `MAINTENANCE` `SWITCH` `DISCONTINUATION` |
 | barrier_type | enum | signal_type=TREATMENT_BARRIER면 ✓ | `TITRATION_COMPLEXITY` `DDI_CONCERN`(상호작용) `MONITORING_BURDEN` `REIMBURSEMENT` `AWARENESS_GAP` `FORMULATION_NEED` |
 | solicitation | enum | | `UNSOLICITED` `SOLICITED_BY_MSL` `UNCLEAR` — 오프라벨 언급의 컴플라이언스 의미가 갈리는 축 (08/19, AI 부트스트랩 초안의 발견) |
 | sentiment | enum | | `POSITIVE` `NEUTRAL` `NEGATIVE` `MIXED` — 발언 논조. **HCP 개인별 집계 금지**(절대 규칙 #7) — 세그먼트·토픽 단위 집계만 (08/19, 도메인 오너 판단으로 채택) |
-| indication_mention | text | | 언급된 적응증·질환 원문 (autism, Lennox-Gastaut 등). **enum이 아님** — patient_segment의 SCP 각본(POST_STROKE)과 분리 유지 (08/19) |
+| indication_mention | text | | 언급된 적응증·질환 원문 (autism 등). **enum이 아님** — patient_segment의 SCP 각본(POST_STROKE)과 분리 유지 (08/19). LGS는 08/21 코퍼스 v2에서 발굴 가설 축이 되어 patient_segment enum으로 승격 |
 | concomitant_drugs | text | | 병용 약물명, 쉼표 구분 (lamotrigine 등) — "특정 약물 병용 언급 N회" 집계용. 정규화는 vocab 계층 (08/19) |
 | administration_note | text | | 투여법·제형 관찰 (분쇄 투여 등). **용량 수치는 의도적 제외** — 허위 정밀도·규제 민감 (08/19) |
 | purpose_domain | enum | 자동판정 | `MEDICAL` `COMMERCIAL` `SAFETY` `PUBLIC_EVIDENCE` — 조회 권한의 단위 (§9). signal_type에서 결정론적으로 파생: `ACCESS_ISSUE`→`COMMERCIAL`, `SAFETY_CANDIDATE`→`SAFETY`(§6로 분리), 그 외→`MEDICAL` |

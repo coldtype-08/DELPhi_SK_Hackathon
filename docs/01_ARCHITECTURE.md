@@ -93,7 +93,7 @@ IN_REVIEW → APPROVED / HOLD / REJECTED   (+ In-label vs Development 라벨 필
 
 - 생성 직후 참조 claim 중 APPROVED가 0건이면 그대로 `NOT_BOARD_READY(NO_APPROVED_BASIS)` 사유를 달고 가설 보드에 노출된다 — **승인은 가설의 탄생 조건이 아니라 Board행의 관문이다.** 생성과 동시에 그 가설이 참조하는 claim들이 검토 큐 최상단으로 올라간다(docs/02 §5.5 ①).
 - 잠정 수치의 용도는 DRAFT 생성 트리거와 검토 큐 정렬, 딱 두 가지다. **공식 집계·순위·KPI는 여전히 APPROVED만 계산한다(절대 규칙 #3 불변).** 가설 카드의 `statisticalPatterns`도 항상 승인 기준 SQL 재계산 값을 쓰고, 생성 당시의 잠정 스냅샷은 `created_from_aggregate_json`에 참고용으로만 보존한다.
-- 검산: 이 기본값이면 합성 코퍼스에서 정확히 둘만 생성된다 — HYP-001(S1: 14건/9인, UNMET_NEED)·HYP-002(S6: 10건/6인, TREATMENT_BARRIER). S4(INFO_REQUEST 8건)·S5(POSITIVE_OUTCOME 7건)는 대상 밖, S3(post-stroke 6건)는 enum 미존재라 SCP 경로다 (docs/03 §2와 대조).
+- 검산 (08/21 코퍼스 v2 기준): 이 기본값이면 정확히 **넷만** 생성된다 — HYP-001(S1 청소년: 14건/9인, **검증 축**)·HYP-002(S6 노인: 10건/6인, In-label 대비)·HYP-003(S7 PGTC: 11건/7인, **완주 대표**)·HYP-004(S8 LGS: 7건/5인, 두 번째 발굴). S4(INFO_REQUEST 12건)·S5(POSITIVE_OUTCOME 9건)는 대상 밖, S3(post-stroke 6건)는 enum 미존재라 SCP 경로다 (docs/03 §2와 대조).
 
 **NOT_BOARD_READY 판정도 결정론적이다** (기획서 4-2 ③ "근거가 충분하지 않으면 순위를 부여하지 않는다"). 아래 중 하나라도 걸리면 Board로 넘기지 않고 사유 코드를 화면에 표시한다.
 

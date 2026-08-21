@@ -41,4 +41,6 @@
 
 - 08/21 건태(Claude 세션): **폐쇄 루프 재정의 — 실행 루프(상시)와 구조 루프(드묾) 분리** — Board 승인 후속 액션을 action_items 테이블·상태 머신·API(`GET /actions`, decision body의 actionItems 배열, briefing/interactions의 checklistRefs)로 1급화. target enum에 상업 실행 값 없음(#5 코드화), 수집 귀속 카운트는 SQL·APPROVED만. CLAUDE.md 요약·데모 ⑤·P0 컷라인 갱신 (다음: 인혁 8/29 Board API에 action_items 포함 구현, 소정 Field 브리핑 화면)
 
+- 08/21 건태(Claude 세션): **코퍼스 v2 설계 + 서사 재편(검증→발굴) + v0.1 재확정 docs 반영** — S7(PGTC)·S8(LGS) 발굴 신호 신설(가설 4개 자동 생성), 90문서/≈165단위, 완주 대표 HYP-003 재지정, patient_segment에 GENERALIZED_PGTC·LGS 추가(YAML·docs/02 동기), 캐시 쿼리에 PGTC·LGS 추가. backend/·scripts/에 폴더 CLAUDE.md 신설(킥오프 온보딩) (다음: 8/22 코퍼스 v2 각본·본문 작성 착수)
+
 ## Week 2 (8/28–9/4)
