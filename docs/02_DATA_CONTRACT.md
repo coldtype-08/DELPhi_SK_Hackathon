@@ -88,6 +88,11 @@ schema_change_proposals(id, kind: NEW_ENUM_VALUE|NEW_FIELD, target_field, propos
 hypotheses(id, title_ko, kind: IN_LABEL|DEVELOPMENT, status, segment, driver_summary_ko, created_from_aggregate_json)
 screen_findings(id, hypothesis_id, agent: FIELD_SIGNAL|EVIDENCE|SAFETY|CRITIC,
                 finding_type: SUPPORT|COUNTER|GAP|SAFETY_SIGNAL|BLOCK, statement_ko, source_url, source_locator, created_at)
+external_refs(id, source: OPENFDA|CTGOV|PUBMED|CMS|HIRA, ref_type: LABEL_AGE|TRIAL_REG|LIT_COUNT|POP_SIZE,
+              subject, payload_json, source_url, source_as_of, caveat_ko, created_at)
+                                               # 08/21 — 시장·경쟁 화면(/market)이 읽는 **공개 참조 데이터**.
+                                               # 가설에 연결되지 않는다(hypothesis_id 자체가 없다) → COMMERCIAL 개방의 안전한 근거.
+                                               # 소정의 openFDA·CT.gov 커넥터가 여기로 쓴다 (DECISIONS 08/21)
 board_minutes(id, hypothesis_id, role: MEDICAL|DEVELOPMENT|SAFETY|MARKET_ACCESS|CEO, position_ko, action_item_json, seq)
 decisions(id, hypothesis_id, decision: APPROVED|HOLD|REJECTED, decided_by, rationale_ko, decided_at)
                                                # 08/21: follow_up_json 제거 — 후속 액션은 action_items로 정규화
@@ -174,9 +179,37 @@ Steward 승인 시: 새 `contract_versions` 레코드 ACTIVE화 → `GET /api/fi
 | `MEDICAL_AFFAIRS` (면담 담당) | MEDICAL, PUBLIC_EVIDENCE | 자신이 수집한 interaction의 원문 + 승인 데이터. AE는 "분기됨" 사실만 보이고 내용은 못 봄 |
 | `CLINICAL_STRATEGY` (임상·Medical 전략) | MEDICAL, PUBLIC_EVIDENCE | 가설 승인·보류·기각 권한 보유. Development Hypothesis 검토 대상 |
 | `SAFETY` (PV 담당) | SAFETY | `safety_candidates`의 유일한 조회자. 성장 가설 화면 접근 불필요 |
-| `COMMERCIAL` (상업 전략) | COMMERCIAL, PUBLIC_EVIDENCE | **원문(raw_text)·verbatim_quote 접근 불가.** 지역·기관 단위 집계 행만 (`distinct_hcp ≥ 3`인 그룹만 반환 — 개인 역추정 차단). Development 가설 목록 접근 불가. `PUBLIC_EVIDENCE`는 08/20 추가 — 외부 공개 근거(시장·경쟁 화면)는 개인도 사내 원문도 없어 막을 근거가 없다. 단 **DEVELOPMENT 가설에 연결된 근거는 여전히 억제**한다 |
+| `COMMERCIAL` (상업 전략) | COMMERCIAL, PUBLIC_EVIDENCE | **원문(raw_text)·verbatim_quote 접근 불가.** 지역·기관 단위 집계 행만 (`distinct_hcp ≥ 3`인 그룹만 반환 — 개인 역추정 차단). Development 가설 목록 접근 불가. `PUBLIC_EVIDENCE`는 08/21 승인 — 아래 §9.5의 술어 한 줄로 강제한다 |
 | `DATA_STEWARD` (거버넌스) | 전 영역의 **스키마·SCP·버전** | 값 자체가 아니라 구조를 다룸. SCP의 원문 사례는 열람 가능(승인 판단에 필요) |
 | `ADMIN` (시연·운영 — 08/20 추가) | 전 영역 **열람 전용** | 데모·운영 점검용 전체 열람 계정. **쓰기·승인 권한 없음**(승인은 각 롤의 행위로만 기록). 시연 기본 계정이며, 롤 전환 스위처로 "각 롤에게 보이는 것"을 대조 시연한다. 파일럿에서는 사내 SSO + 접근 로그 필수 |
+
+### 9.5 COMMERCIAL × PUBLIC_EVIDENCE — 무엇으로 막는가 (08/21 확정)
+
+"상업 전략도 시장 정보는 봐야 한다"와 "Development 가설은 상업에 노출하지 않는다"를 동시에 지키는 방법은 **도메인을 넓히는 것이 아니라 데이터를 나누는 것**이다. `PUBLIC_EVIDENCE`에는 성격이 다른 두 종류가 섞여 있었다.
+
+| | 시장 참조 데이터 | 가설 연결 근거 |
+|---|---|---|
+| 테이블 | `external_refs` (신설) | `screen_findings` |
+| 내용 | 허가 라벨 연령·시험 등록·문헌 수·모수 — **누구나 조회 가능한 공개 사실** | "이 가설을 지지/반박하는 근거" — 가설의 존재와 주제를 드러낸다 |
+| 가설 연결 | **없다** (`hypothesis_id` 컬럼 자체가 없다) | 있다 (`hypothesis_id` FK) |
+| COMMERCIAL | 전면 허용 | 그 **가설의 게이트를 따른다** → DEVELOPMENT면 차단 |
+
+게이트는 `access.py` 한 곳에서 술어 하나로 강제한다. 조인을 빠뜨려 새는 경로를 만들지 않기 위해, **가설 연결 여부를 컬럼 존재로 갈라놓은 것이 핵심**이다.
+
+```sql
+-- COMMERCIAL 롤의 PUBLIC_EVIDENCE 조회 (ANSI SQL)
+-- external_refs: 가설 개념이 없으므로 조건 없이 허용
+SELECT ... FROM external_refs WHERE ref_type = ?;
+
+-- screen_findings: 가설의 kind를 따른다. DEVELOPMENT는 행 자체가 빠지고 억제 수를 알려준다
+SELECT f.* FROM screen_findings f
+  JOIN hypotheses h ON h.id = f.hypothesis_id
+ WHERE h.kind <> 'DEVELOPMENT';       -- 억제된 행 수는 suppressedRowCount로 반환 (§9 · docs/04 §3)
+```
+
+- **직접 지목한 조회는 빈 배열이 아니라 403이다**: `GET /hypotheses/HYP-003/screen`처럼 DEVELOPMENT 가설을 명시한 요청은 `403 PURPOSE_SCOPE_VIOLATION`. 목록 조회에서만 행 억제 + `suppressedRowCount`를 쓴다(조용한 누락 금지 원칙, §9).
+- **회귀 테스트 1개를 반드시 둔다** (`backend/tests/test_access_commercial.py`): COMMERCIAL 롤로 모든 PUBLIC_EVIDENCE 경로를 훑어 DEVELOPMENT 가설의 `hypothesis_id`·`statement_ko`가 단 한 건도 응답에 나타나지 않음을 확인. 이 테스트가 이 개방의 안전장치다.
+- 왜 이렇게까지 하나: 이 개방이 새면 절대 규칙 #5가 무너진다. 반대로 제대로 되면 **"권한 분리는 무조건 차단이 아니라 목적에 맞는 범위"**를 보여주는 가장 좋은 장면이 된다 — 같은 롤이 시장·경쟁 탭은 보고 데이터 원장은 403을 받는 대비.
 
 - 절대 규칙 #7의 코드화: `COMMERCIAL` 롤에는 개별 HCP 식별자(`hcp_ref`)를 어떤 응답에서도 내보내지 않는다.
 - MVP 구현: 로그인 없이 헤더 `X-Delphi-Role`로 롤을 주입(docs/04 §0). 시연은 `CLINICAL_STRATEGY`가 기본, 권한 분리 장면에서만 `COMMERCIAL`로 전환.

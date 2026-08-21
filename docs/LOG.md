@@ -47,4 +47,6 @@
 
 - 08/21 건태(Claude 세션): **목업 수치 v3 정합 + 시나리오 반영 감사** — 목업의 v1 숫자를 코퍼스 v3(320/1,118/168승인)로 전면 교체, 발굴 가설 화면(PGTC·LGS) 신설, 가설 보드 4장·COMMERCIAL 억제 3건. 감사에서 찾은 공백 3개 보강: ① CLAUDE.md 한줄요약에 '스키마도 AI 초안+사람 확정' 명시 ② **docs/00 §1.2 레이턴시 4종 정의·메커니즘·화면 증명 매핑 신설**(실행 지연 추가) ③ docs/01 §5에 Field가 자유 메모를 대체하는 이유(손실 2단계) 명시 (다음: 8/22 코퍼스 리얼리티 검수)
 
+- 08/21 건태(Claude 세션): **Contract v0.1 Steward 승인 + COMMERCIAL 개방 설계 확정 + 실행 루프 화면 신설** — ① v0.1 재확정 승인(이후 변경은 SCP만) ② COMMERCIAL×PUBLIC_EVIDENCE를 도메인 확장이 아니라 **`external_refs` 테이블 분리**로 강제(hypothesis_id 컬럼 자체가 없음 · screen_findings는 가설 게이트 · 회귀 테스트 1개 의무화, docs/02 §9.5 · 04 §4.5) ③ 가설 보드에 **실행 루프 4단계 재생 카드** — 승인→Action Item→Field 전달→참조 수집 +1을 클릭으로 관통, Field 폰 체크리스트와 같은 ACT-001을 가리킨다. COLLECTED는 FIELD_CHECKLIST 전용 전이임을 docs/01 §3에 명시(전문조직 검토가 현장 수집으로 집계되는 오류 차단) (다음: 소정 — openFDA 커넥터 → external_refs / 인혁 — actions 라우터·access.py COMMERCIAL 게이트)
+
 ## Week 2 (8/28–9/4)

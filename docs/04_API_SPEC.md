@@ -134,6 +134,22 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 - `kind: "DEVELOPMENT"`면 `commercialActionBlocked: true`가 항상 동반되고, `COMMERCIAL` 롤에서는 이 가설이 목록·상세 모두에서 조회되지 않는다 (`403`).
 - `approvedActions`는 결정 후 채워진다: `{ "actionItemId": "ACT-001", "directiveKo", "target", "status", "deliveredAt", "collectedClaimCount": 1, "computedBy": "SQL" }`. `collectedClaimCount`는 이 액션을 참조해(`checklistRefs`) 수집·**승인**된 claim 수 — 이 숫자의 +1이 실행 루프 닫힘의 화면 증거다 (docs/00 §1.5 #7).
 
+## 4.5 Market & External Refs (08/21)
+
+| 메서드 | 경로 | 설명 |
+|---|---|---|
+| GET | `/market/refs?refType=LABEL_AGE` | 시장·경쟁 화면(`/market`)의 공개 참조 데이터. `external_refs` 테이블만 읽는다 — **가설과 연결되지 않으므로 `COMMERCIAL` 롤에도 열린다** (docs/02 §9.5) |
+
+```json
+{ "data": { "asOf": "2026-08-26", "refType": "LABEL_AGE", "rows": [
+  { "subject": "cenobamate", "source": "OPENFDA", "minAge": 18, "indication": "partial-onset seizures",
+    "sourceUrl": "https://api.fda.gov/drug/label.json?...",
+    "caveatKo": "표기 시점의 허가사항이며, 최신 개정 여부는 원문 라벨에서 확인해야 합니다." } ] } }
+```
+
+- `asOf`·`caveatKo`는 **필수**. 스냅샷을 못 받은 항목은 행을 만들지 않는다 — 화면은 "스냅샷 대기" 트랙으로 렌더하고 **추정값을 채우지 않는다** (DECISIONS 08/21).
+- `screen_findings`와 달리 `hypothesisId` 필드가 존재하지 않는다. 이 구조적 분리가 COMMERCIAL 개방의 근거다.
+
 ## 5. Contract & SCP
 
 | 메서드 | 경로 | 설명 |

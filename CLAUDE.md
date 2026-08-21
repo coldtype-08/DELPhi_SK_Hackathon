@@ -36,7 +36,7 @@ AI 이사회가 심의·권고하면 **사람이 승인**하고(Board), 승인�
 | 애니메이션 | framer-motion(motion) + Magic UI 컴포넌트 | `docs/05_DESIGN_SYSTEM.md` 준수 |
 | 차트 | shadcn charts (Recharts) | 색상 토큰은 디자인 문서의 팔레트만 사용 |
 | 외부 데이터 | PubMed E-utilities, ClinicalTrials.gov v2, openFDA | **모든 응답 `backend/data/cache/`에 캐시** — 데모는 캐시 우선 |
-| 음성 | 브라우저 Web Speech API (ko-KR) | P1. 실패 대비 전사 스크립트 재생 폴백 |
+| 음성 | 브라우저 Web Speech API (ko-KR) | P1. 실패 대비 전사 스크립트 재생 폴백. **상용 STT(Deepgram/Soniox) 선택은 8/24 실기 테스트 후** — DECISIONS 08/21 |
 | 배포 | Railway — console·field·backend 3서비스 + 볼륨(SQLite·캐시) | 심사위원 상시 접속용, main push 자동 배포 (8/24 첫 배포). **라이브 발표 정본은 로컬** — `docs/07_DEPLOYMENT.md` |
 | 코퍼스 언어 | 원석(하이라이트·면담 등) **영어** / Field 수집·음성 **한국어** | 스키마·enum은 언어 중립. 데모에서 두 언어 모두 시연 — `docs/03 §1.5` |
 

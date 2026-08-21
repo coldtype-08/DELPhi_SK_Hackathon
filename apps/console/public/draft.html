@@ -139,6 +139,15 @@
   .g-m{background:var(--orange-soft);color:var(--orange-deep)}
   .g-l{background:var(--rust-soft);color:var(--rust)}
 
+  /* 실행 루프 4단계 */
+  .lstep{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--card);opacity:.45;transition:opacity .3s,border-color .3s,box-shadow .3s}
+  .lstep.on{opacity:1;border-color:rgba(239,139,28,.55);box-shadow:0 2px 10px rgba(22,38,97,.06)}
+  .lstep .ln{width:18px;height:18px;border-radius:999px;background:var(--paper);color:var(--muted);font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center}
+  .lstep.on .ln{background:var(--orange);color:#fff}
+  .lstep .lt{font-size:12.5px;font-weight:800;color:var(--navy);margin-top:6px}
+  .lstep .ld{font-size:11px;color:var(--muted);line-height:1.5;margin-top:3px}
+  .lstep .lq{font-size:10px;font-weight:800;color:var(--orange-deep);background:var(--orange-soft);border-radius:6px;padding:2px 6px;display:inline-block;margin-top:6px}
+  @media (max-width:900px){#loopSteps{grid-template-columns:1fr 1fr}}
   .chartbox{padding:8px 16px 12px}
   .foot{font-size:10.5px;color:#9aa0b8;margin-top:20px;line-height:1.7}
   .foot code{font-family:var(--mono);font-size:9.5px}
@@ -708,6 +717,64 @@
       </div>
     </div>
 
+    <div class="card">
+      <div class="card-h"><h2>실행 루프 — 승인이 다음 수집을 겨냥한다</h2><span class="pill pill-auto">데모 ⑤가 닫히는 지점</span><span class="d">아래 버튼으로 승인 이후 4단계를 재생합니다</span></div>
+      <div style="padding:4px 16px 14px">
+        <div id="loopSteps" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+          <div class="lstep" data-i="1">
+            <div class="ln">1</div>
+            <div class="lt">사람 승인</div>
+            <div class="ld">HYP-003 · 결정 <b>APPROVED</b><br>근거 24/34 · 결정자 기록</div>
+            <div class="lq">decisions +1</div>
+          </div>
+          <div class="lstep" data-i="2">
+            <div class="ln">2</div>
+            <div class="lt">Action Item 채택</div>
+            <div class="ld">Board 제안 3건 중 <b>2건 채택</b><br>사람이 고른 것만 ACTIVE</div>
+            <div class="lq">ACT-001 · ACT-002</div>
+          </div>
+          <div class="lstep" data-i="3">
+            <div class="ln">3</div>
+            <div class="lt">Field 전달</div>
+            <div class="ld"><span style="font-family:var(--mono);font-size:10.5px">GET /field/briefing</span> 응답에 포함<br>delivered_at 기록</div>
+            <div class="lq">폰 체크리스트에 NEW</div>
+          </div>
+          <div class="lstep" data-i="4">
+            <div class="ln">4</div>
+            <div class="lt">수집 귀속</div>
+            <div class="ld">다음 면담이 <span style="font-family:var(--mono);font-size:10.5px">checklist_refs</span>로 제출<br>claim 승인 → 집계 재유입</div>
+            <div class="lq">ACT-001 참조 수집 +1 → COLLECTED</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px;overflow-x:auto">
+          <table>
+            <thead><tr><th>Action Item</th><th>지시</th><th>대상</th><th>담당</th><th>상태</th><th class="num">참조 수집</th></tr></thead>
+            <tbody id="actRows">
+              <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">ACT-001</td>
+                <td>전신발작 케이스 시 이전 실패 약물 수·발작 유형 확인</td>
+                <td><span class="pill pill-st">FIELD_CHECKLIST</span></td><td>MEDICAL_AFFAIRS</td>
+                <td class="ast"><span class="pill pill-gray">PROPOSED</span></td><td class="num acn">—</td></tr>
+              <tr><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">ACT-002</td>
+                <td>PGTC 근거 패키지 전문조직 검토 전달</td>
+                <td><span class="pill pill-st">SPECIALIST_REVIEW</span></td><td>CLINICAL_STRATEGY</td>
+                <td class="ast"><span class="pill pill-gray">PROPOSED</span></td><td class="num acn">—</td></tr>
+              <tr style="opacity:.55"><td class="nm-cell" style="font-family:var(--mono);font-size:11.5px">—</td>
+                <td>상업 캠페인 연계 <span style="color:var(--rust);font-weight:700">(제안 불가)</span></td>
+                <td><span class="pill pill-dev">enum에 없음</span></td><td>—</td>
+                <td><span class="pill pill-gray">생성 자체가 불가</span></td><td class="num">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex;gap:8px;align-items:center;margin-top:12px">
+          <button id="loopPlay" class="btn btn-navy" style="max-width:190px">▶ 승인 후 재생</button>
+          <button id="loopReset" class="fchip">초기화</button>
+          <span id="loopNote" style="font-size:11.5px;color:var(--muted)">Board·CEO는 제안까지만 — ACTIVE로 만드는 것은 사람의 결정뿐입니다.</span>
+        </div>
+      </div>
+    </div>
+
     <details class="guide"><summary>ℹ️ 이 화면의 규칙</summary><div class="g-body">
       순위 점수는 없다 — 정렬은 반복·HCP·권역의 SQL 원값. 근거가 임계 미달이면 <b>순위 없이 사유 코드</b>(NOT_BOARD_READY)로 표시된다. Development 가설은 COMMERCIAL 권한으로는 조회 자체가 차단된다. 상세 화면에서 사실/패턴/AI 해석/제안/승인이 5단계 색으로 구분된다.
     </div></details>
@@ -1210,7 +1277,8 @@ HAVING COUNT(DISTINCT recipient_key) &gt;= 3;   -- 개인 역추정 차단 · re
             </div>
             <div class="fcard">
               <div class="k">방문 전 체크리스트</div>
-              <div class="chk" style="margin-top:6px"><span class="box"></span><span>청소년 사례 시 이전 실패 약물 수 확인 <span class="pill pill-auto" style="margin-left:4px">NEW · Board 후속</span></span></div>
+              <div class="chk" style="margin-top:6px"><span class="box"></span><span>전신발작 케이스 시 이전 실패 약물 수·발작 유형 확인 <span class="pill pill-auto" style="margin-left:4px">NEW · ACT-001</span></span></div>
+              <div class="chk"><span class="box"></span><span>청소년 사례 시 이전 실패 약물 수 확인 <span class="pill pill-gray" style="margin-left:4px">ACT-003</span></span></div>
               <div class="chk"><span class="box"></span><span>청소년 용량·안전성 자료 회신 전달 (미해결 질문)</span></div>
             </div>
             <div class="fcard" style="border-style:dashed">
@@ -1502,6 +1570,56 @@ HAVING COUNT(DISTINCT recipient_key) &gt;= 3;   -- 개인 역추정 차단 · re
       });
     });
     render("documents");
+  })();
+
+  // 실행 루프 재생 — 승인 → Action Item → Field 전달 → 수집 귀속 (연출, docs/01 §3 상태 머신)
+  (function () {
+    var steps = document.querySelectorAll("#loopSteps .lstep");
+    var play = document.getElementById("loopPlay"), rst = document.getElementById("loopReset");
+    var note = document.getElementById("loopNote");
+    var rows = document.querySelectorAll("#actRows tr");
+    var timers = [];
+    // FIELD_CHECKLIST 만 수집 귀속(COLLECTED) 대상이다 — 전문조직 검토는 Field 수집으로 닫히지 않는다
+    var TRACK = [
+      [ // ACT-001 · FIELD_CHECKLIST
+        { st: '<span class="pill pill-gray">PROPOSED</span>', n: "—" },
+        { st: '<span class="pill pill-auto">ACTIVE</span>', n: "0" },
+        { st: '<span class="pill pill-st">전달됨</span>', n: "0" },
+        { st: '<span class="pill pill-inl">COLLECTED</span>', n: "1" },
+      ],
+      [ // ACT-002 · SPECIALIST_REVIEW — 수집 귀속 개념이 없다
+        { st: '<span class="pill pill-gray">PROPOSED</span>', n: "—" },
+        { st: '<span class="pill pill-auto">ACTIVE</span>', n: "해당 없음" },
+        { st: '<span class="pill pill-st">전달됨</span>', n: "해당 없음" },
+        { st: '<span class="pill pill-st">검토 중</span>', n: "해당 없음" },
+      ],
+    ];
+    var NOTES = [
+      "Board·CEO는 제안까지만 — ACTIVE로 만드는 것은 사람의 결정뿐입니다.",
+      "결정이 저장되었습니다. 채택된 2건만 ACTIVE가 됩니다 — 상업 실행 대상은 enum에 없어 만들 수조차 없습니다.",
+      "브리핑 응답에 포함되어 delivered_at이 찍혔습니다. Field 앱 탭의 폰 화면에서 같은 ACT-001이 보입니다.",
+      "다음 면담이 ACT-001을 참조해 제출되고 claim이 승인되었습니다 — 참조 수집 1, 루프가 닫혔습니다. ACT-002는 Field 수집 대상이 아니라 전문조직 검토로 남습니다.",
+    ];
+    function paint(k) {
+      steps.forEach(function (el, i) { el.classList.toggle("on", i < k); });
+      var j = k === 0 ? 0 : Math.max(0, Math.min(3, k - 1));
+      for (var i = 0; i < 2; i++) {
+        var s2 = TRACK[i][j];
+        rows[i].querySelector(".ast").innerHTML = s2.st;
+        rows[i].querySelector(".acn").textContent = s2.n;
+      }
+      note.textContent = NOTES[Math.max(0, Math.min(3, k - 1))] || NOTES[0];
+    }
+    function reset() { timers.forEach(clearTimeout); timers = []; paint(0); play.disabled = false; play.textContent = "▶ 승인 후 재생"; }
+    play.addEventListener("click", function () {
+      reset(); play.disabled = true; play.textContent = "재생 중…";
+      for (var k = 1; k <= 4; k++) {
+        (function (kk) { timers.push(setTimeout(function () { paint(kk); }, kk * 900)); })(k);
+      }
+      timers.push(setTimeout(function () { play.disabled = false; play.textContent = "↺ 다시 재생"; }, 4 * 900 + 300));
+    });
+    rst.addEventListener("click", reset);
+    paint(0);
   })();
 
   // 권한 상태 — 로그인·전환 메뉴가 화면 전체에 반영
