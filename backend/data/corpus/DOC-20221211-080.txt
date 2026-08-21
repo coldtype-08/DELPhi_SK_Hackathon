@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   December 11, 2022   |   Marcus Obeng
+HCP: Sonali Wycliffe, MD, Windrow Neuroscience Center, Eugene, OR (RSM)
+
+A half-hour meeting in corridor, first one this quarter. Mentioned a session summary from a colleague but did not raise any specific finding.

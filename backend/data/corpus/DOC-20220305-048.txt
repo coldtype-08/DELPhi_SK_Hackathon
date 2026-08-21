@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: March 5, 2022   |   MSL: Sam Becker
+HCP: Pallavi Wainwright, MD, Bluestem Comprehensive Epilepsy Clinic, Savannah, GA (RSM)
+
+Stopped by over a quick coffee for a rushed convo.
+
+Asked whether I had seen guideline update discussed at journal club; I had not, and offered nothing in return.
+
+Formulary placement was only product-adjacent topic, and only in general terms.
+
+Most of the discussion was about the prior-authorization workflow, which is still being sorted out.
+
+Titration scheduling is handled by nursing staff, which practice finds workable.

@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   October 2, 2025   |   Dana Cho
+HCP: Hadley Wycliffe, MD, Northbrook Neurology Institute, Peoria, IL (RSM)
+
+A brief meeting between clinic blocks, first one this quarter. Agreed to reconnect at the following quarter; nothing actionable this visit. The composition of the older half of the panel has shifted over the last year or two. Was pleased to report that a difficult adult case has been stable long enough that the family noticed first.

@@ -1,0 +1,16 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: May 11, 2026   |   MSL: Priya Menon
+HCP: Adaeze Vasquez-Lund, MD, Alder Point Neurology Associates, Allentown, PA (RSM)
+
+Stopped by in the reading room for a short conversation.
+
+Volunteered a 16-year-old who failed two medications and has nothing new available until adulthood.
+
+Raised one adult reporting daytime somnolence heavy enough to affect the commute.
+
+Noted that coverage paperwork varies by payer and that this is not specific to any one product.
+
+The practice lost a front-desk coordinator and has not backfilled, so the new-patient backlog has stretched out.
+
+Asked whether I would be at the meeting later this year.

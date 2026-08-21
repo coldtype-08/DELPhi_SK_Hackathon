@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   July 17, 2021   |   Ingrid Halvorsen
+HCP: Silvio Barrowman, MD, Beacon Hill Neurology Associates, Providence, RI (AR)
+
+Monitoring intervals during titration are set by clinic routine here rather than by protocol. The patient portal went live without much warning, and that took up the first part of the conversation.

@@ -1,0 +1,59 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: February 14, 2021   |   From: Sam Becker, Dana Cho
+
+FIELD MEDICAL INSIGHTS
+
+Camila Larkspur, MD, Kestrel Comprehensive Epilepsy Clinic, Little Rock, AR (RSM)
+> A full meeting by scheduling desk, first one this quarter.
+> Routine f/u slots looks better than last year since summer, which shapes how much time there is for anything else.
+> Onboarding two medical assistants is current preoccupation here.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Described how long-standing pts is triaged now compared with before.
+
+Mairead Corliss, MD, Willowmere Neuroscience Center, Hartford, CT (RSM)
+> Caught an unhurried window in the conference room between patients.
+> Agreed to reconnect at a call later this month; no product discussion.
+> Most of discussion was about scheduling system, which went live without much warning.
+> Referenced review that circulated on the service in passing.
+
+Lachlan Zeitler, MD, Bluestem Comprehensive Epilepsy Clinic, Wichita, KS (AR)
+> Stopped by at the end of the clinic list for clipped conversation.
+> Benefit verification is the step that most often delays a start here.
+> Titration scheduling is handled by nursing staff, which practice finds workable.
+
+Delphine Kettleborn, MD, Copperfield Neurology Institute, Providence, RI (AR)
+> Asked whether I had seen a review that circulated on service; I had not, and offered nothing in return.
+> Mostly small talk about program and venue.
+> Closed there — no specific request.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Wilhelmina Nakagawa, MD, Ironwood Neurology Associates, Syracuse, NY (AR)
+> Caught rushed window in workroom between pts.
+> Noted that coverage paperwork remains the slowest step and that this is not specific to any one product.
+> Mentioned case series someone forwarded but did not raise any specific finding.
+
+Lukas Tavernier, MD, Vantage Park Regional Epilepsy Program, Boise, ID (RSM)
+> Caught twenty-minute window outside EEG suite between patients.
+> The patient portal is still being sorted out, and that took up first part of convo.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Yannick Adeyemi-Cole, MD, Willowmere Neuroscience Center, Jackson, MS (RSM)
+> A rushed convo at the nurses' station, mostly logistics.
+> The new-pt backlog has stretched out since summer, which shapes how much time there is for anything else.
+> Described preference for slower titration in general, unrelated to any particular pt.
+
+Odalys Galbraith, MD, Bluestem Comprehensive Epilepsy Clinic, Missoula, MT (AR)
+> A twenty-minute meeting in teh back office, first one this quarter.
+> Formulary placement was teh only product-adjacent topic, and only in general terms.
+> Asked whether I had seen case series someone forwarded; I had not, adn offered nothing in return.
+> Titration habits came up in general terms; no specifics were discussed adn none were offered.
+
+Saoirse Wycliffe, MD, Granite Bay Epilepsy Center, Bakersfield, CA (RSM)
+> Stopped by between clinic blocks for a full conversation.
+> Noted that formulary questions has improved somewhat and that this is not specific to any one product.
+> The phone triage line changed again last month, and that took up first part of conversation.
+> Described how long-standing pts is triaged now compared with before.
+> The practice lost one of the nurse practitioners and has not backfilled, so the referral queue keeps slipping.
+

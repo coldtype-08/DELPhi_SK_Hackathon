@@ -43,4 +43,6 @@
 
 - 08/21 건태(Claude 세션): **코퍼스 v2 설계 + 서사 재편(검증→발굴) + v0.1 재확정 docs 반영** — S7(PGTC)·S8(LGS) 발굴 신호 신설(가설 4개 자동 생성), 90문서/≈165단위, 완주 대표 HYP-003 재지정, patient_segment에 GENERALIZED_PGTC·LGS 추가(YAML·docs/02 동기), 캐시 쿼리에 PGTC·LGS 추가. backend/·scripts/에 폴더 CLAUDE.md 신설(킥오프 온보딩) (다음: 8/22 코퍼스 v2 각본·본문 작성 착수)
 
+- 08/21 건태(Claude 세션): **코퍼스 v3 생성 완료 — 320문서 / 1,118단위 / HCP 300인 / 2021~2026.** 조합형 산문 엔진 신설(`scripts/corpus_v3.py`, LLM 없이 재현), 학회 보고서 22건에 실제 학회명(AES·AAN·ANA)+참조 고지, 문서당 의사 8~14인, 음성 전사 18건. 렌더 검증(docx 99·pdf 22 재추출 대조) 통과, DB 시드 확인(documents 320·interactions 1,118). 임계 통과 조합 4개 검증, UNSPECIFIED 제외 규칙 명시 (다음: 8/22 3인 리얼리티 검수 → 조각 풀 보강 · 목업 수치 v3로 갱신)
+
 ## Week 2 (8/28–9/4)

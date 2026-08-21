@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   May 11, 2021   |   Tom Alvarez
+HCP: Pallavi Vasquez-Lund, MD, Northbrook Neurology Institute, Fayetteville, NC (RSM)
+
+Caught an unhurried window in teh corridor between patients. Routine follow-up slots keeps slipping since summer, which shapes how much time there is for anything else.

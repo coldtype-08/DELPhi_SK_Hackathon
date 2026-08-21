@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: September 2, 2023   |   MSL: Tom Alvarez
+HCP: Imani Eastmond, MD, Granite Bay Epilepsy Center, Chattanooga, TN (RSM)
+
+Caught a rushed window by the scheduling desk between pts.
+
+Benefit verification is the step that most often delays a start here.
+
+Compared notes on which sessions were worth the time.
+
+Referral patterns into this clinic have changed, and the pediatric-to-adult transfers is a bigger share than it was.
+
+Onboarding front-desk coordinator is current preoccupation here.

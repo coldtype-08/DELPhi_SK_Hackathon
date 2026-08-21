@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: July 23, 2024   |   MSL: Rachel Suh
+HCP: Camila Larkspur, MD, Kestrel Comprehensive Epilepsy Clinic, Little Rock, AR (RSM)
+
+An unhurried visit in the shared office; the schedule was tight.
+
+The travel schedule this year came up, and little else.
+
+The practice lost one of the nurse practitioners and has not backfilled, so the referral queue looks better than last year.
+
+Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Spent some time on the surgical workup list and how workup decisions get sequenced.

@@ -1,0 +1,90 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: February 12, 2024   |   From: Ravi Chandrasek, Ravi Chandrasek
+
+FIELD MEDICAL INSIGHTS
+
+Felicity Wycliffe, MD, Harborlight Epilepsy Center, Manchester, NH (RSM)
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Referenced a review that circulated on the service in passing.
+> The practice lost a rotating resident and has not backfilled, so the new-patient backlog has stretched out.
+
+Gemma Lindenmuth, MD, Silver Creek Medical Group, Charleston, SC (RSM)
+> The practice lost the clinic pharmacist and has not backfilled, so clinic throughput looks better than last year.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> The travel schedule this year came up, and little else.
+
+Rosalind Dellacroix, MD, Lakeshore Neurological Care Center, Fort Wayne, IN (RSM)
+> An unhurried visit in the conference room; the schedule was tight.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Noted that formulary questions remains the slowest step and that this is not specific to any one product.
+> Onboarding the epilepsy fellow is the current preoccupation here.
+> The practice lost the clinic pharmacist and has not backfilled, so the referral queue is slowly recovering.
+
+Lukas Eastmond, MD, Thornfield Regional Epilepsy Program, Savannah, GA (RSM)
+> Asked whether I would be at the meeting later this year.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Mentioned a case series someone forwarded but did not raise any specific finding.
+> Referral patterns into this clinic have changed, and the surgical workup list is a bigger share than it was.
+> Talked through long-standing patients in general terms, without any specific case.
+
+Sonali Eversholt, MD, Alder Point Neurology Associates, Fort Collins, CO (RSM)
+> A brief visit between clinic blocks; the schedule was tight.
+> Spent some time on the refractory group and how workup decisions get sequenced.
+> The travel schedule this year came up, and little else.
+> Closed there — nothing that needed follow-up.
+
+Dagmar Lindenmuth, MD, Alder Point Neurology Associates, Charleston, SC (AR)
+> Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
+> The travel schedule this year came up, and little else.
+> Most of the discussion was about the prior-authorization workflow, which is being piloted this quarter.
+
+Caleb Munson, MD, Cedar Ridge Medical Group, Springfield, IL (AR)
+> A brief visit at the nurses' station; the schedule was tight.
+> Most of the discussion was about the scheduling system, which changed again last month.
+> Left it at that, with a follow-up appointment to be scheduled.
+
+Valentina Lindenmuth, MD, Palmetto Neurology Institute, Waco, TX (RSM)
+> A short meeting in the shared office, first one this quarter.
+> The composition of the refractory group has shifted over the last year or two.
+> The new-patient backlog looks better than last year since the summer, which shapes how much time there is for anything else.
+
+Fabian Pemberton, MD, Lakeshore Neurological Care Center, Buffalo, NY (RSM)
+> Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.
+> The travel schedule this year came up, and little else.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> The composition of the surgical workup list has shifted over the last year or two.
+> Described how the surgical workup list is triaged now compared with before.
+
+Orla Wycliffe, MD, Highmoor Health Neurology, Little Rock, AR (RSM)
+> The scheduling system is still being sorted out, and that took up the first part of the conversation.
+> Described how the surgical workup list is triaged now compared with before.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> Compared notes on which sessions were worth the time.
+
+Mairead Sandoval-Reyes, MD, Willowmere Neuroscience Center, Chattanooga, TN (RSM)
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Described how the surgical workup list is triaged now compared with before.
+> The practice lost a front-desk coordinator and has not backfilled, so clinic throughput keeps slipping.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> Noted that benefit checks is handled by one person here and that this is not specific to any one product.
+
+Odalys Thistlewood, MD, Silver Creek Medical Group, Oakland, CA (RSM)
+> Stopped by in the reading room for a productive conversation.
+> Routine follow-up slots is slowly recovering since the summer, which shapes how much time there is for anything else.
+> The composition of newly referred patients has shifted over the last year or two.
+
+Yolanda Reyes, MD, Copper Mesa Neurology, Mesa, AZ (RSM)
+> The practice lost a rotating resident and has not backfilled, so the new-patient backlog keeps slipping.
+> Talked through the refractory group in general terms, without any specific case.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Left it at that, with a call later this month to be scheduled.
+
+Quentin Lammermoor, MD, Riverstone Comprehensive Epilepsy Clinic, Boise, ID (AR)
+> Caught a short window in the shared office between patients.
+> Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return.
+> The travel schedule this year came up, and little else.
+> Benefit checks remains the slowest step, which came up as a general frustration.
+> Described how the refractory group is triaged now compared with before.
+

@@ -1,0 +1,7 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Email Summary   |   July 26, 2025   |   Logged by: Nadia Belhadj
+Correspondent: Cormac Quintrell, MD, Riverstone Comprehensive Epilepsy Clinic, Chattanooga, TN (RSM)
+
+A brief meeting outside the EEG suite, first one this quarter. Mentioned a review that circulated on the service but did not raise any specific finding.
+1. Benefit verification is the step that most often delays a start here.

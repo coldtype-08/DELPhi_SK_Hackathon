@@ -69,8 +69,9 @@ cd backend && uv run uvicorn app.main:app --reload
 cd apps/console && npm run dev
 cd apps/field && npm run dev -- -p 3001
 
-# 합성 데이터 재생성 → DB 초기화 → 시드
-python scripts/generate_corpus.py && python scripts/seed_db.py
+# 합성 데이터 재생성 → DB 초기화 → 시드 (코퍼스 v3: 문서 320 · 단위 1,118 · HCP 300)
+python3 scripts/generate_corpus.py --dry-run   # 각본 검증만 (의존성 불필요)
+bash scripts/generate.sh && python scripts/seed_db.py
 
 # 데모 상태로 리셋 (시연 직전 항상 실행)
 bash scripts/reset_demo.sh

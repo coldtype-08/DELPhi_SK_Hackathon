@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: May 20, 2024   |   MSL: Priya Menon
+HCP: Eloise Wycliffe, MD, Marbury Neurological Care Center, Providence, RI (RSM)
+
+A clipped visit in the conference room; the schedule was tight.
+
+The new charting templates is being piloted this quarter, and that took up the first part of the conversation.
+
+Talked through the surgical workup list in general terms, without any specific case.

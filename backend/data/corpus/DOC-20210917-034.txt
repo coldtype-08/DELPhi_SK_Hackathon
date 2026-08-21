@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   September 17, 2021   |   Ingrid Halvorsen
+HCP: Anouk Oakhurst, MD, Saltmarsh Neurological Care Center, Fayetteville, NC (RSM)
+
+Referenced a session summary from a colleague in passing. Coverage paperwork remains the slowest step, which came up as a general frustration.

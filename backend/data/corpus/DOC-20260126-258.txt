@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: January 26, 2026   |   MSL: Colin Ferreira
+HCP: Ulrike Dellacroix, MD, Silver Creek Medical Group, Allentown, PA (RSM)
+
+A short convo between clinic blocks, mostly logistics.
+
+Onboarding one of nurse practitioners is current preoccupation here.
+
+Compared notes on which sessions were worth the time.
+
+Kept coming back to how often the generalized tonic-clonic group comes up with no approved answer.

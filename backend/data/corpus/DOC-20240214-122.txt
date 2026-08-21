@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: February 14, 2024   |   MSL: Ravi Chandrasek
+HCP: Xiomara Barrowman, MD, Beacon Hill Neurology Associates, Omaha, NE (RSM)
+
+A twenty-minute meeting in the reading room, first one this quarter.
+
+The travel schedule this year came up, and little else.
+
+Agreed to reconnect at the following quarter; nothing actionable this visit.

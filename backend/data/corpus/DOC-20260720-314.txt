@@ -1,0 +1,16 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: July 20, 2026   |   MSL: Priya Menon
+HCP: Rohan Harkness, MD, Riverstone Comprehensive Epilepsy Clinic, Grand Rapids, MI (RSM)
+
+A brief visit in the reading room; the schedule was tight.
+
+Noted the burden of slow titration for older patients and their caregivers.
+
+Formulary questions remains the slowest step, which came up as a general frustration.
+
+Spent some time on the refractory group and how workup decisions get sequenced.
+
+No specific request. Safety items asked about and confirmed none.
+
+Mostly small talk about the program and the venue.

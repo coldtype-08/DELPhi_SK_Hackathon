@@ -1,0 +1,43 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Epilepsy Society Annual Meeting (AES) 2025
+Meeting period: December 2025   |   Author: Colin Ferreira
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Gaspar Ostrander, MD (Riverstone Comprehensive Epilepsy Clinic)
+A short exchange over coffee queue. Mostly small talk about the program and the venue. Brought up, unprompted, several Lennox-Gastaut patients on four or more medications with unchanged seizure counts. The appeals process is handled by one person here, which came up as a general frustration.
+
+Conversation — Yesenia Wainwright, MD (Beacon Hill Neurology Associates)
+Introduced by a colleague from same region and talked for a few minutes. Described how well it works in focal epilepsy and how little that helps the generalized patients in this panel. Requested any published material covering generalized seizure types. Left it at that, with a follow-up appointment to be scheduled. Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Conversation — Saoirse Inverness, MD (Granite Bay Epilepsy Center)
+We spoke standing near the exhibit aisles, briefly. Noted the gap for Lennox-Gastaut patients, described as the most difficult conversation in this clinic. Asked whether I had seen case series someone forwarded; I had not, and offered nothing in return. Described how the refractory group is triaged now compared with before.
+
+Conversation — Rosalind Kettleborn, MD (Ember Lake Medical Group)
+A short exchange over the coffee queue. Described how pediatric-to-adult transfers is triaged now compared with before. Mentioned a case series someone forwarded but did not raise any specific finding. Flagged the Lennox-Gastaut patients whose drop attacks continue on every combination tried.
+
+Conversation — Rosalind Wainwright, MD (Sable Creek Medical Group)
+A hallway conversation during afternoon break. Referenced guideline update discussed at journal club in passing. Would like whatever literature exists on generalized tonic-clonic populations. Framed it as patients with generalized tonic-clonic seizures who cycle through the same medications with the same result. Benefit verification is the step that most often delays start here.
+
+Conversation — Imani Grierson, MD (Foxglove Health Neurology)
+A short exchange over coffee queue. Said the hardest population in this practice is how families of Lennox-Gastaut patients keep asking what else exists. Benefit verification is step that most often delays a start here. Asked whether I would be at teh meeting later this year.
+
+Conversation — Anouk Oyelaran, MD (Marbury Neurological Care Center)
+Introduced by a colleague from same region and talked for a few minutes. Titration scheduling is handled by nursing staff, which the practice finds workable. Keeps seeing post-stroke epilepsy patients, now a visible share of new referrals.
+
+Conversation — Tobias Rusnak, MD (Sable Creek Medical Group)
+Introduced by a colleague from the same region and talked for a few minutes. Noted that formulary questions varies by payer and that this is not specific to any one product. Routine follow-up slots keeps slipping since summer, which shapes how much time there is for anything else. Noted the interaction checks required before starting anyone elderly, which slow the decision down.
+
+Conversation — Felicity Ashgrove, MD (Foxglove Health Neurology)
+We spoke standing near exhibit aisles, briefly. Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return. Asked about my travel schedule, since visits keep landing on the busiest clinic days. Described post-stroke epilepsy, which this clinic sees more of every year.
+
+Conversation — Gemma Steinmetz, MD (Vantage Park Regional Epilepsy Program)
+Introduced by a colleague from the same region and talked for a few minutes. Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return. Brought up, unprompted, the gap for Lennox-Gastaut patients, described as the most difficult conversation in this clinic.
+
+Conversation — Eloise Thackeray, MD (Alder Point Neurology Associates)
+Stopped to talk on way out of session block, with no agenda on either side. Referenced review that circulated on service in passing. Titration scheduling is handled by nursing staff, which practice finds workable. Asked for the drug-drug interaction table for geriatric polypharmacy cases.
+
+Follow-ups have been logged in the interaction system.

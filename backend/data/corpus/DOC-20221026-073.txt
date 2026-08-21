@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   October 26, 2022   |   Tom Alvarez
+HCP: Rohan Thistlewood, MD, Foxglove Health Neurology, Manchester, NH (RSM)
+
+Caught brief window outside the EEG suite between patients. The practice lost rotating resident and has not backfilled, so referral queue has stretched out. Noted that formulary questions takes longer than clinical decision and that this is not specific to any one product.

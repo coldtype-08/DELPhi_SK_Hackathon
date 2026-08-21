@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: January 14, 2022   |   MSL: Dana Cho
+HCP: Lukas Tavernier, MD, Vantage Park Regional Epilepsy Program, Boise, ID (RSM)
+
+A compressed visit by the scheduling desk; the schedule was tight.
+
+Formulary placement was the only product-adjacent topic, and only in general terms.
+
+Most of the discussion was about the referral intake process, which is still being sorted out.
+
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.

@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   August 11, 2025   |   Sam Becker
+HCP: Adaeze Brannigan, MD, Foxglove Health Neurology, Springfield, MO (RSM)
+
+The referral intake process is being piloted this quarter, and that took up first part of conversation. Most of the discussion was about the phone triage line, which is being piloted this quarter.

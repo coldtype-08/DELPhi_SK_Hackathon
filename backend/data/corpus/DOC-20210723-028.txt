@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: July 23, 2021   |   MSL: Sam Becker
+HCP: Xiomara Eversholt, MD, Juniper Flats Neurology Partners, Albany, NY (RSM)
+
+A fragmented visit over quick coffee; schedule was tight.
+
+Described practice as early in its experience here, with nothing to report yet.
+
+The prior-authorization workflow changed again last month, and that took up first part of convo.
+
+Asked whether I would be at meeting later this year.
+
+Monitoring intervals during titration are set by clinic routine here rather than by protocol.

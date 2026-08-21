@@ -1,0 +1,74 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: February 13, 2023   |   From: Ingrid Halvorsen, Tom Alvarez
+
+FIELD MEDICAL INSIGHTS
+
+Marcus Boudreaux, MD, Bayou Regional Epilepsy Center, Baton Rouge, LA (RSM)
+> A brief meeting in the workroom, first one this quarter.
+> Noted that benefit checks takes longer than the clinical decision and that this is not specific to any one product.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> No materials requested. Safety items asked about and confirmed none.
+> Described how the refractory group is triaged now compared with before.
+
+Ilse Beauchamp, MD, Harborlight Epilepsy Center, Lakeland, FL (RSM)
+> A clipped visit in the corridor; the schedule was tight.
+> The composition of the older half of the panel has shifted over the last year or two.
+> Formulary questions takes longer than the clinical decision, which came up as a general frustration.
+> The practice lost the clinic pharmacist and has not backfilled, so routine follow-up slots has stretched out.
+
+Yannick Thistlewood, MD, Thornfield Regional Epilepsy Program, Wichita, KS (RSM)
+> Caught a short window at the end of the clinic list between patients.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> The composition of the surgical workup list has shifted over the last year or two.
+
+Zubin Castellane, MD, Marbury Neurological Care Center, Omaha, NE (RSM)
+> A clipped visit by the scheduling desk; the schedule was tight.
+> Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> The composition of long-standing patients has shifted over the last year or two.
+
+Nikolai Underhill, MD, Willowmere Neuroscience Center, Bakersfield, CA (RSM)
+> Stopped by at the nurses' station for a short conversation.
+> Noted that formulary questions has improved somewhat and that this is not specific to any one product.
+> The travel schedule this year came up, and little else.
+
+Gaspar Nashwood, MD, Copperfield Neurology Institute, Omaha, NE (RSM)
+> Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+> Asked whether I would be at the meeting later this year.
+> Talked through long-standing patients in general terms, without any specific case.
+
+Quentin Lammermoor, MD, Riverstone Comprehensive Epilepsy Clinic, Boise, ID (AR)
+> Titration scheduling is handled by nursing staff, which teh practice finds workable.
+> The referral intake process has not settled, and that took up teh first part of the conversation.
+> Talked through teh surgical workup list in general terms, without any specific case.
+
+Stephen Aldrich, MD, Cascade Summit Medical Center, Tacoma, WA (RSM)
+> Spent some time on the older half of the panel and how workup decisions get sequenced.
+> The scheduling system changed again last month, and that took up the first part of the conversation.
+> Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+
+Adaeze Castellane, MD, Harborlight Epilepsy Center, Savannah, GA (RSM)
+> Caught a half-hour window in the workroom between patients.
+> Most of the discussion was about the phone triage line, which is being piloted this quarter.
+> Coverage paperwork takes longer than the clinical decision, which came up as a general frustration.
+> Left it at that, with the next visit to be scheduled.
+
+Eloise Cavanaugh, MD, Marbury Neurological Care Center, Trenton, NJ (RSM)
+> A twenty-minute visit in the corridor; the schedule was tight.
+> No materials requested. Safety items asked about and confirmed none.
+> The referral intake process has not settled, and that took up the first part of the conversation.
+> Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return.
+> The practice lost the epilepsy fellow and has not backfilled, so the referral queue has stretched out.
+
+Mateo Zeitler, MD, Northbrook Neurology Institute, Fayetteville, NC (RSM)
+> The new charting templates changed again last month, and that took up the first part of the conversation.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+
+Renata Hollingsworth, MD, Silver Creek Medical Group, Peoria, IL (AR)
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Formulary questions is handled by one person here, which came up as a general frustration.
+> Most of the discussion was about the scheduling system, which changed again last month.
+

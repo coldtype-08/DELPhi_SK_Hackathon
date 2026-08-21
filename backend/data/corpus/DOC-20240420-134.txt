@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   April 20, 2024   |   Ravi Chandrasek
+HCP: Kenji Wycliffe, MD, Cedar Ridge Regional Epilepsy Program, Tacoma, WA (RSM)
+
+An unexpectedly long visit outside the EEG suite; the schedule was tight. Monitoring intervals during titration are set by clinic routine here rather than by protocol.

@@ -1,0 +1,94 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: February 9, 2026   |   From: Dana Cho, Priya Menon
+
+FIELD MEDICAL INSIGHTS
+
+Jorge Maldonado, MD, Redwood Basin Medical Group, Sacramento, CA (RSM)
+> Visit on January 27, approximately 20 minutes, in person at the Sacramento office.
+> Discussion was limited to telehealth logistics: roughly one third of follow-up visits are now virtual, and the no-show rate for those slots was described as lower than for in-person appts.
+> Two operational issues raised - patients cannot upload seizure diaries through the video platform, and interpreter scheduling requires 48 hours notice.
+> No materials requested. Next contact expected mid-March.
+
+Imani Okafor, MD, Smoky Ridge Medical Center, Knoxville, TN (RSM)
+> Fourth conversation with this prescriber since September 2025; visit on February 3, approximately 25 minutes.
+> Brought up post-stroke epilepsy again and said these patients do not fit neatly into any of the usual categories.
+> Estimated six to eight such referrals over the past twelve months, most of them age 60 or older, and noted that the stroke service sends them over without a clear pathway back.
+> No materials were requested and no product claims were made during the discussion.
+
+Robert Enloe, MD, High Desert Neurology, Boise, ID (AR)
+> Visit on February 4, approximately 15 minutes, at the Boise office.
+> Topic was adminstrative burden only. Estimated that prior authorization paperwork consumes four to six hours of staff time per week across the practice, up from two to three hours in 2024.
+> One staff member now handles appeals part time. Described the payer portals as inconsistent, with three different formats requested for the same information.
+> No product specifics were discussed and nothing was requested.
+
+Harold Jessup, MD, Magnolia Grove Clinic, Jackson, MS (AR)
+> Visit on February 5, approximately 30 minutes; second discussion with this clinic in 2026.
+> Called titration in geriatric patients 'a second job' for caregivers and asked for simpler guidance.
+> Elaborated that most patients over 65 in the panel arrive on five or more concomitant medications, and that any schedule change generates a call from a family member.
+> Estimated that two of every three older patients need a pharmacist review before a change is made, which adds about a week to the decision.
+> Request logged: caregiver-facing education on what to expect during a titration period, at label level. Routing to Medical Information.
+
+Yolanda Reyes, MD, Copper Mesa Neurology, Mesa, AZ (RSM)
+> Brief encounter on January 29, under ten minutes, in the clinic corridor.
+> Conversation was social: a two-week trip to Oaxaca over the holidays, and the usual observation that February in Mesa is the only compensation for July.
+> Also asked about flight routing to Seoul for a family trip in the fall.
+> No clinical or product discussion took place.
+
+Mei-Lin Tsang, MD, Bayview Epilepsy Associates, Oakland, CA (RSM)
+> Visit on February 6, approximately 20 minutes, at the Oakland site.
+> Discussion stayed at the level of the general ASM landscape: counted eleven agents in routine use at the center, and observed that the number of mechanisms represented is smaller than the number of molecules.
+> Noted that formulary review now runs twice a year rather than annually, and that the committee asks for class-level summaries rather than single-agent reviews.
+> No efficacy or comparative claims were made by either party, and no materials were requested.
+
+Bastian Dellacroix, MD, Bluestem Comprehensive Epilepsy Clinic, Manchester, NH (RSM)
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Closed there — no product discussion.
+> Asked whether I would be at the meeting later this year.
+> Asked that internal teams hear about the absence of an approved route for generalized tonic-clonic seizures despite similar refractoriness.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Anjali Steinmetz, MD, Ember Lake Medical Group, Mobile, AL (RSM)
+> Caught a full window by the scheduling desk between patients.
+> Raised, unprompted, a subset of generalized epilepsy patients for whom the shelf is effectively empty.
+> Onboarding the epilepsy fellow is the current preoccupation here.
+> Agreed to reconnect at a follow-up appointment; no product discussion.
+
+Rasmus Cavanaugh, MD, Bayview Health Neurology, Boise, ID (RSM)
+> A clipped visit by the scheduling desk; the schedule was tight.
+> Agreed to reconnect at a follow-up appointment; no materials requested.
+> Spent the last part of the visit on the patients with generalized tonic-clonic seizures for whom this option is simply not available.
+
+Lachlan Beauchamp, MD, Northbrook Neurology Institute, Charleston, SC (RSM)
+> Closed there — no product discussion.
+> Talked through the older half of the panel in general terms, without any specific case.
+> Raised, unprompted, convulsive generalized seizures as the population left out of the current indication.
+
+Bram Eversholt, MD, Bayview Health Neurology, Grand Rapids, MI (RSM)
+> Stopped by in the corridor for a twenty-minute conversation.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> Benefit verification is the step that most often delays a start here.
+> Raised drug-drug interactions on top of already long medication lists in patients over 65.
+> Onboarding the epilepsy fellow is the current preoccupation here.
+
+Silvio Wycliffe, MD, Highmoor Health Neurology, Reno, NV (RSM)
+> A productive conversation in the shared office, mostly logistics.
+> Took a moment to say that two adults in the refractory group are reporting fewer breakthrough events than before.
+> Left it at that, with a call later this month to be scheduled.
+> Mentioned a review that circulated on the service but did not raise any specific finding.
+> Coverage paperwork has improved somewhat, which came up as a general frustration.
+
+Rosalind Kettleborn, MD, Ember Lake Medical Group, Providence, RI (RSM)
+> Stopped by in the corridor for a twenty-minute conversation.
+> Coverage paperwork has improved somewhat, which came up as a general frustration.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Returned to several Lennox-Gastaut patients on four or more medications with unchanged seizure counts.
+> Most of the discussion was about the scheduling system, which changed again last month.
+
+Hadley Ivanetti, MD, Highmoor Health Neurology, Scranton, PA (RSM)
+> Stopped by by the scheduling desk for a compressed conversation.
+> Asked that internal teams hear about a subset of generalized epilepsy patients for whom the shelf is effectively empty.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Asked whether I would be at the meeting later this year.
+

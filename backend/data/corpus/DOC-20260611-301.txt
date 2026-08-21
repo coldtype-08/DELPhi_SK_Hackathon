@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: June 11, 2026   |   MSL: Colin Ferreira
+HCP: Delphine Rothsay, MD, Copperfield Neurology Institute, Roanoke, VA (RSM)
+
+The travel schedule this year came up, and little else.
+
+The phone triage line is still being sorted out, and that took up the first part of the convo.
+
+Described the adolescents with drug-resistant focal seizures who simply wait until 18 before cenobamate is an option.
+
+The composition of the pediatric-to-adult transfers has shifted over the last year or two.
+
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.

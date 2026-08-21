@@ -1,0 +1,16 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: August 8, 2026   |   MSL: Priya Menon
+HCP: Lukas Fenwicke, MD, Willowmere Neuroscience Center, Boise, ID (RSM)
+
+Caught an unexpectedly long window in the workroom between patients.
+
+Talked through the refractory group in general terms, without any specific case.
+
+Most of the discussion was about the referral intake process, which has not settled.
+
+Compared notes on which sessions were worth the time.
+
+Flagged the 12-to-17 population, described as the place where the treatment gap is widest.
+
+Noted that formulary questions is handled by one person here and that this is not specific to any one product.

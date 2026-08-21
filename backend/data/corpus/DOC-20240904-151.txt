@@ -1,0 +1,43 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Neurological Association Annual Meeting (ANA) 2024
+Meeting period: September 2024   |   Author: Ravi Chandrasek
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Rohan Ravenscroft, MD (Fox Hollow Neurology Partners)
+Approached me rather than the other way around, which is worth noting. Referral patterns into this clinic have changed, and the surgical workup list is a bigger share than it was. Benefit verification is the step that most often delays a start here.
+
+Conversation — Odalys Eversholt, MD (Alder Point Neurology Associates)
+Approached me rather than the other way around, which is worth noting. Spent some time on long-standing patients and how workup decisions get sequenced. The composition of the refractory group has shifted over the last year or two. The practice lost the clinic pharmacist and has not backfilled, so the new-patient backlog keeps slipping.
+
+Conversation — Adaeze Tavernier, MD (Juniper Flats Neurology Partners)
+A hallway conversation during the afternoon break. Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return. Referenced a session summary from a colleague in passing. No materials requested. Safety items asked about and confirmed none.
+
+Conversation — Thandiwe Brannigan, MD (Saltmarsh Neurological Care Center)
+The conversation happened while waiting for a session room to clear. Referenced a review that circulated on the service in passing. Described how the older half of the panel is triaged now compared with before.
+
+Conversation — Hamish Ellingham, MD (Quarry Hill Epilepsy Center)
+A short exchange over the coffee queue. Onboarding a front-desk coordinator is the current preoccupation here. Spent some time on long-standing patients and how workup decisions get sequenced. Formulary questions is handled by one person here, which came up as a general frustration.
+
+Conversation — Wilhelmina Thistlewood, MD (Copperfield Neurology Institute)
+Approached me rather than the other way around, which is worth noting. Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return. Described how the refractory group is triaged now compared with before.
+
+Conversation — Mateo Zeitler, MD (Northbrook Neurology Institute)
+We spoke standing near the exhibit aisles, briefly. Mentioned a case series someone forwarded but did not raise any specific finding. Closed there — no specific request. Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return.
+
+Conversation — Mairead Sandoval-Reyes, MD (Willowmere Neuroscience Center)
+A short exchange over the coffee queue. Spent some time on newly referred patients and how workup decisions get sequenced. Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
+
+Conversation — Marcus Boudreaux, MD (Bayou Regional Epilepsy Center)
+Caught between sessions in the poster hall; the conversation was short and entirely unprompted. Spent some time on long-standing patients and how workup decisions get sequenced. Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return. Onboarding a rotating resident is the current preoccupation here.
+
+Conversation — Dagmar Lindenmuth, MD (Alder Point Neurology Associates)
+Caught between sessions in the poster hall; the conversation was short and entirely unprompted. Compared notes on which sessions were worth the time. Benefit verification is the step that most often delays a start here. Agreed to reconnect at the following quarter; no specific request.
+
+Conversation — Viraj Corliss, MD (Lakeshore Neurological Care Center)
+A short exchange over the coffee queue. Spent some time on long-standing patients and how workup decisions get sequenced. Talked through long-standing patients in general terms, without any specific case. Referenced a review that circulated on the service in passing.
+
+Follow-ups have been logged in the interaction system.

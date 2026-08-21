@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: March 14, 2025   |   MSL: Dana Cho
+HCP: Zubin Abernathy, MD, Cedar Ridge Regional Epilepsy Program, Little Rock, AR (RSM)
+
+Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Noted that formulary questions varies by payer and that this is not specific to any one product.
+
+Talked through the surgical workup list in general terms, without any specific case.

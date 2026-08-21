@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   February 26, 2026   |   Priya Menon
+HCP: Lukas Stanhope, MD, Highmoor Health Neurology, Shreveport, LA (AR)
+
+The practice lost the epilepsy fellow and has not backfilled, so routine follow-up slots is slowly recovering. Coverage paperwork varies by payer, which came up as a general frustration. The composition of the refractory group has shifted over the last year or two. Explained that waiting for a pharmacist to clear the full medication list in patients over 65.

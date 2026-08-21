@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: March 20, 2025   |   MSL: Yuki Tanabe
+HCP: Jaromir Grierson, MD, Saltmarsh Neurological Care Center, Allentown, PA (RSM)
+
+Described how long-standing patients is triaged now compared with before.
+
+Asked whether I would be at the meeting later this year.
+
+Talked through the surgical workup list in general terms, without any specific case.

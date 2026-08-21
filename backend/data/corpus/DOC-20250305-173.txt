@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: March 5, 2025   |   MSL: Rachel Suh
+HCP: Tobias Norrington, MD, Marbury Neurological Care Center, Mobile, AL (RSM)
+
+Stopped by in the back office for a half-hour conversation.
+
+Benefit verification is the step that most often delays a start here.
+
+Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+
+Described a preference for slower titration in general, unrelated to any particular patient.
+
+The composition of the pediatric-to-adult transfers has shifted over the last year or two.

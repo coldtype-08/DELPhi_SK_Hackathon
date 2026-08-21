@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: February 23, 2022   |   MSL: Ingrid Halvorsen
+HCP: Gaspar Yoshimura, MD, Vantage Park Regional Epilepsy Program, Bakersfield, CA (RSM)
+
+A short visit in the shared office; the schedule was tight.
+
+This practice is still building familiarity with the product and had no clinical points to raise.
+
+Referenced a session summary from a colleague in passing.

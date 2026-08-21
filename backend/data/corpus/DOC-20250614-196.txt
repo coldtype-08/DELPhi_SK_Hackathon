@@ -1,0 +1,16 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: June 14, 2025   |   MSL: Yuki Tanabe
+HCP: Mairead Barrowman, MD, Foxglove Health Neurology, Eugene, OR (RSM)
+
+Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Most of the discussion was about the prior-authorization workflow, which changed again last month.
+
+Asked me to send a concise interaction summary for elderly patients on several concomitant medications.
+
+Closed there — no specific request.
+
+Referenced a case series someone forwarded in passing.
+
+The practice lost a rotating resident and has not backfilled, so routine follow-up slots looks better than last year.

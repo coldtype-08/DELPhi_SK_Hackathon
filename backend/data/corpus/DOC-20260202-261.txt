@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: February 2, 2026   |   MSL: Sam Becker
+HCP: Thandiwe Barrowman, MD, Quarry Hill Epilepsy Center, Sioux Falls, SD (RSM)
+
+A fragmented conversation at the end of the clinic list, mostly logistics.
+
+No specific request this time. Asked about safety and confirmed nothing to report.
+
+Described how long-standing pts is triaged now compared with before.
+
+The practice lost the clinic pharmacist and has not backfilled, so routine follow-up slots looks better than last year.
+
+Said the clearest limitation right now is patients with generalized tonic-clonic seizures who cycle through the same medications with the same result.

@@ -1,0 +1,37 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Epilepsy Society Annual Meeting (AES) 2025
+Meeting period: December 2025   |   Author: Nadia Belhadj
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Silvio Prendergast, MD (Silver Creek Medical Group)
+The conversation happened while waiting for a session room to clear. Reported an adult describing double vision on the current step. Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Conversation — Yesenia Vasquez-Lund, MD (Northgate Neurology Partners)
+Stopped to talk on the way out of a session block, with no agenda on either side. Mostly small talk about the program and the venue. Was pleased to report that one adult who had exhausted the usual combinations is now doing markedly better.
+
+Conversation — Nadine Sandoval-Reyes, MD (Windrow Neuroscience Center)
+Stopped to talk on the way out of a session block, with no agenda on either side. Raised Lennox-Gastaut syndrome, where the available regimens have plainly run out. Described how the pediatric-to-adult transfers is triaged now compared with before.
+
+Conversation — Saoirse Inverness, MD (Granite Bay Epilepsy Center)
+Approached me rather than the other way around, which is worth noting. Spent some time on newly referred patients and how workup decisions get sequenced. Flagged how families of Lennox-Gastaut patients keep asking what else exists. Asked whether I would be at the meeting later this year.
+
+Conversation — Fabian Lammermoor, MD (Juniper Flats Neurology Partners)
+The conversation happened while waiting for a session room to clear. Closed there — nothing actionable this visit. Flagged post-stroke epilepsy, which this clinic sees more of every year. Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Conversation — Bastian Underhill, MD (Northgate Neurology Partners)
+A short exchange over teh coffee queue. Described how teh surgical workup list is triaged now compared with before. Returned to how families of Lennox-Gastaut patients keep asking what else exists.
+
+Conversation — Jaromir Merriwether, MD (Sable Creek Medical Group)
+Stopped to talk on the way out of a session block, with no agenda on either side. Referenced a case series someone forwarded in passing. Noted a drug-resistant adult has stayed seizure-free longer than at any point in the chart.
+
+Conversation — Eloise Quintrell, MD (Beacon Hill Neurology Associates)
+A hallway conversation during the afternoon break. The main hesitation is the burden of slow titration for older patients and their caregivers. Closed there — nothing that needed follow-up.
+
+Conversation — Ulrike Wetherby, MD (Juniper Flats Neurology Partners)
+Stopped to talk on the way out of a session block, with no agenda on either side. The practice lost two medical assistants and has not backfilled, so routine follow-up slots keeps slipping. Returned to the gap for Lennox-Gastaut patients, described as the most difficult conversation in this clinic.
+
+Follow-ups have been logged in the interaction system.

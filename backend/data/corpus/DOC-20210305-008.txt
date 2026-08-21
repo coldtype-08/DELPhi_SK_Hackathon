@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: March 5, 2021   |   MSL: Rachel Suh
+HCP: Susan Ratliff, MD, Harborlight Neurology, Portland, ME (AR)
+
+Compared notes on which sessions were worth the time.
+
+The new charting templates is being piloted this quarter, and that took up the first part of the conversation.
+
+Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
+
+Benefit verification is the step that most often delays a start here.
+
+Onboarding a rotating resident is the current preoccupation here.

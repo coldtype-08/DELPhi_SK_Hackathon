@@ -1,0 +1,16 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: July 11, 2025   |   MSL: Ravi Chandrasek
+HCP: Esperanza Calderwood, MD, Vantage Park Regional Epilepsy Program, Burlington, VT (AR)
+
+Mostly small talk about the program and the venue.
+
+Described how the pediatric-to-adult transfers is triaged now compared with before.
+
+Passed along that a patient with years of uncontrolled seizures has had a genuinely uneventful quarter.
+
+No specific request. Safety items asked about and confirmed none.
+
+Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return.
+
+The practice lost the clinic pharmacist and has not backfilled, so clinic throughput keeps slipping.

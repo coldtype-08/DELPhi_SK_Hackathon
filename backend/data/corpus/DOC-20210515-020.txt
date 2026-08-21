@@ -1,0 +1,82 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: May 15, 2021   |   From: Sam Becker, Marcus Obeng
+
+FIELD MEDICAL INSIGHTS
+
+Kiara Prendergast, MD, Saltmarsh Neurological Care Center, Charleston, SC (AR)
+> An unhurried visit in the workroom; the schedule was tight.
+> Most of discussion was about phone triage line, which has not settled.
+> Closed there — nothing actionable this visit.
+
+Delphine Kirkpatrick, MD, Copperfield Neurology Institute, Mobile, AL (RSM)
+> A clipped meeting at nurses' station, first one this quarter.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Described a preference for slower titration in general, unrelated to any particular pt.
+> Closed there — nothing actionable this visit.
+
+Alastair Harkness, MD, Quarry Hill Epilepsy Center, Scranton, PA (RSM)
+> A full conversation in reading room, mostly logistics.
+> Described how refractory group is triaged now compared with before.
+> Mostly small talk about the program and the venue.
+> Benefit verification is the step that most often delays a start here.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Rohan Ravenscroft, MD, Fox Hollow Neurology Partners, Omaha, NE (RSM)
+> A twenty-minute conversation at nurses' station, mostly logistics.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Compared notes on which sessions were worth the time.
+> Benefit verification is the step that most often delays start here.
+> Asked whether I had seen case series someone forwarded; I had not, and offered nothing in return.
+
+Nikolai Underhill, MD, Willowmere Neuroscience Center, Bakersfield, CA (RSM)
+> Stopped by in reading room for a twenty-minute conversation.
+> Talked through the refractory group in general terms, without any specific case.
+> Clinic throughput looks better than last year since summer, which shapes how much time there is for anything else.
+> Referenced session summary from colleague in passing.
+
+Viraj Corliss, MD, Lakeshore Neurological Care Center, Lexington, KY (AR)
+> An unhurried meeting over quick coffee, first one this quarter.
+> The new-pt backlog keeps slipping since summer, which shapes how much time there is for anything else.
+> The travel schedule this year came up, and little else.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Spent some time on newly referred patients and how workup decisions get sequenced.
+
+Tadeo Eastmond, MD, Sable Creek Medical Group, Provo, UT (RSM)
+> A productive conversation in the reading room, mostly logistics.
+> Onboarding two medical assistants is current preoccupation here.
+> Asked whether I would be at meeting later this year.
+> Closed there — no specific request.
+> Formulary placement was only product-adjacent topic, and only in general terms.
+
+Imani Okafor, MD, Smoky Ridge Medical Center, Knoxville, TN (RSM)
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> The practice lost epilepsy fellow adn has not backfilled, so referral queue keeps slipping.
+> Benefit verification is teh step that most often delays a start here.
+
+Fabian Brannigan, MD, Cedar Ridge Regional Epilepsy Program, Reno, NV (RSM)
+> Titration scheduling is handled by nursing staff, which practice finds workable.
+> Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.
+> The travel schedule this year came up, and little else.
+> Noted that formulary questions remains the slowest step and that this is not specific to any one product.
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+
+Josefina Pemberton, MD, Sable Creek Medical Group, Waco, TX (RSM)
+> A twenty-minute visit at nurses' station; schedule was tight.
+> Left it at that, wtih call later this month to be scheduled.
+> Talked through long-standing patients in general terms, without any specific case.
+
+Silvio Inverness, MD, Alder Point Neurology Associates, Madison, WI (RSM)
+> No specific request this time. Asked about safety and confirmed nothing to report.
+> Formulary questions varies by payer, which came up as a general frustration.
+> Onboarding front-desk coordinator is current preoccupation here.
+> Referenced a session summary from a colleague in passing.
+> Talked through long-standing pts in general terms, without any specific case.
+
+Bettina Marchetti, MD, Quarry Hill Epilepsy Center, Worcester, MA (RSM)
+> The referral intake process changed again last month, and that took up the first part of the convo.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> Compared notes on which sessions were worth the time.
+> The composition of the pediatric-to-adult transfers has shifted over the last year or two.
+

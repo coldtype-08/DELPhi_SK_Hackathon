@@ -1,0 +1,93 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: August 11, 2024   |   From: Dana Cho, Sam Becker
+
+FIELD MEDICAL INSIGHTS
+
+Tobias Hollingsworth, MD, Copperfield Neurology Institute, Mobile, AL (RSM)
+> No product discussion this time. Asked about safety and confirmed nothing to report.
+> The practice lost two medical assistants and has not backfilled, so the referral queue keeps slipping.
+> Benefit verification is the step that most often delays a start here.
+> Mentioned a session summary from a colleague but did not raise any specific finding.
+> Referral patterns into this clinic have changed, and long-standing patients is a bigger share than it was.
+
+Harold Jessup, MD, Magnolia Grove Clinic, Jackson, MS (AR)
+> Most of the discussion was about the prior-authorization workflow, which went live without much warning.
+> The practice lost a front-desk coordinator and has not backfilled, so the new-patient backlog is slowly recovering.
+> Talked through the surgical workup list in general terms, without any specific case.
+
+Josefina Abernathy, MD, Riverstone Comprehensive Epilepsy Clinic, Hartford, CT (RSM)
+> Compared notes on which sessions were worth the time.
+> Spent some time on long-standing patients and how workup decisions get sequenced.
+> Mentioned a case series someone forwarded but did not raise any specific finding.
+> Closed there — no specific request.
+> Benefit verification is the step that most often delays a start here.
+
+Alice Nguyen-Barr, MD, Old Dominion Neurology Group, Richmond, VA (AR)
+> Talked through the surgical workup list in general terms, without any specific case.
+> The composition of the older half of the panel has shifted over the last year or two.
+> The practice lost a front-desk coordinator and has not backfilled, so clinic throughput keeps slipping.
+> Referenced a session summary from a colleague in passing.
+
+Rasmus Cavanaugh, MD, Bayview Health Neurology, Boise, ID (RSM)
+> A clipped visit in the reading room; the schedule was tight.
+> Benefit verification is the step that most often delays a start here.
+> The composition of long-standing patients has shifted over the last year or two.
+> Referral patterns into this clinic have changed, and the pediatric-to-adult transfers is a bigger share than it was.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Tadeo Zabriskie, MD, Sable Creek Medical Group, Syracuse, NY (RSM)
+> A fragmented conversation outside the EEG suite, mostly logistics.
+> Mostly small talk about the program and the venue.
+> Benefit verification is the step that most often delays a start here.
+> Referenced a review that circulated on the service in passing.
+> Spent some time on newly referred patients and how workup decisions get sequenced.
+
+Yannick Adeyemi-Cole, MD, Willowmere Neuroscience Center, Jackson, MS (RSM)
+> Referenced a guideline update discussed at journal club in passing.
+> Spent some time on the surgical workup list and how workup decisions get sequenced.
+> Left it at that, with the following quarter to be scheduled.
+> Noted that formulary questions remains the slowest step and that this is not specific to any one product.
+
+Mei-Lin Tsang, MD, Bayview Epilepsy Associates, Oakland, CA (RSM)
+> A rushed meeting in the conference room, first one this quarter.
+> Referral patterns into this clinic have changed, and the older half of the panel is a bigger share than it was.
+> The travel schedule this year came up, and little else.
+
+Niamh Fairweather, MD, Harborlight Epilepsy Center, Eugene, OR (AR)
+> A productive meeting over a quick coffee, first one this quarter.
+> Referenced a case series someone forwarded in passing.
+> The prior-authorization workflow is still being sorted out, and that took up the first part of the conversation.
+> The travel schedule this year came up, and little else.
+
+Silvio Quintrell, MD, Ironwood Neurology Associates, Lexington, KY (AR)
+> The composition of long-standing patients has shifted over the last year or two.
+> Noted that benefit checks takes longer than the clinical decision and that this is not specific to any one product.
+> Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced.
+
+Anouk Oakhurst, MD, Saltmarsh Neurological Care Center, Fayetteville, NC (RSM)
+> A full visit in the workroom; the schedule was tight.
+> The travel schedule this year came up, and little else.
+> Described how long-standing patients is triaged now compared with before.
+> Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced.
+
+Quentin Grierson, MD, Northbrook Neurology Institute, Madison, WI (RSM)
+> Stopped by between clinic blocks for an unexpectedly long conversation.
+> Referral patterns into this clinic have changed, and long-standing patients is a bigger share than it was.
+> Spent some time on the refractory group and how workup decisions get sequenced.
+
+Gaspar Ivanetti, MD, Saltmarsh Neurological Care Center, Albany, NY (RSM)
+> A fragmented conversation in the workroom, mostly logistics.
+> Benefit checks takes longer than the clinical decision, which came up as a general frustration.
+> Described how the refractory group is triaged now compared with before.
+> Most of the discussion was about the referral intake process, which is still being sorted out.
+> The composition of long-standing patients has shifted over the last year or two.
+
+Peter Kowalczyk, MD, Green Mountain Neuroscience, Burlington, VT (RSM)
+> Caught a rushed window at the end of the clinic list between patients.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Asked whether I would be at the meeting later this year.
+> Referral patterns into this clinic have changed, and the older half of the panel is a bigger share than it was.
+

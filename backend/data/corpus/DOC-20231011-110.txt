@@ -1,0 +1,66 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: October 11, 2023   |   From: Sam Becker, Tom Alvarez
+
+FIELD MEDICAL INSIGHTS
+
+Camila Larkspur, MD, Kestrel Comprehensive Epilepsy Clinic, Little Rock, AR (RSM)
+> A clipped conversation at end of clinic list, mostly logistics.
+> Spent some time on long-standing pts and how workup decisions get sequenced.
+> Mostly small talk about program and venue.
+> Mentioned a review that circulated on the service but did not raise any specific finding.
+> The referral queue keeps slipping since summer, which shapes how much time there is for anything else.
+
+Tobias Norrington, MD, Marbury Neurological Care Center, Mobile, AL (RSM)
+> Described a preference for slower titration in general, unrelated to any particular pt.
+> Noted that appeals process takes longer than clinical decision and that this is not specific to any one product.
+> The composition of newly referred patients has shifted over the last year or two.
+
+Saoirse Stanhope, MD, Northbrook Neurology Institute, Allentown, PA (AR)
+> Nothing that needed f/u. Safety items asked about and confirmed none.
+> Spent some time on newly referred patients and how workup decisions get sequenced.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Noted that benefit checks remains slowest step and that this is not specific to any one product.
+> Compared notes on which sessions were worth the time.
+
+Zubin Abernathy, MD, Cedar Ridge Regional Epilepsy Program, Little Rock, AR (RSM)
+> No product discussion this time. Asked about safety and confirmed nothing to report.
+> Most of discussion was about prior-authorization workflow, which has not settled.
+> Mentioned case series someone forwarded but did not raise any specific finding.
+> Talked through long-standing pts in general terms, without any specific case.
+> Benefit checks is handled by one person here, which came up as a general frustration.
+
+Rasmus Ashgrove, MD, Northgate Neurology Partners, Waco, TX (RSM)
+> Stopped by in shared office for a twenty-minute convo.
+> Noted that benefit checks has improved somewhat and that this is not specific to any one product.
+> Referenced a case series someone forwarded in passing.
+> The composition of newly referred pts has shifted over the last year or two.
+> The practice lost one of the nurse practitioners and has not backfilled, so the referral queue has stretched out.
+
+Odalys Stanhope, MD, Copperfield Neurology Institute, Trenton, NJ (RSM)
+> The phone triage line went live without much warning, and that took up the first part of the convo.
+> Described preference for slower titration in general, unrelated to any particular patient.
+> Described how pediatric-to-adult transfers is triaged now compared with before.
+> Talked through surgical workup list in general terms, without any specific case.
+> Mostly small talk about program and venue.
+
+Alastair Harkness, MD, Quarry Hill Epilepsy Center, Scranton, PA (RSM)
+> Most of teh discussion was about the patient portal, which is being piloted this quarter.
+> The travel schedule this year came up, adn little else.
+> No materials requested this time. Asked about safety adn confirmed nothing to report.
+> Talked through teh surgical workup list in general terms, without any specific case.
+> Benefit checks varies by payer, which came up as general frustration.
+
+Darius Prendergast, MD, Quarry Hill Epilepsy Center, Duluth, MN (RSM)
+> A brief conversation between clinic blocks, mostly logistics.
+> Asked about my travel schedule, since visits keep landing on busiest clinic days.
+> Talked through newly referred patients in general terms, without any specific case.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Renata Cavanaugh, MD, Northbrook Neurology Institute, Albany, NY (RSM)
+> Stopped by outside the EEG suite for full conversation.
+> The referral queue has stretched out since the summer, which shapes how much time there is for anything else.
+> Compared notes on which sessions were worth time.
+> Described how the refractory group is triaged now compared with before.
+

@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: December 5, 2024   |   MSL: Dana Cho
+HCP: Dagmar Harkness, MD, Bluestem Comprehensive Epilepsy Clinic, Savannah, GA (RSM)
+
+A half-hour meeting outside the EEG suite, first one this quarter.
+
+Referenced a session summary from a colleague in passing.
+
+No materials requested this time. Asked about safety and confirmed nothing to report.

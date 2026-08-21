@@ -1,0 +1,70 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: April 15, 2021   |   From: Rachel Suh, Dana Cho
+
+FIELD MEDICAL INSIGHTS
+
+Rohan Barrowman, MD, Beacon Hill Neurology Associates, Roanoke, VA (AR)
+> Referenced a guideline update discussed at journal club in passing.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> The travel schedule this year came up, and little else.
+
+Gemma Oakhurst, MD, Palmetto Neurology Institute, Fort Wayne, IN (RSM)
+> No specific request. Safety items asked about and confirmed none.
+> Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+> Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced.
+> The practice lost the clinic pharmacist and has not backfilled, so clinic throughput keeps slipping.
+
+Valentina Kettleborn, MD, Juniper Flats Neurology Partners, Charleston, SC (RSM)
+> A full visit in the conference room; the schedule was tight.
+> Asked whether I would be at the meeting later this year.
+> Referenced a session summary from a colleague in passing.
+
+Wilhelmina Tavernier, MD, Lakeshore Neurological Care Center, Waco, TX (RSM)
+> Described how the refractory group is triaged now compared with before.
+> Asked whether I would be at the meeting later this year.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Referenced a session summary from a colleague in passing.
+
+Tobias Rusnak, MD, Sable Creek Medical Group, Akron, OH (AR)
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> Clinic throughput looks better than last year since the summer, which shapes how much time there is for anything else.
+> Onboarding two medical assistants is the current preoccupation here.
+> Talked through the surgical workup list in general terms, without any specific case.
+
+Xiomara Ostrander, MD, Harborlight Epilepsy Center, Springfield, MO (RSM)
+> A clipped visit by the scheduling desk; the schedule was tight.
+> Described the practice as early in its experience here, with nothing to report yet.
+> The practice lost the epilepsy fellow and has not backfilled, so the new-patient backlog is slowly recovering.
+> Asked whether I would be at the meeting later this year.
+> Described how the refractory group is triaged now compared with before.
+
+Niamh Ostrander, MD, Bayview Health Neurology, Burlington, VT (RSM)
+> Mentioned a session summary from a colleague but did not raise any specific finding.
+> Described the practice as early in its experience here, with nothing to report yet.
+> Left it at that, with the following quarter to be scheduled.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Compared notes on which sessions were worth the time.
+
+Caleb Munson, MD, Cedar Ridge Medical Group, Springfield, IL (AR)
+> A brief visit over a quick coffee; the schedule was tight.
+> Asked whether I would be at the meeting later this year.
+> Closed there — nothing that needed follow-up.
+> Spent some time on the older half of the panel and how workup decisions get sequenced.
+> Onboarding the clinic pharmacist is the current preoccupation here.
+
+Kiara Quintrell, MD, Harborlight Epilepsy Center, Portland, ME (AR)
+> Stopped by at the end of the clinic list for a twenty-minute conversation.
+> Agreed to reconnect at a call later this month; nothing actionable this visit.
+> Asked whether I would be at the meeting later this year.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Referenced a review that circulated on the service in passing.
+
+Delphine Kirkpatrick, MD, Copperfield Neurology Institute, Mobile, AL (RSM)
+> The travel schedule this year came up, and little else.
+> Mentioned a case series someone forwarded but did not raise any specific finding.
+> Closed there — no product discussion.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Clinic throughput has stretched out since the summer, which shapes how much time there is for anything else.
+

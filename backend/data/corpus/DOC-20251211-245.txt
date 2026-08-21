@@ -1,0 +1,16 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: December 11, 2025   |   MSL: Nadia Belhadj
+HCP: Mairead Rusnak, MD, Foxglove Health Neurology, Portland, ME (AR)
+
+Referenced a review that circulated on the service in passing.
+
+Described how the refractory group is triaged now compared with before.
+
+Noted the Lennox-Gastaut patients whose drop attacks continue on every combination tried.
+
+The travel schedule this year came up, and little else.
+
+No product discussion this time. Asked about safety and confirmed nothing to report.
+
+Benefit verification is the step that most often delays a start here.

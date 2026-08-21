@@ -1,0 +1,34 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Academy of Neurology Annual Meeting (AAN) 2022
+Meeting period: April 2022   |   Author: Yuki Tanabe
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Camila Prendergast, MD (Ember Lake Medical Group)
+We spoke standing near the exhibit aisles, briefly. Benefit verification is the step that most often delays a start here. This practice is still building familiarity with the product and had no clinical points to raise. Agreed to reconnect at the following quarter; nothing actionable this visit.
+
+Conversation — Bettina Marchetti, MD (Quarry Hill Epilepsy Center)
+A short exchange over the coffee queue. Asked about my travel schedule, since visits keep landing on the busiest clinic days. Mentioned a case series someone forwarded but did not raise any specific finding.
+
+Conversation — Rasmus Galbraith, MD (Marbury Neurological Care Center)
+Approached me rather than the other way around, which is worth noting. The patient portal is being piloted this quarter, and that took up the first part of the conversation. Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return. Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+
+Conversation — Esperanza Calderwood, MD (Vantage Park Regional Epilepsy Program)
+Stopped to talk on the way out of a session block, with no agenda on either side. The composition of the refractory group has shifted over the last year or two. Closed there — nothing actionable this visit.
+
+Conversation — Rohan Ravenscroft, MD (Fox Hollow Neurology Partners)
+A hallway conversation during the afternoon break. This practice is still building familiarity with the product and had no clinical points to raise. Referenced a guideline update discussed at journal club in passing. Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Conversation — Gaspar Ostrander, MD (Riverstone Comprehensive Epilepsy Clinic)
+We spoke standing near the exhibit aisles, briefly. Mostly small talk about the program and the venue. Referenced a guideline update discussed at journal club in passing. Closed there — no materials requested.
+
+Conversation — Bastian Dellacroix, MD (Bluestem Comprehensive Epilepsy Clinic)
+A short exchange over the coffee queue. Most of the discussion was about the referral intake process, which went live without much warning. Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced. Noted that formulary questions takes longer than the clinical decision and that this is not specific to any one product.
+
+Conversation — Xiomara Ostrander, MD (Harborlight Epilepsy Center)
+Introduced by a colleague from the same region and talked for a few minutes. Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was. Mostly small talk about the program and the venue. Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return.
+
+Follow-ups have been logged in the interaction system.

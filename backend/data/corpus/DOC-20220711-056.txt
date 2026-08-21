@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: July 11, 2022   |   MSL: Marcus Obeng
+HCP: Nikolai Zeitler, MD, Juniper Flats Neurology Partners, Allentown, PA (RSM)
+
+Stopped by by the scheduling desk for twenty-minute conversation.
+
+Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+The scheduling system changed again last month, and that took up first part of convo.

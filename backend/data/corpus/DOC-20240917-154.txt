@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: September 17, 2024   |   MSL: Dana Cho
+HCP: Camila Ostrander, MD, Silver Creek Medical Group, Madison, WI (RSM)
+
+Caught a productive window outside the EEG suite between patients.
+
+Talked through the surgical workup list in general terms, without any specific case.
+
+Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Compared notes on which sessions were worth the time.
+
+Onboarding two medical assistants is the current preoccupation here.

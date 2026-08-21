@@ -1,0 +1,28 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Neurological Association Annual Meeting (ANA) 2022
+Meeting period: October 2022   |   Author: Ravi Chandrasek
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Rosalind Dellacroix, MD (Lakeshore Neurological Care Center)
+A hallway conversation during the afternoon break. Described the practice as early in its experience here, with nothing to report yet. Left it at that, with the following quarter to be scheduled. Spent some time on the refractory group and how workup decisions get sequenced.
+
+Conversation — Yannick Nakagawa, MD (Granite Bay Epilepsy Center)
+The conversation happened while waiting for a session room to clear. The composition of the older half of the panel has shifted over the last year or two. Closed there — no specific request. Coverage paperwork takes longer than the clinical decision, which came up as a general frustration.
+
+Conversation — Camila Larkspur, MD (Kestrel Comprehensive Epilepsy Clinic)
+Introduced by a colleague from the same region and talked for a few minutes. Left it at that, with the following quarter to be scheduled. Mentioned a session summary from a colleague but did not raise any specific finding.
+
+Conversation — Hamish Barrowman, MD (Northgate Neurology Partners)
+Stopped to talk on the way out of a session block, with no agenda on either side. Formulary placement was the only product-adjacent topic, and only in general terms. Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Conversation — Gemma Norrington, MD (Foxglove Health Neurology)
+Introduced by a colleague from the same region and talked for a few minutes. Noted that coverage paperwork varies by payer and that this is not specific to any one product. Mentioned a review that circulated on the service but did not raise any specific finding.
+
+Conversation — Yesenia Vasquez-Lund, MD (Northgate Neurology Partners)
+A hallway conversation during the afternoon break. Noted that formulary questions is handled by one person here and that this is not specific to any one product. No materials requested this time. Asked about safety and confirmed nothing to report.
+
+Follow-ups have been logged in the interaction system.

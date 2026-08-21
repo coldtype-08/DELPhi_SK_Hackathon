@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: December 17, 2022   |   MSL: Dana Cho
+HCP: Ulrike Eversholt, MD, Thornfield Regional Epilepsy Program, Portland, ME (AR)
+
+An unhurried meeting over a quick coffee, first one this quarter.
+
+Described a preference for slower titration in general, unrelated to any particular patient.
+
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.

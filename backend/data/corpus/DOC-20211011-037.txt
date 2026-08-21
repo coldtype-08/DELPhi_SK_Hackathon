@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: October 11, 2021   |   MSL: Ingrid Halvorsen
+HCP: Ulrike Abernathy, MD, Bayview Health Neurology, Bakersfield, CA (RSM)
+
+A twenty-minute meeting at the end of the clinic list, first one this quarter.
+
+This practice is still building familiarity with the product and had no clinical points to raise.
+
+The practice lost a front-desk coordinator and has not backfilled, so the referral queue has stretched out.
+
+Formulary questions takes longer than the clinical decision, which came up as a general frustration.
+
+Referenced a case series someone forwarded in passing.

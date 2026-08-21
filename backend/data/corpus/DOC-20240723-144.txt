@@ -1,0 +1,7 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Email Summary   |   July 23, 2024   |   Logged by: Sam Becker
+Correspondent: Darius Prendergast, MD, Quarry Hill Epilepsy Center, Duluth, MN (RSM)
+
+The composition of newly referred pts has shifted over the last year or two. Most of discussion was about phone triage line, which changed again last month.
+1. Monitoring intervals during titration are set by clinic routine here rather than by protocol.

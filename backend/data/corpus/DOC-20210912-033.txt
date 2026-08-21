@@ -1,0 +1,60 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: September 12, 2021   |   From: Sam Becker, Rachel Suh
+
+FIELD MEDICAL INSIGHTS
+
+Bastian Grierson, MD, Copperfield Neurology Institute, Trenton, NJ (RSM)
+> A clipped visit in shared office; schedule was tight.
+> The practice lost the epilepsy fellow and has not backfilled, so the referral queue is slowly recovering.
+> Mentioned guideline update discussed at journal club but did not raise any specific finding.
+> Spent some time on long-standing pts and how workup decisions get sequenced.
+> This practice is still building familiarity with product and had no clinical points to raise.
+
+Saoirse Inverness, MD, Granite Bay Epilepsy Center, Chattanooga, TN (RSM)
+> A compressed convo at nurses' station, mostly logistics.
+> Benefit verification is step that most often delays start here.
+> Talked through long-standing pts in general terms, without any specific case.
+> Described teh practice as early in its experience here, with nothing to report yet.
+> Titration scheduling is handled by nursing staff, which teh practice finds workable.
+
+Kiara Quintrell, MD, Harborlight Epilepsy Center, Portland, ME (AR)
+> Caught an unexpectedly long window between clinic blocks between pts.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Referenced a review that circulated on the service in passing.
+> The new charting templates changed again last month, and that took up the first part of the conversation.
+> Asked whether I would be at meeting later this year.
+
+Daniel Whitcomb, MD, Northbrook Neurology Institute, Albany, NY (RSM)
+> Stopped by outside the EEG suite for half-hour conversation.
+> Described preference for slower titration in general, unrelated to any particular pt.
+> No materials requested. Safety items asked about and confirmed none.
+> Described practice as early in its experience here, with nothing to report yet.
+
+Xiomara Ostrander, MD, Harborlight Epilepsy Center, Springfield, MO (RSM)
+> Mentioned review that circulated on the service but did not raise any specific finding.
+> Onboarding two medical assistants is current preoccupation here.
+> Formulary placement was only product-adjacent topic, and only in general terms.
+> No materials requested this time. Asked about safety and confirmed nothing to report.
+> The travel schedule this year came up, and little else.
+
+Alastair Whitmore, MD, Vantage Park Regional Epilepsy Program, Hartford, CT (AR)
+> Described preference for slower titration in general, unrelated to any particular pt.
+> The travel schedule this year came up, and little else.
+> Onboarding two medical assistants is current preoccupation here.
+> Formulary questions remains slowest step, which came up as general frustration.
+> The referral intake process went live without much warning, and that took up first part of convo.
+
+Viraj Galbraith, MD, Quarry Hill Epilepsy Center, Little Rock, AR (RSM)
+> A productive conversation in back office, mostly logistics.
+> Described preference for slower titration in general, unrelated to any particular pt.
+> The travel schedule this year came up, and little else.
+> Formulary placement was only product-adjacent topic, and only in general terms.
+> Noted that the appeals process takes longer than the clinical decision and that this is not specific to any one product.
+
+Bettina Marchetti, MD, Quarry Hill Epilepsy Center, Worcester, MA (RSM)
+> A twenty-minute conversation between clinic blocks, mostly logistics.
+> The new-pt backlog keeps slipping since summer, which shapes how much time there is for anything else.
+> Asked whether I would be at meeting later this year.
+

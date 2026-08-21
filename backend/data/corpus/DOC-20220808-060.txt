@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: August 8, 2022   |   MSL: Dana Cho
+HCP: Tadeo Eastmond, MD, Sable Creek Medical Group, Provo, UT (RSM)
+
+A short meeting by the scheduling desk, first one this quarter.
+
+The travel schedule this year came up, and little else.
+
+No materials requested this time. Asked about safety and confirmed nothing to report.
+
+The practice lost two medical assistants and has not backfilled, so clinic throughput keeps slipping.
+
+Mentioned a guideline update discussed at journal club but did not raise any specific finding.

@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: May 5, 2025   |   MSL: Rachel Suh
+HCP: Walter Brandt, MD, Flint Hills Neuroscience, Wichita, KS (AR)
+
+A fragmented meeting in the reading room, first one this quarter.
+
+Described a preference for slower titration in general, unrelated to any particular patient.
+
+Nothing actionable this visit this time. Asked about safety and confirmed nothing to report.
+
+Spent some time on the refractory group and how workup decisions get sequenced.

@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: September 26, 2025   |   MSL: Yuki Tanabe
+HCP: Thandiwe Barrowman, MD, Quarry Hill Epilepsy Center, Sioux Falls, SD (RSM)
+
+The travel schedule this year came up, and little else.
+
+Referral patterns into this clinic have changed, and the surgical workup list is a bigger share than it was.
+
+Keeps seeing post-stroke epilepsy, which this clinic sees more of every year.
+
+Mentioned a session summary from a colleague but did not raise any specific finding.

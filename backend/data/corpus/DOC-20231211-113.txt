@@ -1,0 +1,28 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Epilepsy Society Annual Meeting (AES) 2023
+Meeting period: December 2023   |   Author: Yuki Tanabe
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Rosalind Ivanetti, MD (Saltmarsh Neurological Care Center)
+A short exchange over the coffee queue. The travel schedule this year came up, and little else. Referral patterns into this clinic have changed, and the refractory group is a bigger share than it was. Benefit checks takes longer than the clinical decision, which came up as a general frustration.
+
+Conversation — Arvind Pemberton, MD (Saltmarsh Neurological Care Center)
+Introduced by a colleague from the same region and talked for a few minutes. Clinic throughput has stretched out since the summer, which shapes how much time there is for anything else. Titration scheduling is handled by nursing staff, which the practice finds workable. The composition of long-standing patients has shifted over the last year or two.
+
+Conversation — Silvio Prendergast, MD (Silver Creek Medical Group)
+A hallway conversation during the afternoon break. Benefit verification is the step that most often delays a start here. Described how the surgical workup list is triaged now compared with before.
+
+Conversation — Mairead Sandoval-Reyes, MD (Willowmere Neuroscience Center)
+We spoke standing near the exhibit aisles, briefly. Agreed to reconnect at a follow-up appointment; no specific request. Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+
+Conversation — Camila Ostrander, MD (Silver Creek Medical Group)
+We spoke standing near the exhibit aisles, briefly. Mentioned a session summary from a colleague but did not raise any specific finding. Spent some time on the refractory group and how workup decisions get sequenced.
+
+Conversation — Tobias Castellane, MD (Thornfield Regional Epilepsy Program)
+A short exchange over the coffee queue. Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was. Spent some time on the surgical workup list and how workup decisions get sequenced. Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.
+
+Follow-ups have been logged in the interaction system.

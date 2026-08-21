@@ -1,0 +1,8 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Email Summary   |   May 23, 2025   |   Logged by: Colin Ferreira
+Correspondent: Nikolai Barrowman, MD, Bluestem Comprehensive Epilepsy Clinic, Springfield, MO (AR)
+
+The prior-authorization workflow changed again last month, and that took up the first part of the convo.
+1. Asked whether I could bring interaction and titration guidance for patients over 65.
+2. Left it at that, with call later this month to be scheduled.

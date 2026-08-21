@@ -1,0 +1,28 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Epilepsy Society Annual Meeting (AES) 2023
+Meeting period: December 2023   |   Author: Yuki Tanabe
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Lukas Ravenscroft, MD (Fox Hollow Neurology Partners)
+Stopped to talk on the way out of a session block, with no agenda on either side. Referenced a review that circulated on the service in passing. The composition of the surgical workup list has shifted over the last year or two.
+
+Conversation — Hadley Wycliffe, MD (Northbrook Neurology Institute)
+A hallway conversation during the afternoon break. The composition of the surgical workup list has shifted over the last year or two. The practice lost two medical assistants and has not backfilled, so the new-patient backlog is slowly recovering. Asked whether I would be at the meeting later this year.
+
+Conversation — Quentin Grierson, MD (Northbrook Neurology Institute)
+Introduced by a colleague from the same region and talked for a few minutes. Mostly small talk about the program and the venue. The referral intake process is being piloted this quarter, and that took up the first part of the conversation.
+
+Conversation — Grace Lindqvist, MD (Riverstone Medical Group)
+The conversation happened while waiting for a session room to clear. Titration scheduling is handled by nursing staff, which the practice finds workable. Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
+
+Conversation — Imani Okafor, MD (Smoky Ridge Medical Center)
+A hallway conversation during the afternoon break. Monitoring intervals during titration are set by clinic routine here rather than by protocol. Talked through the pediatric-to-adult transfers in general terms, without any specific case.
+
+Conversation — Gemma Norrington, MD (Foxglove Health Neurology)
+A hallway conversation during the afternoon break. The composition of newly referred patients has shifted over the last year or two. Noted that benefit checks remains the slowest step and that this is not specific to any one product. The new-patient backlog looks better than last year since the summer, which shapes how much time there is for anything else.
+
+Follow-ups have been logged in the interaction system.

@@ -1,0 +1,79 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: June 14, 2024   |   From: Colin Ferreira, Sam Becker
+
+FIELD MEDICAL INSIGHTS
+
+Silvio Barrowman, MD, Beacon Hill Neurology Associates, Providence, RI (AR)
+> Caught productive window by teh scheduling desk between pts.
+> The travel schedule this year came up, adn little else.
+> Referral patterns into this clinic have changed, adn pediatric-to-adult transfers is bigger share than it was.
+> Asked about my travel schedule, since visits keep landing on busiest clinic days.
+
+Josefina Dellacroix, MD, Sandhill Neuroscience Center, Little Rock, AR (RSM)
+> The composition of refractory group has shifted over last year or two.
+> Onboarding front-desk coordinator is current preoccupation here.
+> Nothing actionable this visit. Safety items asked about and confirmed none.
+
+Kenji Cavanaugh, MD, Highmoor Health Neurology, Tacoma, WA (RSM)
+> A fragmented meeting outside EEG suite, first one this quarter.
+> The composition of surgical workup list has shifted over last year or two.
+> Described a preference for slower titration in general, unrelated to any particular pt.
+> Left it at that, with follow-up appointment to be scheduled.
+
+Saoirse Zeitler, MD, Sandhill Neuroscience Center, Tacoma, WA (RSM)
+> Benefit verification is step that most often delays start here.
+> Referenced a guideline update discussed at journal club in passing.
+> The new-patient backlog looks better than last year since summer, which shapes how much time there is for anything else.
+> Agreed to reconnect at next visit; no materials requested.
+
+Quentin Lammermoor, MD, Riverstone Comprehensive Epilepsy Clinic, Boise, ID (AR)
+> Caught a compressed window in the conference room between pts.
+> Clinic throughput keeps slipping since summer, which shapes how much time there is for anything else.
+> Compared notes on which sessions were worth time.
+
+Viraj Adeyemi-Cole, MD, Thornfield Regional Epilepsy Program, Springfield, MO (RSM)
+> A brief convo over a quick coffee, mostly logistics.
+> Most of the discussion was about the prior-authorization workflow, which is being piloted this quarter.
+> Noted that benefit checks varies by payer and that this is not specific to any one product.
+
+Felicity Ashgrove, MD, Foxglove Health Neurology, Missoula, MT (RSM)
+> A full visit in back office; schedule was tight.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Ulrike Pemberton, MD, Cedar Ridge Regional Epilepsy Program, Sioux Falls, SD (RSM)
+> An unexpectedly long conversation in the reading room, mostly logistics.
+> Benefit verification is step that most often delays start here.
+> The composition of long-standing patients has shifted over last year or two.
+
+Dagmar Harkness, MD, Bluestem Comprehensive Epilepsy Clinic, Savannah, GA (RSM)
+> A full visit over a quick coffee; schedule was tight.
+> Referral patterns into this clinic have changed, and surgical workup list is a bigger share than it was.
+> Asked whether I had seen review that circulated on the service; I had not, and offered nothing in return.
+
+Xiomara Eversholt, MD, Juniper Flats Neurology Partners, Albany, NY (RSM)
+> Caught rushed window between clinic blocks between patients.
+> The referral queue has stretched out since summer, which shapes how much time there is for anything else.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Talked through the surgical workup list in general terms, without any specific case.
+> Closed there — nothing that needed follow-up.
+
+Kiara Hollingsworth, MD, Riverstone Comprehensive Epilepsy Clinic, Jackson, MS (RSM)
+> Caught a rushed window outside the EEG suite between patients.
+> Closed there — no specific request.
+> The practice lost two medical assistants and has not backfilled, so referral queue looks better than last year.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Referenced a session summary from a colleague in passing.
+
+Mei-Lin Tsang, MD, Bayview Epilepsy Associates, Oakland, CA (RSM)
+> A twenty-minute conversation in workroom, mostly logistics.
+> The new-pt backlog is slowly recovering since summer, which shapes how much time there is for anything else.
+> Mentioned review that circulated on the service but did not raise any specific finding.
+
+Adaeze Brannigan, MD, Foxglove Health Neurology, Springfield, MO (RSM)
+> Coverage paperwork takes longer than the clinical decision, which came up as general frustration.
+> Referenced a guideline update discussed at journal club in passing.
+> Referral patterns into this clinic have changed, and surgical workup list is bigger share than it was.
+

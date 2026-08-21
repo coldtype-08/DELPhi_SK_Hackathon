@@ -1,0 +1,43 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Academy of Neurology Annual Meeting (AAN) 2025
+Meeting period: April 2025   |   Author: Colin Ferreira
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Rohan Barrowman, MD (Beacon Hill Neurology Associates)
+A short exchange over teh coffee queue. Monitoring intervals during titration are set by clinic routine here rather than by protocol. Referral patterns into this clinic have changed, adn older half of panel is a bigger share than it was. Referenced a session summary from a colleague in passing.
+
+Conversation — Kenji Eversholt, MD (Copperfield Neurology Institute)
+Approached me rather than the other way around, which is worth noting. No product discussion this time. Asked about safety and confirmed nothing to report. Referral patterns into this clinic have changed, and the refractory group is bigger share than it was.
+
+Conversation — Tobias Norrington, MD (Marbury Neurological Care Center)
+Introduced by colleague from the same region and talked for few minutes. Spent some time on refractory group and how workup decisions get sequenced. Asked whether I would be at meeting later this year. Benefit verification is step that most often delays a start here.
+
+Conversation — Josefina Abernathy, MD (Riverstone Comprehensive Epilepsy Clinic)
+Approached me rather than other way around, which is worth noting. Also mentioned a patient with a rash-like eruption that is being watched. Mostly small talk about the program and the venue.
+
+Conversation — Nikolai Barrowman, MD (Bluestem Comprehensive Epilepsy Clinic)
+We spoke standing near exhibit aisles, briefly. Spent some time on long-standing patients and how workup decisions get sequenced. No product discussion this time. Asked about safety and confirmed nothing to report. Benefit verification is the step that most often delays a start here.
+
+Conversation — Selin Eastmond, MD (Windrow Neuroscience Center)
+A short exchange over coffee queue. Referral patterns into this clinic have changed, and the refractory group is a bigger share than it was. Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Conversation — Hamish Ellingham, MD (Quarry Hill Epilepsy Center)
+Introduced by colleague from the same region and talked for few minutes. Described how long-standing patients is triaged now compared with before. Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Conversation — Jaromir Merriwether, MD (Sable Creek Medical Group)
+A short exchange over the coffee queue. Noted that formulary questions has improved somewhat and that this is not specific to any one product. Requested titration guidance written for caregivers rather than clinicians. The composition of older half of panel has shifted over last year or two.
+
+Conversation — Mairead Sandoval-Reyes, MD (Willowmere Neuroscience Center)
+Caught between sessions in poster hall; conversation was short and entirely unprompted. Spent some time on the refractory group and how workup decisions get sequenced. Would like a shorter interaction reference that intake staff could work from.
+
+Conversation — Eloise Thackeray, MD (Alder Point Neurology Associates)
+Caught between sessions in poster hall; conversation was short and entirely unprompted. Benefit verification is step that most often delays a start here. The phone triage line is being piloted this quarter, and that took up the first part of the convo.
+
+Conversation — Wilhelmina Nakagawa, MD (Ironwood Neurology Associates)
+Approached me rather than the other way around, which is worth noting. Agreed to reconnect at a call later this month; nothing that needed follow-up. Monitoring intervals during titration are set by clinic routine here rather than by protocol. Talked through newly referred pts in general terms, without any specific case.
+
+Follow-ups have been logged in the interaction system.

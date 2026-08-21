@@ -1,0 +1,75 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: May 11, 2026   |   From: Tom Alvarez, Rachel Suh
+
+FIELD MEDICAL INSIGHTS
+
+Fiona Gallagher, MD, Great Lakes Epilepsy Institute, Madison, WI (RSM)
+> Quick stop at Great Lakes, ~15 min in the fellows room.
+> Pt volume up again this quarter, mostly new referrals in from the western half of the state. Epilepsy service running two extra half-days to absorb it.
+> Video EEG wait is the choke point, out around nine weeks. F/u slots get pushed first.
+> No clinical questions, no materials requested. Next appt not booked.
+
+Andrei Petrov, MD, Prairie Gate Health, Des Moines, IA (RSM)
+> Longer than planned, ~30 min, mostly standing in the back hallway. Second visit to this site this yaer.
+> Asked where the gaps sit in the refractory panel right now. Said the 12-to-17 group with refractory focal epilepsy is where the biggest gap sits, since the adult-only label leaves them waiting.
+> Two pts in mind, both failed 2 ASMs, both still seizing. Says the practical plan is hold and re-book until they age in, and that parents hear the same answer every visit.
+> I confirmed CNB is approved for adults only and did not discuss use under 18. No request to do so was made.
+> Logging as recurring unmet need - same theme heard in Madison and Baton Rouge. No AE, nothing requested.
+
+Katherine Ost, MD, Sonoran Neuroscience Institute, Tucson, AZ (RSM)
+> ~20 min, in person, squeezed between clinic blocks.
+> Whole convo was the EHR. Seizure frequency template takes one number per encounter, no feild for clusters, so the real count ends up buried in free text.
+> Says the QI chart review meant opening every note by hand. Two tickets in the IT queue since Jan, no movement.
+> No product discussion. Nothing requested.
+
+Jorge Maldonado, MD, Redwood Basin Medical Group, Sacramento, CA (RSM)
+> Drop-in, ~10 min, waiting room was full so we stood in the corridor.
+> All admin. Says the front desk now loses about a day a week to payer forms, and the same clinical question comes back in three diffrent formats.
+> Denials arrive by mail, appeals go through a portal, and nobody in the office can tell which one the payer actually reads.
+> No product specifics came up and I did not raise any. No AE.
+
+Alice Nguyen-Barr, MD, Old Dominion Neurology Group, Richmond, VA (AR)
+> In person, ~15 min at the Richmond office. First contact since Feb.
+> Telehealth f/u is about a quarter of the schedule now and staying that way. No-shows down, but the check-in link expires if a pt opens it early, so the front desk re-sends most mornings.
+> Diaries still arrive on paper or by fax. Staff re-key them before the appt, which is where the time goes.
+> No clinical or product discussion. Next appt not booked.
+
+Jaromir Cavanaugh, MD, Granite Bay Epilepsy Center, Burlington, VT (AR)
+> A productive meeting outside the EEG suite, first one this quarter.
+> Asked whether I could bring whatever adolescent dosing or safety material exists, published or pending.
+> The appeals process is handled by one person here, which came up as a general frustration.
+> Described how the pediatric-to-adult transfers is triaged now compared with before.
+> Brought up, unprompted, the gap between what these adolescent patients need and what the label permits.
+
+Adaeze Vasquez-Lund, MD, Alder Point Neurology Associates, Allentown, PA (RSM)
+> Caught twenty-minute window between clinic blocks between pts.
+> Talked through the pediatric-to-adult transfers in general terms, without any specific case.
+> Explained that how the medication list in patients over 65 makes the whole decision feel heavier.
+> Noted that appeals process varies by payer and that this is not specific to any one product.
+
+Gaspar Yoshimura, MD, Vantage Park Regional Epilepsy Program, Bakersfield, CA (RSM)
+> The referral intake process is being piloted this quarter, and that took up the first part of the conversation.
+> Raised waiting for a pharmacist to clear the full medication list in patients over 65.
+> Referenced case series someone forwarded in passing.
+> The composition of the older half of the panel has shifted over the last year or two.
+> Closed there — no specific request.
+
+Yesenia Kirkpatrick, MD, Cedar Ridge Regional Epilepsy Program, Scranton, PA (AR)
+> Stopped by in the corridor for rushed convo.
+> Action item: published pharmacokinetic work in adolescents, if any exists.
+> Said the hardest conversations in clinic are about a 17-year-old whose regimen is clearly failing while the approved options are exhausted.
+> Agreed to reconnect at following quarter; nothing that needed f/u.
+
+Kenji Tavernier, MD, Highmoor Health Neurology, Reno, NV (RSM)
+> Stopped by over a quick coffee for a full convo.
+> Brought up, unprompted, the adolescents with drug-resistant focal seizures who simply wait until 18 before cenobamate is an option.
+> Noted a patient with nausea since starting, now under observation.
+> The referral intake process went live without much warning, and that took up first part of conversation.
+
+Zubin Grierson, MD, Marbury Neurological Care Center, Tucson, AZ (RSM)
+> Most of the discussion was about the new charting templates, which is being piloted this quarter.
+> Spent the last part of the visit on patients with generalized tonic-clonic seizures who cycle through the same medications with the same result.
+> Benefit verification is the step that most often delays start here.
+

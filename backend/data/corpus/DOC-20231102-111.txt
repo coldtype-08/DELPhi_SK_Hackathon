@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: November 2, 2023   |   MSL: Ravi Chandrasek
+HCP: Tobias Norrington, MD, Marbury Neurological Care Center, Mobile, AL (RSM)
+
+Caught a fragmented window in the corridor between patients.
+
+Described how newly referred patients is triaged now compared with before.
+
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced.
+
+Titration habits came up in general terms; no specifics were discussed and none were offered.

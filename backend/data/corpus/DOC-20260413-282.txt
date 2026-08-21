@@ -1,0 +1,85 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: April 13, 2026   |   From: Sam Becker, Tom Alvarez
+
+FIELD MEDICAL INSIGHTS
+
+Mei-Lin Tsang, MD, Bayview Epilepsy Associates, Oakland, CA (RSM)
+> Short catch-up after grand rounds. Panel is mostly refractory adults, several followed for a decade plus.
+> Volunteered that the longest-standing refractory patient in the panel has had the quietest quarter in years since starting cenobamate.
+> Framed as one pt observation only. Said back that single cases dont generalize; logging it as individual experience, nothing more.
+> Diary habits unchanged - paper first, then scanned into the chart by staff.
+> Next touchpoint at dept mtg. 15 min slot, agenda already full.
+
+Fiona Gallagher, MD, Great Lakes Epilepsy Institute, Madison, WI (RSM)
+> Teaching talk only this visit. Runs journal club for the PGY3s every other Thurs, trying to move it to a lunch slot.
+> Gripe: fellows rotate out mid-block so the critical appraisal series never finishes.
+> Picked up two extra resident lectures this term. Prep time comes out of clinc admin time.
+> Nothing clinical raised. Cut short, called away to an EEG read.
+
+Yolanda Reyes, MD, Copper Mesa Neurology, Mesa, AZ (RSM)
+> Front desk down two schedulers since Feb. New referrals sitting 6-7 wks.
+> Triage is nurse-led for now. Follow-ups get bumped first, which the whole office dislikes.
+> Asked that visits stay under 10 min until the roles are backfilled. Fine by me.
+> No other topics. Fuller discussion pushed to next quarter.
+
+Peter Kowalczyk, MD, Green Mountain Neuroscience, Burlington, VT (RSM)
+> East wing is a construction zone thru summer. Clinic relocated to 2nd floor temporarily.
+> Main gripe is parking - staff lot closed, shuttle runs late, pts arriving 20 min behind.
+> Says drilling noise makes afternoon phone visits nearly impossible.
+> No clinical topics. Will try again once the move settles.
+
+Mairead Sandoval-Reyes, MD, Willowmere Neuroscience Center, Chattanooga, TN (RSM)
+> Nothing that needed follow-up. Safety items asked about and confirmed none.
+> Clinic throughput keeps slipping since summer, which shapes how much time there is for anything else.
+> Volunteered how well it works in focal epilepsy and how little that helps the generalized patients in this panel.
+> Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+
+Darius Kirkpatrick, MD, Ironwood Neurology Associates, Akron, OH (RSM)
+> Referral patterns into this clinic have changed, and the older half of the panel is a bigger share than it was.
+> Spent the visit on the interaction checks required before starting anyone elderly, which slow the decision down.
+> Noted that appeals process takes longer than clinical decision and that this is not specific to any one product.
+
+Eamon Quintrell, MD, Fox Hollow Neurology Partners, Des Moines, IA (RSM)
+> A productive meeting in the workroom, first one this quarter.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Spent most of the conversation on the 12-to-17 population, described as the place where the treatment gap is widest.
+> Onboarding front-desk coordinator is current preoccupation here.
+> Action item: anything shareable on the under-18 population.
+
+Fabian Galbraith, MD, Palmetto Neurology Institute, Akron, OH (RSM)
+> Talked through newly referred pts in general terms, without any specific case.
+> Noted that the appeals process has improved somewhat and that this is not specific to any one product.
+> Described how newly referred pts is triaged now compared with before.
+> Would like whatever adolescent dosing or safety material exists, published or pending.
+> Spent most of the conversation on a 16-year-old who failed two medications and has nothing new available until adulthood.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Orla Wycliffe, MD, Highmoor Health Neurology, Little Rock, AR (RSM)
+> Stopped by in the conference room for a twenty-minute convo.
+> Framed it as a group of primary generalized patients with nothing comparable to offer.
+> No materials requested. Safety items asked about and confirmed none.
+> The appeals process varies by payer, which came up as general frustration.
+> Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+
+Ulrike Dellacroix, MD, Silver Creek Medical Group, Allentown, PA (RSM)
+> A compressed conversation in back office, mostly logistics.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> Referral patterns into this clinic have changed, and refractory group is a bigger share than it was.
+> Agreed to reconnect at a call later this month; nothing actionable this visit.
+> Said the clearest limitation right now is how often the generalized tonic-clonic group comes up with no approved answer.
+
+Gaspar Brannigan, MD, Beacon Hill Neurology Associates, Tucson, AZ (RSM)
+> Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return.
+> Described how newly referred pts is triaged now compared with before.
+> The travel schedule this year came up, and little else.
+> Framed the biggest gap in this panel as the steady trickle of drug-resistant teenagers for whom nothing on label has changed.
+> Asked whether I could bring anything shareable on the under-18 population.
+
+Bettina Wetherby, MD, Ember Lake Medical Group, Omaha, NE (AR)
+> A clipped visit in reading room; schedule was tight.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Mentioned a session summary from a colleague but did not raise any specific finding.
+> Described several patients whose seizures are generalized rather than focal, and therefore out of scope.
+

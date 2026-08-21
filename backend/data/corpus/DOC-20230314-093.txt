@@ -1,0 +1,61 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: March 14, 2023   |   From: Ingrid Halvorsen, Rachel Suh
+
+FIELD MEDICAL INSIGHTS
+
+Malika Fairweather, MD, Highmoor Health Neurology, Worcester, MA (RSM)
+> Referenced a case series someone forwarded in passing.
+> Referral patterns into this clinic have changed, adn long-standing patients is a bigger share than it was.
+> The practice lost teh clinic pharmacist and has not backfilled, so clinic throughput keeps slipping.
+> Most of teh discussion was about the new charting templates, which went live without much warning.
+> Left it at that, wtih a call later this month to be scheduled.
+
+Lukas Lammermoor, MD, Saltmarsh Neurological Care Center, Peoria, IL (AR)
+> Caught a clipped window by the scheduling desk between patients.
+> Referral patterns into this clinic have changed, and the surgical workup list is a bigger share than it was.
+> The referral queue has stretched out since the summer, which shapes how much time there is for anything else.
+
+Marcus Boudreaux, MD, Bayou Regional Epilepsy Center, Baton Rouge, LA (RSM)
+> The composition of long-standing patients has shifted over the last year or two.
+> Described how the refractory group is triaged now compared with before.
+> Benefit verification is the step that most often delays a start here.
+> Closed there — no materials requested.
+
+Imani Kilbride, MD, Northgate Neurology Partners, Spokane, WA (AR)
+> An unhurried conversation in the shared office, mostly logistics.
+> Noted that the appeals process is handled by one person here and that this is not specific to any one product.
+> No materials requested. Safety items asked about and confirmed none.
+
+Victor Salas, MD, Hill Country Neuroscience Institute, Austin, TX (RSM)
+> Referenced a case series someone forwarded in passing.
+> Onboarding the epilepsy fellow is the current preoccupation here.
+> Asked whether I would be at the meeting later this year.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Yannick Harkness, MD, Granite Bay Epilepsy Center, Hartford, CT (RSM)
+> The prior-authorization workflow is being piloted this quarter, and that took up the first part of the conversation.
+> Talked through the older half of the panel in general terms, without any specific case.
+> Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return.
+> Compared notes on which sessions were worth the time.
+> The appeals process has improved somewhat, which came up as a general frustration.
+
+Saoirse Wycliffe, MD, Granite Bay Epilepsy Center, Bakersfield, CA (RSM)
+> An unexpectedly long conversation in the back office, mostly logistics.
+> Referenced a session summary from a colleague in passing.
+> Routine follow-up slots has stretched out since the summer, which shapes how much time there is for anything else.
+> Closed there — no product discussion.
+> Referral patterns into this clinic have changed, and the older half of the panel is a bigger share than it was.
+
+Selin Eastmond, MD, Windrow Neuroscience Center, Savannah, GA (RSM)
+> Caught an unhurried window in the corridor between patients.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Asked whether I would be at the meeting later this year.
+> Referral patterns into this clinic have changed, and the surgical workup list is a bigger share than it was.
+
+Felicity Ashgrove, MD, Foxglove Health Neurology, Missoula, MT (RSM)
+> A twenty-minute visit in the corridor; the schedule was tight.
+> Referral patterns into this clinic have changed, and the pediatric-to-adult transfers is a bigger share than it was.
+> The practice lost a rotating resident and has not backfilled, so the new-patient backlog looks better than last year.
+

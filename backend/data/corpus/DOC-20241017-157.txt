@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: October 17, 2024   |   MSL: Sunny Okafor
+HCP: Gaspar Nashwood, MD, Copperfield Neurology Institute, Omaha, NE (RSM)
+
+Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+
+Talked through the refractory group in general terms, without any specific case.
+
+The new charting templates is still being sorted out, and that took up the first part of the conversation.

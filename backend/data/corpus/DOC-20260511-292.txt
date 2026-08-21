@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   May 11, 2026   |   Nadia Belhadj
+HCP: Sonali Corliss, MD, Lakeshore Neurological Care Center, Akron, OH (RSM)
+
+A full visit outside the EEG suite; the schedule was tight. The phone triage line went live without much warning, and that took up the first part of the conversation. Described how the refractory group is triaged now compared with before. Wanted to register several patients whose seizures are generalized rather than focal, and therefore out of scope.

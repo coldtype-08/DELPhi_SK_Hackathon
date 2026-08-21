@@ -1,0 +1,28 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Neurological Association Annual Meeting (ANA) 2023
+Meeting period: September 2023   |   Author: Marcus Obeng
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Ulrike Silverthorne, MD (Silver Creek Medical Group)
+Caught between sessions in poster hall; conversation was short and entirely unprompted. Spent some time on the older half of the panel and how workup decisions get sequenced. Asked whether I had seen guideline update discussed at journal club; I had not, and offered nothing in return. The referral queue keeps slipping since summer, which shapes how much time there is for anything else.
+
+Conversation — Darius Pemberton, MD (Kestrel Comprehensive Epilepsy Clinic)
+A short exchange over the coffee queue. Asked whether I had seen review that circulated on service; I had not, and offered nothing in return. Described a preference for slower titration in general, unrelated to any particular pt.
+
+Conversation — Odalys Eversholt, MD (Alder Point Neurology Associates)
+A hallway convo during afternoon break. Benefit verification is step that most often delays a start here. Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return. Spent some time on refractory group and how workup decisions get sequenced.
+
+Conversation — Rosalind Voskuijlen, MD (Willowmere Neuroscience Center)
+A short exchange over the coffee queue. Mentioned case series someone forwarded but did not raise any specific finding. Benefit verification is step that most often delays a start here. Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Conversation — Anjali Rusnak, MD (Ironwood Neurology Associates)
+Approached me rather than the other way around, which is worth noting. Spent some time on long-standing patients and how workup decisions get sequenced. Onboarding two medical assistants is current preoccupation here.
+
+Conversation — Silvio Prendergast, MD (Silver Creek Medical Group)
+Stopped to talk on way out of a session block, with no agenda on either side. Noted that coverage paperwork takes longer than clinical decision and that this is not specific to any one product. Spent some time on newly referred pts and how workup decisions get sequenced. Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return.
+
+Follow-ups have been logged in the interaction system.

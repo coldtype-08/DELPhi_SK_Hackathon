@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   March 20, 2025   |   Nadia Belhadj
+HCP: Imani Quintrell, MD, Northgate Neurology Partners, Buffalo, NY (RSM)
+
+Stopped by in the back office for an unhurried conversation. Titration scheduling is handled by nursing staff, which the practice finds workable. Compared notes on which sessions were worth the time.

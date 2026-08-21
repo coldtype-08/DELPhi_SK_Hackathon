@@ -1,0 +1,7 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Email Summary   |   March 8, 2024   |   Logged by: Sam Becker
+Correspondent: Fabian Galbraith, MD, Palmetto Neurology Institute, Akron, OH (RSM)
+
+Referral patterns into this clinic have changed, and pediatric-to-adult transfers is bigger share than it was.
+1. Asked about my travel schedule, since visits keep landing on busiest clinic days.

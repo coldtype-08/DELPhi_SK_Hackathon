@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: April 20, 2026   |   MSL: Dana Cho
+HCP: Mairead Sandoval-Reyes, MD, Willowmere Neuroscience Center, Chattanooga, TN (RSM)
+
+Onboarding a rotating resident is the current preoccupation here.
+
+The composition of the surgical workup list has shifted over the last year or two.
+
+Spent the last part of the visit on the frustration of having a well-tolerated option that the generalized population cannot access.
+
+Benefit verification is the step that most often delays a start here.

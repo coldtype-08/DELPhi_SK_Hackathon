@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   July 23, 2024   |   Sam Becker
+HCP: Saoirse Wycliffe, MD, Granite Bay Epilepsy Center, Bakersfield, CA (RSM)
+
+Stopped by by scheduling desk for full conversation. Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return.

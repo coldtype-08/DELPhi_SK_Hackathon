@@ -1,0 +1,66 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: June 14, 2021   |   From: Rachel Suh, Marcus Obeng
+
+FIELD MEDICAL INSIGHTS
+
+Anouk Underhill, MD, Highmoor Health Neurology, Duluth, MN (RSM)
+> Caught a rushed window in the corridor between patients.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Viraj Ashgrove, MD, Ironwood Neurology Associates, Buffalo, NY (RSM)
+> Caught a short window at the end of the clinic list between patients.
+> Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+> The new charting templates is still being sorted out, and that took up the first part of the conversation.
+> The new-patient backlog is slowly recovering since the summer, which shapes how much time there is for anything else.
+
+Malika Fairweather, MD, Highmoor Health Neurology, Worcester, MA (RSM)
+> Stopped by in the back office for a compressed conversation.
+> Described the practice as early in its experience here, with nothing to report yet.
+> The composition of the surgical workup list has shifted over the last year or two.
+
+Kenji Tavernier, MD, Highmoor Health Neurology, Reno, NV (RSM)
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Closed there — no materials requested.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Most of the discussion was about the phone triage line, which is still being sorted out.
+
+Renata Hollingsworth, MD, Silver Creek Medical Group, Peoria, IL (AR)
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+> Asked whether I would be at the meeting later this year.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Orla Wycliffe, MD, Highmoor Health Neurology, Little Rock, AR (RSM)
+> A rushed meeting at the nurses' station, first one this quarter.
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+> Spent some time on long-standing patients and how workup decisions get sequenced.
+> Left it at that, with the following quarter to be scheduled.
+
+Saoirse Stanhope, MD, Northbrook Neurology Institute, Allentown, PA (AR)
+> Caught an unexpectedly long window over a quick coffee between patients.
+> Asked whether I would be at the meeting later this year.
+> The referral queue is slowly recovering since the summer, which shapes how much time there is for anything else.
+> Talked through the refractory group in general terms, without any specific case.
+
+Silvio Vasquez-Lund, MD, Kestrel Comprehensive Epilepsy Clinic, Reno, NV (AR)
+> Mentioned a review that circulated on the service but did not raise any specific finding.
+> Most of the discussion was about the new charting templates, which has not settled.
+> Described the practice as early in its experience here, with nothing to report yet.
+> Closed there — no product discussion.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+
+Hadley Rothsay, MD, Foxglove Health Neurology, Lakeland, FL (AR)
+> Caught a brief window at the nurses' station between patients.
+> Compared notes on which sessions were worth the time.
+> Agreed to reconnect at the following quarter; no materials requested.
+> Routine follow-up slots looks better than last year since the summer, which shapes how much time there is for anything else.
+
+Lukas Fenwicke, MD, Willowmere Neuroscience Center, Boise, ID (RSM)
+> Stopped by at the end of the clinic list for a clipped conversation.
+> Referenced a review that circulated on the service in passing.
+> The referral intake process is still being sorted out, and that took up the first part of the conversation.
+> Described how newly referred patients is triaged now compared with before.
+> Agreed to reconnect at a call later this month; no product discussion.
+

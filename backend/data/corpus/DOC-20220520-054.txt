@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: May 20, 2022   |   MSL: Marcus Obeng
+HCP: Lukas Fenwicke, MD, Willowmere Neuroscience Center, Boise, ID (RSM)
+
+Stopped by between clinic blocks for an unexpectedly long conversation.
+
+Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+The practice lost the clinic pharmacist and has not backfilled, so clinic throughput is slowly recovering.

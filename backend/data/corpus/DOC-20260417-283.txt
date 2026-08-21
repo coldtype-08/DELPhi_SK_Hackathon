@@ -1,0 +1,28 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Academy of Neurology Annual Meeting (AAN) 2026
+Meeting period: April 2026   |   Author: Dana Cho
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Fiona Gallagher, MD (Great Lakes Epilepsy Institute)
+Unsolicited comment on April 16 at approximately 11:40, immediately after the morning plenary let out. In the hallway, mentioned two treatment-resistant adults doing noticeably better since switching to cenobamate. I recorded the remark as individual clinical experience, asked no follow-up questions about the cases, and restated only that XCOPRI is indicated for partial-onset (focal) seizures in adults. No dosing, comparative, or off-label discussion took place.
+
+Conversation — Yolanda Reyes, MD (Copper Mesa Neurology)
+Approximately fifteen minutes on April 16 in the exhibit hall seating area, operational throughout. The practice is down two of five MAs since February, new pt appts are being booked about nine weeks out, and f/u visits are slipping further behind that. No clinical or product topics were raised, and I made no commitments.
+
+Conversation — Jorge Maldonado, MD (Redwood Basin Medical Group)
+Brief exchange on April 17 before the 08:30 session. The frustration was documentation: seizure counts are entered in a free-text box, so a three-month trend has to be rebuilt by reading four or five notes in sequence, and two templates inside the same group record frequency differently. A structured field has been requested from informatics twice since 2025, with no timline given. Nothing product-related came up.
+
+Conversation — Mei-Lin Tsang, MD (Bayview Epilepsy Associates)
+Roughly ten minutes on April 17 following the late-morning symposium, pitched at the level of the field in general. The discussion was about how much the ASM landscape has broadened over the past decade and how hard it has become for community colleagues to keep the mechanism classes straight; no individual agent was compared and no efficacy statement was made in either direction. I provided no materials and have logged this as a general scientific exchange.
+
+Conversation — Ulrike Wetherby, MD (Juniper Flats Neurology Partners)
+A hallway conversation during the afternoon break. No materials requested this time. Asked about safety and confirmed nothing to report. Said the barrier in older adults is drug-drug interactions on top of already long medication lists in patients over 65. Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced.
+
+Conversation — Ulrike Oakhurst, MD (Lakeshore Neurological Care Center)
+Caught between sessions in the poster hall; the conversation was short and entirely unprompted. Said the clearest limitation right now is how well it works in focal epilepsy and how little that helps the generalized patients in this panel. Described how the pediatric-to-adult transfers is triaged now compared with before.
+
+Follow-ups have been logged in the interaction system.

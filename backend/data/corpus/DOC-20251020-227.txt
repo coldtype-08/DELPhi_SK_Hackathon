@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   October 20, 2025   |   Dana Cho
+HCP: Camila Dunmore, MD, Ironwood Neurology Associates, Lexington, KY (RSM)
+
+An unhurried visit at the end of the clinic list; the schedule was tight. Noted that benefit checks has improved somewhat and that this is not specific to any one product. Action item: a summary of interaction considerations for the over-65 group.

@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: June 5, 2021   |   MSL: Dana Cho
+HCP: Darius Prendergast, MD, Quarry Hill Epilepsy Center, Duluth, MN (RSM)
+
+A brief visit in the conference room; the schedule was tight.
+
+Left it at that, with the following quarter to be scheduled.
+
+The referral intake process has not settled, and that took up the first part of the conversation.
+
+Described a preference for slower titration in general, unrelated to any particular patient.

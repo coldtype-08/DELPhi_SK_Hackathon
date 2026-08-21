@@ -66,7 +66,7 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 ```json
 { "data": { "computedBy": "SQL", "asOf": "2026-08-30T21:04:00+09:00", "rows": [
   { "patientSegment": "ELDERLY_65_PLUS", "signalType": "TREATMENT_BARRIER",
-    "claimCount": 14, "distinctHcp": 9, "distinctRegions": 3,
+    "claimCount": 41, "distinctHcp": 27, "distinctRegions": 4,
     "monthly": [ { "month": "2026-05", "count": 3 }, { "month": "2026-06", "count": 5 } ] }
 ] } }
 ```
@@ -82,7 +82,7 @@ Claim 객체 (공통 형태 — Field·Console 동일):
   "labelKo": "승인 전 잠정 수치 — 공식 집계 아님", "asOf": "2026-08-24T21:00:00+09:00",
   "rows": [
     { "patientSegment": "PEDIATRIC_TRANSITION", "signalType": "UNMET_NEED",
-      "candidateCount": 11, "approvedCount": 3, "distinctHcpProvisional": 7,
+      "candidateCount": 52, "approvedCount": 12, "distinctHcpProvisional": 34,
       "thresholdMet": true, "hypothesisId": "HYP-001" }
 ] } }
 ```
@@ -116,7 +116,7 @@ Claim 객체 (공통 형태 — Field·Console 동일):
   "kind": "DEVELOPMENT", "labelScope": "OUT_OF_LABEL", "commercialActionBlocked": true,
   "status": "BOARD_READY", "patientSegment": "PEDIATRIC_TRANSITION",
   "observedFacts":   [ { "statementKo": "…", "claimId": "CLM-0042" } ],
-  "statisticalPatterns": [ { "statementKo": "9인의 독립 HCP가 3개 권역에서 14회 언급", "computedBy": "SQL" } ],
+  "statisticalPatterns": [ { "statementKo": "34인의 독립 HCP가 4개 권역에서 52회 언급", "computedBy": "SQL" } ],
   "aiInterpretations":   [ { "statementKo": "…", "llmRunId": 812 } ],
   "strategicProposals":  [ { "statementKo": "후향적 RWE 검토 우선", "source": "CEO_AGENT" } ],
   "approvedActions":     [],

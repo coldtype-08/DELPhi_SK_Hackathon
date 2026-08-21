@@ -1,0 +1,70 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: November 10, 2022   |   From: Rachel Suh, Ingrid Halvorsen
+
+FIELD MEDICAL INSIGHTS
+
+Quentin Hollingsworth, MD, Ember Lake Medical Group, Tucson, AZ (RSM)
+> Stopped by in the workroom for a productive conversation.
+> Closed there — no materials requested.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> The patient portal is being piloted this quarter, and that took up the first part of the conversation.
+> The travel schedule this year came up, and little else.
+
+Bram Hollingsworth, MD, Alder Point Neurology Associates, Albany, NY (RSM)
+> A brief meeting in the shared office, first one this quarter.
+> Onboarding a rotating resident is the current preoccupation here.
+> Formulary questions varies by payer, which came up as a general frustration.
+
+Mairead Eversholt, MD, Granite Bay Epilepsy Center, Burlington, VT (RSM)
+> Mostly small talk about the program and the venue.
+> Onboarding the clinic pharmacist is the current preoccupation here.
+> The referral queue is slowly recovering since the summer, which shapes how much time there is for anything else.
+
+Valentina Lindenmuth, MD, Palmetto Neurology Institute, Waco, TX (RSM)
+> The practice lost one of the nurse practitioners and has not backfilled, so clinic throughput keeps slipping.
+> Referenced a case series someone forwarded in passing.
+> Asked whether I would be at the meeting later this year.
+
+Arvind Wainwright, MD, Bayview Health Neurology, Jackson, MS (RSM)
+> A fragmented visit over a quick coffee; the schedule was tight.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> The referral intake process is being piloted this quarter, and that took up the first part of the conversation.
+> Benefit verification is the step that most often delays a start here.
+> Talked through newly referred patients in general terms, without any specific case.
+
+Lachlan Zeitler, MD, Bluestem Comprehensive Epilepsy Clinic, Wichita, KS (AR)
+> An unhurried visit in the workroom; the schedule was tight.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Asked whether I would be at the meeting later this year.
+> Described how the older half of the panel is triaged now compared with before.
+
+Nikolai Zeitler, MD, Juniper Flats Neurology Partners, Allentown, PA (RSM)
+> Benefit verification is the step that most often delays a start here.
+> Closed there — no product discussion.
+> Referenced a guideline update discussed at journal club in passing.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Robert Enloe, MD, High Desert Neurology, Boise, ID (AR)
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> Mostly small talk about the program and the venue.
+> Described the practice as early in its experience here, with nothing to report yet.
+> Spent some time on long-standing patients and how workup decisions get sequenced.
+> No product discussion. Safety items asked about and confirmed none.
+
+Lukas Ravenscroft, MD, Fox Hollow Neurology Partners, Mobile, AL (RSM)
+> A half-hour conversation in the shared office, mostly logistics.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Mostly small talk about the program and the venue.
+
+Mei-Lin Tsang, MD, Bayview Epilepsy Associates, Oakland, CA (RSM)
+> No product discussion. Safety items asked about and confirmed none.
+> Noted that formulary questions remains the slowest step and that this is not specific to any one product.
+> Referenced a guideline update discussed at journal club in passing.
+
+Leonie Underhill, MD, Juniper Flats Neurology Partners, Peoria, IL (RSM)
+> The composition of the refractory group has shifted over the last year or two.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> The practice lost a front-desk coordinator and has not backfilled, so clinic throughput looks better than last year.
+

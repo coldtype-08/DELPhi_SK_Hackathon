@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   January 8, 2023   |   Yuki Tanabe
+HCP: Tobias Castellane, MD, Thornfield Regional Epilepsy Program, Eugene, OR (RSM)
+
+A rushed meeting in the workroom, first one this quarter. Spent some time on newly referred patients and how workup decisions get sequenced.

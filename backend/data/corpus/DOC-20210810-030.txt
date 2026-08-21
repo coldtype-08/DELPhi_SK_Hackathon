@@ -1,0 +1,71 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: August 10, 2021   |   From: Priya Menon, Dana Cho
+
+FIELD MEDICAL INSIGHTS
+
+Anouk Brannigan, MD, Windrow Neuroscience Center, Eugene, OR (RSM)
+> Caught a full window outside the EEG suite between patients.
+> Spent some time on the refractory group and how workup decisions get sequenced.
+> Onboarding a front-desk coordinator is the current preoccupation here.
+
+Imani Okafor, MD, Smoky Ridge Medical Center, Knoxville, TN (RSM)
+> Asked whether I would be at the meeting later this year.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> The scheduling system is still being sorted out, and that took up the first part of the conversation.
+
+Lukas Ravenscroft, MD, Fox Hollow Neurology Partners, Mobile, AL (RSM)
+> A short meeting in the shared office, first one this quarter.
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+> Spent some time on newly referred patients and how workup decisions get sequenced.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Renata Cavanaugh, MD, Northbrook Neurology Institute, Albany, NY (RSM)
+> Noted that coverage paperwork is handled by one person here and that this is not specific to any one product.
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Referenced a guideline update discussed at journal club in passing.
+
+Niamh Ostrander, MD, Bayview Health Neurology, Burlington, VT (RSM)
+> Formulary questions is handled by one person here, which came up as a general frustration.
+> Left it at that, with the following quarter to be scheduled.
+> Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+
+Walter Brandt, MD, Flint Hills Neuroscience, Wichita, KS (AR)
+> A full visit in the conference room; the schedule was tight.
+> Talked through the older half of the panel in general terms, without any specific case.
+> No materials requested. Safety items asked about and confirmed none.
+
+Malika Fairweather, MD, Highmoor Health Neurology, Worcester, MA (RSM)
+> A half-hour visit outside the EEG suite; the schedule was tight.
+> The composition of the refractory group has shifted over the last year or two.
+> Asked whether I would be at the meeting later this year.
+
+Bram Marchetti, MD, Palmetto Neurology Institute, Waco, TX (RSM)
+> A compressed conversation at the nurses' station, mostly logistics.
+> The prior-authorization workflow is still being sorted out, and that took up the first part of the conversation.
+> The appeals process is handled by one person here, which came up as a general frustration.
+
+Bastian Grierson, MD, Copperfield Neurology Institute, Trenton, NJ (RSM)
+> A compressed conversation between clinic blocks, mostly logistics.
+> Coverage paperwork is handled by one person here, which came up as a general frustration.
+> Described the practice as early in its experience here, with nothing to report yet.
+> Onboarding the clinic pharmacist is the current preoccupation here.
+
+Arvind Wainwright, MD, Bayview Health Neurology, Jackson, MS (RSM)
+> The phone triage line has not settled, and that took up the first part of the conversation.
+> Formulary questions varies by payer, which came up as a general frustration.
+> Described the practice as early in its experience here, with nothing to report yet.
+> Referral patterns into this clinic have changed, and the older half of the panel is a bigger share than it was.
+
+Rosalind Kettleborn, MD, Ember Lake Medical Group, Providence, RI (RSM)
+> Mostly small talk about the program and the venue.
+> Onboarding one of the nurse practitioners is the current preoccupation here.
+> Talked through the refractory group in general terms, without any specific case.
+
+Pallavi Wainwright, MD, Bluestem Comprehensive Epilepsy Clinic, Savannah, GA (RSM)
+> Caught a half-hour window by the scheduling desk between patients.
+> Described the practice as early in its experience here, with nothing to report yet.
+> The practice lost a front-desk coordinator and has not backfilled, so the referral queue is slowly recovering.
+

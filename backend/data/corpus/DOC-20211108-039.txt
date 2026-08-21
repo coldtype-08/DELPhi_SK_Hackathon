@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: November 8, 2021   |   MSL: Sam Becker
+HCP: Lukas Stanhope, MD, Highmoor Health Neurology, Shreveport, LA (AR)
+
+A rushed meeting in the conference room, first one this quarter.
+
+Closed there — nothing actionable this visit.
+
+The referral queue is slowly recovering since summer, which shapes how much time there is for anything else.

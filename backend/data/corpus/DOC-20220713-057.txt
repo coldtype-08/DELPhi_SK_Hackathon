@@ -1,0 +1,70 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: July 13, 2022   |   From: Dana Cho, Dana Cho
+
+FIELD MEDICAL INSIGHTS
+
+Rosalind Wainwright, MD, Sable Creek Medical Group, Syracuse, NY (RSM)
+> Benefit verification is the step that most often delays a start here.
+> Most of the discussion was about the patient portal, which is still being sorted out.
+> Mentioned a review that circulated on the service but did not raise any specific finding.
+
+Odalys Thistlewood, MD, Silver Creek Medical Group, Oakland, CA (RSM)
+> Referenced a review that circulated on the service in passing.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Spent some time on the older half of the panel and how workup decisions get sequenced.
+
+Zubin Dunmore, MD, Ember Lake Medical Group, Roanoke, VA (RSM)
+> A half-hour meeting in the conference room, first one this quarter.
+> Nothing actionable this visit. Safety items asked about and confirmed none.
+> Referenced a guideline update discussed at journal club in passing.
+> Compared notes on which sessions were worth the time.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+
+Pallavi Wainwright, MD, Bluestem Comprehensive Epilepsy Clinic, Savannah, GA (RSM)
+> Asked whether I would be at the meeting later this year.
+> The practice lost two medical assistants and has not backfilled, so routine follow-up slots is slowly recovering.
+> Described the practice as early in its experience here, with nothing to report yet.
+
+Katherine Ost, MD, Sonoran Neuroscience Institute, Tucson, AZ (RSM)
+> Caught an unexpectedly long window between clinic blocks between patients.
+> Asked whether I would be at the meeting later this year.
+> Described the practice as early in its experience here, with nothing to report yet.
+
+Fiona Gallagher, MD, Great Lakes Epilepsy Institute, Madison, WI (RSM)
+> Noted that benefit checks is handled by one person here and that this is not specific to any one product.
+> The referral queue has stretched out since the summer, which shapes how much time there is for anything else.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+
+Kiara Thistlewood, MD, Thornfield Regional Epilepsy Program, Lakeland, FL (RSM)
+> A full visit in the conference room; the schedule was tight.
+> Closed there — no product discussion.
+> Mostly small talk about the program and the venue.
+
+Felicity Ashgrove, MD, Foxglove Health Neurology, Missoula, MT (RSM)
+> Benefit checks takes longer than the clinical decision, which came up as a general frustration.
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+> Onboarding one of the nurse practitioners is the current preoccupation here.
+
+Caleb Munson, MD, Cedar Ridge Medical Group, Springfield, IL (AR)
+> Caught a fragmented window in the workroom between patients.
+> The appeals process is handled by one person here, which came up as a general frustration.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> Referenced a case series someone forwarded in passing.
+
+Ulrike Wetherby, MD, Juniper Flats Neurology Partners, Fayetteville, NC (RSM)
+> Stopped by in the workroom for a clipped conversation.
+> Closed there — nothing actionable this visit.
+> Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Leonie Eversholt, MD, Silver Creek Medical Group, Albany, NY (RSM)
+> Stopped by in the workroom for a full conversation.
+> Spent some time on newly referred patients and how workup decisions get sequenced.
+> Compared notes on which sessions were worth the time.
+> Referenced a session summary from a colleague in passing.
+> Most of the discussion was about the scheduling system, which is still being sorted out.
+

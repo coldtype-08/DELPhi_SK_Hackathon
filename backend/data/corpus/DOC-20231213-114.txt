@@ -1,0 +1,88 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: December 13, 2023   |   From: Marcus Obeng, Yuki Tanabe
+
+FIELD MEDICAL INSIGHTS
+
+Rohan Barrowman, MD, Beacon Hill Neurology Associates, Roanoke, VA (AR)
+> Stopped by between clinic blocks for productive conversation.
+> The travel schedule this year came up, and little else.
+> Benefit verification is step that most often delays start here.
+
+Kiara Prendergast, MD, Saltmarsh Neurological Care Center, Charleston, SC (AR)
+> Stopped by by scheduling desk for full convo.
+> Coverage paperwork takes longer than clinical decision, which came up as general frustration.
+> No specific request this time. Asked about safety and confirmed nothing to report.
+> Referenced a case series someone forwarded in passing.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Gemma Brannigan, MD, Bayview Health Neurology, Chattanooga, TN (AR)
+> A productive meeting in shared office, first one this quarter.
+> Spent some time on long-standing pts and how workup decisions get sequenced.
+> Agreed to reconnect at a call later this month; no product discussion.
+> Titration scheduling is handled by nursing staff, which practice finds workable.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Malika Whitmore, MD, Highmoor Health Neurology, Sioux Falls, SD (RSM)
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Noted that benefit checks takes longer than clinical decision and that this is not specific to any one product.
+> The travel schedule this year came up, and little else.
+
+Quentin Lammermoor, MD, Riverstone Comprehensive Epilepsy Clinic, Boise, ID (AR)
+> A half-hour convo in the workroom, mostly logistics.
+> Spent some time on pediatric-to-adult transfers and how workup decisions get sequenced.
+> Benefit verification is step that most often delays a start here.
+> Nothing actionable this visit. Safety items asked about and confirmed none.
+> The scheduling system has not settled, and that took up first part of convo.
+
+Arvind Corliss, MD, Bluestem Comprehensive Epilepsy Clinic, Lakeland, FL (RSM)
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> The phone triage line went live without much warning, and that took up first part of convo.
+> Noted that formulary questions is handled by one person here and that this is not specific to any one product.
+> The travel schedule this year came up, and little else.
+> Left it at that, with the next visit to be scheduled.
+
+Yannick Nakagawa, MD, Granite Bay Epilepsy Center, Toledo, OH (RSM)
+> Talked through long-standing pts in general terms, without any specific case.
+> Described preference for slower titration in general, unrelated to any particular pt.
+> Most of the discussion was about the prior-authorization workflow, which has not settled.
+> Benefit verification is the step that most often delays start here.
+> Agreed to reconnect at the following quarter; no materials requested.
+
+Niamh Inverness, MD, Kestrel Comprehensive Epilepsy Clinic, Worcester, MA (RSM)
+> Stopped by in conference room for an unhurried conversation.
+> Agreed to reconnect at a call later this month; no specific request.
+> Titration scheduling is handled by nursing staff, which practice finds workable.
+> Coverage paperwork varies by payer, which came up as a general frustration.
+> Asked about my travel schedule, since visits keep landing on busiest clinic days.
+
+Nikolai Barrowman, MD, Bluestem Comprehensive Epilepsy Clinic, Springfield, MO (AR)
+> Described a preference for slower titration in general, unrelated to any particular pt.
+> Referral patterns into this clinic have changed, and the older half of the panel is bigger share than it was.
+> The pt portal changed again last month, and that took up first part of conversation.
+> Compared notes on which sessions were worth time.
+
+Fiona Gallagher, MD, Great Lakes Epilepsy Institute, Madison, WI (RSM)
+> Caught a half-hour window in the corridor between pts.
+> The scheduling system has not settled, and that took up first part of conversation.
+> Nothing that needed f/u this time. Asked about safety and confirmed nothing to report.
+> The travel schedule this year came up, and little else.
+> Asked whether I had seen session summary from colleague; I had not, and offered nothing in return.
+
+Lachlan Stanhope, MD, Palmetto Neurology Institute, Syracuse, NY (AR)
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Benefit verification is the step that most often delays start here.
+> The composition of long-standing patients has shifted over the last year or two.
+> The phone triage line is being piloted this quarter, and that took up the first part of the conversation.
+
+Fabian Galbraith, MD, Palmetto Neurology Institute, Akron, OH (RSM)
+> An unexpectedly long conversation in the back office, mostly logistics.
+> Asked whether I had seen case series someone forwarded; I had not, and offered nothing in return.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Gaspar Ostrander, MD, Riverstone Comprehensive Epilepsy Clinic, Burlington, VT (RSM)
+> The practice lost the clinic pharmacist and has not backfilled, so clinic throughput keeps slipping.
+> Most of the discussion was about the scheduling system, which is being piloted this quarter.
+> The travel schedule this year came up, and little else.
+

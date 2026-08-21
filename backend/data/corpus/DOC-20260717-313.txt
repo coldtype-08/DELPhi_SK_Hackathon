@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: July 17, 2026   |   MSL: Tom Alvarez
+HCP: Rosalind Ivanetti, MD, Saltmarsh Neurological Care Center, Fort Collins, CO (RSM)
+
+Noted that benefit checks takes longer than the clinical decision and that this is not specific to any one product.
+
+Described how pediatric-to-adult transfers is triaged now compared with before.
+
+The composition of pediatric-to-adult transfers has shifted over last year or two.
+
+Raised, without any prompting, the 12-to-17 population, described as the place where the treatment gap is widest.
