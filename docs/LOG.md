@@ -39,4 +39,6 @@
 
 - 08/20 건태(Claude 세션): **시장·경쟁 탭 신설 — 경쟁 축을 개인이 아니라 공개 집계로** — 개별 HCP 처방량·Open Payments 조회 제안을 기각하고(절대 규칙 #7·반부패 리스크·가명 해제 불가), 집계 축을 제조사로 뒤집어 채택. 화면은 허가 연령 지도(우리 18세+ 확정 + 공백 12–17 강조, 경쟁 5종은 스냅샷 대기 트랙)·외부 질의 명세 4건·제조사 축 집계 쿼리·규칙 아코디언. COMMERCIAL에 `PUBLIC_EVIDENCE` 개방(DEVELOPMENT 연결 근거는 억제) — docs/01 §5·02 §9·DECISIONS 2건 (다음: 8/26 fixture 작업에서 openFDA·CT.gov 실 스냅샷으로 연령 지도 채우기)
 
+- 08/21 건태(Claude 세션): **폐쇄 루프 재정의 — 실행 루프(상시)와 구조 루프(드묾) 분리** — Board 승인 후속 액션을 action_items 테이블·상태 머신·API(`GET /actions`, decision body의 actionItems 배열, briefing/interactions의 checklistRefs)로 1급화. target enum에 상업 실행 값 없음(#5 코드화), 수집 귀속 카운트는 SQL·APPROVED만. CLAUDE.md 요약·데모 ⑤·P0 컷라인 갱신 (다음: 인혁 8/29 Board API에 action_items 포함 구현, 소정 Field 브리핑 화면)
+
 ## Week 2 (8/28–9/4)

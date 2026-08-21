@@ -21,6 +21,7 @@
 | consent_confirmed | bool | ✓ | VOICE_TRANSCRIPT면 반드시 true (아니면 저장 거부) |
 | raw_text | text | ✓ | 원문. **PII 마스킹 후** 저장, 이후 불변 (마스킹 전 원본은 저장하지 않는다) |
 | masked_spans | json | | `[{char_start, char_end, kind: NAME\|PHONE\|EMAIL}]` — 무엇을 가렸는지의 기록. 값 자체는 남기지 않는다 |
+| checklist_refs | json | | 제출 시 참조한 Field 체크리스트 항목(action_item id 배열, 08/21) — 실행 루프의 수집 귀속 근거. 체크리스트 없이 제출하면 null |
 | language | enum | ✓ | `EN` `KO` — 원석(기존 축적분 성격)은 EN, Field 신규 수집·음성 전사는 KO. **스키마·enum 코드는 언어 중립**, raw_text·verbatim은 원언어 보존 (08/14) |
 | block_index | int | | 다중 HCP 문서(`HIGHLIGHT_DOC`·`CONGRESS_REPORT`) 전용: 문서 내 블록 순번 (그 외 null) |
 | doc_char_start / doc_char_end | int | | 다중 HCP 문서 전용: 문서 전문(documents.raw_text) 내 이 블록의 범위 (1문서=1면담이면 null = 문서 전체) |
@@ -88,13 +89,20 @@ hypotheses(id, title_ko, kind: IN_LABEL|DEVELOPMENT, status, segment, driver_sum
 screen_findings(id, hypothesis_id, agent: FIELD_SIGNAL|EVIDENCE|SAFETY|CRITIC,
                 finding_type: SUPPORT|COUNTER|GAP|SAFETY_SIGNAL|BLOCK, statement_ko, source_url, source_locator, created_at)
 board_minutes(id, hypothesis_id, role: MEDICAL|DEVELOPMENT|SAFETY|MARKET_ACCESS|CEO, position_ko, action_item_json, seq)
-decisions(id, hypothesis_id, decision: APPROVED|HOLD|REJECTED, decided_by, rationale_ko, follow_up_json, decided_at)
+decisions(id, hypothesis_id, decision: APPROVED|HOLD|REJECTED, decided_by, rationale_ko, decided_at)
+                                               # 08/21: follow_up_json 제거 — 후속 액션은 action_items로 정규화
+action_items(id, hypothesis_id FK, decision_id FK, directive_ko,
+             target: FIELD_CHECKLIST|SPECIALIST_REVIEW|MEDINFO_RESPONSE,   # 상업 실행 계열 값 없음 = 절대 규칙 #5의 코드화
+             owner_role, status: PROPOSED|ACTIVE|COLLECTED|CLOSED, source: BOARD|CEO|HUMAN,
+             created_at, delivered_at)          # 08/21 — 실행 루프의 1급 레코드 (상태 머신: docs/01 §3)
 blocked_log(id, source: CRITIC, reason_code, detail_ko, payload_json, created_at)
 llm_runs(id, purpose, model, prompt_file, prompt_version, schema_name, parser_version,
          external_data_as_of, input_hash, output_hash, latency_ms, created_at)
 ```
 
 `hypotheses`에는 `not_board_ready_reason`(docs/01 §3의 사유 코드, nullable)을, `screen_findings`에는 `source_as_of`(외부 스냅샷 일시)와 `caveat_ko`(해석 한계 문구, §10)를 함께 저장한다.
+
+액션별 "참조 수집 수"는 저장하지 않고 SQL로 센다: 그 action_item id를 `interactions.checklist_refs`(§1)에 담아 제출된 면담의 claim 중 **APPROVED만** 카운트(절대 규칙 #1·#3). 이 숫자가 +1 되는 순간이 실행 루프가 닫혔다는 증거다.
 
 ## 5. 검토등급(H/M/L) 규칙 — 결정론적 계산 (LLM 아님)
 
@@ -154,8 +162,8 @@ Steward 승인 시: 새 `contract_versions` 레코드 ACTIVE화 → `GET /api/fi
 
 ## 8. v0.2 예정 변경 (데모 시나리오 고정)
 
-- `patient_segment`에 `POST_STROKE` 추가 (코퍼스에 6회/HCP 4인 등장하도록 설계됨)
-- Board 승인 후속 질문 → Field 체크리스트 항목: "청소년 환자 사례 시 이전 실패 약물 수 확인"
+- `patient_segment`에 `POST_STROKE` 추가 (코퍼스에 6회/HCP 4인 등장하도록 설계됨) — **v0.2 변경은 이 하나다**
+- (08/21 정정) Board 후속 질문("청소년 환자 사례 시 이전 실패 약물 수 확인")의 체크리스트 반영은 **Contract 버전 변경이 아니다** — `action_items`가 form-config 응답에 실시간으로 합류한다(실행 루프, docs/01 §3 · 04 §6). 초기 문서가 이 항목을 여기 두어 두 루프를 섞었었다. Contract가 안 바뀌어도 체크리스트는 바뀐다는 것이 두 루프가 독립이라는 증거다
 
 ## 9. 목적·권한 분리 매트릭스 (기획서 3-1 사용자 5부류 · 차별점 ②)
 

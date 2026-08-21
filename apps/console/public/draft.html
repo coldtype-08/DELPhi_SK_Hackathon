@@ -1045,7 +1045,7 @@ HAVING COUNT(DISTINCT recipient_key) &gt;= 3;   -- 개인 역추정 차단 · re
   <div class="panel" id="p-data" role="tabpanel">
     <div style="padding-top:20px">
       <h1>데이터 원장</h1>
-      <div class="desc">화면의 숫자가 어느 테이블에서 왔는지 — 14개 테이블을 가공 없이, 권한이 허용하는 범위까지.</div>
+      <div class="desc">화면의 숫자가 어느 테이블에서 왔는지 — 15개 테이블을 가공 없이, 권한이 허용하는 범위까지.</div>
     </div>
 
     <div class="kpis">
@@ -1069,6 +1069,7 @@ HAVING COUNT(DISTINCT recipient_key) &gt;= 3;   -- 개인 역추정 차단 · re
       <button class="fchip" data-t="screen_findings">screen_findings</button>
       <button class="fchip" data-t="board_minutes">board_minutes</button>
       <button class="fchip" data-t="decisions">decisions</button>
+      <button class="fchip" data-t="action_items">action_items</button>
       <button class="fchip" data-t="blocked_log">blocked_log</button>
       <button class="fchip" data-t="llm_runs">llm_runs</button>
     </div>
@@ -1250,7 +1251,7 @@ HAVING COUNT(DISTINCT recipient_key) &gt;= 3;   -- 개인 역추정 차단 · re
     });
   })();
 
-  // 데이터 원장 — 14개 테이블 전 컬럼 (Snowflake풍) · 권한 반응형 (합성 데이터 예시, 검산 일치)
+  // 데이터 원장 — 15개 테이블 전 컬럼 (Snowflake풍) · 권한 반응형 (합성 데이터 예시, 검산 일치)
   (function () {
     var N = null; // NULL 표기
     var T = {
@@ -1308,8 +1309,11 @@ HAVING COUNT(DISTINCT recipient_key) &gt;= 3;   -- 개인 역추정 차단 · re
       board_minutes: { d: "Board 심의 회의록 — BOARD_READY 진입 후 생성", count: "0 rows",
         cols: [["id","INT PK"],["hypothesis_id","FK"],["role","ENUM"],["position_ko","TEXT"],["action_item_json","JSON"],["seq","INT"]],
         rows: [] },
-      decisions: { d: "사람의 결정 — 승인/보류/기각 + 후속 질문", count: "0 rows",
-        cols: [["id","INT PK"],["hypothesis_id","FK"],["decision","ENUM"],["decided_by","TEXT"],["rationale_ko","TEXT"],["follow_up_json","JSON"],["decided_at","TEXT"]],
+      decisions: { d: "사람의 결정 — 승인/보류/기각 (후속 액션은 action_items로 정규화)", count: "0 rows · Board 심의 전",
+        cols: [["id","INT PK"],["hypothesis_id","FK"],["decision","ENUM"],["decided_by","TEXT"],["rationale_ko","TEXT"],["decided_at","TEXT"]],
+        rows: [] },
+      action_items: { d: "실행 루프의 단위 — 결정에 채택된 것만 ACTIVE, Field 체크리스트로 전달·수집 귀속 추적. target에 상업 실행 값 없음(규칙 #5)", count: "0 rows · 결정 후 생성",
+        cols: [["id","TEXT PK"],["hypothesis_id","FK"],["decision_id","FK"],["directive_ko","TEXT"],["target","ENUM"],["owner_role","ENUM"],["status","ENUM"],["source","ENUM"],["created_at","TEXT"],["delivered_at","TEXT"]],
         rows: [] },
       blocked_log: { d: "Critic 차단 이력 — 막은 것을 보여주는 게 신뢰의 근거", count: "2 rows",
         cols: [["id","TEXT PK"],["source","ENUM"],["reason_code","TEXT"],["detail_ko","TEXT"],["payload_json","JSON"],["created_at","TEXT"]],

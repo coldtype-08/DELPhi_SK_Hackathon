@@ -97,7 +97,18 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 | GET | `/hypotheses` / `/hypotheses/{id}` | 목록 / 상세(아래 카드 객체) |
 | POST | `/hypotheses/{id}/screen` | 에이전트 조사 실행 (SSE로 진행 상황 스트림: `agent_started` / `finding` / `agent_done`) |
 | POST | `/hypotheses/{id}/board` | Board 심의 실행 (SSE: `minute` 이벤트 = 발언 1개) |
-| POST | `/hypotheses/{id}/decision` | `{ "decision": "APPROVED"\|"HOLD"\|"REJECTED", "decidedBy", "rationaleKo", "followUp": { "checklistItemKo", "owner" } }` |
+| POST | `/hypotheses/{id}/decision` | 사람의 결정 — body 아래. **승인이 실행 루프를 여는 지점** (08/21: `followUp` 단수 객체 → `actionItems` 배열로 개정) |
+| GET | `/actions?hypothesisId=&status=` | Action Item 추적 (Console) — 행마다 `collectedClaimCount`(`computedBy: "SQL"`) 포함. `ADMIN`·`MEDICAL_AFFAIRS`·`CLINICAL_STRATEGY` 조회 가능 |
+
+`POST /hypotheses/{id}/decision` body:
+```json
+{ "decision": "APPROVED", "decidedBy": "건태", "rationaleKo": "근거 생성 우선 검토 타당",
+  "actionItems": [
+    { "directiveKo": "청소년 환자 사례 시 이전 실패 약물 수 확인", "target": "FIELD_CHECKLIST", "ownerRole": "MEDICAL_AFFAIRS" },
+    { "directiveKo": "연령 확대 가설 패키지 전문조직 검토 전달", "target": "SPECIALIST_REVIEW", "ownerRole": "CLINICAL_STRATEGY" } ] }
+```
+- Board·CEO의 제안(`board_minutes.action_item_json`)은 화면에 **PROPOSED 초안**으로 보여주고, 사람이 여기 채택해 보낸 것만 `ACTIVE`로 저장된다 (docs/01 §3 상태 머신).
+- `HOLD`·`REJECTED`면 그 가설의 열린 액션은 서버가 `CLOSED` 처리. 응답은 저장된 actionItems(id 포함).
 
 가설 카드 객체 (5단계 구분이 응답 구조에 그대로 반영):
 ```json
@@ -121,6 +132,7 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 - `caveatKo`·`sourceAsOf`는 외부 출처 finding에서 **필수**다 (docs/02 §10). 값이 없으면 프론트는 카드를 렌더하지 말고 개발 오류로 취급한다.
 - `status: "NOT_BOARD_READY"`인 가설은 `notBoardReadyReason`에 사유 코드(`NO_APPROVED_BASIS` `SINGLE_SOURCE` `NO_EXTERNAL_EVIDENCE` `CRITIC_BLOCKED`, docs/01 §3)를 담고 **순위 필드를 내보내지 않는다.**
 - `kind: "DEVELOPMENT"`면 `commercialActionBlocked: true`가 항상 동반되고, `COMMERCIAL` 롤에서는 이 가설이 목록·상세 모두에서 조회되지 않는다 (`403`).
+- `approvedActions`는 결정 후 채워진다: `{ "actionItemId": "ACT-001", "directiveKo", "target", "status", "deliveredAt", "collectedClaimCount": 1, "computedBy": "SQL" }`. `collectedClaimCount`는 이 액션을 참조해(`checklistRefs`) 수집·**승인**된 claim 수 — 이 숫자의 +1이 실행 루프 닫힘의 화면 증거다 (docs/00 §1.5 #7).
 
 ## 5. Contract & SCP
 
@@ -135,8 +147,8 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 | 메서드 | 경로 | 설명 |
 |---|---|---|
 | GET | `/field/form-config` | **활성 contract 기반 입력 폼 정의** — v0.2 승인 직후 이 응답이 바뀌는 게 데모 클라이맥스 |
-| GET | `/field/briefing?hcpRef=` | 방문 전 체크리스트 (미해결 질문 + Board 승인 후속 질문) |
-| POST | `/field/interactions` | 신규 면담 제출 `{ meta…, rawText, consentConfirmed }` → 응답: claim 후보 배열 + safetyRouted 배열(분기 알림용) + maskedSpans(마스킹 위치) |
+| GET | `/field/briefing?hcpRef=` | 방문 전 체크리스트 — 미해결 질문 + **ACTIVE action_items** (각 항목에 `actionItemId`·`hypothesisId`·`origin` 포함). 첫 노출 시 서버가 `delivered_at` 기록 |
+| POST | `/field/interactions` | 신규 면담 제출 `{ meta…, rawText, consentConfirmed, checklistRefs: ["ACT-001"] }` — `checklistRefs`(선택)는 이 면담이 참조한 체크리스트 항목. → 응답: claim 후보 배열 + safetyRouted 배열(분기 알림용) + maskedSpans(마스킹 위치) |
 | PATCH | `/field/claims/{id}` | §2와 동일 (승인/수정/제외) |
 
 `form-config` 응답 예:
@@ -147,8 +159,10 @@ Claim 객체 (공통 형태 — Field·Console 동일):
                  { "value": "ELDERLY_65_PLUS", "labelKo": "노인(65+)" },
                  { "value": "POST_STROKE", "labelKo": "뇌졸중 후 뇌전증", "isNew": true } ] },
   { "key": "checklist", "type": "checklist",
-    "items": [ { "labelKo": "청소년 환자 사례 시 이전 실패 약물 수 확인", "origin": "BOARD_FOLLOW_UP" } ] } ] } }
+    "items": [ { "actionItemId": "ACT-001", "labelKo": "청소년 환자 사례 시 이전 실패 약물 수 확인", "origin": "BOARD_FOLLOW_UP" } ] } ] } }
 ```
+
+- `checklist` 항목은 Contract가 아니라 **action_items에서 실시간으로** 합류한다 — Contract 버전이 안 바뀌어도 Board 결정 다음 날 체크리스트는 바뀐다. 실행 루프(액션)와 구조 루프(스키마)가 독립임이 이 응답 하나에서 보인다 (docs/01 §3 · 02 §8).
 
 ## 7. Safety & 로그 & 추적
 

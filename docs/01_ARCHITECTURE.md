@@ -42,6 +42,29 @@
 
 ## 3. 핵심 상태 머신
 
+### 루프는 두 개다 (08/21 — 프레이밍 정정)
+
+"폐쇄 루프"라고 할 때 닫히는 경로가 두 개이고, 무게가 다르다. 초기 문서는 구조 루프에 기울어 있었는데, **매일 도는 것은 실행 루프다** — 스키마 변경은 드물게 일어나는 게 정상이고(자주 돌면 오히려 거버넌스 실패), 레이턴시 단축 주장(docs/00 §1)의 본체도 실행 루프다.
+
+| | **실행 루프 (상시)** | **구조 루프 (드묾)** |
+|---|---|---|
+| 닫히는 경로 | Board 권고 → 사람 승인 → **Action Item** → Field 브리핑·체크리스트 → 표적 수집 → 집계 재유입 | 반복되는 스키마 밖 개념 → SCP → Steward 승인 → v0.2 → form-config 변경 |
+| 빈도 | 매 심의마다 | 코퍼스 전체에서 1건(POST_STROKE)이 되도록 설계 |
+| 스키마 변경 | 없음 — Contract 버전 그대로 | 있음 (추가만, §7.5) |
+| 데모 | ⑤에서 닫힘 | ⑥에서 닫힘 |
+| 닫힘의 증거 | 액션별 **참조 수집 카운트**(SQL) +1 | Field 폼에 새 옵션 등장 |
+
+### Action Item (Board 후속 — 실행 루프의 단위)
+```
+PROPOSED (Board·CEO가 회의록에서 제안 — board_minutes.action_item_json)
+    └─ 사람이 결정에 채택 ──▶ ACTIVE ── /field/briefing 응답에 포함 ──▶ delivered_at 기록
+ACTIVE ──이 액션을 참조한 수집(interactions.checklist_refs)의 claim이 APPROVED──▶ COLLECTED
+ACTIVE ──가설 HOLD·REJECTED 또는 수동 종료──▶ CLOSED
+```
+- **Board·CEO는 제안까지만이다.** 액션이 ACTIVE가 되는 유일한 경로는 사람의 decision에 채택되는 것 (기획서 리스크 표: "Board·CEO Agent에 승인 권한 없음").
+- `target`은 `FIELD_CHECKLIST` `SPECIALIST_REVIEW` `MEDINFO_RESPONSE` 셋뿐 — **상업 실행 계열 값이 enum에 없다.** Development 가설의 액션이 상업 액션으로 연결될 수 없음을 타입 수준에서 강제한다(절대 규칙 #5의 코드화).
+- 전이는 전부 결정론적(API 호출·SQL 조건)이고, "참조 수집 카운트"는 APPROVED claim만 센다(절대 규칙 #3).
+
 ### Claim (추출값)
 ```
 CANDIDATE ──승인──▶ APPROVED ──┐
@@ -120,7 +143,7 @@ backend/app/
 | `/` | 홈 대시보드 | KPI 스트립(승인 데이터 수·신호 수·가설 수), 신호 추이 차트, **후보 레이더 카드(잠정 라벨 필수 — 임계 도달 시 가설 링크, docs/02 §5.6)**, 검토 대기열 위젯, 최근 활동 |
 | `/review` | Data Review | **첫 화면은 검토 큐(위험 기반 정렬 + `queueReasonKo` 표시)** — 문서 리스트·원문 하이라이트 양분할은 큐에서 진입하는 상세. 승인/수정/반려 |
 | `/hypotheses` | 가설 보드 | 가설 카드 그리드 (상태별), Not Board-ready 별도 표시 |
-| `/hypotheses/[id]` | 가설 상세 | **5단계 구분 카드**, 지지/반대/공백 근거 리스트(원문·출처 링크), 에이전트 활동 시각화, Board 회의록, 승인·보류·기각 |
+| `/hypotheses/[id]` | 가설 상세 | **5단계 구분 카드**, 지지/반대/공백 근거 리스트(원문·출처 링크), 에이전트 활동 시각화, Board 회의록, 승인·보류·기각 — **승인 시 Board 제안 중 채택할 Action Item을 확정(편집 가능)**, 이후 액션별 상태·참조 수집 카운트 표시 |
 | `/contract` | Data Contract | 현재 버전 스키마 뷰, SCP 목록·승인, 버전 diff |
 | `/contract/provenance` | Contract 유래 | 부트스트랩 판정 기록의 결정론적 렌더링(LLM 없음): 반복 매트릭스 → 원문 인용·판정 → 스키마·DB 반영 → 한 문장 추적. 데이터 원천: DECISIONS 08/19 + `docs/assets/bootstrap-ai-draft.md` (동기화 대상: `apps/console/lib/provenance.ts`) |
 | `/market` | 시장·경쟁 | 공개 출처만 쓰는 경쟁 환경 화면: 허가 연령 지도(openFDA 라벨), 경쟁사 청소년 시험 타임라인(CT.gov), 문헌 추이(PubMed), 모수(HIRA·CMS Part D 집계). **개인 식별 0건 · 예측선 금지 · FAERS 발생률 비교 금지** (DECISIONS 08/20). `PUBLIC_EVIDENCE` 도메인이라 COMMERCIAL 롤에도 열린다 |
