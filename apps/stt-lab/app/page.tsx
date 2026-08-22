@@ -94,6 +94,7 @@ export default function Page() {
     const saved = localStorage.getItem("delphi-stt-lab");
     if (!saved) return;
     try {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- 마운트 시 1회 복원 (외부 저장소 구독)
       setSettings(JSON.parse(saved));
     } catch {
       /* 손상된 값은 무시 */
