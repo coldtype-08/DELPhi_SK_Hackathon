@@ -43,7 +43,7 @@ DECISIONS 08/22 [인혁]에서 확정한 4개다. 순위는 그다음, **지연�
 | **한국어** | `language_hints`에 `ko` [확인] | `nova-3` ○ / **`nova-3-medical` ✗** [확인] | `language_config.languages` [확인] |
 | **의료 특화 모델** | 없음 — `context.general.domain="Healthcare"` 힌트만 [확인] | **`nova-3-medical` 있음** [확인] | 없음 |
 | 문장 중간 한↔영 | `language_hints` 복수 + `enable_language_identification` [확인] · 정확도 [실측] | **파라미터 없음** — `language` 하나만 [확인] | `code_switching`은 **발화 단위** 감지. 문장 중간이 목적이 아님 [확인] |
-| **실시간 화자분리** | `enable_speaker_diarization` [확인] | `diarize_model=v1` [확인] | **미지원 확정** — `diarization` 전송 시 400 거부 (08/22 실측) |
+| **실시간 화자분리** | `enable_speaker_diarization` [확인] | `diarize_model=v1` [확인] — **스트리밍은 v1(구세대)뿐, 신형 v2는 배치 전용**(JS SDK 원문: streaming에 v2를 주면 validation error). 실측(08/22): TTS 2종·직접 발화 모두에서 화자 경계 불안정 | **미지원 확정** — `diarization` 전송 시 400 거부 (08/22 실측) |
 | **용어 부스팅** | `context.terms` [확인] | `keyterm` — 500 tokens·Nova-3 전용·**가중치 미지원** [확인] | `custom_vocabulary` + `default_intensity` [확인] |
 | 접속 방식 | WS 직결 1단계 — `wss://stt-rt.soniox.com/transcribe-websocket` [확인] | WS 직결 1단계 | **REST로 세션 생성 → ws URL** 2단계 [확인] |
 | 브라우저 키 노출 | 첫 메시지에 `api_key` — **임시 키 발급 API 있음** [확인] | `Sec-WebSocket-Protocol`로 키 전달 [확인] | **ws URL에 토큰이 박혀 옴** — 키가 클라이언트에 안 남음 [확인] |
@@ -53,7 +53,12 @@ DECISIONS 08/22 [인혁]에서 확정한 4개다. 순위는 그다음, **지연�
 
 ## 3. 서비스별로 알아야 할 것
 
-### Deepgram — 의료 특화와 한국어를 동시에 못 한다
+### Deepgram — 의료 특화와 한국어를 동시에 못 한다 / 실시간 화자분리는 구세대 모델뿐
+
+**화자분리 [확인+실측] (08/22)**: `diarize_model`을 주면 그것만으로 화자분리가 켜진다(`diarize=true` 불필요 — 공식 JS SDK 주석).
+단 **스트리밍에서 지원되는 모델은 v1이 전부**이고 신형 v2는 배치 전용이다(스트리밍에 v2 → validation error).
+실측에서도 한국어 짧은 턴 대화(TTS 2종 + 직접 발화)에서 화자 경계가 불안정했고 화자 수를 과분리(0/1/2)했다.
+설정 오류가 아니라 서비스의 실시간 화자분리 수준 그 자체다 — **Soniox와 같은 소리로 비교하는 것이 남은 판정**이다.
 
 이 한 줄이 핵심이다. `nova-3-medical`은 의료 용어에 특화됐지만 **한국어를 지원하지 않는다**.
 `nova-3`은 한국어를 하지만 의료 특화가 없다. 즉 **한국인 의사를 대상으로 하면 Deepgram의
