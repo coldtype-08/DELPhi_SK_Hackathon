@@ -19,7 +19,6 @@ import {
   startMic,
   streamPcmRealtime,
   type MicHandle,
-  type MicMode,
   type ProviderId,
   type ScriptId,
   type Segment,
@@ -48,6 +47,19 @@ const DEFAULT_BOOST = [
   "2제", "학회",  // 08/22 실측 오인식: "이제 실패한"·"학교는" 으로 들림
 ].join(", ");
 
+
+/** 같은 화자의 연속 확정 세그먼트를 한 문단으로 — 문장 단위로 읽히게 */
+function mergeFinals(segments: Segment[]): Segment[] {
+  const out: Segment[] = [];
+  for (const seg of segments) {
+    if (!seg.isFinal) continue;
+    const last = out[out.length - 1];
+    if (last && last.speaker === seg.speaker) last.text = `${last.text} ${seg.text}`.trim();
+    else out.push({ ...seg });
+  }
+  return out;
+}
+
 type RunState = {
   status: "idle" | "connecting" | "running" | "done" | "error";
   /** 확정(final) 세그먼트만 쌓인다 — 중간 결과는 interim 한 칸에서 교체된다 */
@@ -69,7 +81,6 @@ export default function Page() {
   const [view, setView] = useState<"stt" | "tts">("stt");
   const [tab, setTab] = useState<ProviderId>("soniox");
   const [script, setScript] = useState<ScriptId>("D1");
-  const [micMode, setMicMode] = useState<MicMode>("voice");
   const [langMode, setLangMode] = useState<"ko" | "en" | "koen">("ko");
   const [diarize, setDiarize] = useState(true);
   const [useBoost, setUseBoost] = useState(true);
@@ -184,7 +195,7 @@ export default function Page() {
         patch(id, { status: "running" });
 
         if (source === "mic") {
-          micRef.current = await startMic((pcm) => session.send(pcm), micMode);
+          micRef.current = await startMic((pcm) => session.send(pcm));
         } else {
           const pcm = await fileToPcm16(file as File);
           await streamPcmRealtime(pcm, (c) => session.send(c), { shouldStop: () => stopRef.current });
@@ -195,7 +206,7 @@ export default function Page() {
         patch(id, { status: "error", error: e instanceof Error ? e.message : String(e) });
       }
     },
-    [settings, file, micMode, openSession, stopAll],
+    [settings, file, openSession, stopAll],
   );
 
   /** 마이크 하나 → 세 서비스 동시. 한 번 말하거나 한 번 재생한 **같은 소리**를 셋이 같이 듣는다. */
@@ -231,7 +242,7 @@ export default function Page() {
     try {
       micRef.current = await startMic((pcm) => {
         for (const [, session] of live) session.send(pcm);
-      }, micMode);
+      });
     } catch (e) {
       const name = e instanceof DOMException ? e.name : "";
       const why =
@@ -243,7 +254,7 @@ export default function Page() {
       live.forEach(([id]) => patch(id, { status: "error", error: why }));
       stopAll();
     }
-  }, [settings, micMode, openSession, stopAll]);
+  }, [settings, openSession, stopAll]);
 
   const anyBusy = PROVIDERS.some((p) => runs[p.id].status === "connecting" || runs[p.id].status === "running");
 
@@ -263,12 +274,12 @@ export default function Page() {
         ))}
       </div>
 
-      {view === "tts" && <TtsSection onUseInLab={(f) => { setFile(f); setView("stt"); }} />}
+      {view === "tts" && <TtsSection onUseInLab={(f, preset) => { setFile(f); setScript(preset); setView("stt"); }} />}
 
       {view === "stt" && (
       <>
       <SharedControls
-        {...{ script, setScript, micMode, setMicMode, langMode, setLangMode, diarize, setDiarize, useBoost, setUseBoost, boostText, setBoostText, file, setFile, boostCount: boostTerms.length }}
+        {...{ script, setScript, langMode, setLangMode, diarize, setDiarize, useBoost, setUseBoost, boostText, setBoostText, file, setFile, boostCount: boostTerms.length }}
       />
 
       <div className="flex flex-wrap items-center gap-3 rounded-2xl border-2 border-navy/25 bg-card p-4">
@@ -277,15 +288,18 @@ export default function Page() {
           <p className="mt-1 text-[11px] leading-relaxed text-muted">
             마이크 하나를 세 서비스에 동시에 흘립니다. <b>한 번 말하거나 한 번 재생한 같은 소리</b>를 셋이 같이 들으므로,
             실제 시연 조건 그대로이면서 점수 차이가 곧 서비스 차이입니다.
-            {micMode === "speaker"
-              ? " 지금 설정: 스피커로 재생 — WAV를 틀고 시작하세요."
-              : " 지금 설정: 사람이 말함 — 두 분이 대본을 번갈아 읽으세요."}
+            직접 말하거나, 스피커로 음성을 틀면 됩니다 — 구분 설정은 없습니다.
           </p>
         </div>
         <button onClick={() => void runAllMic()} disabled={anyBusy}
           className="rounded-xl bg-navy px-5 py-2.5 text-xs font-bold text-white disabled:opacity-40">동시 시작</button>
         <button onClick={stopAll} disabled={!anyBusy}
           className="rounded-xl border border-line px-5 py-2.5 text-xs font-bold text-ink disabled:opacity-40">중지</button>
+      </div>
+
+      {/* 3열 라이브 비교 — 세 서비스의 전사가 나란히 흐른다. 상세(원시 응답·설정)는 아래 탭에서 */}
+      <div className="grid gap-3 md:grid-cols-3">
+        {PROVIDERS.map((p) => <LiveColumn key={p.id} label={p.label} state={runs[p.id]} script={script} />)}
       </div>
 
       <div className="flex gap-2">
@@ -337,7 +351,7 @@ const VERIFIED_VOICES = ["Zephyr", "Puck", "Charon", "Kore", "Fenrir", "Aoede", 
 /** 대본 → 음성. Gemini TTS 의 multiSpeaker 로 MSL·HCP 를 한 번에 만든다.
  *  목소리 이름과 모델 이름은 **추측하지 않는다** — 모델은 벤더 목록에서 받아오고,
  *  목소리는 자유 입력이라 틀리면 벤더 오류가 화면에 그대로 뜬다. */
-function TtsSection({ onUseInLab }: { onUseInLab: (f: File) => void }) {
+function TtsSection({ onUseInLab }: { onUseInLab: (f: File, preset: ScriptId) => void }) {
   const [apiKey, setApiKey] = useState("");
   const [model, setModel] = useState("gemini-2.5-flash-preview-tts");
   const [models, setModels] = useState<string[]>([]);
@@ -521,9 +535,9 @@ function TtsSection({ onUseInLab }: { onUseInLab: (f: File) => void }) {
           <>
             <a href={result.url} download={result.name}
               className="rounded-xl bg-orange px-4 py-2 text-xs font-bold text-white">WAV 저장</a>
-            <button onClick={() => onUseInLab(new File([result.blob], result.name, { type: "audio/wav" }))}
+            <button onClick={() => onUseInLab(new File([result.blob], result.name, { type: "audio/wav" }), preset as ScriptId)}
               className="rounded-xl border border-line px-4 py-2 text-xs font-bold text-ink">
-              STT 비교 탭에 넣기
+              STT 비교 탭에 넣기 (채점 대본도 {preset}로 맞춰짐)
             </button>
           </>
         )}
@@ -549,6 +563,52 @@ function TtsSection({ onUseInLab }: { onUseInLab: (f: File) => void }) {
   );
 }
 
+/** 동시 실행용 한 열 — 상태·지연·채점 요약과 함께 전사가 실시간으로 흐른다. */
+function LiveColumn({ label, state, script }: { label: string; state: RunState; script: ScriptId }) {
+  const merged = useMemo(() => mergeFinals(state.segments), [state.segments]);
+  const transcript = useMemo(
+    () => state.segments.filter((s) => s.isFinal).map((s) => s.text).join(" "),
+    [state.segments],
+  );
+  const sum = useMemo(() => scoreSummary(scoreTranscript(transcript, script)), [transcript, script]);
+  const bottomRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ block: "nearest" });
+  }, [merged.length, state.interim?.text]);
+
+  return (
+    <div className="flex flex-col rounded-2xl border border-line bg-card p-4">
+      <div className="flex items-baseline justify-between">
+        <span className="text-sm font-bold text-navy">{label}</span>
+        <span className="text-[10px] font-semibold text-muted">
+          <StatusDot status={state.status} />
+          {state.firstTokenMs != null && <> · 첫 {state.firstTokenMs}ms</>}
+        </span>
+      </div>
+      <div className="mt-1 text-[10px] font-bold text-navy">
+        토큰 {sum.hit}/{sum.total} · 치명 {sum.criticalHit}/{sum.criticalTotal}
+      </div>
+      <div className="mt-2 h-56 space-y-1 overflow-y-auto rounded-lg bg-paper p-2">
+        {merged.length === 0 && !state.interim && <p className="text-[11px] text-muted">대기 중</p>}
+        {merged.map((s, i) => (
+          <p key={i} className="text-[11px] leading-relaxed text-ink">
+            <span className="mr-1 rounded bg-sky-soft px-1 font-mono text-[9px] font-bold text-sky">{s.speaker}</span>
+            {s.text}
+          </p>
+        ))}
+        {state.interim && (
+          <p className="text-[11px] leading-relaxed text-muted italic">
+            <span className="mr-1 rounded bg-sky-soft px-1 font-mono text-[9px] font-bold text-sky">{state.interim.speaker}</span>
+            {state.interim.text}
+          </p>
+        )}
+        <div ref={bottomRef} />
+      </div>
+      {state.error && <p className="mt-2 text-[10px] font-semibold text-rust">{state.error}</p>}
+    </div>
+  );
+}
+
 function StatusDot({ status }: { status: RunState["status"] }) {
   const map: Record<RunState["status"], [string, string]> = {
     idle: ["bg-line", "대기"],
@@ -568,7 +628,6 @@ function StatusDot({ status }: { status: RunState["status"] }) {
 
 type SharedProps = {
   script: ScriptId; setScript: (s: ScriptId) => void;
-  micMode: MicMode; setMicMode: (m: MicMode) => void;
   langMode: "ko" | "en" | "koen"; setLangMode: (m: "ko" | "en" | "koen") => void;
   diarize: boolean; setDiarize: (b: boolean) => void;
   useBoost: boolean; setUseBoost: (b: boolean) => void;
@@ -593,15 +652,6 @@ function SharedControls(p: SharedProps) {
           <Seg options={[["ko", "한국어"], ["en", "영어"], ["koen", "한국어+영어"]]} value={p.langMode} onChange={(v) => p.setLangMode(v as "ko" | "en" | "koen")} />
         </Field>
       </div>
-
-      <Field label="마이크 입력 방식" className="mt-4">
-        <Seg options={[["voice", "사람이 말함"], ["speaker", "스피커로 재생"]]} value={p.micMode} onChange={(v) => p.setMicMode(v as MicMode)} />
-        <p className="mt-1.5 text-[11px] text-muted">
-          {p.micMode === "voice"
-            ? "에코 제거·잡음 억제·자동 게인을 켭니다. 8/24 판정용 — 두 사람이 대본을 번갈아 읽으세요."
-            : "전처리를 전부 끕니다. 켜두면 브라우저가 스피커 소리를 에코로 판정해 지워버립니다. 스피커 볼륨은 60~70%, 마이크와 30cm 이내로 두세요."}
-        </p>
-      </Field>
 
       <div className="mt-4 flex flex-wrap items-center gap-5">
         <Check label="화자 분리" checked={p.diarize} onChange={p.setDiarize} />
@@ -646,17 +696,7 @@ function ProviderPanel({
 }) {
   const finals = state.segments.filter((s) => s.isFinal);
   const transcript = finals.map((s) => s.text).join(" ");
-  // 같은 화자의 연속 확정 세그먼트를 한 문단으로 — 문장 단위로 읽히게 (채점은 transcript 기준이라 영향 없음)
-  const mergedFinals = useMemo(() => {
-    const out: Segment[] = [];
-    for (const seg of finals) {
-      const last = out[out.length - 1];
-      if (last && last.speaker === seg.speaker) last.text = `${last.text} ${seg.text}`.trim();
-      else out.push({ ...seg });
-    }
-    return out;
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- finals 는 state.segments 파생
-  }, [state.segments]);
+  const mergedFinals = useMemo(() => mergeFinals(state.segments), [state.segments]);
   const rows = useMemo(() => scoreTranscript(transcript, script), [transcript, script]);
   const sum = scoreSummary(rows);
   const busy = state.status === "connecting" || state.status === "running";

@@ -25,25 +25,17 @@ registerProcessor('pcm-tap', PcmTap);
 
 export type MicHandle = { stop: () => void };
 
-/** 마이크 입력 방식.
- *  voice   — 사람이 마이크에 대고 말한다. 브라우저 전처리(에코 제거·잡음 억제·자동 게인)를 켠다.
- *  speaker — WAV를 스피커로 틀어 마이크로 받는다. **전처리를 전부 꺼야 한다** —
- *            에코 제거가 스피커에서 나온 소리를 에코로 판정해 지워버리기 때문이다.
- */
-export type MicMode = "voice" | "speaker";
-
-/** 마이크 → PCM16 청크. AudioContext가 16kHz로 리샘플한다. */
-export async function startMic(
-  onPcm: (pcm: Int16Array) => void,
-  mode: MicMode = "voice",
-): Promise<MicHandle> {
-  const processed = mode === "voice";
+/** 마이크 → PCM16 청크. AudioContext가 16kHz로 리샘플한다.
+ *  브라우저 전처리(에코 제거·잡음 억제·자동 게인)는 **항상 끈다** —
+ *  화상통화용 기능이라 STT에는 원음이 낫고, 켜두면 스피커로 재생한 소리를
+ *  에코로 판정해 지워버린다. 그래서 사람 발화든 스피커 재생이든 구분이 필요 없다. */
+export async function startMic(onPcm: (pcm: Int16Array) => void): Promise<MicHandle> {
   const stream = await navigator.mediaDevices.getUserMedia({
     audio: {
       channelCount: 1,
-      echoCancellation: processed,
-      noiseSuppression: processed,
-      autoGainControl: processed,
+      echoCancellation: false,
+      noiseSuppression: false,
+      autoGainControl: false,
     },
   });
   const ctx = new AudioContext({ sampleRate: TARGET_SAMPLE_RATE });
