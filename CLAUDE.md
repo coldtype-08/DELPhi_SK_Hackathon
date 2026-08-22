@@ -51,6 +51,7 @@ DELPhi-0811/
 ├── docs/                ← 스펙 = 단일 진실. 코드보다 문서를 먼저 고친다 (공통)
 ├── apps/console/        ← 웹 대시보드          [가설·Contract 화면: 건태 / 홈·Review·Safety·공통: 소정]
 ├── apps/field/          ← 모바일 웹앱          [오너: 소정]
+├── apps/stt-lab/        ← STT 3종 비교 랩(로컬 전용, 배포 안 함) [오너: 인혁]
 ├── backend/             ← FastAPI + DB + 에이전트 [오너: 인혁 — 엔진 층]
 │   └── app/prompts/     ← 추출·에이전트 프롬프트  [오너: 건태 — 도메인 층]
 ├── scripts/             ← 합성 데이터 생성 등     [오너: 인혁]
