@@ -1,7 +1,8 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   November 8, 2025   |   Logged by: Dana Cho
-Correspondent: Rohan Barrowman, MD, Beacon Hill Neurology Associates, Roanoke, VA (AR)
+Correspondent: Bram Merriwether, MD, Willowmere Neuroscience Center, Toledo, OH (RSM)
 
-A fragmented conversation in the corridor, mostly logistics.
-1. Talked through the refractory group in general terms, without any specific case.
+A rushed meeting in the shared office, first one this quarter. Described a preference for slower titration in general, unrelated to any particular patient.
+1. Called out reproductive-age patients who ask about pregnancy outcomes and get no clear answer.
+2. Compared notes on which sessions were worth the time.

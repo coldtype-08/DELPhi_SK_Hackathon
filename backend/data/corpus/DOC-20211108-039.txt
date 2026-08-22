@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: November 8, 2021   |   MSL: Sam Becker
-HCP: Lukas Stanhope, MD, Highmoor Health Neurology, Shreveport, LA (AR)
+HCP: Selin Danforth, MD, Willowmere Neuroscience Center, Bakersfield, CA (RSM)
 
-A rushed meeting in the conference room, first one this quarter.
+Titration habits came up in general terms; no specifics were discussed and none were offered.
 
-Closed there — nothing actionable this visit.
+Described the practice as early in its experience here, with nothing to report yet.
 
-The referral queue is slowly recovering since summer, which shapes how much time there is for anything else.
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Referral patterns into this clinic have changed, and refractory group is bigger share than it was.

@@ -1,7 +1,7 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   February 17, 2024   |   Logged by: Sam Becker
-Correspondent: Nikolai Underhill, MD, Willowmere Neuroscience Center, Bakersfield, CA (RSM)
+Correspondent: Josefina Silverthorne, MD, Ember Lake Medical Group, Des Moines, IA (AR)
 
-The referral queue is slowly recovering since summer, which shapes how much time there is for anything else. Benefit verification is step that most often delays a start here.
-1. No specific request this time. Asked about safety and confirmed nothing to report.
+A clipped meeting in the workroom, first one this quarter. The practice lost two medical assistants and has not backfilled, so the referral queue is slowly recovering.
+1. Onboarding clinic pharmacist is current preoccupation here.

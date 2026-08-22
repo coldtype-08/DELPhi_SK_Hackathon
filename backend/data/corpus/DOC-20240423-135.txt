@@ -1,7 +1,7 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   April 23, 2024   |   Logged by: Tom Alvarez
-Correspondent: Camila Ostrander, MD, Silver Creek Medical Group, Madison, WI (RSM)
+Correspondent: Silvio Prendergast, MD, Silver Creek Medical Group, Fayetteville, NC (RSM)
 
-An unhurried visit at nurses' station; schedule was tight.
-1. Asked whether I would be at meeting later this year.
+A half-hour conversation at end of clinic list, mostly logistics. Titration habits came up in general terms; no specifics were discussed and none were offered.
+1. Clinic throughput has stretched out since the summer, which shapes how much time there is for anything else.

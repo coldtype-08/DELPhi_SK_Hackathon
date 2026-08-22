@@ -5,8 +5,9 @@ HCP: Xiomara Eversholt, MD, Juniper Flats Neurology Partners, Albany, NY (RSM)
 동의 확인: 예 (녹음 전 구두 동의)
 
 MSL: 안녕하세요 선생님, 외래 끝나고 잠시 괜찮으세요?
-HCP: 예약 시스템이 바뀌어서 그게 더 골치예요.
-Wanted to pass along that a long-refractory adult has been able to return to driving after a sustained quiet period.
-HCP: 요즘 외래가 밀려서 정신이 없네요.
 MSL: 네, 참석 예정입니다. 학회에서 뵙겠습니다.
+Wanted to pass along that a long-refractory adult has been able to return to driving after a sustained quiet period.
+MSL: 다음 방문은 언제가 편하실까요?
+HCP: 예약 시스템이 바뀌어서 그게 더 골치예요.
+HCP: 요즘 외래가 밀려서 정신이 없네요.
 MSL: 말씀 주신 내용은 기록해 두겠습니다. 감사합니다 선생님.

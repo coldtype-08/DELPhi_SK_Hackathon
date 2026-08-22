@@ -1,14 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: October 17, 2024   |   MSL: Sam Becker
-HCP: Tadeo Ravenscroft, MD, Alder Point Neurology Associates, Peoria, IL (RSM)
+HCP: Anjali Zabriskie, MD, Harborlight Epilepsy Center, Missoula, MT (AR)
 
-The composition of the pediatric-to-adult transfers has shifted over the last year or two.
+Caught a short window in the shared office between patients.
 
-Titration scheduling is handled by nursing staff, which the practice finds workable.
+Coverage paperwork takes longer than the clinical decision, which came up as a general frustration.
 
-Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+The referral queue has stretched out since the summer, which shapes how much time there is for anything else.
 
-Talked through surgical workup list in general terms, without any specific case.
+Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
 
-Closed there — nothing that needed follow-up.
+Asked whether I would be at the meeting later this year.

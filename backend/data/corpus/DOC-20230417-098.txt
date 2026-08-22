@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   April 17, 2023   |   Marcus Obeng
-HCP: Josefina Ghiradelli, MD, Sandhill Neuroscience Center, Worcester, MA (RSM)
+HCP: Quentin Grierson, MD, Northbrook Neurology Institute, Madison, WI (RSM)
 
-Left it at that, with the following quarter to be scheduled. Mentioned a session summary from a colleague but did not raise any specific finding.
+A full visit at nurses' station; schedule was tight. Spent some time on older half of panel and how workup decisions get sequenced.

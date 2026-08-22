@@ -1,14 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: April 8, 2025   |   MSL: Sunny Okafor
-HCP: Bastian Dellacroix, MD, Bluestem Comprehensive Epilepsy Clinic, Manchester, NH (RSM)
+HCP: Kenji Tavernier, MD, Highmoor Health Neurology, Reno, NV (RSM)
 
-The composition of newly referred patients has shifted over the last year or two.
+Monitoring intervals during titration are set by clinic routine here rather than by protocol.
 
-Most of the discussion was about the new charting templates, which is still being sorted out.
+Noted that teh appeals process varies by payer and that this is not specific to any one product.
 
-Asked whether I would be at the meeting later this year.
-
-Asked about my travel schedule, since visits keep landing on the busiest clinic days.
-
-Left it at that, with the next visit to be scheduled.
+The prior-authorization workflow has not settled, and that took up teh first part of the conversation.

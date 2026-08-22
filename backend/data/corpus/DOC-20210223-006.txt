@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   February 23, 2021   |   Rachel Suh
-HCP: Nikolai Norrington, MD, Cedar Ridge Regional Epilepsy Program, Duluth, MN (RSM)
+HCP: Delphine Kirkpatrick, MD, Copperfield Neurology Institute, Mobile, AL (RSM)
 
-The travel schedule this year came up, and little else. Closed there — no specific request. This practice is still building familiarity with the product and had no clinical points to raise.
+Stopped by outside the EEG suite for a compressed conversation. Benefit checks varies by payer, which came up as a general frustration. Referenced a review that circulated on the service in passing.

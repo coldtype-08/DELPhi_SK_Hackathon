@@ -1,14 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: March 5, 2021   |   MSL: Rachel Suh
-HCP: Susan Ratliff, MD, Harborlight Neurology, Portland, ME (AR)
+HCP: Nikolai Merriwether, MD, Bayview Health Neurology, Hartford, CT (RSM)
 
-Compared notes on which sessions were worth the time.
+Most of the discussion was about the patient portal, which has not settled.
 
-The new charting templates is being piloted this quarter, and that took up the first part of the conversation.
+The travel schedule this year came up, and little else.
 
-Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
-
-Benefit verification is the step that most often delays a start here.
-
-Onboarding a rotating resident is the current preoccupation here.
+Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return.

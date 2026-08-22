@@ -1,7 +1,7 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   June 26, 2025   |   Logged by: Sam Becker
-Correspondent: Delphine Kirkpatrick, MD, Copperfield Neurology Institute, Mobile, AL (RSM)
+Correspondent: Marcus Boudreaux, MD, Bayou Regional Epilepsy Center, Baton Rouge, LA (RSM)
 
-Onboarding rotating resident is the current preoccupation here.
-1. Spent some time on long-standing pts and how workup decisions get sequenced.
+Stopped by in the workroom for a brief convo.
+1. Asked about my travel schedule, since visits keep landing on the busiest clinic days.

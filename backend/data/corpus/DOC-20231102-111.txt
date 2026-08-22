@@ -1,14 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: November 2, 2023   |   MSL: Ravi Chandrasek
-HCP: Tobias Norrington, MD, Marbury Neurological Care Center, Mobile, AL (RSM)
+HCP: Arvind Pemberton, MD, Saltmarsh Neurological Care Center, Madison, WI (AR)
 
-Caught a fragmented window in the corridor between patients.
+Monitoring intervals during titration are set by clinic routine here rather than by protocol.
 
-Described how newly referred patients is triaged now compared with before.
+Left it at that, with a follow-up appointment to be scheduled.
 
-Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+Referral patterns into this clinic have changed, and the older half of the panel is a bigger share than it was.
 
-Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced.
-
-Titration habits came up in general terms; no specifics were discussed and none were offered.
+Talked through the surgical workup list in general terms, without any specific case.

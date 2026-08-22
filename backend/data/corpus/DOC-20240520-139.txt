@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: May 20, 2024   |   MSL: Priya Menon
-HCP: Eloise Wycliffe, MD, Marbury Neurological Care Center, Providence, RI (RSM)
+HCP: Jaromir Steinmetz, MD, Windrow Neuroscience Center, Lakeland, FL (AR)
 
-A clipped visit in the conference room; the schedule was tight.
+A compressed meeting in the shared office, first one this quarter.
 
-The new charting templates is being piloted this quarter, and that took up the first part of the conversation.
+Spent some time on the surgical workup list and how workup decisions get sequenced.
 
-Talked through the surgical workup list in general terms, without any specific case.
+Mentioned a case series someone forwarded but did not raise any specific finding.
+
+Talked through the refractory group in general terms, without any specific case.

@@ -1,7 +1,7 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   August 20, 2024   |   Logged by: Rachel Suh
-Correspondent: Orla Wycliffe, MD, Highmoor Health Neurology, Little Rock, AR (RSM)
+Correspondent: Rosalind Ivanetti, MD, Saltmarsh Neurological Care Center, Fort Collins, CO (RSM)
 
-The referral intake process changed again last month, and that took up the first part of the conversation.
-1. Routine follow-up slots looks better than last year since the summer, which shapes how much time there is for anything else.
+A half-hour meeting in the shared office, first one this quarter.
+1. Monitoring intervals during titration are set by clinic routine here rather than by protocol.

@@ -1,14 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: January 23, 2025   |   MSL: Ravi Chandrasek
-HCP: Rohan Barrowman, MD, Beacon Hill Neurology Associates, Roanoke, VA (AR)
+HCP: Alice Nguyen-Barr, MD, Old Dominion Neurology Group, Richmond, VA (AR)
+
+Stopped by at the nurses' station for a clipped conversation.
+
+Described how the older half of the panel is triaged now compared with before.
+
+Onboarding a rotating resident is the current preoccupation here.
+
+Asked whether I would be at the meeting later this year.
 
 Agreed to reconnect at a follow-up appointment; nothing that needed follow-up.
-
-Referral patterns into this clinic have changed, and the pediatric-to-adult transfers is a bigger share than it was.
-
-Monitoring intervals during titration are set by clinic routine here rather than by protocol.
-
-The practice lost a front-desk coordinator and has not backfilled, so routine follow-up slots looks better than last year.
-
-Described how long-standing patients is triaged now compared with before.

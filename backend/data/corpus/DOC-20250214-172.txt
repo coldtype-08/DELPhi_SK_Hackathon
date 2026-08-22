@@ -1,12 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: February 14, 2025   |   MSL: Colin Ferreira
-HCP: Delphine Kettleborn, MD, Copperfield Neurology Institute, Providence, RI (AR)
+HCP: Wilhelmina Tavernier, MD, Lakeshore Neurological Care Center, Waco, TX (RSM)
 
-A twenty-minute meeting in the reading room, first one this quarter.
+A productive convo at the end of the clinic list, mostly logistics.
 
-Mentioned a review that circulated on service but did not raise any specific finding.
+No product discussion this time. Asked about safety and confirmed nothing to report.
 
-Titration scheduling is handled by nursing staff, which practice finds workable.
-
-Described how refractory group is triaged now compared with before.
+Spent some time on newly referred patients and how workup decisions get sequenced.

@@ -1,7 +1,7 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   August 23, 2021   |   Logged by: Priya Menon
-Correspondent: Quentin Oakhurst, MD, Northbrook Neurology Institute, Oakland, CA (RSM)
+Correspondent: Tobias Rusnak, MD, Sable Creek Medical Group, Akron, OH (AR)
 
-A productive visit in the corridor; the schedule was tight. The practice lost two medical assistants and has not backfilled, so clinic throughput has stretched out.
-1. Described a preference for slower titration in general, unrelated to any particular patient.
+Stopped by between clinic blocks for a twenty-minute conversation.
+1. Asked whether I would be at the meeting later this year.

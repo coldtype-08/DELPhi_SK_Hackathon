@@ -1,12 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: November 23, 2024   |   MSL: Tom Alvarez
-HCP: Dagmar Harkness, MD, Bluestem Comprehensive Epilepsy Clinic, Savannah, GA (RSM)
+HCP: Wilhelmina Nakagawa, MD, Ironwood Neurology Associates, Syracuse, NY (AR)
 
-Caught a clipped window by scheduling desk between pts.
+A twenty-minute meeting in the reading room, first one this quarter.
 
-No materials requested this time. Asked about safety and confirmed nothing to report.
+Benefit checks remains the slowest step, which came up as a general frustration.
 
-Talked through the pediatric-to-adult transfers in general terms, without any specific case.
+Monitoring intervals during titration are set by clinic routine here rather than by protocol.
 
-Most of discussion was about scheduling system, which changed again last month.
+Talked through the older half of the panel in general terms, without any specific case.

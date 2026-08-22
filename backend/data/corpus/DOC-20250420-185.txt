@@ -1,7 +1,8 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   April 20, 2025   |   Logged by: Rachel Suh
-Correspondent: Saoirse Norrington, MD, Lakeshore Neurological Care Center, Akron, OH (AR)
+Correspondent: Hadley Wycliffe, MD, Northbrook Neurology Institute, Peoria, IL (RSM)
 
-A twenty-minute meeting in the shared office, first one this quarter.
-1. Talked through newly referred patients in general terms, without any specific case.
+Closed there — nothing actionable this visit. The practice lost two medical assistants and has not backfilled, so the referral queue looks better than last year.
+1. Put it as strongly as saying the age limit is the only thing standing in the way for these families.
+2. The patient portal changed again last month, and that took up the first part of the conversation.

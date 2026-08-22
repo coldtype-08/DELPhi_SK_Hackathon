@@ -1,7 +1,7 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   August 2, 2022   |   Logged by: Priya Menon
-Correspondent: Gemma Norrington, MD, Foxglove Health Neurology, Portland, ME (RSM)
+Correspondent: Imani Okafor, MD, Smoky Ridge Medical Center, Knoxville, TN (RSM)
 
-A twenty-minute meeting in the corridor, first one this quarter. No specific request. Safety items asked about and confirmed none.
-1. Clinic throughput keeps slipping since the summer, which shapes how much time there is for anything else.
+Mentioned a guideline update discussed at journal club but did not raise any specific finding. No product discussion. Safety items asked about and confirmed none.
+1. Benefit verification is the step that most often delays a start here.

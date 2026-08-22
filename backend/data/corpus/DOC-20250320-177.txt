@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: March 20, 2025   |   MSL: Yuki Tanabe
-HCP: Jaromir Grierson, MD, Saltmarsh Neurological Care Center, Allentown, PA (RSM)
+HCP: Ulrike Wetherby, MD, Juniper Flats Neurology Partners, Fayetteville, NC (RSM)
 
-Described how long-standing patients is triaged now compared with before.
+Spent some time on the refractory group and how workup decisions get sequenced.
 
-Asked whether I would be at the meeting later this year.
+Onboarding two medical assistants is the current preoccupation here.
 
-Talked through the surgical workup list in general terms, without any specific case.
+Benefit verification is the step that most often delays a start here.
+
+The travel schedule this year came up, and little else.

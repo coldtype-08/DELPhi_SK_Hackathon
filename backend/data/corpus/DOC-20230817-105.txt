@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: August 17, 2023   |   MSL: Ravi Chandrasek
-HCP: Gaspar Ostrander, MD, Riverstone Comprehensive Epilepsy Clinic, Burlington, VT (RSM)
+HCP: Yannick Harkness, MD, Granite Bay Epilepsy Center, Hartford, CT (RSM)
 
-A brief meeting at the nurses' station, first one this quarter.
+Caught a fragmented window at the end of the clinic list between patients.
 
-Left it at that, with a call later this month to be scheduled.
+Agreed to reconnect at a follow-up appointment; nothing that needed follow-up.
 
-Referenced a review that circulated on the service in passing.
+Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Mostly small talk about the program and the venue.

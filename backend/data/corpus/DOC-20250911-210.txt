@@ -4,8 +4,10 @@
 HCP: Bram Eversholt, MD, Bayview Health Neurology, Grand Rapids, MI (RSM)
 동의 확인: 예 (녹음 전 구두 동의)
 
-MSL: 선생님, 지난번 말씀 나눈 부분 여쭤보려고 왔습니다.
-MSL: 네, 참석 예정입니다. 학회에서 뵙겠습니다.
+MSL: 안녕하세요 선생님, 외래 끝나고 잠시 괜찮으세요?
+HCP: 요즘 외래가 밀려서 정신이 없네요.
 Described a growing cluster of post-stroke epilepsy patients who fit none of the usual categories.
+MSL: 네, 참석 예정입니다. 학회에서 뵙겠습니다.
+HCP: 전공의가 두 명 새로 들어와서 적응 기간이에요.
 HCP: 다음 달 학회는 가시죠? 세션이 괜찮아 보이던데요.
 MSL: 말씀 주신 내용은 기록해 두겠습니다. 감사합니다 선생님.

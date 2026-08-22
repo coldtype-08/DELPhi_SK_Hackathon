@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   April 11, 2025   |   Sunny Okafor
-HCP: Niamh Inverness, MD, Kestrel Comprehensive Epilepsy Clinic, Worcester, MA (RSM)
+HCP: Fabian Brannigan, MD, Cedar Ridge Regional Epilepsy Program, Reno, NV (RSM)
 
-An unhurried conversation in the workroom, mostly logistics. Benefit checks has improved somewhat, which came up as a general frustration.
+Stopped by in the conference room for a fragmented conversation. Compared notes on which sessions were worth the time. The referral queue keeps slipping since the summer, which shapes how much time there is for anything else.

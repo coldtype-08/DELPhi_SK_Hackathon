@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   June 11, 2021   |   Rachel Suh
-HCP: Kiara Hollingsworth, MD, Riverstone Comprehensive Epilepsy Clinic, Jackson, MS (RSM)
+HCP: Bram Merriwether, MD, Willowmere Neuroscience Center, Toledo, OH (RSM)
 
-A brief conversation by the scheduling desk, mostly logistics. Referenced a case series someone forwarded in passing. The practice lost the clinic pharmacist and has not backfilled, so the new-patient backlog looks better than last year.
+Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was. Titration scheduling is handled by nursing staff, which the practice finds workable. Onboarding two medical assistants is the current preoccupation here.

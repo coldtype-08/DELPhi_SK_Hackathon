@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   February 8, 2024   |   Priya Menon
-HCP: Mairead Barrowman, MD, Foxglove Health Neurology, Eugene, OR (RSM)
+HCP: Silvio Fitzgibbon, MD, Thornfield Regional Epilepsy Program, Wichita, KS (RSM)
 
-The appeals process has improved somewhat, which came up as a general frustration. Clinic throughput has stretched out since the summer, which shapes how much time there is for anything else.
+Referral patterns into this clinic have changed, and long-standing patients is a bigger share than it was. Compared notes on which sessions were worth the time.

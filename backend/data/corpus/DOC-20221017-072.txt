@@ -1,11 +1,12 @@
 [합성 샘플] DELPHi 프로토타입 데모용으로 생성된 가상 기록입니다. 인물·기관·발언은 모두 실재하지 않으며, 양식은 일반적인 현장 기록 형식을 흉내 낸 것입니다.
 
 음성 면담 전사   |   2022-10-17   |   작성: Rachel Suh
-HCP: Daniel Whitcomb, MD, Northbrook Neurology Institute, Albany, NY (RSM)
+HCP: Kiara Ellingham, MD, Lakeshore Neurological Care Center, Buffalo, NY (RSM)
 동의 확인: 예 (녹음 전 구두 동의)
 
-MSL: 안녕하세요 선생님, 외래 끝나고 잠시 괜찮으세요?
-HCP: 다음 달 학회는 가시죠? 세션이 괜찮아 보이던데요.
+MSL: 선생님 안녕하세요, 오늘 시간 내주셔서 감사합니다.
 HCP: 전공의가 두 명 새로 들어와서 적응 기간이에요.
+MSL: 다음 방문은 언제가 편하실까요?
+HCP: 다음 달 학회는 가시죠? 세션이 괜찮아 보이던데요.
 HCP: 요즘 외래가 밀려서 정신이 없네요.
 MSL: 말씀 주신 내용은 기록해 두겠습니다. 감사합니다 선생님.

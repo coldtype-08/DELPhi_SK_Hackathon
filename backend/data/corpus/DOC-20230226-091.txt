@@ -1,12 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: February 26, 2023   |   MSL: Dana Cho
-HCP: Rohan Vasquez-Lund, MD, Ember Lake Medical Group, Omaha, NE (RSM)
+HCP: Viraj Corliss, MD, Lakeshore Neurological Care Center, Lexington, KY (AR)
 
-A clipped meeting between clinic blocks, first one this quarter.
+Titration scheduling is handled by nursing staff, which the practice finds workable.
 
-The new-patient backlog has stretched out since the summer, which shapes how much time there is for anything else.
+Spent some time on newly referred patients and how workup decisions get sequenced.
 
-Described how the pediatric-to-adult transfers is triaged now compared with before.
+Talked through the pediatric-to-adult transfers in general terms, without any specific case.
 
-Most of the discussion was about the patient portal, which changed again last month.
+Most of the discussion was about the scheduling system, which is being piloted this quarter.
+
+Mentioned a guideline update discussed at journal club but did not raise any specific finding.

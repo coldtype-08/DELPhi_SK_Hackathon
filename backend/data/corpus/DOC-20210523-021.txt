@@ -1,14 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: May 23, 2021   |   MSL: Priya Menon
-HCP: Esperanza Calderwood, MD, Vantage Park Regional Epilepsy Program, Burlington, VT (AR)
+HCP: Felicity Fairweather, MD, Northgate Neurology Partners, Lexington, KY (RSM)
 
-Most of the discussion was about the new charting templates, which went live without much warning.
+A compressed conversation at the nurses' station, mostly logistics.
 
-Noted that the appeals process has improved somewhat and that this is not specific to any one product.
+Referral patterns into this clinic have changed, and the refractory group is a bigger share than it was.
 
-Titration habits came up in general terms; no specifics were discussed and none were offered.
-
-Asked whether I would be at the meeting later this year.
-
-Left it at that, with a follow-up appointment to be scheduled.
+Coverage paperwork varies by payer, which came up as a general frustration.
