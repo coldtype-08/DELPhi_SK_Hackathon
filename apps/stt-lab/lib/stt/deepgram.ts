@@ -30,6 +30,10 @@ export const deepgram: SttProvider = {
   ],
 
   async connect(opts: SttOptions, ev: SttEvents): Promise<SttSession> {
+    // 실측(08/22): nova-3-medical + ko 는 400 으로 핸드셰이크 거부 — 접속 전에 막고 이유를 말해준다
+    if (opts.model.includes("medical") && opts.languages.some((l) => l !== "en")) {
+      throw new Error("nova-3-medical 은 영어 전용입니다 — 한국어 대본은 nova-3 으로 바꾸거나, 언어 설정을 영어로 하세요");
+    }
     const q = new URLSearchParams({
       model: opts.model,
       encoding: "linear16",
