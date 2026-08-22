@@ -1,14 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: January 17, 2024   |   MSL: Marcus Obeng
-HCP: Eloise Eversholt, MD, Quarry Hill Epilepsy Center, Tacoma, WA (RSM)
+HCP: Imani Steinmetz, MD, Bluestem Comprehensive Epilepsy Clinic, Eugene, OR (RSM)
 
-A rushed meeting between clinic blocks, first one this quarter.
+A full visit between clinic blocks; the schedule was tight.
 
-The new-patient backlog looks better than last year since the summer, which shapes how much time there is for anything else.
+Coverage paperwork has improved somewhat, which came up as general frustration.
 
-Described how the surgical workup list is triaged now compared with before.
+Most of the discussion was about the scheduling system, which is still being sorted out.
 
-Asked whether I would be at the meeting later this year.
+The composition of newly referred patients has shifted over last year or two.
 
-Titration scheduling is handled by nursing staff, which practice finds workable.
+Mostly small talk about program and venue.

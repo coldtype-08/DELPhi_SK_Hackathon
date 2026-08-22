@@ -1,12 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: April 2, 2021   |   MSL: Dana Cho
-HCP: Zubin Grierson, MD, Marbury Neurological Care Center, Tucson, AZ (RSM)
+HCP: Kiara Vandergriff, MD, Beacon Hill Neurology Associates, Providence, RI (RSM)
 
-A short conversation by the scheduling desk, mostly logistics.
+Mostly small talk about the program and the venue.
 
-Titration scheduling is handled by nursing staff, which the practice finds workable.
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.
 
-Referenced a guideline update discussed at journal club in passing.
-
-Nothing actionable this visit this time. Asked about safety and confirmed nothing to report.
+Closed there — no product discussion.

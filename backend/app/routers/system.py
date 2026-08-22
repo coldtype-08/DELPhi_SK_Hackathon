@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from ..config import CACHE_DIR, DEMO_OFFLINE, RESET_TOKEN
 from ..contract import load_active_contract
 from ..db import get_db
+from ..llm import cache_stats, key_status
 from ..models import Document
 
 router = APIRouter()
@@ -46,3 +47,12 @@ def reset_demo(x_reset_token: str = Header(default="")):
 
     counts = seed()
     return {"data": {"reset": True, **counts}}
+
+
+@router.get("/system/agents")
+def system_agents():
+    """에이전트별 모델·키 상태 (08/22). **키 값은 절대 내보내지 않는다 — 이름과 존재 여부만.**
+
+    "키를 꽂았는데 왜 안 도나"를 화면에서 바로 확인하려는 용도다.
+    """
+    return {"data": {"agents": key_status(), "cache": cache_stats(), "demoOffline": DEMO_OFFLINE}}

@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   April 5, 2021   |   Priya Menon
-HCP: Niamh Ostrander, MD, Bayview Health Neurology, Burlington, VT (RSM)
+HCP: Camila Prendergast, MD, Ember Lake Medical Group, Trenton, NJ (RSM)
 
-A short meeting at the nurses' station, first one this quarter. Noted that formulary questions is handled by one person here and that this is not specific to any one product.
+Caught a short window in the corridor between patients. Described a preference for slower titration in general, unrelated to any particular patient. Most of the discussion was about the new charting templates, which went live without much warning.

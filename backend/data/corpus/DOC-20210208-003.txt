@@ -1,10 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: February 8, 2021   |   MSL: Priya Menon
-HCP: Eloise Cavanaugh, MD, Marbury Neurological Care Center, Trenton, NJ (RSM)
+HCP: Viraj Galbraith, MD, Quarry Hill Epilepsy Center, Little Rock, AR (RSM)
 
-Caught an unhurried window in the back office between patients.
+Caught a productive window in the shared office between patients.
 
-The scheduling system went live without much warning, and that took up the first part of the conversation.
+Referenced a session summary from a colleague in passing.
+
+Described the practice as early in its experience here, with nothing to report yet.
 
 Compared notes on which sessions were worth the time.
+
+Most of the discussion was about the new charting templates, which changed again last month.

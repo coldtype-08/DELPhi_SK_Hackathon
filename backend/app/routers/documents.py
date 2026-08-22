@@ -1,4 +1,4 @@
-"""Documents & Sense — docs/04 §1. 원문 조회는 실제 DB, 추출 실행은 stub [오너: 인혁]."""
+"""Documents & Sense — docs/04 §1. 원문 조회·추출 실행 모두 실제 동작 (08/22) [오너: 인혁]."""
 
 import json
 
@@ -8,7 +8,10 @@ from sqlalchemy.orm import Session
 
 from ..access import get_role, require_raw_text_access
 from ..db import get_db
+from ..attribution import attribute_document
+from ..llm import LlmUnavailable
 from ..models import Claim, Document, Interaction
+from ..sense import extract_document
 
 router = APIRouter()
 
@@ -83,15 +86,51 @@ def get_document(doc_id: str, db: Session = Depends(get_db), role: str = Depends
     }}
 
 
-@router.post("/documents/{doc_id}/extract")
-def extract_document(doc_id: str, role: str = Depends(get_role)):
-    """Sense 추출 실행 — [스캐폴딩 stub, 오너: 인혁 8/21].
+def _camel_stats(stats: dict) -> dict:
+    """내부는 snake_case, API 응답은 camelCase (CLAUDE.md 코딩 컨벤션)."""
+    def camel(k: str) -> str:
+        head, *rest = k.split("_")
+        return head + "".join(w.capitalize() for w in rest)
+    return {camel(k): v for k, v in stats.items()}
 
-    실제 구현: llm.py 경유 구조화 추출 → evidence 검증(원문 일치) → claims 저장 →
-    SAFETY_CANDIDATE 분리(절대 규칙 #6) → unmapped_terms 적재.
-    개발용 CANDIDATE는 시드에 이미 포함되어 있다 (scripts/seed_db.py).
+
+@router.post("/documents/{doc_id}/extract")
+def extract_document_route(
+    doc_id: str,
+    force: bool = False,
+    refresh: bool = False,
+    db: Session = Depends(get_db),
+    role: str = Depends(get_role),
+):
+    """Sense 추출 실행 — 원석 1건 → 의료진 블록별 claim 후보 (08/22 구현, docs/04 §1).
+
+    LLM은 무엇이 신호인지 고르고 인용문을 복사할 뿐이고, 인용문 대조·오프셋·등급·
+    안전성 분리는 전부 `app/sense.py`의 결정론 코드가 한다 (절대 규칙 #1·#2·#6).
     """
-    raise HTTPException(501, detail={
-        "code": "NOT_IMPLEMENTED",
-        "message_ko": "추출 파이프라인은 stub입니다 — 8/21 'stub을 실제 LLM 추출로 교체' [오너: 인혁]",
-    })
+    require_raw_text_access(role)   # 원문을 읽는 작업이므로 원문 게이트와 동일
+    if not db.get(Document, doc_id):
+        raise HTTPException(404, detail={"code": "NOT_FOUND", "message_ko": "문서가 없습니다."})
+    try:
+        return {"data": _camel_stats(extract_document(db, doc_id, force=force, refresh=refresh))}
+    except LlmUnavailable as e:
+        raise HTTPException(503, detail={"code": "LLM_UNAVAILABLE", "message_ko": str(e)})
+
+
+@router.post("/documents/{doc_id}/attribute")
+def attribute_document_route(
+    doc_id: str,
+    refresh: bool = False,
+    db: Session = Depends(get_db),
+    role: str = Depends(get_role),
+):
+    """발언 귀속 실행 — 문서 한 건에서 **누가 말했는지** 구간을 AI가 가른다 (08/22, docs/04 §1).
+
+    DB에 쓰지 않는다. 보여 주고 채점하는 용도다 — 적재는 `/extract`가 한다.
+    """
+    require_raw_text_access(role)
+    if not db.get(Document, doc_id):
+        raise HTTPException(404, detail={"code": "NOT_FOUND", "message_ko": "문서가 없습니다."})
+    try:
+        return {"data": attribute_document(db, doc_id, refresh=refresh)}
+    except LlmUnavailable as e:
+        raise HTTPException(503, detail={"code": "LLM_UNAVAILABLE", "message_ko": str(e)})

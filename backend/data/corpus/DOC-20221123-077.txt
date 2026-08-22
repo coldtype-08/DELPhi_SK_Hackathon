@@ -1,7 +1,7 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   November 23, 2022   |   Logged by: Ingrid Halvorsen
-Correspondent: Anjali Larkspur, MD, Harborlight Epilepsy Center, Lakeland, FL (RSM)
+Correspondent: Peter Kowalczyk, MD, Green Mountain Neuroscience, Burlington, VT (RSM)
 
-Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.
-1. Titration habits came up in general terms; no specifics were discussed and none were offered.
+Talked through the refractory group in general terms, without any specific case.
+1. Left it at that, with a follow-up appointment to be scheduled.

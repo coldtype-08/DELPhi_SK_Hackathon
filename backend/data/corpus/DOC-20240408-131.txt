@@ -1,10 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: April 8, 2024   |   MSL: Colin Ferreira
-HCP: Xiomara Ostrander, MD, Harborlight Epilepsy Center, Springfield, MO (RSM)
+HCP: Camila Eastmond, MD, Cedar Ridge Regional Epilepsy Program, Worcester, MA (AR)
 
-A rushed visit in shared office; schedule was tight.
+Caught a clipped window in workroom between pts.
 
-Titration scheduling is handled by nursing staff, which practice finds workable.
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.
 
-Mostly small talk about the program and the venue.
+Described how pediatric-to-adult transfers is triaged now compared with before.

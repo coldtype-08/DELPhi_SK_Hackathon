@@ -1,12 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: June 5, 2021   |   MSL: Dana Cho
-HCP: Darius Prendergast, MD, Quarry Hill Epilepsy Center, Duluth, MN (RSM)
+HCP: Valentina Lindenmuth, MD, Palmetto Neurology Institute, Waco, TX (RSM)
 
-A brief visit in the conference room; the schedule was tight.
+Caught an unhurried window in the conference room between patients.
 
-Left it at that, with the following quarter to be scheduled.
+Left it at that, with a follow-up appointment to be scheduled.
 
-The referral intake process has not settled, and that took up the first part of the conversation.
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.
 
-Described a preference for slower titration in general, unrelated to any particular patient.
+Coverage paperwork takes longer than the clinical decision, which came up as a general frustration.
+
+The scheduling system changed again last month, and that took up the first part of the conversation.

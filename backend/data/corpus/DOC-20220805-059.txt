@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   August 5, 2022   |   Marcus Obeng
-HCP: Alastair Whitmore, MD, Vantage Park Regional Epilepsy Program, Hartford, CT (AR)
+HCP: Saoirse Wycliffe, MD, Granite Bay Epilepsy Center, Bakersfield, CA (RSM)
 
-An unexpectedly long visit at the end of the clinic list; the schedule was tight. Most of discussion was about prior-authorization workflow, which changed again last month.
+A short meeting between clinic blocks, first one this quarter. The prior-authorization workflow changed again last month, and that took up the first part of the convo.

@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: December 5, 2024   |   MSL: Dana Cho
-HCP: Dagmar Harkness, MD, Bluestem Comprehensive Epilepsy Clinic, Savannah, GA (RSM)
+HCP: Camila Eastmond, MD, Cedar Ridge Regional Epilepsy Program, Worcester, MA (AR)
 
-A half-hour meeting outside the EEG suite, first one this quarter.
+Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return.
 
-Referenced a session summary from a colleague in passing.
+Agreed to reconnect at the following quarter; nothing that needed follow-up.
 
-No materials requested this time. Asked about safety and confirmed nothing to report.
+Mostly small talk about the program and the venue.
+
+Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.

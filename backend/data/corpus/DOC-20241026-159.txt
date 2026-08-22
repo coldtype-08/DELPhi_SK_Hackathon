@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   October 26, 2024   |   Nadia Belhadj
-HCP: Darius Prendergast, MD, Quarry Hill Epilepsy Center, Duluth, MN (RSM)
+HCP: Viraj Adeyemi-Cole, MD, Thornfield Regional Epilepsy Program, Springfield, MO (RSM)
 
-Described how the surgical workup list is triaged now compared with before. Formulary questions remains the slowest step, which came up as a general frustration.
+A fragmented visit in teh workroom; the schedule was tight. The patient portal is still being sorted out, and that took up teh first part of the conversation.

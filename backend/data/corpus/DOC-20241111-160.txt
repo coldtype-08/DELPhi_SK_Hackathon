@@ -1,12 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: November 11, 2024   |   MSL: Sam Becker
-HCP: Felicity Fairweather, MD, Northgate Neurology Partners, Lexington, KY (RSM)
+HCP: Wilhelmina Tavernier, MD, Lakeshore Neurological Care Center, Waco, TX (RSM)
 
-A clipped visit in workroom; schedule was tight.
+Caught short window at the nurses' station between pts.
 
-The scheduling system is being piloted this quarter, and that took up the first part of the conversation.
+Mostly small talk about the program and the venue.
 
-Benefit verification is step that most often delays a start here.
+Described how long-standing patients is triaged now compared with before.
 
-Talked through pediatric-to-adult transfers in general terms, without any specific case.
+Most of discussion was about patient portal, which changed again last month.

@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: May 20, 2022   |   MSL: Marcus Obeng
-HCP: Lukas Fenwicke, MD, Willowmere Neuroscience Center, Boise, ID (RSM)
+HCP: Eloise Eversholt, MD, Quarry Hill Epilepsy Center, Tacoma, WA (RSM)
 
-Stopped by between clinic blocks for an unexpectedly long conversation.
+Routine follow-up slots is slowly recovering since summer, which shapes how much time there is for anything else.
 
-Titration scheduling is handled by nursing staff, which the practice finds workable.
+Described how long-standing pts is triaged now compared with before.
 
-The practice lost the clinic pharmacist and has not backfilled, so clinic throughput is slowly recovering.
+The travel schedule this year came up, and little else.
+
+Formulary placement was only product-adjacent topic, and only in general terms.

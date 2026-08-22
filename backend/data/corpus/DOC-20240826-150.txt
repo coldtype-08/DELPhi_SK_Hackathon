@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   August 26, 2024   |   Rachel Suh
-HCP: Fabian Marchetti, MD, Northbrook Neurology Institute, Albany, NY (AR)
+HCP: Bastian Underhill, MD, Northgate Neurology Partners, Provo, UT (RSM)
 
-Stopped by in the corridor for a productive conversation. Referral patterns into this clinic have changed, and the older half of the panel is a bigger share than it was.
+The travel schedule this year came up, and little else. Referenced a guideline update discussed at journal club in passing. Benefit verification is the step that most often delays a start here.

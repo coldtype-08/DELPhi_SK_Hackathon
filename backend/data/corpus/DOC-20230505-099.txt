@@ -1,12 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: May 5, 2023   |   MSL: Sam Becker
-HCP: Lukas Tavernier, MD, Vantage Park Regional Epilepsy Program, Boise, ID (RSM)
+HCP: Nikolai Underhill, MD, Willowmere Neuroscience Center, Bakersfield, CA (RSM)
 
-Caught a rushed window in conference room between pts.
+Stopped by in back office for productive convo.
 
-Benefit verification is step that most often delays start here.
+Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.
 
-The practice lost one of nurse practitioners and has not backfilled, so referral queue has stretched out.
+Talked through older half of panel in general terms, without any specific case.
 
-The composition of the pediatric-to-adult transfers has shifted over the last year or two.
+Most of the discussion was about the scheduling system, which is still being sorted out.
+
+Referral patterns into this clinic have changed, and long-standing pts is a bigger share than it was.

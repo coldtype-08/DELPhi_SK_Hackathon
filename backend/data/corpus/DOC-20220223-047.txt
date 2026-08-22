@@ -1,10 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: February 23, 2022   |   MSL: Ingrid Halvorsen
-HCP: Gaspar Yoshimura, MD, Vantage Park Regional Epilepsy Program, Bakersfield, CA (RSM)
+HCP: Viraj Galbraith, MD, Quarry Hill Epilepsy Center, Little Rock, AR (RSM)
 
-A short visit in the shared office; the schedule was tight.
+A half-hour conversation over a quick coffee, mostly logistics.
 
-This practice is still building familiarity with the product and had no clinical points to raise.
+Monitoring intervals during titration are set by clinic routine here rather than by protocol.
 
-Referenced a session summary from a colleague in passing.
+Mostly small talk about the program and the venue.
+
+The referral queue keeps slipping since the summer, which shapes how much time there is for anything else.
+
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.

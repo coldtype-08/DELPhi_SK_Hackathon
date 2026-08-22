@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: April 26, 2025   |   MSL: Ravi Chandrasek
-HCP: Arvind Corliss, MD, Bluestem Comprehensive Epilepsy Clinic, Lakeland, FL (RSM)
+HCP: Nikolai Norrington, MD, Cedar Ridge Regional Epilepsy Program, Duluth, MN (RSM)
 
-Benefit verification is the step that most often delays a start here.
+Stopped by in the reading room for a fragmented conversation.
 
-Clinic throughput looks better than last year since the summer, which shapes how much time there is for anything else.
+The appeals process is handled by one person here, which came up as a general frustration.
 
-Compared notes on which sessions were worth the time.
+Most of the discussion was about the phone triage line, which changed again last month.
+
+The scheduling system went live without much warning, and that took up the first part of the conversation.

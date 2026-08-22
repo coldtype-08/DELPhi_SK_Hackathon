@@ -1,7 +1,7 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   December 8, 2022   |   Logged by: Priya Menon
-Correspondent: Nikolai Barrowman, MD, Bluestem Comprehensive Epilepsy Clinic, Springfield, MO (AR)
+Correspondent: Gemma Steinmetz, MD, Vantage Park Regional Epilepsy Program, Chattanooga, TN (RSM)
 
-A clipped conversation over a quick coffee, mostly logistics.
-1. Mentioned a review that circulated on the service but did not raise any specific finding.
+A half-hour visit at the nurses' station; the schedule was tight. The prior-authorization workflow changed again last month, and that took up the first part of the conversation.
+1. Mentioned a session summary from a colleague but did not raise any specific finding.

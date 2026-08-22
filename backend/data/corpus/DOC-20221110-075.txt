@@ -5,66 +5,68 @@ Date: November 10, 2022   |   From: Rachel Suh, Ingrid Halvorsen
 
 FIELD MEDICAL INSIGHTS
 
-Quentin Hollingsworth, MD, Ember Lake Medical Group, Tucson, AZ (RSM)
-> Stopped by in the workroom for a productive conversation.
-> Closed there — no materials requested.
-> Titration habits came up in general terms; no specifics were discussed and none were offered.
-> The patient portal is being piloted this quarter, and that took up the first part of the conversation.
-> The travel schedule this year came up, and little else.
-
-Bram Hollingsworth, MD, Alder Point Neurology Associates, Albany, NY (RSM)
-> A brief meeting in the shared office, first one this quarter.
-> Onboarding a rotating resident is the current preoccupation here.
-> Formulary questions varies by payer, which came up as a general frustration.
-
-Mairead Eversholt, MD, Granite Bay Epilepsy Center, Burlington, VT (RSM)
-> Mostly small talk about the program and the venue.
-> Onboarding the clinic pharmacist is the current preoccupation here.
-> The referral queue is slowly recovering since the summer, which shapes how much time there is for anything else.
-
-Valentina Lindenmuth, MD, Palmetto Neurology Institute, Waco, TX (RSM)
-> The practice lost one of the nurse practitioners and has not backfilled, so clinic throughput keeps slipping.
-> Referenced a case series someone forwarded in passing.
+Bram Merriwether, MD, Willowmere Neuroscience Center, Toledo, OH (RSM)
 > Asked whether I would be at the meeting later this year.
-
-Arvind Wainwright, MD, Bayview Health Neurology, Jackson, MS (RSM)
-> A fragmented visit over a quick coffee; the schedule was tight.
-> Described a preference for slower titration in general, unrelated to any particular patient.
-> The referral intake process is being piloted this quarter, and that took up the first part of the conversation.
-> Benefit verification is the step that most often delays a start here.
-> Talked through newly referred patients in general terms, without any specific case.
-
-Lachlan Zeitler, MD, Bluestem Comprehensive Epilepsy Clinic, Wichita, KS (AR)
-> An unhurried visit in the workroom; the schedule was tight.
-> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
-> Asked whether I would be at the meeting later this year.
-> Described how the older half of the panel is triaged now compared with before.
-
-Nikolai Zeitler, MD, Juniper Flats Neurology Partners, Allentown, PA (RSM)
-> Benefit verification is the step that most often delays a start here.
-> Closed there — no product discussion.
-> Referenced a guideline update discussed at journal club in passing.
-> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
-
-Robert Enloe, MD, High Desert Neurology, Boise, ID (AR)
-> Described a preference for slower titration in general, unrelated to any particular patient.
-> Mostly small talk about the program and the venue.
 > Described the practice as early in its experience here, with nothing to report yet.
-> Spent some time on long-standing patients and how workup decisions get sequenced.
-> No product discussion. Safety items asked about and confirmed none.
+> Nothing actionable this visit. Safety items asked about and confirmed none.
 
-Lukas Ravenscroft, MD, Fox Hollow Neurology Partners, Mobile, AL (RSM)
-> A half-hour conversation in the shared office, mostly logistics.
+Josefina Silverthorne, MD, Ember Lake Medical Group, Des Moines, IA (AR)
+> An unhurried conversation in the corridor, mostly logistics.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Described how long-standing patients is triaged now compared with before.
+> Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+> Left it at that, with a follow-up appointment to be scheduled.
+
+Ulrike Wetherby, MD, Juniper Flats Neurology Partners, Fayetteville, NC (RSM)
+> A twenty-minute visit in the corridor; the schedule was tight.
+> Described the practice as early in its experience here, with nothing to report yet.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Agreed to reconnect at the following quarter; nothing that needed follow-up.
+> Compared notes on which sessions were worth the time.
+
+Orla Wycliffe, MD, Highmoor Health Neurology, Little Rock, AR (RSM)
+> Stopped by at the nurses' station for an unhurried conversation.
+> Agreed to reconnect at a follow-up appointment; no product discussion.
+> Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.
+
+Quentin Kilbride, MD, Lakeshore Neurological Care Center, Spokane, WA (RSM)
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Talked through newly referred patients in general terms, without any specific case.
+> Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
 > This practice is still building familiarity with the product and had no clinical points to raise.
-> Mostly small talk about the program and the venue.
 
-Mei-Lin Tsang, MD, Bayview Epilepsy Associates, Oakland, CA (RSM)
-> No product discussion. Safety items asked about and confirmed none.
-> Noted that formulary questions remains the slowest step and that this is not specific to any one product.
-> Referenced a guideline update discussed at journal club in passing.
-
-Leonie Underhill, MD, Juniper Flats Neurology Partners, Peoria, IL (RSM)
-> The composition of the refractory group has shifted over the last year or two.
+Yesenia Kirkpatrick, MD, Cedar Ridge Regional Epilepsy Program, Scranton, PA (AR)
+> Stopped by in the conference room for a productive conversation.
 > Titration scheduling is handled by nursing staff, which the practice finds workable.
-> The practice lost a front-desk coordinator and has not backfilled, so clinic throughput looks better than last year.
+> Nothing that needed follow-up this time. Asked about safety and confirmed nothing to report.
+> Talked through the refractory group in general terms, without any specific case.
+> Formulary questions has improved somewhat, which came up as a general frustration.
+
+Gaspar Ivanetti, MD, Saltmarsh Neurological Care Center, Albany, NY (RSM)
+> Caught an unexpectedly long window at the nurses' station between patients.
+> Agreed to reconnect at a call later this month; no specific request.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Jaromir Merriwether, MD, Sable Creek Medical Group, Buffalo, NY (RSM)
+> A twenty-minute visit outside the EEG suite; the schedule was tight.
+> Referenced a review that circulated on the service in passing.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+
+Thandiwe Barrowman, MD, Quarry Hill Epilepsy Center, Sioux Falls, SD (RSM)
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return.
+> The composition of long-standing patients has shifted over the last year or two.
+> Most of the discussion was about the phone triage line, which is being piloted this quarter.
+> Noted that coverage paperwork takes longer than the clinical decision and that this is not specific to any one product.
+
+Kenji Wycliffe, MD, Cedar Ridge Regional Epilepsy Program, Tacoma, WA (RSM)
+> A clipped visit in the conference room; the schedule was tight.
+> Left it at that, with the following quarter to be scheduled.
+> Described the practice as early in its experience here, with nothing to report yet.
+
+Mateo Ravenscroft, MD, Marbury Neurological Care Center, Santa Fe, NM (RSM)
+> A half-hour meeting at the nurses' station, first one this quarter.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Referenced a session summary from a colleague in passing.
+> Described a preference for slower titration in general, unrelated to any particular patient.
 

@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   August 11, 2025   |   Sam Becker
-HCP: Adaeze Brannigan, MD, Foxglove Health Neurology, Springfield, MO (RSM)
+HCP: Yesenia Vasquez-Lund, MD, Northgate Neurology Partners, Syracuse, NY (RSM)
 
-The referral intake process is being piloted this quarter, and that took up first part of conversation. Most of the discussion was about the phone triage line, which is being piloted this quarter.
+A fragmented convo outside the EEG suite, mostly logistics. Said flatly that there is no patient group this would not help. Spent some time on newly referred pts and how workup decisions get sequenced. The composition of the pediatric-to-adult transfers has shifted over the last year or two.

@@ -1,12 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: June 23, 2022   |   MSL: Tom Alvarez
-HCP: Xiomara Ostrander, MD, Harborlight Epilepsy Center, Springfield, MO (RSM)
+HCP: Darius Eastmond, MD, Kestrel Comprehensive Epilepsy Clinic, Worcester, MA (RSM)
 
-A twenty-minute meeting in back office, first one this quarter.
+Mentioned a review that circulated on service but did not raise any specific finding.
 
-This practice is still building familiarity with the product and had no clinical points to raise.
+Asked whether I would be at meeting later this year.
 
-Described preference for slower titration in general, unrelated to any particular pt.
-
-Agreed to reconnect at a call later this month; nothing that needed follow-up.
+Left it at that, with a call later this month to be scheduled.

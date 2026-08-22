@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   August 20, 2021   |   Priya Menon
-HCP: Camila Eastmond, MD, Cedar Ridge Regional Epilepsy Program, Worcester, MA (AR)
+HCP: Lukas Fenwicke, MD, Willowmere Neuroscience Center, Boise, ID (RSM)
 
-A brief meeting in the corridor, first one this quarter. Referenced a guideline update discussed at journal club in passing. Closed there — no materials requested.
+A half-hour conversation in the reading room, mostly logistics. The new charting templates is still being sorted out, and that took up the first part of the conversation.

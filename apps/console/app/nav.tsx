@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const ITEMS = [
   { href: "/", label: "홈 대시보드" },
+  { href: "/pipeline", label: "처리 라인" },
   { href: "/review", label: "Data Review" },
   { href: "/hypotheses", label: "가설 보드" },
   { href: "/contract", label: "Data Contract" },

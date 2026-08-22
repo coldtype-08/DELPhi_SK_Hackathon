@@ -1,14 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: October 8, 2022   |   MSL: Rachel Suh
-HCP: Renata Cavanaugh, MD, Northbrook Neurology Institute, Albany, NY (RSM)
+HCP: Wilhelmina Tavernier, MD, Lakeshore Neurological Care Center, Waco, TX (RSM)
 
-A compressed conversation in the conference room, mostly logistics.
+A half-hour visit in the workroom; the schedule was tight.
 
-Routine follow-up slots keeps slipping since the summer, which shapes how much time there is for anything else.
+The practice lost two medical assistants and has not backfilled, so clinic throughput keeps slipping.
 
-Closed there — no product discussion.
+Described the practice as early in its experience here, with nothing to report yet.
 
-Noted that benefit checks takes longer than the clinical decision and that this is not specific to any one product.
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.
 
-Most of the discussion was about the scheduling system, which went live without much warning.
+Benefit verification is the step that most often delays a start here.

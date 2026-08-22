@@ -1,14 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: July 23, 2021   |   MSL: Sam Becker
-HCP: Xiomara Eversholt, MD, Juniper Flats Neurology Partners, Albany, NY (RSM)
+HCP: Yannick Nakagawa, MD, Granite Bay Epilepsy Center, Toledo, OH (RSM)
 
-A fragmented visit over quick coffee; schedule was tight.
+Most of discussion was about pt portal, which went live without much warning.
 
-Described practice as early in its experience here, with nothing to report yet.
+Benefit verification is the step that most often delays start here.
 
-The prior-authorization workflow changed again last month, and that took up first part of convo.
+Onboarding a front-desk coordinator is current preoccupation here.
 
-Asked whether I would be at meeting later this year.
-
-Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+Referral patterns into this clinic have changed, and surgical workup list is bigger share than it was.

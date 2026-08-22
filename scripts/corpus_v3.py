@@ -249,6 +249,34 @@ S8_DETAILS = [
     "Lennox-Gastaut cases where every approved combination has already been exhausted",
     "the gap for Lennox-Gastaut patients, described as the most difficult conversation in this clinic",
 ]
+# S9 — 임계 −1 신호 (08/22). 가임기 여성 × UNMET_NEED를 반복 4건 / 독립 HCP 3인으로 심는다.
+# 독립 HCP는 임계(≥3)를 채우지만 반복이 1건 모자라 가설이 되지 않는다 —
+# "임계에 닿지 않은 것은 후보로만 남는다"를 화면에서 보여주기 위한 의도적 배치 (docs/03 §2).
+# 허가 범위 안(성인 초점발작)의 근거 공백이므로 오프라벨 시사와 무관하다.
+S9_FRAMES = [
+    "Raised {d}",
+    "Kept returning to {d}",
+    "Described {d}",
+    "Asked what is known about {d}",
+    "Noted {d}",
+    "Brought up, unprompted, {d}",
+    "Spent part of the visit on {d}",
+    "Flagged {d}",
+    "Wanted to record {d}",
+    "Called out {d}",
+]
+S9_DETAILS = [
+    "the thin evidence base for women of childbearing potential considering a treatment change",
+    "reproductive-age patients who ask about pregnancy outcomes and get no clear answer",
+    "women of childbearing potential as the group with the fewest documented options",
+    "the unanswered questions from patients of childbearing age planning a pregnancy",
+    "the gap in registry data for reproductive-age patients on the newer agents",
+    "how often a patient of childbearing potential postpones a change for want of information",
+    "women of childbearing age left waiting because the reproductive-safety picture is incomplete",
+    "patients of childbearing potential for whom the available evidence stops short of the question asked",
+    "the absence of published outcomes for reproductive-age patients, raised as a recurring frustration",
+    "the reproductive-age group as the population this clinic knows least about",
+]
 S6_FRAMES = [
     "The main hesitation is {d}",
     "Said the barrier in older adults is {d}",
@@ -587,6 +615,8 @@ TARGETS = {
     "S5": (38, 24, 4),
     "S2": (27, 22, 4),
     "S4": (47, 30, 4),
+    # 임계 −1 (08/22): 독립 HCP는 채우고 반복만 1건 모자라게 심는다 — 가설이 되지 않는 후보.
+    "S9": (4, 3, 2),
 }
 
 MONTHS = []
@@ -841,6 +871,8 @@ def build_plan(roster, legacy_docs, legacy_planted, legacy_voice_sigs):
                             lambda t: _mk("S4", "INFO_REQUEST", "PEDIATRIC_TRANSITION", None, t)),
         "S4g_co": _variants(S4_FRAMES, S4_DETAILS_G, 6, rs,
                             lambda t: _mk("S4", "INFO_REQUEST", "GENERALIZED_PGTC", None, t)),
+        "S9": _variants(S9_FRAMES, S9_DETAILS, sum(1 for s in slots_all if "S9" in s["sig"]), rs,
+                        lambda t: _mk("S9", "UNMET_NEED", "FEMALE_CHILDBEARING", None, t)),
         "X": [_mk("X3", "CRITIC_BAIT", None, None,
                   "Put it as strongly as saying the age limit is the only thing standing in the way for these families."),
               _mk("X4", "CRITIC_BAIT", None, None,

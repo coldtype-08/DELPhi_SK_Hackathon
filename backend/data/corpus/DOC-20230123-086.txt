@@ -1,7 +1,7 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Email Summary   |   January 23, 2023   |   Logged by: Tom Alvarez
-Correspondent: Marcus Boudreaux, MD, Bayou Regional Epilepsy Center, Baton Rouge, LA (RSM)
+Correspondent: Fabian Lammermoor, MD, Juniper Flats Neurology Partners, Charleston, SC (RSM)
 
-Stopped by in workroom for a compressed convo.
-1. Spent some time on long-standing patients and how workup decisions get sequenced.
+A short visit in the workroom; the schedule was tight. Described preference for slower titration in general, unrelated to any particular patient.
+1. Described how long-standing pts is triaged now compared with before.
