@@ -308,6 +308,12 @@ export default function Page() {
   );
 }
 
+/** 구글 공식 코드에서 실제로 쓰인 목소리 이름 — [확인] 근거: google-gemini/cookbook
+ *  Get_started_TTS.ipynb + googleapis/python-genai·js-genai 샘플 (08/22 clone해 추출).
+ *  전체는 30개(cookbook 명시)지만 나머지 이름은 코드로 공개된 곳이 없다 —
+ *  AI Studio(aistudio.google.com/generate-speech)에서 들어보고 직접 입력으로 쓴다. */
+const VERIFIED_VOICES = ["Zephyr", "Puck", "Charon", "Kore", "Fenrir", "Aoede", "Enceladus", "Leda"];
+
 /** 대본 → 음성. Gemini TTS 의 multiSpeaker 로 MSL·HCP 를 한 번에 만든다.
  *  목소리 이름과 모델 이름은 **추측하지 않는다** — 모델은 벤더 목록에서 받아오고,
  *  목소리는 자유 입력이라 틀리면 벤더 오류가 화면에 그대로 뜬다. */
@@ -434,24 +440,41 @@ function TtsSection({ onUseInLab }: { onUseInLab: (f: File) => void }) {
             onChange={(v) => { setPreset(v); setScript(TTS_PRESETS[v]); }}
           />
         </Field>
-        {speakers.slice(0, 2).map((n) => (
-          <Field key={n} label={`목소리 · ${n}`}>
-            <input
-              value={voices[n] ?? ""} list="tts-voices"
-              onChange={(e) => setVoices((p) => ({ ...p, [n]: e.target.value }))}
-              className="w-full rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] text-ink"
-            />
-          </Field>
-        ))}
-        <datalist id="tts-voices">
-          {["Puck", "Kore", "Charon", "Zephyr", "Aoede", "Fenrir", "Leda", "Orus"].map((v) => (
-            <option key={v} value={v} />
-          ))}
-        </datalist>
+        {speakers.slice(0, 2).map((n) => {
+          const cur = voices[n] ?? "";
+          const custom = cur !== "" && !VERIFIED_VOICES.includes(cur);
+          return (
+            <Field key={n} label={`목소리 · ${n}`}>
+              <div className="flex gap-2">
+                <select
+                  value={custom ? "__custom" : cur}
+                  onChange={(e) =>
+                    setVoices((p) => ({ ...p, [n]: e.target.value === "__custom" ? "" : e.target.value }))
+                  }
+                  className="rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] text-ink"
+                >
+                  {VERIFIED_VOICES.map((v) => <option key={v} value={v}>{v}</option>)}
+                  <option value="__custom">직접 입력…</option>
+                </select>
+                {(custom || cur === "") && (
+                  <input
+                    value={cur} placeholder="AI Studio에서 확인한 이름"
+                    onChange={(e) => setVoices((p) => ({ ...p, [n]: e.target.value }))}
+                    className="w-full rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] text-ink"
+                  />
+                )}
+              </div>
+            </Field>
+          );
+        })}
       </div>
       <p className="text-[11px] text-muted">
-        목소리 후보는 <b>확인되지 않은 이름</b>입니다(문서 접근 불가). 틀리면 아래에 벤더 오류가 그대로 뜨니,
-        AI Studio에서 실제 이름을 확인해 바꿔 넣으세요.
+        목록의 8개는 <b>구글 공식 예제·SDK 코드에서 확인한 이름</b>입니다 (cookbook · python-genai · js-genai).
+        전체는 30개인데 나머지는 코드로 공개된 곳이 없어{" "}
+        <a href="https://aistudio.google.com/generate-speech" target="_blank" rel="noreferrer" className="font-bold text-navy underline">
+          AI Studio에서 들어보고
+        </a>{" "}
+        「직접 입력…」으로 넣으세요. 두 화자는 <b>서로 다른 목소리</b>여야 합니다.
         {tooMany && <span className="ml-1 font-bold text-rust">대본에 화자가 {speakers.length}명입니다 — 앞 2명만 사용합니다.</span>}
       </p>
 
