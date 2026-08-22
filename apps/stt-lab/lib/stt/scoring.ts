@@ -4,12 +4,13 @@
  * "17세"를 놓치면 S1 신호가 사라진다. 전사 텍스트가 interactions.raw_text가 되고
  * 모든 evidence 오프셋의 기준이므로(docs/02 §1) 되돌릴 수 없다.
  *
- * 대본 2종 (8/24 STT 3종 비교 전용):
+ * 대본 3종:
+ *   P1 — HYP-003(PGTC) 정본 7턴. 제출·발표까지 같은 파일을 쓴다 (scripts/stt_eval/P1_reference.txt)
  *   D1 — apps/field/lib/capture-demo.ts 의 SCRIPT 7턴 그대로 (실제 시나리오)
  *   T1 — D1 + 영어 용어 혼용 + PII (코드스위칭·마스킹 테스트)
  */
 
-export type ScriptId = "D1" | "T1";
+export type ScriptId = "P1" | "D1" | "T1";
 
 export type TokenSpec = {
   label: string;
@@ -45,7 +46,25 @@ const T1_ONLY: TokenSpec[] = [
   { label: "010-4132-7789", category: "PII", patterns: ["01041327789", "010-4132-7789"], why: "masked_spans 정규식" },
 ];
 
+/** P1 전용 — HYP-003(PGTC) 정본. 이 대본이 발표 라이브 입력이므로 ★가 곧 시연 리스크다. */
+const P1_TOKENS: TokenSpec[] = [
+  { label: "전신 강직-간대발작", category: "환자군 ★", critical: true, patterns: ["전신강직-간대발작", "전신강직간대발작"], why: "GENERALIZED_PGTC — 놓치면 HYP-003 신호 소멸" },
+  { label: "전신발작", category: "환자군", critical: true, patterns: ["전신발작"], why: "GENERALIZED_PGTC 재확인 (2회 등장)" },
+  { label: "허가 범위", category: "오프라벨 신호", critical: true, patterns: ["허가범위"], why: "label_scope=OUT_OF_LABEL 근거" },
+  { label: "초점발작", category: "대비 환자군", patterns: ["초점발작"], why: "focal-only 적응증 대비 — S7 서사의 축" },
+  { label: "선택지가 없", category: "미충족 수요", critical: true, patterns: ["선택지가없", "선택지없"], why: "signal_type=UNMET_NEED 판정 근거" },
+  { label: "세 번째 약", category: "실패 약물 수", patterns: ["세번째약", "3번째약", "삼번째약"], why: "약물난치성 정도 판정" },
+  { label: "XCOPRI", category: "제품명", patterns: ["xcopri", "엑스코프리", "엑스코프리정"], why: "product_named 판정" },
+  { label: "난치성", category: "도메인 용어", patterns: ["난치성", "약물난치성"], why: "canonical 정규화" },
+  { label: "어지러움", category: "AE 용어", critical: true, patterns: ["어지러움", "어지럼"], why: "S2 안전성 분기 — 놓치면 AE가 일반 집계로 섞인다" },
+  { label: "졸림", category: "AE 용어", critical: true, patterns: ["졸림", "졸음"], why: "S2 안전성 분기" },
+  { label: "문헌", category: "자료 요청", patterns: ["문헌"], why: "INFO_REQUEST → Action Item → Field 체크리스트" },
+  { label: "ClinicalTrials", category: "영어 고유명사", patterns: ["clinicaltrials", "클리니컬트라이얼"], why: "한·영 혼용 난이도 + Screen 근거 출처" },
+  { label: "010-4132-7789", category: "PII", critical: true, patterns: ["01041327789", "010-4132-7789"], why: "masked_spans 정규식 — 발표에서 마스킹이 보여야 한다" },
+];
+
 export const KEY_TOKENS: Record<ScriptId, TokenSpec[]> = {
+  P1: P1_TOKENS,
   D1: SHARED,
   T1: [...SHARED, ...T1_ONLY],
 };

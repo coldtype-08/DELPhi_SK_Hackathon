@@ -34,7 +34,7 @@ const DEFAULT_BOOST = [
   // 08/21 Contract 재확정 — patient_segment에 GENERALIZED_PGTC·LGS 추가 (둘 다 OUT_OF_LABEL)
   "전신 강직-간대발작", "PGTC", "generalized tonic-clonic", "전신발작",
   "레녹스-가스토 증후군", "LGS", "Lennox-Gastaut", "드롭발작", "drop attacks",
-  "뇌졸중 후 뇌전증", "post-stroke epilepsy",
+  "뇌졸중 후 뇌전증", "post-stroke epilepsy", "ClinicalTrials",
 ].join(", ");
 
 type RunState = {
@@ -54,7 +54,7 @@ type Settings = { apiKey: string; model: string; endpoint: string };
 
 export default function Page() {
   const [tab, setTab] = useState<ProviderId>("soniox");
-  const [script, setScript] = useState<ScriptId>("D1");
+  const [script, setScript] = useState<ScriptId>("P1");
   const [langMode, setLangMode] = useState<"ko" | "en" | "koen">("ko");
   const [diarize, setDiarize] = useState(true);
   const [useBoost, setUseBoost] = useState(true);
@@ -242,7 +242,7 @@ function SharedControls(p: SharedProps) {
 
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         <Field label="채점 대본">
-          <Seg options={[["D1", "D1 · 실제 시나리오"], ["T1", "T1 · 한·영 혼용"]]} value={p.script} onChange={(v) => p.setScript(v as ScriptId)} />
+          <Seg options={[["P1", "P1 · HYP-003 정본"], ["D1", "D1 · 실제 시나리오"], ["T1", "T1 · 한·영 혼용"]]} value={p.script} onChange={(v) => p.setScript(v as ScriptId)} />
         </Field>
         <Field label="언어 설정">
           <Seg options={[["ko", "한국어"], ["en", "영어"], ["koen", "한국어+영어"]]} value={p.langMode} onChange={(v) => p.setLangMode(v as "ko" | "en" | "koen")} />

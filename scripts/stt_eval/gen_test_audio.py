@@ -1,4 +1,9 @@
-"""TEST_SCRIPTS.md의 대본 → WAV. STT 후보 배선·동작 확인용 (오너: 인혁).
+"""TEST_SCRIPTS.md의 대본 → WAV (오너: 인혁).
+
+P1(HYP-003 정본)은 네 곳에서 같은 파일을 재사용한다 — ① 8/24 STT 3종 비교
+② 시스템 완성 후 통합 테스트(끝나면 적재 데이터 삭제) ③ 제출물 첨부 음성
+④ 경연 발표 라이브 입력. 그래서 P1은 사람이 읽어 녹음한 파일이 정본이고,
+여기서 만드는 WAV는 그 전까지의 배선·동작 확인용이다.
 
 espeak-ng를 쓴다 — 무료·오프라인(설치 후 외부 호출 없음)·라이선스 제약 없음.
 edge-tts(Microsoft)·piper(모델이 huggingface.co)는 사내망/프록시에서 막혀 채택하지 못했다.
@@ -22,6 +27,20 @@ from pathlib import Path
 
 OUT = Path(__file__).resolve().parent / "audio"
 OUT.mkdir(exist_ok=True)
+
+P1 = [  # HYP-003(PGTC) 정본 7턴 — scripts/stt_eval/P1_reference.txt 와 문장이 같아야 한다
+    ("MSL", "안녕하세요 선생님, 외래 끝나고 잠시 괜찮으세요?"),
+    ("HCP", "네, 오늘은 좀 일찍 끝났어요. 앉으세요."),
+    ("MSL", "요즘 난치성 환자분들 중에 특히 손 쓰기 어려운 케이스가 있으세요?"),
+    ("HCP", "전신 강직-간대발작 환자분들이 그래요. XCOPRI가 초점발작에는 잘 듣는 걸 아는데, "
+            "전신발작은 허가 범위가 아니라서 아예 선택지가 없어요. "
+            "세 번째 약까지 실패한 분이 지금 두 분 계신데 드릴 게 없으니 답답하죠."),
+    ("HCP", "아, 그리고 지난달에 시작한 성인 환자 한 분은 초기에 어지러움하고 졸림이 좀 있다고 하셨어요."),
+    ("HCP", "그, 전신발작 환자군 관련해서 나온 문헌이나 ClinicalTrials에 등록된 연구가 있으면 "
+            "좀 보내주실 수 있을까요? 제 번호 010-4132-7789로 주셔도 되고요."),
+    ("MSL", "확인해서 있는 범위 내에서 다음 방문 때 정리해 드리겠습니다. "
+            "말씀 주신 이상반응은 절차대로 안전성 검토 경로로 전달하겠습니다."),
+]
 
 D1 = [  # apps/field/lib/capture-demo.ts 의 SCRIPT 7턴 — 문장을 바꾸지 않는다
     ("MSL", "안녕하세요 선생님, 지난 학회는 잘 다녀오셨어요?"),
@@ -80,5 +99,18 @@ def synth(turns, lang, out_name):
     print(f"{dest.name}  {sec:.1f}초  {dest.stat().st_size/1024:.0f}KB  ({len(turns)}턴, 화자 2인)")
 
 
+def assert_p1_matches_reference():
+    ref = (Path(__file__).resolve().parent / "P1_reference.txt").read_text(encoding="utf-8")
+    want = [f"{spk}: {text}" for spk, text in P1]
+    have = [l.strip() for l in ref.splitlines() if l.startswith(("MSL:", "HCP:"))]
+    if want != have:
+        for i, (w, h) in enumerate(zip(want, have)):
+            if w != h:
+                sys.exit(f"P1 대본이 P1_reference.txt와 다릅니다 (턴 {i+1}):\n  py : {w}\n  txt: {h}")
+        sys.exit(f"P1 턴 수 불일치: py {len(want)}턴 vs txt {len(have)}턴")
+
+
+assert_p1_matches_reference()
+synth(P1, "ko", "P1_hyp003_pgtc")
 synth(D1, "ko", "D1_korean")
 synth(T1, "ko", "T1_ko_en_mixed")
