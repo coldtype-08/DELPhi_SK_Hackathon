@@ -47,8 +47,11 @@ export const soniox: SttProvider = {
           language_hints: opts.languages,
           enable_speaker_diarization: opts.diarize,
           enable_language_identification: opts.languages.length > 1,
+          // context.general 은 [{key,value}] 목록이 규격 — SDK가 dict 입력을 이 형태로
+          // 변환해 보낸다(types/api.py _coerce_general). dict 그대로 보내면 서버가
+          // "Start request is malformed" 로 거부한다 (08/22 실측).
           ...(opts.boostTerms.length
-            ? { context: { terms: opts.boostTerms, general: { domain: "Healthcare" } } }
+            ? { context: { terms: opts.boostTerms, general: [{ key: "domain", value: "Healthcare" }] } }
             : {}),
         }),
       );

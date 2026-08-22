@@ -10,10 +10,11 @@
  *   - 응답: {"type":"transcript", data:{ is_final, utterance:{ text, speaker? } }}
  *   - init 응답의 url 에 임시 토큰이 박혀 온다 (키를 클라이언트에 노출하지 않는 설계)
  *
- * [실측 대상] 정본 스펙 두 곳(요청 OpenAPI · 응답 asyncapi Utterance)에 화자분리가 없다.
- * 반면 live-stt/recommended-parameters 산문과 SDK 응답 타입에는 speaker 가 등장한다.
- * 그래서 diarize=true 일 때 diarization 을 실제로 보내본다 — 422 면 미지원 확정,
- * 201 이면 지원. 결과는 화면의 "원시 응답"에 그대로 뜬다.
+ * [실측 완료 08/22] diarization 을 보내면 400 "Invalid parameter(s)" — SDK 타입
+ * (LiveV2InitRequest, gladiaio-sdk 1.0.5)에도 그 필드가 없다.
+ * → **Gladia 실시간 화자분리 미지원 확정.**
+ * 화자 분리를 켜고 실행하면 ① diarization 포함으로 1차 시도(증거를 원시 응답에 남김)
+ * ② 거부되면 diarization 없이 재시도 — 전사 비교 자체는 계속 진행되게 한다.
  */
 import type { SttEvents, SttOptions, SttProvider, SttSession } from "./types";
 
@@ -26,7 +27,7 @@ export const gladia: SttProvider = {
   models: [{ value: "solaria-1", label: "solaria-1", note: "스펙 enum에 이 모델 하나" }],
   notes: [
     "스펙 확인: custom_vocabulary · code_switching · 임시 토큰이 박힌 ws URL",
-    "실측 대상: 실시간 화자분리 — 정본 스펙에 없음. diarization 을 보내서 422/201 로 판정",
+    "실측 완료(08/22): 화자분리 파라미터가 400 으로 거부됨 — 실시간 화자분리 미지원 확정",
     "리전 us-west · eu-west 뿐 (아시아 없음 → 한국에서 지연 불리)",
   ],
 
@@ -52,23 +53,29 @@ export const gladia: SttProvider = {
         custom_vocabulary_config: { vocabulary: opts.boostTerms, default_intensity: 0.5 },
       };
     }
-    // 정본 스펙에 없는 파라미터를 일부러 보낸다 (지원 여부 실측)
-    if (opts.diarize) body.diarization = true;
+    const initOnce = async (b: Record<string, unknown>) => {
+      const res = await fetch(opts.endpoint || DEFAULT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-gladia-key": opts.apiKey },
+        body: JSON.stringify(b),
+      });
+      const json = await res.json().catch(() => null);
+      ev.onRaw({ _initRequest: b, _initStatus: res.status, _initResponse: json });
+      return { res, json };
+    };
 
-    const res = await fetch(opts.endpoint || DEFAULT_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-gladia-key": opts.apiKey },
-      body: JSON.stringify(body),
-    });
-    const init = await res.json().catch(() => null);
-    ev.onRaw({ _initRequest: body, _initStatus: res.status, _initResponse: init });
+    // 화자 분리 요청 시: 스펙에 없는 diarization 을 1차로 보내 증거를 남기고(400/422 = 미지원),
+    // 거부되면 빼고 재시도해 전사 비교는 계속 진행한다.
+    let { res, json: init } = opts.diarize
+      ? await initOnce({ ...body, diarization: true })
+      : await initOnce(body);
+    if (!res.ok && opts.diarize && (res.status === 400 || res.status === 422)) {
+      ev.onRaw({ _note: "diarization 거부됨 → 실시간 화자분리 미지원 확정. diarization 없이 재시도" });
+      ({ res, json: init } = await initOnce(body));
+    }
     if (!res.ok) {
-      throw new Error(
-        `Gladia 세션 생성 실패 (${res.status}) — ${init?.message ?? "응답 본문 없음"}` +
-          (res.status === 422 && opts.diarize
-            ? " · diarization 파라미터가 거부됐다면 실시간 화자분리 미지원이 확정됩니다"
-            : ""),
-      );
+      const detail = init?.validation_errors ? ` · ${JSON.stringify(init.validation_errors)}` : "";
+      throw new Error(`Gladia 세션 생성 실패 (${res.status}) — ${init?.message ?? "응답 본문 없음"}${detail}`);
     }
 
     const ws = new WebSocket(init.url as string);

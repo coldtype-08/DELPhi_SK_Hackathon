@@ -43,13 +43,13 @@ DECISIONS 08/22 [인혁]에서 확정한 4개다. 순위는 그다음, **지연�
 | **한국어** | `language_hints`에 `ko` [확인] | `nova-3` ○ / **`nova-3-medical` ✗** [확인] | `language_config.languages` [확인] |
 | **의료 특화 모델** | 없음 — `context.general.domain="Healthcare"` 힌트만 [확인] | **`nova-3-medical` 있음** [확인] | 없음 |
 | 문장 중간 한↔영 | `language_hints` 복수 + `enable_language_identification` [확인] · 정확도 [실측] | **파라미터 없음** — `language` 하나만 [확인] | `code_switching`은 **발화 단위** 감지. 문장 중간이 목적이 아님 [확인] |
-| **실시간 화자분리** | `enable_speaker_diarization` [확인] | `diarize_model=v1` [확인] | **정본 스펙에 없음** [실측] |
+| **실시간 화자분리** | `enable_speaker_diarization` [확인] | `diarize_model=v1` [확인] | **미지원 확정** — `diarization` 전송 시 400 거부 (08/22 실측) |
 | **용어 부스팅** | `context.terms` [확인] | `keyterm` — 500 tokens·Nova-3 전용·**가중치 미지원** [확인] | `custom_vocabulary` + `default_intensity` [확인] |
 | 접속 방식 | WS 직결 1단계 — `wss://stt-rt.soniox.com/transcribe-websocket` [확인] | WS 직결 1단계 | **REST로 세션 생성 → ws URL** 2단계 [확인] |
 | 브라우저 키 노출 | 첫 메시지에 `api_key` — **임시 키 발급 API 있음** [확인] | `Sec-WebSocket-Protocol`로 키 전달 [확인] | **ws URL에 토큰이 박혀 옴** — 키가 클라이언트에 안 남음 [확인] |
 | 리전 | **일본 있음** [확인] | 미국 등 | **us-west · eu-west뿐** [확인] |
 | 종료 신호 | 빈 문자열 [추정 — 유일하게 남은 추정값, 틀려도 접속·전사엔 영향 없음] | `{"type":"CloseStream"}` [확인] | `{"type":"stop_recording"}` [확인] |
-| 컷오프 4개 충족 | **4/4 (스펙상)** | 3/4 — 언어 케이스에서 걸림(§3) | **3/4 또는 4/4 — 화자분리가 [실측]** |
+| 컷오프 4개 충족 | **4/4 (스펙상)** | 3/4 — 언어 케이스에서 걸림(§3) | **3/4 — 화자분리 미지원 실측 확정 → 컷오프 탈락** |
 
 ## 3. 서비스별로 알아야 할 것
 
@@ -75,7 +75,7 @@ DECISIONS 08/22 [인혁]에서 확정한 4개다. 순위는 그다음, **지연�
   `src/soniox/client.py:39`에 `wss://stt-rt.soniox.com/transcribe-websocket`, 타입 정의에 `pcm_s16le`.
   이제 세 서비스 주소가 전부 [확인]이다.
 
-### Gladia — 화자분리가 스펙에 없다
+### Gladia — 화자분리 미지원 실측 확정 (08/22): `diarization` 전송 → **400 Invalid parameter(s)**. 컷오프 2번(실시간 화자분리)에서 탈락. 이하는 기록용
 
 정본 두 곳을 다 봤다. 요청 쪽 OpenAPI(`POST /v2/live`)에 화자분리 파라미터가 없고,
 응답 쪽 AsyncAPI의 `Utterance` 객체에 `speaker` 필드가 없다. 반면 산문 문서와 SDK 응답 타입에는
@@ -93,7 +93,6 @@ DECISIONS 08/22 [인혁]에서 확정한 4개다. 순위는 그다음, **지연�
 
 | 항목 | 어떻게 판정하나 |
 |---|---|
-| **Gladia 실시간 화자분리** | 화자 분리를 켜면 스펙에 없는 `diarization: true`를 **일부러 보낸다**. **422면 미지원 확정, 201이면 지원.** 응답은 화면의 「원시 응답」에 그대로 뜬다 |
 | 화자 라벨이 실제로 오나 | 세그먼트에 화자 번호가 붙는지 화면에서 바로 보인다 |
 | 부스팅이 먹었나 | 부스팅 on/off로 한 번씩 돌려 **핵심 토큰 히트 수를 비교** (특히 `전신 강직-간대발작`·`titration`) |
 | 지연 | 「첫 응답 ms」 — **3종 동시 실행**으로 같은 순간의 같은 소리를 받았을 때만 비교가 유효하다 |
