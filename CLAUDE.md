@@ -51,6 +51,7 @@ DELPhi-0811/
 ├── backend/             ← FastAPI + DB + 에이전트 [오너: 인혁 — 엔진 층]
 │   └── app/prompts/     ← 추출·에이전트 프롬프트  [오너: 건태 — 도메인 층]
 ├── scripts/             ← 합성 데이터 생성 등     [오너: 인혁]
+├── submission/          ← **제출용 Drive 폴더 미러 (0~4)** — 폴더 이름 변경 금지 [오너: 건태, 일지는 각자]
 └── demo/                ← 데모/소개 페이지 (정적 HTML)
 ```
 
@@ -76,6 +77,10 @@ bash scripts/generate.sh && python scripts/seed_db.py
 
 # 데모 상태로 리셋 (시연 직전 항상 실행)
 bash scripts/reset_demo.sh
+
+# 개발 일지 초안 생성 (매일 push 전 — 4_제작과정이 심사 15점)
+python3 scripts/daily_report.py                    # 오늘, 3인분
+python3 scripts/daily_report.py --author 소정      # 나만
 ```
 
 ## 코딩 컨벤션
@@ -100,6 +105,8 @@ bash scripts/reset_demo.sh
 | `docs/07_DEPLOYMENT.md` | Railway 배포 구성·일정·운용, 태그·롤백 규칙 | 배포·심사 URL 관련 작업할 때 |
 | `docs/08_PROBLEM_AND_IMPACT.md` | AS-IS/TO-BE, AI Readable 정의, 목표·측정 설계, 확장성 | 기획서·제출물 쓸 때 / **왜 이걸 만드는지** 설명할 때 (배점 50점) |
 | `docs/LOG.md` | 일일 진행 로그 | 매일 push 전 한 줄 추가 |
+| `submission/README.md` | 제출 폴더 구조·업로드 절차·**반출 금지 체크리스트** | 제출물 만질 때 (특히 9/2 조립일) |
+| `submission/4_제작과정/WBS.md` | 작업 분해 구조 — 산출물·담당·계획·실적 + 변경 이력 | 내 작업이 어느 덩어리인지 볼 때 |
 
 ## 데모 시나리오 (모든 기능은 이 6단계 시연에 복무한다)
 
