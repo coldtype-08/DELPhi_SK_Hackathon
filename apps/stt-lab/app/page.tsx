@@ -659,12 +659,15 @@ function ProviderPanel({
           </div>
         </div>
 
-        <Field label="엔드포인트 (문서와 다르면 여기서 교정)" className="mt-4">
+        {/* 세 서비스 주소 모두 정본(SDK 소스·스펙)에서 확인됨 — 평소엔 만질 일이 없다.
+            벤더가 주소를 바꾸는 예외 상황에서만 쓰라고 접어서 남겨둔다. */}
+        <details className="mt-4">
+          <summary className="cursor-pointer text-[11px] font-bold text-muted">고급 — 엔드포인트 (기본값이 정본에서 확인된 주소입니다)</summary>
           <input
             value={settings.endpoint} onChange={(e) => onSettings({ endpoint: e.target.value })}
-            className="w-full rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] text-muted"
+            className="mt-2 w-full rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] text-muted"
           />
-        </Field>
+        </details>
 
         <ul className="mt-4 space-y-1">
           {provider.models.find((m) => m.value === settings.model)?.note && (

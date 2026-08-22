@@ -5,8 +5,9 @@
  *   context · enable_speaker_diarization · enable_language_identification · enable_endpoint_detection
  * 임시 API 키: POST /auth/temporary-api-key (usage_type="transcribe_websocket"). 랩에서는 키 직접 입력.
  *
- * [미확정] WebSocket 경로와 audio_format 리터럴은 공개 문서를 열지 못해 추정값이다.
- * 틀리면 서버가 error_message로 알려주므로 화면의 "원시 응답"에서 확인하고 엔드포인트를 교정한다.
+ * [확인] WebSocket 경로와 audio_format — soniox-python SDK 소스에서 직접 확인 (08/22):
+ *   src/soniox/client.py:39  _DEFAULT_WEBSOCKET_BASE_URL = "wss://stt-rt.soniox.com/transcribe-websocket"
+ *   src/soniox/types/*.py    audio_format 리터럴에 "pcm_s16le" 존재
  */
 import type { SttEvents, SttOptions, SttProvider, SttSession } from "./types";
 
@@ -25,8 +26,7 @@ export const soniox: SttProvider = {
   defaultEndpoint: DEFAULT_ENDPOINT,
   models: [{ value: "stt-rt-v5", label: "stt-rt-v5", note: "실시간 STT" }],
   notes: [
-    "SDK 확인: enable_speaker_diarization · language_hints · context.terms · 임시 API 키",
-    "미확정: WebSocket 경로 · audio_format 리터럴 (공개 문서 접근 불가) — 에러 메시지로 교정",
+    "SDK 확인: WS 경로 · pcm_s16le · enable_speaker_diarization · language_hints · context.terms · 임시 API 키",
     "리전에 일본 있음 (한국에서 지연 유리)",
   ],
 
