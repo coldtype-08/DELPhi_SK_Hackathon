@@ -29,6 +29,9 @@ export const KEY_TOKENS: Record<ScriptId, TokenSpec[]> = {
     { label: "dizziness", category: "AE 용어", patterns: ["dizziness"], why: "S2 안전성 분기" },
     { label: "somnolence", category: "AE 용어", patterns: ["somnolence"], why: "S2 안전성 분기" },
     { label: "approved for adults", category: "오프라벨 신호", critical: true, patterns: ["approvedforadults"], why: "label_scope=OUT_OF_LABEL 근거" },
+    { label: "generalized tonic-clonic", category: "PGTC (S7)", critical: true, patterns: ["generalizedtonic-clonic", "generalizedtonicclonic"], why: "완주 대표 HYP-003 근거" },
+    { label: "Lennox-Gastaut", category: "LGS (S8)", patterns: ["lennox-gastaut", "lennoxgastaut"], why: "HYP-004 근거" },
+    { label: "drop attacks", category: "LGS (S8)", patterns: ["dropattacks"], why: "LGS 특징 발언" },
     { label: "555 123 4567", category: "PII", patterns: ["5551234567", "555-123-4567", "555.123.4567"], why: "masked_spans 정규식" },
   ],
   B: [
@@ -47,6 +50,10 @@ export const KEY_TOKENS: Record<ScriptId, TokenSpec[]> = {
     { label: "졸림", category: "AE 용어", patterns: ["졸림", "졸음"], why: "S2 안전성 분기" },
     { label: "성인 허가", category: "오프라벨 신호", critical: true, patterns: ["성인허가"], why: "label_scope=OUT_OF_LABEL 근거" },
     { label: "010-4132-7789", category: "PII", patterns: ["01041327789", "010-4132-7789"], why: "masked_spans 정규식" },
+    { label: "전신 강직-간대발작", category: "PGTC (S7)", critical: true, patterns: ["전신강직-간대발작", "전신강직간대발작"], why: "완주 대표 HYP-003 근거 — 08/21 재지정" },
+    { label: "PGTC", category: "PGTC (S7)", critical: true, patterns: ["pgtc", "피지티씨"], why: "완주 대표 HYP-003 근거" },
+    { label: "레녹스-가스토", category: "LGS (S8)", patterns: ["레녹스-가스토", "레녹스가스토", "lennox"], why: "HYP-004 근거" },
+    { label: "드롭발작", category: "LGS (S8)", patterns: ["드롭발작", "드롭 발작"], why: "LGS 특징 발언" },
     { label: "김도현", category: "PII", patterns: ["김도현"], why: "masked_spans 정규식" },
   ],
 };

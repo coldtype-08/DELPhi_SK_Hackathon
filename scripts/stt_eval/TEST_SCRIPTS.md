@@ -45,6 +45,10 @@ Field 앱 STT 서비스 후보를 비교하기 위한 **녹음 대본 = 채점 �
 
 **HCP:** Please do. And if any adolescent dosing or safety data becomes available, I would appreciate a copy.
 
+**MSL:** Understood. Anything else coming up in your practice lately?
+
+**HCP:** Generalized tonic-clonic seizures, actually. It works well for focal onset, but I cannot use it for my generalized patients. And for Lennox-Gastaut syndrome the drop attacks are frequent and the existing options fall short.
+
 **MSL:** Understood. Should I coordinate the next visit through your office?
 
 **HCP:** Yes, call the clinic at five five five, one two three, four five six seven.
@@ -73,6 +77,12 @@ Field 앱 STT 서비스 후보를 비교하기 위한 **녹음 대본 = 채점 �
 
 **MSL:** 그 부분은 안전성 검토 경로로 전달하겠습니다.
 
+**HCP:** 아 그리고, 초점발작 환자에는 잘 듣는데 전신 강직-간대발작 환자에는 쓸 수가 없어서요. PGTC 케이스가 요즘 좀 늘었습니다.
+
+**MSL:** 전신발작 쪽 문헌도 같이 정리해 드릴까요?
+
+**HCP:** 네, 부탁드려요. 레녹스-가스토 증후군 아이들도 드롭발작이 잦아서 기존 약으로는 한계가 있어요.
+
 **HCP:** 그렇게 해주세요. 다음 방문은 김도현 선생님 통해서 잡아주시고, 제 번호 010-4132-7789로 연락 주세요.
 
 **MSL:** 네, 감사합니다 선생님.
@@ -91,10 +101,19 @@ Field 앱 STT 서비스 후보를 비교하기 위한 **녹음 대본 = 채점 �
 | **도메인 용어** | `drug-resistant focal seizures` | `난치성 초점발작`, `병용약`, `상호작용` | canonical 정규화 실패 |
 | **AE 용어** | `dizziness`, `somnolence` | `어지러움`, `졸림` | S2 안전성 분기 실패 |
 | **오프라벨 신호** | `approved for adults`, `until they turn eighteen` | `성인 허가`, `18세까지 기다` | `label_scope=OUT_OF_LABEL` 판정 근거 소실 |
+| **PGTC (S7 · 완주 대표)** | `generalized tonic-clonic` | `전신 강직-간대발작`, `PGTC` | **HYP-003 근거 소실** — 08/21 회의로 완주 대표가 HYP-003(PGTC)로 재지정됨 |
+| **LGS (S8)** | `Lennox-Gastaut` | `레녹스-가스토`, `드롭발작` | HYP-004 근거 소실 |
 | **PII (마스킹 테스트)** | `555 123 4567` | `010-4132-7789`, `김도현` | `masked_spans` 정규식이 걸리지 않음 |
 
 ## 참고 — 코퍼스와의 관계
 
-기존 코퍼스의 한국어 음성 전사 3건(`DOC-20260721-061` ~ `063`)에는 **영어 단어가 하나도 없다.**
-`docs/03` §3 규칙 2가 요구하는 영한 혼용(`titration`, XCOPRI/엑스코프리/세노바메이트 혼용)이 미반영 상태다.
-대본 B는 그 요구를 반영해 새로 쓴 것이며, **코퍼스를 수정한 것이 아니다** — 코퍼스 변경은 도메인 오너 판단 사항.
+코퍼스가 **v3(320문서 / 1,118단위 / HCP 300인 / 2021~2026)** 로 재생성되면서 음성 전사가 **3건 → 18건**으로 늘고
+파일명 체계도 바뀌었다 — 옛 `DOC-20260721-061`~`063`은 존재하지 않는다.
+
+**v3에서도 한국어 음성 전사 18건의 발화에는 영어 단어가 없다** (헤더의 인물·기관명 제외 — 08/22 전수 확인).
+`docs/03` §3 규칙 2가 요구하는 영한 혼용(`titration`, XCOPRI/엑스코프리/세노바메이트 혼용)이 여전히 미반영이다.
+→ **대본 B가 문장 중간 한·영 전환을 테스트하는 유일한 자산**이며, 코퍼스를 수정한 것이 아니다
+(코퍼스 변경은 도메인 오너 판단 사항).
+
+신호 번호는 v3 기준 **S1~S8**이다 (S7=PGTC·S8=LGS 발굴 신호 신설, docs/03 §2).
+**완주 대표 가설이 HYP-001(청소년) → HYP-003(PGTC)로 재지정**됐으므로(08/21 회의) 두 대본에 PGTC·LGS 발언을 넣었다.

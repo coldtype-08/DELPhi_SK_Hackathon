@@ -31,6 +31,10 @@ const DEFAULT_BOOST = [
   "titration", "타이트레이션", "DDI", "난치성", "초점발작", "병용약", "상호작용",
   "적정", "청소년", "고령", "어지러움", "졸림", "약물난치성", "뇌전증",
   "drug-resistant", "refractory", "focal seizures", "adolescent", "somnolence",
+  // 08/21 Contract 재확정 — patient_segment에 GENERALIZED_PGTC·LGS 추가 (둘 다 OUT_OF_LABEL)
+  "전신 강직-간대발작", "PGTC", "generalized tonic-clonic", "전신발작",
+  "레녹스-가스토 증후군", "LGS", "Lennox-Gastaut", "드롭발작", "drop attacks",
+  "뇌졸중 후 뇌전증", "post-stroke epilepsy",
 ].join(", ");
 
 type RunState = {

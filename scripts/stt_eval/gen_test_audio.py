@@ -30,6 +30,8 @@ EN = [
     ("HCP", "Also, one adult patient reported dizziness and somnolence after starting XCOPRI."),
     ("MSL", "I will route that through the safety review pathway. The relevant team will follow up."),
     ("HCP", "Please do. And if any adolescent dosing or safety data becomes available, I would appreciate a copy."),
+    ("MSL", "Understood. Anything else coming up in your practice lately?"),
+    ("HCP", "Generalized tonic-clonic seizures, actually. It works well for focal onset, but I cannot use it for my generalized patients. And for Lennox-Gastaut syndrome the drop attacks are frequent and the existing options fall short."),
     ("MSL", "Understood. Should I coordinate the next visit through your office?"),
     ("HCP", "Yes, call the clinic at five five five, one two three, four five six seven."),
     ("MSL", "Thank you, Doctor."),
@@ -45,6 +47,9 @@ KOEN = [
     ("MSL", "병용약 상호작용 확인 부담이 크시군요."),
     ("HCP", "네. 아, 성인 환자 한 분은 세노바메이트 복용 시작하고 어지러움하고 졸림이 꽤 있다고 하셨어요."),
     ("MSL", "그 부분은 안전성 검토 경로로 전달하겠습니다."),
+    ("HCP", "아 그리고, 초점발작 환자에는 잘 듣는데 전신 강직-간대발작 환자에는 쓸 수가 없어서요. PGTC 케이스가 요즘 좀 늘었습니다."),
+    ("MSL", "전신발작 쪽 문헌도 같이 정리해 드릴까요?"),
+    ("HCP", "네, 부탁드려요. 레녹스-가스토 증후군 아이들도 드롭발작이 잦아서 기존 약으로는 한계가 있어요."),
     ("HCP", "그렇게 해주세요. 다음 방문은 김도현 선생님 통해서 잡아주시고, 제 번호 010-4132-7789로 연락 주세요."),
     ("MSL", "네, 감사합니다 선생님."),
 ]
