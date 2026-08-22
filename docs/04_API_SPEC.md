@@ -37,6 +37,21 @@
 - 1문서=1면담 유형(MEETING_NOTE 등)이면 `interactions`가 1개이고 `blockIndex`·`docCharStart/End`는 null.
 - 원문 하이라이트는 항상 `rawText`(문서 전문) 위에 claim의 evidence 오프셋으로 그린다 — 하이라이트형에서는 블록 경계도 함께 표시해 "AI가 HCP별로 분리했다"를 보여준다.
 
+`POST /documents/{id}/extract` — **Sense 추출 실행 (08/22 구현).** 원석 1건을 의료진 블록별로 읽어 claim 후보를 만든다. `?force=true`면 기존 claim을 지우고 다시 돌린다(기본은 이미 추출된 문서를 건너뛴다).
+
+```json
+// 응답 — 숫자는 전부 서버가 센 것이다 (절대 규칙 #1)
+{ "data": { "documentId": "DOC-20250406-180", "skipped": false,
+            "blocks": 10, "claims": 7, "safety": 1, "safetyRerouted": 0,
+            "rejectedNoEvidence": 2, "unmapped": 1,
+            "byGrade": { "HIGH": 5, "MEDIUM": 1, "LOW": 1 } } }
+```
+- `rejectedNoEvidence`: 인용문이 **그 의료진 블록의 원문과 문자 단위로 일치하지 않아 저장을 거부한** 건수 (절대 규칙 #2). 버린 사실은 `blocked_log`에 `VERBATIM_NOT_FOUND`로 남는다. **이 숫자가 0이 아닌 것이 정상이고, 화면에 보여준다** — 막고 있다는 증거이기 때문이다.
+- `safetyRerouted`: LLM이 이상사례를 claim으로 냈지만 서버가 safety 경로로 되돌린 건수 (절대 규칙 #6).
+- 생성된 claim은 전부 `status: "CANDIDATE"` — 이 엔드포인트에는 승인 권한이 없다 (절대 규칙 #3).
+- 권한: 원문을 읽는 작업이므로 `MEDICAL_AFFAIRS`·`CLINICAL_STRATEGY`만. 그 외는 `403 PURPOSE_SCOPE_VIOLATION`.
+- `503 LLM_UNAVAILABLE`: 캐시에도 없고 API 키도 없을 때. **조용히 빈 결과를 주지 않는다.**
+
 ## 2. Claims (검토·승인)
 
 | 메서드 | 경로 | 설명 |
@@ -62,14 +77,15 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 
 `GET /claims?queue=review` — docs/02 §5.5의 **위험 기반 검토 큐**를 서버가 정렬해서 반환한다 (① 가설 후보가 참조하는 claim → ② 반복 수 상위 → ③ 저등급 우선). 프론트가 정렬하지 않는다. 각 행에 `queueReasonKo`("HYP-001 근거로 사용됨" 등)를 포함해 왜 위에 있는지 화면에 보여준다.
 
-각 행에는 **위험 등급의 근거**도 함께 온다 — 등급 문자만으로는 화면에서 읽히지 않는다 (docs/02 §5.5).
+각 행에는 **검토등급의 근거**도 함께 온다 — 등급 문자만으로는 방향(H가 안전, L이 위험)이 읽히지 않는다 (docs/02 §5.5).
 ```json
-{ "reviewGrade": "HIGH", "defaultChecked": false,
+{ "reviewGrade": "MEDIUM", "defaultChecked": false,
   "gradeReasonKo": "② 용어 매핑 실패 — 'refractory GTC'가 스키마 값에 없어 UNSPECIFIED로 낙착",
   "failedChecks": ["TERM_MAPPING"], "scpCandidate": true }
 ```
 - `failedChecks` 허용값: `TERM_MAPPING`(②) · `DERIVED_RULE`(③). **`VERBATIM_MATCH`(①)는 나올 수 없다** — 원문 불일치는 저장 단계에서 거부되므로 큐에 존재하지 않는다(절대 규칙 #2).
-- `defaultChecked`: 3종 통과 = `true`, 하나라도 실패 = `false`. **프론트가 판단하지 않는다.**
+- `defaultChecked`: 3종 통과(=`HIGH`) = `true`, 하나라도 실패(`MEDIUM`·`LOW`) = `false`. **프론트가 판단하지 않는다.**
+- 등급 대응: ② 실패 → `MEDIUM` · ③ 실패 → `LOW` · 둘 다 실패 → `LOW`. 큐 정렬은 `LOW → MEDIUM → HIGH`.
 - `scpCandidate: true`면 그 행에서 SCP 제안 생성으로 바로 연결한다 (docs/02 §7).
 
 ### 2.5 `POST /claims/batch` — 일괄 승인 (08/22 신설)
