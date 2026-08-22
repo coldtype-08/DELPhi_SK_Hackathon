@@ -42,6 +42,10 @@ export const deepgram: SttProvider = {
       interim_results: "true",
       punctuate: "true",
       smart_format: "true",
+      // 숫자를 항상 숫자 표기로 (ko 공식 지원) — 치명 토큰(17세·18세·전화번호)과
+      // masked_spans 정규식이 숫자 표기를 전제한다. redact 는 절대 켜지 않는다:
+      // 마스킹은 우리 파이프라인의 시연 포인트라 전사에 원문이 살아서 와야 한다 (SERVICE_COMPARISON.md)
+      numerals: "true",
       // 첫 언어만 보낸다 — Deepgram 은 문장 중간 혼용 파라미터가 없다
       language: opts.languages[0] ?? "en",
     });
