@@ -14,6 +14,7 @@
 | **P1 · 초안** | HYP-003(PGTC) — 인혁 작성. 전문은 `P1_reference.txt` | **TTS → STT 3종 비교**. 그 이후 용도는 오너 확인 대상 |
 | **D1** | `apps/field/lib/capture-demo.ts` 의 `SCRIPT` **7턴 그대로** | STT 비교 보조 (S1 청소년 축) |
 | **T1** | D1 + 영어 용어 혼용 + PII | 문장 중간 한↔영 전환, 마스킹 대상 인식 |
+| **E1** | D1과 같은 시나리오의 **영어판** | `nova-3-medical`(영어 전용) 비교 — medical이 우세하면 발표용을 영어로 트는 선택지가 열린다 (08/22 결정). 코퍼스 원석도 전부 영어라 시나리오 정합 |
 
 **코퍼스는 건드리지 않습니다.** `backend/data/corpus/`는 읽기만 하며, 코퍼스 대본 추가는 도메인 오너 판단입니다.
 
@@ -138,6 +139,40 @@ P1은 인혁이 STT 비교를 돌리려고 쓴 **초안**이다. 하나의 자�
 **의사:** 혹시 청소년 용량이나 안전성 자료가 있으면 보내주실 수 있어요? 제 번호 010-4132-7789로 주셔도 되고요.
 
 **MSL:** 확인해서 다음 방문 때 정리해 드리겠습니다.
+
+---
+
+## 대본 E1 — D1의 영어판 (영어 전용 모델 비교용)
+
+> D1과 **같은 시나리오·같은 신호(S1·S2·S4)** 를 영어로 옮겼다. 성별 대명사는 쓰지 않는다(docs/03 §5 관례).
+> 용도: `nova-3-medical` 등 영어 전용 모델이 의료 용어(`antiseizure`·`somnolence`)에서 실제로 우세한지 측정.
+
+**MSL:** Good afternoon, Doctor. How was the conference last week?
+
+**HCP:** Good, though the clinic has been backed up ever since.
+
+**MSL:** How are your drug-resistant patients doing these days?
+
+**HCP:** I have a 17-year-old who has failed two antiseizure medications, but the adult-only indication ties my hands. All we can do is wait until the patient turns 18.
+
+**HCP:** Oh, and one adult patient reported quite a bit of dizziness and somnolence after starting.
+
+**HCP:** Could you send me any data on adolescent dosing or safety?
+
+**MSL:** I will check and put something together for the next visit.
+
+### E1 채점 토큰
+
+| 분류 | 토큰 | 틀리면 |
+|---|---|---|
+| **연령 ★** | `17-year-old` | S1 신호 소멸 |
+| **연령 ★** | `18` | 허가 연령 경계 소실 |
+| 실패 약물 수 | `failed two` | DRE_2PLUS 판정 실패 |
+| **의료 용어 ★** | `antiseizure medications` | medical 모델 판별 지점 |
+| **오프라벨 ★** | `adult-only indication` | OUT_OF_LABEL 근거 소실 |
+| 도메인 용어 | `drug-resistant` | canonical 정규화 실패 |
+| **AE ★** | `dizziness` · `somnolence` | S2 분기 실패 — somnolence가 medical 판별 지점 |
+| 자료 요청 | `adolescent dosing` · `safety` | S4 집계 실패 |
 
 ---
 

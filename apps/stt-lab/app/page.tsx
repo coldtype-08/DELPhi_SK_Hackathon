@@ -579,7 +579,7 @@ function SharedControls(p: SharedProps) {
 
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         <Field label="채점 대본">
-          <Seg options={[["D1", "D1 · 실제 시나리오"], ["T1", "T1 · 한·영 혼용"], ["P1", "P1 · HYP-003 초안"]]} value={p.script} onChange={(v) => p.setScript(v as ScriptId)} />
+          <Seg options={[["D1", "D1 · 실제 시나리오"], ["T1", "T1 · 한·영 혼용"], ["E1", "E1 · 영어판"], ["P1", "P1 · HYP-003 초안"]]} value={p.script} onChange={(v) => p.setScript(v as ScriptId)} />
         </Field>
         <Field label="언어 설정">
           <Seg options={[["ko", "한국어"], ["en", "영어"], ["koen", "한국어+영어"]]} value={p.langMode} onChange={(v) => p.setLangMode(v as "ko" | "en" | "koen")} />

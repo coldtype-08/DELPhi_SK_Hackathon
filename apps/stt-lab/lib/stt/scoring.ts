@@ -8,9 +8,10 @@
  *   P1 — HYP-003(PGTC) 초안 7턴. TTS로 만들어 STT 3종 비교에 쓴다 (scripts/stt_eval/P1_reference.txt)
  *   D1 — apps/field/lib/capture-demo.ts 의 SCRIPT 7턴 그대로 (실제 시나리오)
  *   T1 — D1 + 영어 용어 혼용 + PII (코드스위칭·마스킹 테스트)
+ *   E1 — D1과 같은 시나리오의 영어판 (nova-3-medical 등 영어 전용 모델 비교)
  */
 
-export type ScriptId = "P1" | "D1" | "T1";
+export type ScriptId = "P1" | "D1" | "T1" | "E1";
 
 export type TokenSpec = {
   label: string;
@@ -63,10 +64,26 @@ const P1_TOKENS: TokenSpec[] = [
   { label: "010-4132-7789", category: "PII", critical: true, patterns: ["01041327789", "010-4132-7789"], why: "masked_spans 정규식 — 발표에서 마스킹이 보여야 한다" },
 ];
 
+
+/** E1 전용 — D1과 같은 시나리오의 영어판. 의료 용어가 nova-3-medical의 강점을 가르는 지점이다. */
+const E1_TOKENS: TokenSpec[] = [
+  { label: "17-year-old", category: "연령 ★", critical: true, patterns: ["17-year-old", "17yearold", "seventeen"], why: "S1 신호 — 틀리면 신호 소멸" },
+  { label: "18", category: "연령", critical: true, patterns: ["turns18", "until18", "18"], why: "허가 연령 경계" },
+  { label: "failed two", category: "실패 약물 수", patterns: ["failedtwo", "failed2"], why: "DRE_2PLUS 판정" },
+  { label: "antiseizure medications", category: "의료 용어", critical: true, patterns: ["antiseizure", "anti-seizure"], why: "의료 특화 모델 판별 지점" },
+  { label: "adult-only indication", category: "오프라벨 ★", critical: true, patterns: ["adult-only", "adultonly", "adultindication"], why: "label_scope=OUT_OF_LABEL 근거" },
+  { label: "drug-resistant", category: "도메인 용어", patterns: ["drug-resistant", "drugresistant", "refractory"], why: "canonical 정규화" },
+  { label: "dizziness", category: "AE 용어", critical: true, patterns: ["dizziness", "dizzy"], why: "S2 안전성 분기" },
+  { label: "somnolence", category: "AE 용어 ★", critical: true, patterns: ["somnolence", "drowsiness", "sleepiness"], why: "의료 용어 — medical 모델 판별 지점" },
+  { label: "adolescent dosing", category: "자료 요청", patterns: ["adolescentdosing", "adolescentdose", "pediatricdosing"], why: "S4 집계" },
+  { label: "safety", category: "자료 요청", patterns: ["safety"], why: "S4 집계" },
+];
+
 export const KEY_TOKENS: Record<ScriptId, TokenSpec[]> = {
   P1: P1_TOKENS,
   D1: SHARED,
   T1: [...SHARED, ...T1_ONLY],
+  E1: E1_TOKENS,
 };
 
 /** 공백 제거 + 소문자 — 한국어 띄어쓰기 변형("청소년 용량" vs "청소년용량")을 흡수한다. */

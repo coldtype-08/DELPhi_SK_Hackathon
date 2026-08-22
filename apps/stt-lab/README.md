@@ -31,7 +31,7 @@ Soniox · Gladia · Deepgram을 **같은 음성·같은 조건**으로 나란히
 brew install espeak-ng                 # mac
 sudo apt-get install -y espeak-ng      # linux
 winget install eSpeak-NG.eSpeak-NG     # windows
-python3 scripts/stt_eval/gen_test_audio.py   # → scripts/stt_eval/audio/*.wav
+python3 scripts/stt_eval/gen_test_audio.py   # → P1·D1·T1·E1 WAV (audio/, gitignore)
 ```
 
 **P1은 초안입니다** — 확정 용도는 8/24 STT 3종 비교 하나뿐이고, 통합 테스트·제출물·발표 입력으로 쓸지는 오너 판단입니다 (`TEST_SCRIPTS.md`).
@@ -86,13 +86,13 @@ Windows 쪽에서 한 번 막혀 있을 수 있다: **설정 → 개인 정보 �
 ## 4. 쓰는 순서
 
 1. **공통 조건**에서 정합니다
-   - 채점 대본: `D1`(실제 시나리오, 기본값) · `T1`(한·영 혼용) · `P1`(HYP-003 초안) — 재생할 음성과 맞춥니다
+   - 채점 대본: `D1`(기본값) · `T1`(한·영 혼용) · `E1`(영어판 — medical 모델용) · `P1`(HYP-003 초안) — 재생할 음성과 맞춥니다
    - 언어 설정 / 화자 분리 / 부스팅 on-off
    - **마이크 입력 방식** — 아래 §4.1
    - **WAV 파일** — 탭별 「파일로 시작」을 쓸 때만 필요합니다 (배선 확인용)
 2. 탭을 고르고 **API 키**를 붙여넣습니다 (한 번 넣으면 브라우저에 저장됩니다)
 3. **모델**을 고릅니다
-   - Deepgram: 세 대본 모두 한국어이므로 `nova-3` (`nova-3-medical`은 한국어 미지원)
+   - Deepgram: 한국어 대본(D1·T1·P1)은 `nova-3` / 영어 대본(E1)에서만 `nova-3-medical` 사용 가능
 4. **「동시 시작」** (권장) 또는 탭별 「마이크로 시작」·「파일로 시작」 — §4.1
 5. 탭을 옮겨 같은 소리에 대한 세 결과를 비교
 

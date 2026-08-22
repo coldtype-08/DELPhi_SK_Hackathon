@@ -32,6 +32,15 @@ export const TTS_PRESETS: Record<string, string> = {
     "HCP: 혹시 청소년 용량이나 안전성 자료가 있으면 보내주실 수 있어요? 제 번호 010-4132-7789로 주셔도 되고요.",
     "MSL: 확인해서 다음 방문 때 정리해 드리겠습니다.",
   ].join("\n"),
+  E1: [
+    "MSL: Good afternoon, Doctor. How was the conference last week?",
+    "HCP: Good, though the clinic has been backed up ever since.",
+    "MSL: How are your drug-resistant patients doing these days?",
+    "HCP: I have a 17-year-old who has failed two antiseizure medications, but the adult-only indication ties my hands. All we can do is wait until the patient turns 18.",
+    "HCP: Oh, and one adult patient reported quite a bit of dizziness and somnolence after starting.",
+    "HCP: Could you send me any data on adolescent dosing or safety?",
+    "MSL: I will check and put something together for the next visit.",
+  ].join("\n"),
   P1: [
     "MSL: 안녕하세요 선생님, 외래 끝나고 잠시 괜찮으세요?",
     "HCP: 네, 오늘은 좀 일찍 끝났어요. 앉으세요.",

@@ -62,8 +62,19 @@ T1 = [  # D1 + 영어 용어 혼용 + PII (테스트 전용)
     ("MSL", "확인해서 다음 방문 때 정리해 드리겠습니다."),
 ]
 
+E1 = [  # D1과 같은 시나리오의 영어판 — nova-3-medical(영어 전용) 비교용. 성별 대명사 금지(docs/03 §5 관례)
+    ("MSL", "Good afternoon, Doctor. How was the conference last week?"),
+    ("HCP", "Good, though the clinic has been backed up ever since."),
+    ("MSL", "How are your drug-resistant patients doing these days?"),
+    ("HCP", "I have a 17-year-old who has failed two antiseizure medications, but the adult-only indication ties my hands. All we can do is wait until the patient turns 18."),
+    ("HCP", "Oh, and one adult patient reported quite a bit of dizziness and somnolence after starting."),
+    ("HCP", "Could you send me any data on adolescent dosing or safety?"),
+    ("MSL", "I will check and put something together for the next visit."),
+]
+
 VOICES = {  # 화자별 목소리 (variant로 구분 → 화자 분리 검증 가능)
     "ko": {"MSL": "ko+m3", "HCP": "ko+f2"},
+    "en": {"MSL": "en-us+m3", "HCP": "en-us+f2"},
 }
 
 
@@ -113,3 +124,4 @@ assert_p1_matches_reference()
 synth(P1, "ko", "P1_hyp003_pgtc")
 synth(D1, "ko", "D1_korean")
 synth(T1, "ko", "T1_ko_en_mixed")
+synth(E1, "en", "E1_english")
