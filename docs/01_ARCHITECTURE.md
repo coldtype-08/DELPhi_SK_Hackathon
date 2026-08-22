@@ -148,6 +148,7 @@ backend/app/
 | `/hypotheses/[id]` | 가설 상세 | **5단계 구분 카드**, 지지/반대/공백 근거 리스트(원문·출처 링크), 에이전트 활동 시각화, Board 회의록, 승인·보류·기각 — **승인 시 Board 제안 중 채택할 Action Item을 확정(편집 가능)**, 이후 액션별 상태·참조 수집 카운트 표시 |
 | `/contract` | Data Contract | 현재 버전 스키마 뷰, SCP 목록·승인, 버전 diff |
 | `/contract/provenance` | Contract 유래 **← 투어 ① · 심사위원 첫 화면 (08/22)** | 부트스트랩 판정 기록의 결정론적 렌더링(LLM 없음): 반복 매트릭스 → 원문 인용·판정 → 스키마·DB 반영 → 한 문장 추적. 데이터 원천: DECISIONS 08/19 + `docs/assets/bootstrap-ai-draft.md` (동기화 대상: `apps/console/lib/provenance.ts`) |
+| `/pipeline` | **처리 라인 — 에이전트 3종이 도는 것을 보는 화면 (08/22 신설)**. ① Contract 설계자가 스키마를 제안 → ② 발언 귀속자가 원석 한 파일을 의료진별로 가름(정답 대조 점수 포함) → ③ 인사이트 분석가가 스키마 항목으로 뽑음. 원문 위에 ②의 구간과 ③의 근거를 겹쳐 그린다. **버려진 건수를 같은 크기로 보여준다** — 막고 있다는 증거이므로 |
 | `/market` | 시장·경쟁 | 공개 출처만 쓰는 경쟁 환경 화면: 허가 연령 지도(openFDA 라벨), 경쟁사 청소년 시험 타임라인(CT.gov), 문헌 추이(PubMed), 모수(HIRA·CMS Part D 집계). **개인 식별 0건 · 예측선 금지 · FAERS 발생률 비교 금지** (DECISIONS 08/20). `external_refs` 테이블만 읽으므로(가설 연결 없음) COMMERCIAL 롤에도 열린다 — 강제 방식은 docs/02 §9.5 |
 | `/safety` | 안전성·차단 로그 | 분기된 AE 후보, Critic 차단 이력 |
 

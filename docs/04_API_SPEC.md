@@ -18,6 +18,7 @@
 |---|---|---|
 | GET | `/documents` | 문서 목록 (+ 추출 상태 요약) |
 | GET | `/documents/{id}` | 원문 + 메타 (원문 하이라이트용) |
+| POST | `/documents/{id}/attribute` | **발언 귀속** — 문서 안에서 누가 말했는지 구간 분할 (08/22) |
 | POST | `/documents/{id}/extract` | Sense 추출 실행 → claim 후보 생성 |
 
 `GET /documents/{id}` 응답 예 (08/14 개정: 1문서=N인터랙션 — `HIGHLIGHT_DOC` 대응):
@@ -37,7 +38,33 @@
 - 1문서=1면담 유형(MEETING_NOTE 등)이면 `interactions`가 1개이고 `blockIndex`·`docCharStart/End`는 null.
 - 원문 하이라이트는 항상 `rawText`(문서 전문) 위에 claim의 evidence 오프셋으로 그린다 — 하이라이트형에서는 블록 경계도 함께 표시해 "AI가 HCP별로 분리했다"를 보여준다.
 
-`POST /documents/{id}/extract` — **Sense 추출 실행 (08/22 구현).** 원석 1건을 의료진 블록별로 읽어 claim 후보를 만든다. `?force=true`면 기존 claim을 지우고 다시 돌린다(기본은 이미 추출된 문서를 건너뛴다).
+`POST /documents/{id}/attribute` — **발언 귀속 (08/22 신설).** 문서를 통째로 에이전트에게 주고 **누가 말했는지** 구간을 가르게 한다. 원석 한 파일에 의료진이 8~14인 섞여 있고, 이 구간을 잘못 가르면 A 의사의 발언이 B 의사 것으로 집계된다 — "독립 의료진 ≥3"이 가설 생성의 근거이므로 그 오류는 결론을 뒤집는다.
+
+```json
+{ "data": { "documentId": "DOC-20260112-254",
+            "blocks": [ { "hcpSurface": "Yolanda Reyes", "specialtySurface": null,
+                          "confidence": "CLEAR", "boundaryNoteKo": null,
+                          "charStart": 368, "charEnd": 676 } ],
+            "dropped": [ { "hcpSurface": "…", "reason": "START_QUOTE_NOT_FOUND" } ],
+            "unattributedNoteKo": null, "coverageRatio": 0.938,
+            "confidenceCounts": { "CLEAR": 14, "INFERRED": 0, "UNCERTAIN": 0 },
+            "score": { "truthBlocks": 14, "aiBlocks": 14, "matched": 14, "missed": 0,
+                       "extra": 0, "meanIou": 0.995, "blockRecall": 1.0 } } }
+```
+- **DB에 쓰지 않는다.** 보여 주고 채점하는 용도이고, 적재는 `/extract`가 한다.
+- 에이전트는 **경계 문자열을 인용**할 뿐이고 문자 위치는 서버가 `str.find`로 찾는다 (절대 규칙 #1). 인용이 원문에 없거나 문서 안에서 유일하지 않으면 그 구간은 `dropped`로 빠진다 (#2). 구간이 겹치면 뒤엣것을 버린다.
+- `score`는 **합성 코퍼스에만 있는 정답 분할과의 대조**다. `matched`는 IoU ≥ 0.8 기준. 정답이 없는 실제 사내 원석에서는 `score: null`로 나온다 — 이 값이 `3_검증결과`의 귀속 정확도 실측치가 된다.
+- `?refresh=true`면 LLM 캐시를 무시하고 실제로 다시 부른다. 프롬프트를 고친 뒤에만 쓴다.
+
+`POST /documents/{id}/extract` — **Sense 추출 실행 (08/22 구현).** 원석 1건을 의료진 블록별로 읽어 claim 후보를 만든다.
+
+| 파라미터 | 뜻 | 비용 |
+|---|---|---|
+| (없음) | 이미 추출된 문서는 건너뛴다 | — |
+| `?force=true` | 기존 claim을 지우고 **다시 적재**한다. LLM은 캐시를 그대로 쓴다 | 0 |
+| `?refresh=true` | LLM 캐시를 무시하고 **실제로 다시 부른다**. 프롬프트를 고친 뒤에만 | 블록 수만큼 |
+
+둘을 나눈 이유: 화면의 "다시 실행"이 매번 API를 부르면 클릭 한 번이 곧 비용이 된다. 보통 다시 실행하는 이유는 적재 로직을 고쳤기 때문이지 모델 답을 새로 받고 싶어서가 아니다.
 
 ```json
 // 응답 — 숫자는 전부 서버가 센 것이다 (절대 규칙 #1)
@@ -254,9 +281,38 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 | GET | `/logs/blocked` | Critic 차단 이력 (reason_code, detail, 원문 payload) |
 | GET | `/llm-runs/{id}` | **생성 조건 조회** → `{ model, promptFile, promptVersion, schemaName, parserVersion, externalDataAsOf, latencyMs, createdAt }` (docs/01 §7). 화면의 "생성 조건 보기" 링크가 이걸 호출 |
 
+`POST /contract/propose` — **Contract 부트스트랩 (08/22 신설, 데모 ①).** 원석 표본을 읽고 **뽑을 항목 자체**를 에이전트가 제안한다. `?sampleSize=`(3~40, 기본 12) · `?refresh=true`(캐시 무시).
+
+```json
+{ "data": { "sampledDocuments": ["DOC-…"], "activeContractVersion": "0.1",
+            "fields": [ { "key": "patient_segment", "labelKo": "환자군", "kind": "enum",
+                          "rationaleKo": "…", "observedInDocs": 9, "alreadyInContract": true,
+                          "values": [ { "value": "…", "labelKo": "…", "evidence": {…} } ],
+                          "evidence": [ { "docId": "DOC-…", "quote": "…",
+                                          "charStart": 412, "charEnd": 448 } ] } ],
+            "rejected": [ { "key": "prescriber_tier", "reasonKo": "사람을 점수화하지 않는다" } ],
+            "droppedEvidence": 2, "note_ko": "이 제안은 초안입니다…" } }
+```
+- **활성 Contract는 변경되지 않는다** (절대 규칙 #4). 채택은 Data Steward 승인으로만.
+- `observedInDocs`는 **에이전트가 적은 값이 아니라 서버가 검증된 인용으로 다시 센 값**이다 (#1).
+- 원문에서 찾을 수 없는 인용은 폐기하고(`droppedEvidence`), **근거가 0개가 된 제안 항목은 제안 자체를 폐기**한다 (#2).
+- `rejected`(뺀 항목과 이유)를 같은 무게로 받는다 — 무엇을 뺐는지가 스키마의 절반이다.
+- 권한: `DATA_STEWARD`·`MEDICAL_AFFAIRS`·`CLINICAL_STRATEGY`.
+
 ## 8. 시스템
 
 `GET /health` → `{ ok, demoOffline, activeContractVersion, dbSeededAt, cacheSnapshotAsOf }` — 시연 직전 육안 확인용.
+
+`GET /system/agents` — **에이전트·모델·키 상태 (08/22 신설).** 어느 에이전트가 어느 모델·어느 키로 도는지. **키 값은 절대 내보내지 않고 환경변수 이름과 존재 여부만** 돌려준다.
+
+```json
+{ "data": { "agents": [ { "agent": "hcp_attributor", "labelKo": "발언 귀속자",
+                          "model": "claude-sonnet-5", "keyEnv": "ANTHROPIC_API_KEY_ATTRIBUTION",
+                          "keySource": "ANTHROPIC_API_KEY", "ready": true } ],
+            "cache": { "dir": "…/llm_cache", "entries": 1118 }, "demoOffline": false } }
+```
+- 에이전트별 전용 키가 없으면 `ANTHROPIC_API_KEY`로 폴백한다 — **키 하나만 있어도 전부 동작한다.** `keySource`가 실제로 쓰인 환경변수 이름이다.
+- `entries`가 0이 아니면 키 없이도 그 입력에 대해서는 동작한다 (캐시 재생).
 
 `POST /system/reset` — **초기 상태로 되돌리기 (08/22 신설).** `reset_demo.sh`의 서버판. 심사위원 여러 명이 같은 배포본을 순서대로 만지므로, 앞사람의 승인 상태를 다음 사람이 그대로 받지 않게 한다.
 ```json

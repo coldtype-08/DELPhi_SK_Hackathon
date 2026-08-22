@@ -326,10 +326,15 @@ def _empty_stats() -> dict:
             "by_grade": {"HIGH": 0, "MEDIUM": 0, "LOW": 0}}
 
 
-def extract_document(db: Session, doc_id: str, *, force: bool = False) -> dict:
+def extract_document(db: Session, doc_id: str, *, force: bool = False,
+                     refresh: bool = False) -> dict:
     """문서 1건을 의료진 블록별로 추출해 claims/safety_candidates에 적재한다.
 
-    이미 추출된 문서는 기본적으로 건너뛴다 (`force=True`면 기존 claim을 지우고 다시).
+    - `force`   기존 claim을 지우고 다시 적재한다. **LLM은 캐시를 그대로 쓴다** (돈이 들지 않는다)
+    - `refresh` LLM 캐시를 무시하고 실제로 다시 부른다. 프롬프트를 고친 뒤에만 쓴다
+
+    둘을 나눈 이유: 화면의 "다시 실행"이 매번 API를 부르면 클릭 한 번이 곧 비용이 된다.
+    보통 다시 실행하는 이유는 적재 로직을 고쳤기 때문이지 모델 답을 새로 받고 싶어서가 아니다.
     """
     doc = db.get(Document, doc_id)
     if not doc:
@@ -364,7 +369,7 @@ def extract_document(db: Session, doc_id: str, *, force: bool = False) -> dict:
             db, AGENT,
             system_text=build_system_text(contract, it),
             input_text=it.raw_text,
-            force=force,
+            force=refresh,
         )
         for raw in out.get("claims") or []:
             if _ingest_claim(db, contract, vocab, doc, it, raw, seq, stats):

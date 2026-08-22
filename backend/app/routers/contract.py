@@ -61,7 +61,7 @@ def decide_proposal(proposal_id: int, role: str = Depends(get_role)):
 @router.post("/contract/propose")
 def propose_contract_route(
     sampleSize: int = 12,
-    force: bool = False,
+    refresh: bool = False,
     db: Session = Depends(get_db),
     role: str = Depends(get_role),
 ):
@@ -79,6 +79,6 @@ def propose_contract_route(
             "code": "SAMPLE_SIZE_OUT_OF_RANGE",
             "message_ko": "표본은 3~40건 사이여야 합니다."})
     try:
-        return {"data": propose_contract(db, sample_size=sampleSize, force=force)}
+        return {"data": propose_contract(db, sample_size=sampleSize, force=refresh)}
     except LlmUnavailable as e:
         raise HTTPException(503, detail={"code": "LLM_UNAVAILABLE", "message_ko": str(e)})

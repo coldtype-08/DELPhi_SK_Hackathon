@@ -125,7 +125,7 @@ def _score(resolved: list[dict], truth: list[Interaction]) -> dict | None:
 # ── 진입점 ──────────────────────────────────────────────────────────────────
 
 
-def attribute_document(db: Session, doc_id: str, *, force: bool = False) -> dict:
+def attribute_document(db: Session, doc_id: str, *, refresh: bool = False) -> dict:
     """문서 1건을 AI에게 통째로 주고 발언 구간을 가르게 한 뒤, 저장된 분할과 대조한다.
 
     **DB에 쓰지 않는다.** 이 함수는 보여 주고 채점하는 용도이고, 적재는 `sense.extract_document`가 한다.
@@ -144,7 +144,7 @@ def attribute_document(db: Session, doc_id: str, *, force: bool = False) -> dict
         system_text=build_system_text(doc, first.source_type if first else "",
                                       first.occurred_on if first else ""),
         input_text=doc.raw_text,
-        force=force,
+        force=refresh,   # 캐시 무시 — 프롬프트를 고친 뒤에만
     )
     resolved, dropped = _resolve(doc.raw_text, out.get("blocks") or [])
     covered = sum(b["charEnd"] - b["charStart"] for b in resolved)

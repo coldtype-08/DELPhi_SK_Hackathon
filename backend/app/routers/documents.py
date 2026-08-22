@@ -98,6 +98,7 @@ def _camel_stats(stats: dict) -> dict:
 def extract_document_route(
     doc_id: str,
     force: bool = False,
+    refresh: bool = False,
     db: Session = Depends(get_db),
     role: str = Depends(get_role),
 ):
@@ -110,7 +111,7 @@ def extract_document_route(
     if not db.get(Document, doc_id):
         raise HTTPException(404, detail={"code": "NOT_FOUND", "message_ko": "문서가 없습니다."})
     try:
-        return {"data": _camel_stats(extract_document(db, doc_id, force=force))}
+        return {"data": _camel_stats(extract_document(db, doc_id, force=force, refresh=refresh))}
     except LlmUnavailable as e:
         raise HTTPException(503, detail={"code": "LLM_UNAVAILABLE", "message_ko": str(e)})
 
@@ -118,7 +119,7 @@ def extract_document_route(
 @router.post("/documents/{doc_id}/attribute")
 def attribute_document_route(
     doc_id: str,
-    force: bool = False,
+    refresh: bool = False,
     db: Session = Depends(get_db),
     role: str = Depends(get_role),
 ):
@@ -130,6 +131,6 @@ def attribute_document_route(
     if not db.get(Document, doc_id):
         raise HTTPException(404, detail={"code": "NOT_FOUND", "message_ko": "문서가 없습니다."})
     try:
-        return {"data": attribute_document(db, doc_id, force=force)}
+        return {"data": attribute_document(db, doc_id, refresh=refresh)}
     except LlmUnavailable as e:
         raise HTTPException(503, detail={"code": "LLM_UNAVAILABLE", "message_ko": str(e)})
