@@ -20,7 +20,7 @@ from pathlib import Path
 
 from sqlalchemy.orm import Session
 
-from .config import BACKEND_DIR, DEMO_OFFLINE, MODEL_EXTRACT
+from .config import AGENT_KEY_FALLBACK, BACKEND_DIR, DEMO_OFFLINE, MODEL_EXTRACT
 from .models import LlmRun
 
 PARSER_VERSION = "sense@1"  # 파서 로직을 고치면 반드시 올린다 (docs/01 §7)
@@ -94,6 +94,8 @@ def call_llm(
     system_text: str,
     input_text: str,
     model: str | None = None,
+    api_key_env: str | None = None,
+    max_tokens: int = MAX_TOKENS,
     external_data_as_of: str | None = None,
     force: bool = False,
 ) -> dict:
@@ -121,7 +123,8 @@ def call_llm(
                 f"DEMO_OFFLINE=1 인데 캐시에 없습니다 ({purpose}, key={key[:8]}). "
                 "먼저 `python scripts/extract_corpus.py` 로 캐시를 채우세요."
             )
-        output = _call_anthropic(model, system_text, input_text, schema_name, schema)
+        output = _call_anthropic(model, system_text, input_text, schema_name, schema,
+                                 api_key_env=api_key_env, max_tokens=max_tokens)
         latency = int((time.time() - started) * 1000)
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps({
@@ -138,18 +141,31 @@ def call_llm(
     return output
 
 
-def _call_anthropic(model: str, system_text: str, input_text: str, schema_name: str, schema: dict) -> dict:
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        raise LlmUnavailable(
-            "ANTHROPIC_API_KEY 가 없습니다. 레포 루트 `.env`에 넣으세요 (커밋 금지 — .gitignore 확인). "
-            "캐시가 이미 있으면 키 없이도 동작합니다."
-        )
+def resolve_key(api_key_env: str | None) -> tuple[str, str]:
+    """(키 값, 어느 환경변수에서 왔는지). 에이전트 전용 키 → 공용 키 순으로 찾는다.
+
+    키 값 자체는 절대 로그·응답·예외 메시지에 넣지 않는다 — **이름만** 돌려준다.
+    """
+    for name in ([api_key_env] if api_key_env else []) + [AGENT_KEY_FALLBACK]:
+        val = os.environ.get(name)
+        if val:
+            return val, name
+    wanted = f"{api_key_env} 또는 {AGENT_KEY_FALLBACK}" if api_key_env else AGENT_KEY_FALLBACK
+    raise LlmUnavailable(
+        f"API 키가 없습니다 ({wanted}). 레포 루트 `.env`에 넣으세요 — 커밋 금지(.gitignore 확인). "
+        "캐시가 이미 있으면 키 없이도 동작합니다."
+    )
+
+
+def _call_anthropic(model: str, system_text: str, input_text: str, schema_name: str, schema: dict,
+                    *, api_key_env: str | None = None, max_tokens: int = MAX_TOKENS) -> dict:
+    api_key, _ = resolve_key(api_key_env)
     import anthropic  # 지연 임포트 — 캐시만 쓰는 환경에서는 SDK가 없어도 된다
 
-    client = anthropic.Anthropic()
+    client = anthropic.Anthropic(api_key=api_key)
     resp = client.messages.create(
         model=model,
-        max_tokens=MAX_TOKENS,
+        max_tokens=max_tokens,
         temperature=0,
         system=system_text,
         messages=[{"role": "user", "content": input_text}],
@@ -164,6 +180,55 @@ def _call_anthropic(model: str, system_text: str, input_text: str, schema_name: 
         if getattr(block, "type", None) == "tool_use" and block.name == schema_name:
             return block.input
     raise RuntimeError(f"구조화 출력이 오지 않았습니다 (stop_reason={resp.stop_reason})")
+
+
+def call_agent(
+    db: Session,
+    agent_name: str,
+    *,
+    system_text: str,
+    input_text: str,
+    external_data_as_of: str | None = None,
+    force: bool = False,
+) -> dict:
+    """등록부(`app/agents`)의 스펙대로 부른다 — 모델·키·스키마·토큰 한도를 호출부가 몰라도 된다."""
+    from .agents import get_agent
+
+    spec = get_agent(agent_name)
+    return call_llm(
+        db,
+        purpose=spec.name,
+        prompt_file=spec.persona_file,
+        schema_name=spec.schema_name,
+        schema=spec.schema,
+        system_text=system_text,
+        input_text=input_text,
+        model=spec.model,
+        api_key_env=spec.api_key_env,
+        max_tokens=spec.max_tokens,
+        external_data_as_of=external_data_as_of,
+        force=force,
+    )
+
+
+def key_status() -> list[dict]:
+    """어느 에이전트가 어느 키로 도는지 — **값은 절대 내보내지 않고 이름과 존재 여부만.**
+
+    화면(`/api/system/agents`)에서 "키를 꽂았는데 왜 안 도나"를 눈으로 확인하게 하려는 용도다.
+    """
+    from .agents import AGENTS
+
+    out = []
+    for spec in AGENTS.values():
+        own = bool(os.environ.get(spec.api_key_env))
+        shared = bool(os.environ.get(AGENT_KEY_FALLBACK))
+        out.append({
+            "agent": spec.name, "labelKo": spec.label_ko, "model": spec.model,
+            "keyEnv": spec.api_key_env,
+            "keySource": spec.api_key_env if own else (AGENT_KEY_FALLBACK if shared else None),
+            "ready": own or shared,
+        })
+    return out
 
 
 def log_llm_run(

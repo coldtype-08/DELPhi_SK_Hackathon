@@ -78,7 +78,7 @@ def run(db, monkeypatch, payload, *, force=False):
     monkeypatch.setattr(sense, "load_active_contract", lambda _db: CONTRACT)
     monkeypatch.setattr(sense, "build_system_text", lambda c, i: "system")
     calls = iter(payload)
-    monkeypatch.setattr(sense, "call_llm", lambda db, **kw: next(calls, {"claims": [], "safety": []}))
+    monkeypatch.setattr(sense, "call_agent", lambda db, name, **kw: next(calls, {"claims": [], "safety": []}))
     return sense.extract_document(db, "DOC-1", force=force)
 
 

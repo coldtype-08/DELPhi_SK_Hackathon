@@ -30,7 +30,8 @@ from .contract import (
     load_active_contract,
     validate_claim_fields,
 )
-from .llm import call_llm, load_prompt, render
+from .agents import get_agent
+from .llm import call_agent, load_prompt, render
 from .models import (
     BlockedLog,
     Claim,
@@ -41,8 +42,7 @@ from .models import (
     VocabTerm,
 )
 
-PROMPT_FILE = "sense_extract.md"
-SCHEMA_NAME = "sense_extract_v1"
+AGENT = "insight_analyst"   # 페르소나·모델·키는 app/agents 등록부에 있다
 
 # ── 구조화 출력 스키마 — LLM은 이 모양으로만 답할 수 있다 ────────────────────
 # enum을 스키마에 박지 않고 프롬프트로만 주는 이유: 계약 위반을 **서버가 잡아서 기록**해야
@@ -110,7 +110,7 @@ def _enum_table(contract: dict) -> str:
 
 
 def build_system_text(contract: dict, interaction: Interaction) -> str:
-    prompt, _ = load_prompt(PROMPT_FILE)
+    prompt, _ = load_prompt(get_agent(AGENT).persona_file)
     return render(prompt, {
         "CONTRACT_VERSION": str(contract["version"]),
         "ENUMS": _enum_table(contract),
@@ -360,12 +360,8 @@ def extract_document(db: Session, doc_id: str, *, force: bool = False) -> dict:
 
     for it in inters:
         stats["blocks"] += 1
-        out = call_llm(
-            db,
-            purpose="sense_extract",
-            prompt_file=PROMPT_FILE,
-            schema_name=SCHEMA_NAME,
-            schema=SENSE_SCHEMA,
+        out = call_agent(
+            db, AGENT,
             system_text=build_system_text(contract, it),
             input_text=it.raw_text,
             force=force,

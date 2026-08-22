@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session
 
 from ..access import get_role, require_raw_text_access
 from ..db import get_db
+from ..attribution import attribute_document
 from ..llm import LlmUnavailable
 from ..models import Claim, Document, Interaction
 from ..sense import extract_document
@@ -110,5 +111,25 @@ def extract_document_route(
         raise HTTPException(404, detail={"code": "NOT_FOUND", "message_ko": "문서가 없습니다."})
     try:
         return {"data": _camel_stats(extract_document(db, doc_id, force=force))}
+    except LlmUnavailable as e:
+        raise HTTPException(503, detail={"code": "LLM_UNAVAILABLE", "message_ko": str(e)})
+
+
+@router.post("/documents/{doc_id}/attribute")
+def attribute_document_route(
+    doc_id: str,
+    force: bool = False,
+    db: Session = Depends(get_db),
+    role: str = Depends(get_role),
+):
+    """발언 귀속 실행 — 문서 한 건에서 **누가 말했는지** 구간을 AI가 가른다 (08/22, docs/04 §1).
+
+    DB에 쓰지 않는다. 보여 주고 채점하는 용도다 — 적재는 `/extract`가 한다.
+    """
+    require_raw_text_access(role)
+    if not db.get(Document, doc_id):
+        raise HTTPException(404, detail={"code": "NOT_FOUND", "message_ko": "문서가 없습니다."})
+    try:
+        return {"data": attribute_document(db, doc_id, force=force)}
     except LlmUnavailable as e:
         raise HTTPException(503, detail={"code": "LLM_UNAVAILABLE", "message_ko": str(e)})

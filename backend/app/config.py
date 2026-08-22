@@ -29,6 +29,14 @@ SEED_ON_STARTUP = os.environ.get("SEED_ON_STARTUP", "1") == "1"
 RESET_TOKEN = os.environ.get("RESET_TOKEN", "")
 MODEL_EXTRACT = os.environ.get("DELPHI_MODEL_EXTRACT", "claude-sonnet-5")
 MODEL_BOARD = os.environ.get("DELPHI_MODEL_BOARD", "claude-opus-5")
+
+# ── 에이전트별 키 분리 (08/22) ──────────────────────────────────────────────
+# 에이전트마다 다른 키를 꽂을 수 있다. 이유는 셋:
+#   ① 어느 에이전트가 얼마를 썼는지 콘솔에서 따로 보인다 (해커톤 크레딧 배분)
+#   ② 하나가 rate limit에 걸려도 나머지가 산다
+#   ③ 사내 이관 시 "설계 에이전트는 사내 LLM, 추출은 외부" 같은 분리가 코드 변경 없이 된다
+# 값이 없으면 ANTHROPIC_API_KEY 로 자동 폴백한다 — 키 하나만 있어도 전부 동작한다.
+AGENT_KEY_FALLBACK = "ANTHROPIC_API_KEY"
 ALLOWED_ORIGINS = [
     o.strip() for o in os.environ.get(
         "ALLOWED_ORIGINS", "http://localhost:3000,http://localhost:3001"
