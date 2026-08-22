@@ -16,31 +16,67 @@ Soniox · Gladia · Deepgram을 **같은 음성·같은 조건**으로 나란히
 
 세 개를 다 받지 않아도 됩니다. 받은 것만 해당 탭에서 테스트하면 됩니다.
 
-## 2. 테스트 음성 만들기
+## 2. 테스트 음성 준비
+
+세 가지 중 하나면 된다.
+
+1. **사람이 직접 읽는다** — 음성 파일이 필요 없다. 마이크 입력 방식을 `사람이 말함`으로 두고
+   두 사람이 `scripts/stt_eval/TEST_SCRIPTS.md` 의 대본을 번갈아 읽는다. **판정 재료로는 이것이 정본이다.**
+2. **랩에서 만든다** — 상단 「대본 → 음성 (Gemini TTS)」 탭. 화자 2명을 한 번에 만든다 (§6).
+   팀원 여러 명이 **같은 소리로** 돌려봐야 할 때 이 방법을 쓴다.
+3. **espeak-ng** — 배선 확인용이다. **판정에는 쓰지 않는다** (기계음이라 "17세→70세" 같은 실제 오인식이 재현되지 않는다).
 
 ```bash
-# mac
-brew install espeak-ng
-# linux
-sudo apt-get install -y espeak-ng
-
-python3 scripts/stt_eval/gen_test_audio.py
-# → scripts/stt_eval/audio/P1_hyp003_pgtc.wav   (HYP-003 초안 7턴, 75초)
-# → scripts/stt_eval/audio/D1_korean.wav        (실제 시나리오 7턴, 43초)
-# → scripts/stt_eval/audio/T1_ko_en_mixed.wav   (한·영 혼용 + PII 8턴, 63초)
+# 3번을 쓸 때만
+brew install espeak-ng                 # mac
+sudo apt-get install -y espeak-ng      # linux
+winget install eSpeak-NG.eSpeak-NG     # windows
+python3 scripts/stt_eval/gen_test_audio.py   # → scripts/stt_eval/audio/*.wav
 ```
 
 **P1은 초안입니다** — 확정 용도는 8/24 STT 3종 비교 하나뿐이고, 통합 테스트·제출물·발표 입력으로 쓸지는 오너 판단입니다 (`TEST_SCRIPTS.md`).
 
-합성음은 배선 확인용입니다. **판정은 사람이 `scripts/stt_eval/TEST_SCRIPTS.md`의 대본을 2인이 읽어 녹음한 파일로** 하세요 (녹음 지침이 그 문서에 있습니다).
-
 ## 3. 실행
+
+### mac / linux
 
 ```bash
 cd apps/stt-lab
 npm install
 npm run dev        # http://localhost:3002
 ```
+
+### Windows
+
+```powershell
+# 0) Node 20+ 와 git (한 번만)
+winget install OpenJS.NodeJS.LTS
+winget install Git.Git
+#    설치 후 터미널을 새로 연다 (PATH 갱신)
+
+# 1) 받기 — 이 랩은 아직 main 에 없다. JIH 브랜치로 체크아웃해야 한다
+git clone https://github.com/coldtype-08/DELPHi_SK_Hackathon.git
+cd DELPHi_SK_Hackathon
+git checkout JIH
+
+# 2) 띄우기
+cd apps\stt-lab
+npm install
+npm run dev        # http://localhost:3002
+```
+
+**PowerShell 에서 `npm` 이 "스크립트를 실행할 수 없습니다"로 막히면** 둘 중 하나로 푼다.
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned    # 권장 (한 번만)
+# 또는 이번만: npm.cmd install / npm.cmd run dev
+```
+
+**마이크 권한** — Chrome/Edge 를 쓴다. `localhost` 는 secure context 라 브라우저 설정은 따로 필요 없지만,
+Windows 쪽에서 한 번 막혀 있을 수 있다: **설정 → 개인 정보 보호 및 보안 → 마이크 → 앱이 마이크에 액세스하도록 허용** 을 켠다.
+「동시 시작」을 눌렀을 때 브라우저가 권한을 묻지 않고 바로 오류가 나면 이것이 원인이다.
+
+**포트가 이미 쓰이고 있으면** `npm run dev -- -p 3003` 처럼 바꿔 띄운다.
 
 별도 백엔드가 필요하지 않습니다. STT는 브라우저가 벤더에 직접 붙고, TTS(§6)만 Next 라우트(`/api/tts`)를 경유합니다 — 이미 뜬 dev 서버가 처리하므로 추가 프로세스는 없습니다.
 
