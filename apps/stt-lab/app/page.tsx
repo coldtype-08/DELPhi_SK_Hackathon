@@ -148,7 +148,10 @@ export default function Page() {
           },
           onRaw: (j) => setRuns((prev) => ({ ...prev, [id]: { ...prev[id], raw: [...prev[id].raw.slice(-120), j] } })),
           onError: (e) => patch(id, { status: "error", error: e.message }),
-          onClose: () => patch(id, { status: "done" }),
+          // 오류 뒤에 소켓이 닫혀도 오류 상태·메시지를 보존한다 (원인이 화면에서 사라지지 않게)
+          onClose: () =>
+            setRuns((prev) =>
+              prev[id].status === "error" ? prev : { ...prev, [id]: { ...prev[id], status: "done" } }),
         },
       );
     },
@@ -220,7 +223,14 @@ export default function Page() {
         for (const [, session] of live) session.send(pcm);
       }, micMode);
     } catch (e) {
-      live.forEach(([id]) => patch(id, { status: "error", error: e instanceof Error ? e.message : String(e) }));
+      const name = e instanceof DOMException ? e.name : "";
+      const why =
+        name === "NotAllowedError"
+          ? "마이크 권한 거부 — 주소창 마이크 아이콘에서 허용으로 바꾸거나, Windows 설정 > 개인 정보 > 마이크 확인"
+          : name === "NotFoundError"
+            ? "마이크 장치를 찾지 못함 — PC에 마이크가 연결돼 있는지 확인"
+            : `마이크 획득 실패 (${name || (e instanceof Error ? e.message : String(e))})`;
+      live.forEach(([id]) => patch(id, { status: "error", error: why }));
       stopAll();
     }
   }, [settings, micMode, openSession, stopAll]);
