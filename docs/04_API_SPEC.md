@@ -42,7 +42,9 @@
 | 메서드 | 경로 | 설명 |
 |---|---|---|
 | GET | `/claims?status=CANDIDATE&documentId=` | 검토 목록 |
+| GET | `/claims?queue=review&hypothesisId=HYP-003` | **묶음 검토 큐** — 가설 1건이 딛고 선 근거만 (docs/02 §5.5) |
 | PATCH | `/claims/{id}` | body: `{ "action": "approve" \| "reject" \| "amend", "amendments": {…}, "reviewedBy": "건태" }` |
+| POST | `/claims/batch` | **일괄 승인 (08/22 신설)** — 아래 참조 |
 
 Claim 객체 (공통 형태 — Field·Console 동일):
 ```json
@@ -60,6 +62,40 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 
 `GET /claims?queue=review` — docs/02 §5.5의 **위험 기반 검토 큐**를 서버가 정렬해서 반환한다 (① 가설 후보가 참조하는 claim → ② 반복 수 상위 → ③ 저등급 우선). 프론트가 정렬하지 않는다. 각 행에 `queueReasonKo`("HYP-001 근거로 사용됨" 등)를 포함해 왜 위에 있는지 화면에 보여준다.
 
+각 행에는 **위험 등급의 근거**도 함께 온다 — 등급 문자만으로는 화면에서 읽히지 않는다 (docs/02 §5.5).
+```json
+{ "reviewGrade": "HIGH", "defaultChecked": false,
+  "gradeReasonKo": "② 용어 매핑 실패 — 'refractory GTC'가 스키마 값에 없어 UNSPECIFIED로 낙착",
+  "failedChecks": ["TERM_MAPPING"], "scpCandidate": true }
+```
+- `failedChecks` 허용값: `TERM_MAPPING`(②) · `DERIVED_RULE`(③). **`VERBATIM_MATCH`(①)는 나올 수 없다** — 원문 불일치는 저장 단계에서 거부되므로 큐에 존재하지 않는다(절대 규칙 #2).
+- `defaultChecked`: 3종 통과 = `true`, 하나라도 실패 = `false`. **프론트가 판단하지 않는다.**
+- `scpCandidate: true`면 그 행에서 SCP 제안 생성으로 바로 연결한다 (docs/02 §7).
+
+### 2.5 `POST /claims/batch` — 일괄 승인 (08/22 신설)
+
+묶음 검토 화면이 UI만 묶음이고 백엔드를 34번 부르면 의미가 없다. **한 번의 클릭 = 한 번의 호출**이어야 한다.
+
+```json
+// 요청
+{ "action": "approve", "reviewedBy": "건태", "role": "CLINICAL_STRATEGY",
+  "hypothesisId": "HYP-003",
+  "claimIds": ["CLM-0418", "CLM-0433", "CLM-0447"] }
+
+// 응답
+{ "data": { "approved": 3, "skipped": 0, "failed": [],
+            "reviewedAt": "2026-08-30T14:32:11+09:00",
+            "aggregatesChanged": [
+              { "patientSegment": "GENERALIZED_PGTC", "signalType": "UNMET_NEED",
+                "officialBefore": 21, "officialAfter": 24, "provisional": 34 } ] } }
+```
+- **원자적이다** — 하나라도 실패하면 전부 롤백하고 `failed`에 사유를 담아 4xx. 부분 승인 상태를 만들지 않는다.
+- `claimIds` 상한 **200건**. 넘으면 `400 BATCH_TOO_LARGE`.
+- 감사 로그는 **건별로** 남긴다 (`audit_log` N행). 묶음은 UI·전송의 단위이지 책임의 단위가 아니다 — "누가 이 claim을 승인했나"는 건별로 답할 수 있어야 한다.
+- `aggregatesChanged`로 **바뀐 공식 수치를 같은 응답에** 돌려준다. 프론트가 승인 직후 집계를 다시 조회하지 않아도 되고, 무엇보다 **"승인 → 숫자가 움직였다"를 한 화면에서** 보여줄 수 있다.
+- 이미 APPROVED인 건은 오류가 아니라 `skipped`로 센다 (재클릭 안전).
+- `action: "reject"`도 같은 형태로 지원. **체크 해제는 이 API를 부르지 않는다** — 해제는 CANDIDATE 유지일 뿐 반려가 아니다.
+
 ## 3. Aggregates (전부 SQL 계산)
 
 `GET /aggregates/signals?groupBy=patient_segment` →
@@ -71,6 +107,19 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 ] } }
 ```
 `GET /aggregates/kpis` → 홈 KPI 스트립용 `{ approvedClaims, distinctHcp, openHypotheses, pendingReviews }`.
+
+`GET /aggregates/pipeline` — **처리 라인 스트립 (08/22 신설)**. 원석 → 분석된 기록 → 신호 → 가설을 한 줄로 보여주는 응답. Console 전 화면 상단에 고정한다.
+```json
+{ "data": { "computedBy": "SQL", "asOf": "2026-08-30T21:04:00+09:00",
+  "rawDocuments": 320,
+  "analyzedRecords": 1118,
+  "signals": { "provisional": 34, "official": 21, "labelKo": "잠정 / 공식" },
+  "hypotheses": { "draft": 4, "nearThreshold": 1 } } }
+```
+- **`signals`는 두 숫자를 반드시 함께 반환한다.** 하나만 주면 화면이 어느 쪽인지 고르게 되고, 그때 절대 규칙 #3이 흐려진다. 잠정은 CANDIDATE 포함, 공식은 APPROVED만 — 계산식이 다르다는 사실을 응답 구조가 드러낸다.
+- 화면 표기: 두 수를 **나란히**, 잠정에는 "승인 전 잠정 수치 — 공식 집계 아님" 라벨(docs/02 §5.6). **한 카드에 합산 금지**는 그대로다 — 나란히 놓는 것과 더하는 것은 다르다.
+- `analyzedRecords`는 status와 무관한 **저장된 구조화 기록 수**다(용어: docs/02 §5.5 — 'DB에 들어와 셀 수 있게 된 기록'). 집계 수치가 아니므로 잠정/공식 구분이 없다.
+- `COMMERCIAL` 롤: `signals.provisional`을 제거하고 `official`만 반환한다 (승인 전 데이터 비노출, docs/02 §5.6).
 
 - 모든 집계 응답은 `computedBy: "SQL"`과 `asOf`를 반드시 포함한다 (절대 규칙 #1을 응답 구조로 증명).
 - 집계 대상은 `status = APPROVED`만. CANDIDATE·REJECTED는 어떤 숫자에도 들어가지 않는다 (절대 규칙 #3).
@@ -192,6 +241,23 @@ Claim 객체 (공통 형태 — Field·Console 동일):
 ## 8. 시스템
 
 `GET /health` → `{ ok, demoOffline, activeContractVersion, dbSeededAt, cacheSnapshotAsOf }` — 시연 직전 육안 확인용.
+
+`POST /system/reset` — **초기 상태로 되돌리기 (08/22 신설).** `reset_demo.sh`의 서버판. 심사위원 여러 명이 같은 배포본을 순서대로 만지므로, 앞사람의 승인 상태를 다음 사람이 그대로 받지 않게 한다.
+```json
+// 요청  (헤더: X-Reset-Token — Railway 환경변수 RESET_TOKEN 과 대조)
+{ "scope": "demo" }
+
+// 응답
+{ "data": { "ok": true, "resetAt": "2026-09-02T10:14:00+09:00",
+            "restored": { "claims": 1118, "approvedClaims": 168,
+                          "hypotheses": 4, "contractVersion": "0.1",
+                          "actionItems": 0, "scpPending": 1 } } }
+```
+- **되돌리는 것**: claim status·승인 이력, 가설 상태와 Board 결과, `action_items`, SCP 승인, 활성 Contract 버전(v0.2 → v0.1).
+- **건드리지 않는 것**: 원문 문서·`llm_runs`·외부 API 캐시. 원문은 불변이고(절대 규칙 #2), 캐시를 지우면 오프라인 시연이 깨진다.
+- 토큰이 없거나 틀리면 `403 RESET_TOKEN_INVALID`. **토큰은 코드에 넣지 않는다** — 환경변수로만 (`docs/07`).
+- 소요 5초 내외. 진행 중에는 `503 RESET_IN_PROGRESS`로 동시 요청을 막는다.
+- 자정(KST) 자동 리셋과 같은 코드 경로를 쓴다 (`submission/2_결과물/README.md` 문제 해결 표).
 
 ## 9. Fixtures (계약 고정 장치)
 
