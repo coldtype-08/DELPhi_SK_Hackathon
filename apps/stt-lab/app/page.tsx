@@ -25,6 +25,15 @@ import {
   type Segment,
   type SttSession,
 } from "@/lib/stt";
+import {
+  DEFAULT_STYLE_PROMPT,
+  TTS_PRESETS,
+  listTtsModels,
+  speakersInScript,
+  synthesize,
+  type TtsResult,
+  type TtsSpeaker,
+} from "@/lib/tts/gemini";
 
 /** 부스팅 기본 용어 — backend/app/seed.py VOCAB_SEED + 데모 대본 고유명사 (docs/02 §3) */
 const DEFAULT_BOOST = [
@@ -54,8 +63,9 @@ const EMPTY: RunState = {
 type Settings = { apiKey: string; model: string; endpoint: string };
 
 export default function Page() {
+  const [view, setView] = useState<"stt" | "tts">("stt");
   const [tab, setTab] = useState<ProviderId>("soniox");
-  const [script, setScript] = useState<ScriptId>("P1");
+  const [script, setScript] = useState<ScriptId>("D1");
   const [micMode, setMicMode] = useState<MicMode>("voice");
   const [langMode, setLangMode] = useState<"ko" | "en" | "koen">("ko");
   const [diarize, setDiarize] = useState(true);
@@ -219,6 +229,24 @@ export default function Page() {
 
   return (
     <div className="space-y-5">
+      <div className="flex gap-2">
+        {([["stt", "STT 3종 비교"], ["tts", "대본 → 음성 (Gemini TTS)"]] as const).map(([v, label]) => (
+          <button
+            key={v}
+            onClick={() => setView(v)}
+            className={`rounded-xl border px-4 py-2 text-xs font-bold transition ${
+              view === v ? "border-navy bg-navy text-white" : "border-line bg-card text-ink hover:bg-card/60"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {view === "tts" && <TtsSection onUseInLab={(f) => { setFile(f); setView("stt"); }} />}
+
+      {view === "stt" && (
+      <>
       <SharedControls
         {...{ script, setScript, micMode, setMicMode, langMode, setLangMode, diarize, setDiarize, useBoost, setUseBoost, boostText, setBoostText, file, setFile, boostCount: boostTerms.length }}
       />
@@ -274,7 +302,180 @@ export default function Page() {
           onStop={stopAll}
         />
       ))}
+      </>
+      )}
     </div>
+  );
+}
+
+/** 대본 → 음성. Gemini TTS 의 multiSpeaker 로 MSL·HCP 를 한 번에 만든다.
+ *  목소리 이름과 모델 이름은 **추측하지 않는다** — 모델은 벤더 목록에서 받아오고,
+ *  목소리는 자유 입력이라 틀리면 벤더 오류가 화면에 그대로 뜬다. */
+function TtsSection({ onUseInLab }: { onUseInLab: (f: File) => void }) {
+  const [apiKey, setApiKey] = useState("");
+  const [model, setModel] = useState("gemini-2.5-flash-preview-tts");
+  const [models, setModels] = useState<string[]>([]);
+  const [preset, setPreset] = useState<keyof typeof TTS_PRESETS>("D1");
+  const [script, setScript] = useState(TTS_PRESETS.D1);
+  const [style, setStyle] = useState(DEFAULT_STYLE_PROMPT);
+  const [voices, setVoices] = useState<Record<string, string>>({ MSL: "Puck", HCP: "Kore" });
+  const [busy, setBusy] = useState<"" | "models" | "synth">("");
+  const [err, setErr] = useState("");
+  const [result, setResult] = useState<(TtsResult & { url: string; name: string }) | null>(null);
+
+  // 키는 브라우저에만 둔다 (STT 탭과 같은 원칙, 커밋·전송 없음)
+  useEffect(() => {
+    const v = localStorage.getItem("delphi-tts-key");
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- 마운트 시 1회 복원 (외부 저장소 구독)
+    if (v) setApiKey(v);
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("delphi-tts-key", apiKey);
+  }, [apiKey]);
+
+  const speakers = useMemo(() => speakersInScript(script), [script]);
+  const tooMany = speakers.length > 2;
+
+  const loadModels = async () => {
+    setErr(""); setBusy("models");
+    try {
+      const { tts, all } = await listTtsModels(apiKey);
+      const list = tts.length ? tts : all;
+      setModels(list);
+      if (tts.length && !tts.includes(model)) setModel(tts[0]);
+      if (!tts.length) setErr("TTS 모델이 목록에 없습니다. 아래 전체 목록에서 직접 고르세요.");
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : String(e));
+    } finally { setBusy(""); }
+  };
+
+  const run = async () => {
+    setErr(""); setBusy("synth");
+    if (result) URL.revokeObjectURL(result.url);
+    setResult(null);
+    try {
+      const picked: TtsSpeaker[] = speakers.slice(0, 2).map((n) => ({ name: n, voice: voices[n] ?? "" }));
+      const r = await synthesize({ apiKey, model, script, speakers: picked, stylePrompt: style });
+      const name = `${preset}_gemini.wav`;
+      setResult({ ...r, url: URL.createObjectURL(r.blob), name });
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : String(e));
+    } finally { setBusy(""); }
+  };
+
+  return (
+    <section className="space-y-4 rounded-2xl border border-line bg-card p-5">
+      <div>
+        <h2 className="text-sm font-bold text-navy">대본 → 음성 (Gemini TTS)</h2>
+        <p className="mt-1 text-[11px] leading-relaxed text-muted">
+          화자 2명을 <b>한 번의 호출로</b> 만듭니다(<code>multiSpeakerVoiceConfig</code>). 한 목소리로 만들면
+          화자 분리를 검증할 수 없어 컷오프 4개 중 하나가 빠지므로, MSL과 HCP에 <b>다른 목소리</b>를 주세요.
+          만든 WAV는 바로 STT 비교 탭에 넣을 수 있습니다.
+        </p>
+      </div>
+
+      <div className="flex flex-wrap items-end gap-3">
+        <Field label="Gemini API 키" className="min-w-[260px] flex-1">
+          <input
+            type="password" value={apiKey} placeholder="여기에 붙여넣기"
+            onChange={(e) => setApiKey(e.target.value)}
+            className="w-full rounded-xl border border-line bg-paper px-3 py-2 font-mono text-xs text-ink"
+          />
+        </Field>
+        <Field label="모델">
+          <input
+            value={model} onChange={(e) => setModel(e.target.value)} list="tts-models"
+            className="w-[280px] rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] text-ink"
+          />
+          <datalist id="tts-models">{models.map((m) => <option key={m} value={m} />)}</datalist>
+        </Field>
+        <button onClick={() => void loadModels()} disabled={!apiKey || busy !== ""}
+          className="rounded-xl border border-line px-4 py-2 text-xs font-bold text-ink disabled:opacity-40">
+          {busy === "models" ? "불러오는 중…" : "모델 목록 불러오기"}
+        </button>
+      </div>
+      <p className="text-[11px] text-muted">
+        기본 모델명은 <b>추정값</b>입니다. 「모델 목록 불러오기」로 계정에서 실제로 쓸 수 있는 이름을 받아 고르세요.
+        {models.length > 0 && <> · 받아온 후보 {models.length}개</>}
+      </p>
+
+      <div className="grid gap-3 md:grid-cols-3">
+        <Field label="대본">
+          <Seg
+            options={Object.keys(TTS_PRESETS).map((k) => [k, k] as [string, string])}
+            value={preset}
+            onChange={(v) => { setPreset(v); setScript(TTS_PRESETS[v]); }}
+          />
+        </Field>
+        {speakers.slice(0, 2).map((n) => (
+          <Field key={n} label={`목소리 · ${n}`}>
+            <input
+              value={voices[n] ?? ""} list="tts-voices"
+              onChange={(e) => setVoices((p) => ({ ...p, [n]: e.target.value }))}
+              className="w-full rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] text-ink"
+            />
+          </Field>
+        ))}
+        <datalist id="tts-voices">
+          {["Puck", "Kore", "Charon", "Zephyr", "Aoede", "Fenrir", "Leda", "Orus"].map((v) => (
+            <option key={v} value={v} />
+          ))}
+        </datalist>
+      </div>
+      <p className="text-[11px] text-muted">
+        목소리 후보는 <b>확인되지 않은 이름</b>입니다(문서 접근 불가). 틀리면 아래에 벤더 오류가 그대로 뜨니,
+        AI Studio에서 실제 이름을 확인해 바꿔 넣으세요.
+        {tooMany && <span className="ml-1 font-bold text-rust">대본에 화자가 {speakers.length}명입니다 — 앞 2명만 사용합니다.</span>}
+      </p>
+
+      <Field label="대본 (화자 표시는 `이름:` 형식 — 목소리 배정의 기준이 됩니다)">
+        <textarea
+          value={script} onChange={(e) => setScript(e.target.value)} rows={10}
+          className="w-full rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] leading-relaxed text-ink"
+        />
+      </Field>
+
+      <Field label="읽기 지시문 (한국식 영어 발음을 유도하는 부분이 핵심입니다)">
+        <textarea
+          value={style} onChange={(e) => setStyle(e.target.value)} rows={4}
+          className="w-full rounded-xl border border-line bg-paper px-3 py-2 text-[11px] leading-relaxed text-ink"
+        />
+      </Field>
+
+      <div className="flex flex-wrap items-center gap-3">
+        <button onClick={() => void run()} disabled={!apiKey || !script.trim() || busy !== ""}
+          className="rounded-xl bg-navy px-5 py-2.5 text-xs font-bold text-white disabled:opacity-40">
+          {busy === "synth" ? "만드는 중…" : "음성 만들기"}
+        </button>
+        {result && (
+          <>
+            <a href={result.url} download={result.name}
+              className="rounded-xl bg-orange px-4 py-2 text-xs font-bold text-white">WAV 저장</a>
+            <button onClick={() => onUseInLab(new File([result.blob], result.name, { type: "audio/wav" }))}
+              className="rounded-xl border border-line px-4 py-2 text-xs font-bold text-ink">
+              STT 비교 탭에 넣기
+            </button>
+          </>
+        )}
+      </div>
+
+      {result && (
+        <div className="space-y-2 rounded-xl border border-line bg-paper p-3">
+          <audio controls src={result.url} className="w-full" />
+          <div className="text-[11px] font-semibold text-muted">
+            {result.seconds.toFixed(1)}초 · {(result.blob.size / 1024).toFixed(0)}KB · {result.sampleRate}Hz
+            {!result.rateKnown && <span className="ml-1 text-rust">(샘플레이트를 응답에서 못 읽어 24000 가정 — 재생이 이상하면 이것부터 의심)</span>}
+            {result.sourceMime && <span className="ml-1 font-mono">{result.sourceMime}</span>}
+          </div>
+        </div>
+      )}
+
+      {err && (
+        <pre className="max-h-56 overflow-auto whitespace-pre-wrap rounded-xl border border-rust/40 bg-rust/5 p-3 font-mono text-[11px] text-rust">
+{err}
+        </pre>
+      )}
+    </section>
   );
 }
 
@@ -316,7 +517,7 @@ function SharedControls(p: SharedProps) {
 
       <div className="mt-4 grid gap-4 md:grid-cols-2">
         <Field label="채점 대본">
-          <Seg options={[["P1", "P1 · HYP-003 초안"], ["D1", "D1 · 실제 시나리오"], ["T1", "T1 · 한·영 혼용"]]} value={p.script} onChange={(v) => p.setScript(v as ScriptId)} />
+          <Seg options={[["D1", "D1 · 실제 시나리오"], ["T1", "T1 · 한·영 혼용"], ["P1", "P1 · HYP-003 초안"]]} value={p.script} onChange={(v) => p.setScript(v as ScriptId)} />
         </Field>
         <Field label="언어 설정">
           <Seg options={[["ko", "한국어"], ["en", "영어"], ["koen", "한국어+영어"]]} value={p.langMode} onChange={(v) => p.setLangMode(v as "ko" | "en" | "koen")} />
