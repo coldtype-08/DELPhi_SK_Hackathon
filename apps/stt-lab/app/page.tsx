@@ -315,6 +315,7 @@ function TtsSection({ onUseInLab }: { onUseInLab: (f: File) => void }) {
   const [apiKey, setApiKey] = useState("");
   const [model, setModel] = useState("gemini-2.5-flash-preview-tts");
   const [models, setModels] = useState<string[]>([]);
+  const [allModels, setAllModels] = useState<string[]>([]);
   const [preset, setPreset] = useState<keyof typeof TTS_PRESETS>("D1");
   const [script, setScript] = useState(TTS_PRESETS.D1);
   const [style, setStyle] = useState(DEFAULT_STYLE_PROMPT);
@@ -340,10 +341,10 @@ function TtsSection({ onUseInLab }: { onUseInLab: (f: File) => void }) {
     setErr(""); setBusy("models");
     try {
       const { tts, all } = await listTtsModels(apiKey);
-      const list = tts.length ? tts : all;
-      setModels(list);
+      setModels(tts);
+      setAllModels(all);
       if (tts.length && !tts.includes(model)) setModel(tts[0]);
-      if (!tts.length) setErr("TTS 모델이 목록에 없습니다. 아래 전체 목록에서 직접 고르세요.");
+      if (!tts.length) setErr(`이름에 tts 가 들어간 모델이 없습니다. 전체 ${all.length}개 목록을 펼쳐 직접 고르세요.`);
     } catch (e) {
       setErr(e instanceof Error ? e.message : String(e));
     } finally { setBusy(""); }
@@ -383,11 +384,20 @@ function TtsSection({ onUseInLab }: { onUseInLab: (f: File) => void }) {
           />
         </Field>
         <Field label="모델">
-          <input
-            value={model} onChange={(e) => setModel(e.target.value)} list="tts-models"
-            className="w-[280px] rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] text-ink"
-          />
-          <datalist id="tts-models">{models.map((m) => <option key={m} value={m} />)}</datalist>
+          {models.length > 0 ? (
+            <select
+              value={model} onChange={(e) => setModel(e.target.value)}
+              className="w-[280px] rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] text-ink"
+            >
+              {!models.includes(model) && <option value={model}>{model} (직접 입력값)</option>}
+              {models.map((m) => <option key={m} value={m}>{m}</option>)}
+            </select>
+          ) : (
+            <input
+              value={model} onChange={(e) => setModel(e.target.value)}
+              className="w-[280px] rounded-xl border border-line bg-paper px-3 py-2 font-mono text-[11px] text-ink"
+            />
+          )}
         </Field>
         <button onClick={() => void loadModels()} disabled={!apiKey || busy !== ""}
           className="rounded-xl border border-line px-4 py-2 text-xs font-bold text-ink disabled:opacity-40">
@@ -396,8 +406,25 @@ function TtsSection({ onUseInLab }: { onUseInLab: (f: File) => void }) {
       </div>
       <p className="text-[11px] text-muted">
         기본 모델명은 <b>추정값</b>입니다. 「모델 목록 불러오기」로 계정에서 실제로 쓸 수 있는 이름을 받아 고르세요.
-        {models.length > 0 && <> · 받아온 후보 {models.length}개</>}
+        {allModels.length > 0 && (
+          <> · 계정이 받은 모델 전체 {allModels.length}개, 그중 이름에 <code>tts</code>가 들어간 것 {models.length}개
+          — 후보가 예상보다 적으면 계정 등급(무료/유료)에서 일부 모델이 빠졌을 수 있습니다</>
+        )}
       </p>
+      {allModels.length > 0 && (
+        <details className="rounded-xl border border-line bg-paper p-3">
+          <summary className="cursor-pointer text-[11px] font-bold text-ink">
+            벤더가 돌려준 전체 모델 {allModels.length}개 펼쳐보기 (여기 있는 이름은 직접 입력해도 됩니다)
+          </summary>
+          <div className="mt-2 grid gap-x-4 gap-y-0.5 font-mono text-[10px] leading-relaxed text-muted md:grid-cols-3">
+            {allModels.map((m) => (
+              <button key={m} onClick={() => setModel(m)} className="truncate text-left hover:text-navy" title={m}>
+                {m}
+              </button>
+            ))}
+          </div>
+        </details>
+      )}
 
       <div className="grid gap-3 md:grid-cols-3">
         <Field label="대본">

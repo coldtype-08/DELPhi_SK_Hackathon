@@ -69,18 +69,26 @@ export async function POST(req: Request) {
   const apiKey = body.apiKey?.trim();
   if (!apiKey) return NextResponse.json({ error: "Gemini API 키를 입력하세요" }, { status: 400 });
 
-  // 모델 목록 — TTS 가능한 모델 이름을 벤더에서 직접 받아온다 (이름을 추측하지 않기 위해)
+  // 모델 목록 — TTS 가능한 모델 이름을 벤더에서 직접 받아온다 (이름을 추측하지 않기 위해).
+  // 응답이 페이지 단위(nextPageToken)라 끝까지 따라간다 — 첫 페이지만 받으면 뒤가 잘린다.
   if (body.action === "models") {
-    const r = await fetch(`${BASE}/models?pageSize=200&key=${encodeURIComponent(apiKey)}`);
-    const j = await r.json().catch(() => null);
-    if (!r.ok) {
-      return NextResponse.json({ error: `모델 목록 실패 (${r.status})`, raw: j }, { status: r.status });
-    }
     type M = { name?: string; supportedGenerationMethods?: string[] };
-    const all: M[] = Array.isArray(j?.models) ? j.models : [];
-    const names = all
-      .map((m) => (m.name ?? "").replace(/^models\//, ""))
-      .filter(Boolean);
+    const names: string[] = [];
+    let pageToken = "";
+    for (let page = 0; page < 10; page++) {
+      const url =
+        `${BASE}/models?pageSize=200&key=${encodeURIComponent(apiKey)}` +
+        (pageToken ? `&pageToken=${encodeURIComponent(pageToken)}` : "");
+      const r = await fetch(url);
+      const j = await r.json().catch(() => null);
+      if (!r.ok) {
+        return NextResponse.json({ error: `모델 목록 실패 (${r.status})`, raw: j }, { status: r.status });
+      }
+      const batch: M[] = Array.isArray(j?.models) ? j.models : [];
+      names.push(...batch.map((m) => (m.name ?? "").replace(/^models\//, "")).filter(Boolean));
+      pageToken = j?.nextPageToken ?? "";
+      if (!pageToken) break;
+    }
     return NextResponse.json({ tts: names.filter((n) => n.includes("tts")), all: names });
   }
 
