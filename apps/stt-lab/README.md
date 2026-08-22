@@ -25,8 +25,8 @@ brew install espeak-ng
 sudo apt-get install -y espeak-ng
 
 python3 scripts/stt_eval/gen_test_audio.py
-# → scripts/stt_eval/audio/stt_test_A_english.wav      (영어만, 67초)
-# → scripts/stt_eval/audio/stt_test_B_ko_en_mixed.wav  (한국어+영어, 85초)
+# → scripts/stt_eval/audio/D1_korean.wav        (실제 시나리오 7턴, 43초)
+# → scripts/stt_eval/audio/T1_ko_en_mixed.wav   (한·영 혼용 + PII 8턴, 63초)
 ```
 
 합성음은 배선 확인용입니다. **판정은 사람이 `scripts/stt_eval/TEST_SCRIPTS.md`의 대본을 2인이 읽어 녹음한 파일로** 하세요 (녹음 지침이 그 문서에 있습니다).
@@ -44,12 +44,12 @@ npm run dev        # http://localhost:3002
 ## 4. 쓰는 순서
 
 1. **공통 조건**에서 정합니다
-   - 채점 대본: `A`(영어) 또는 `B`(한국어+영어) — 재생할 WAV와 맞춥니다
+   - 채점 대본: `D1`(실제 시나리오) 또는 `T1`(한·영 혼용) — 재생할 WAV와 맞춥니다
    - 언어 설정 / 화자 분리 / 부스팅 on-off
    - **WAV 파일**을 고릅니다 (3탭에 같은 파일을 흘려야 공정한 비교)
 2. 탭을 고르고 **API 키**를 붙여넣습니다 (한 번 넣으면 브라우저에 저장됩니다)
 3. **모델**을 고릅니다
-   - Deepgram: 영어면 `nova-3-medical`(의료 특화), 한국어면 `nova-3`
+   - Deepgram: 두 대본 모두 한국어이므로 `nova-3` (`nova-3-medical`은 한국어 미지원)
 4. **파일로 시작** 또는 **마이크로 시작**
 5. 다른 탭으로 옮겨 같은 조건으로 실행 → 결과 비교
 
@@ -92,5 +92,5 @@ app/page.tsx          3탭 비교 화면 ......... 버릴 코드
 |---|---|
 | 마이크가 안 잡힘 | 브라우저 권한. `localhost`는 secure context라 별도 설정 불필요 |
 | `연결 실패` / `시간 초과` | API 키 오타, 또는 사내망에서 WebSocket 차단 (`docs/07` §1.7의 SSL 검사 장비) |
-| 전사가 비어 있음 | 언어 설정과 WAV 언어 불일치. `nova-3-medical`에 한국어를 넣으면 이렇게 됩니다 |
+| 전사가 비어 있음 | 언어 설정과 WAV 언어 불일치. `nova-3-medical`에 한국어를 넣으면 이렇게 됩니다 (D1·T1 모두 한국어) |
 | 화자 라벨이 전부 `0` | 화자 분리 미지원 또는 꺼짐. "원시 응답"에서 speaker 필드 유무 확인 |
