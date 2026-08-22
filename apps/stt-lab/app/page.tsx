@@ -73,7 +73,8 @@ export default function Page() {
     return base as Record<ProviderId, RunState>;
   });
 
-  const sessionRef = useRef<SttSession | null>(null);
+  /** provider별 열린 세션. 마이크 하나를 셋에 동시에 흘리려면 동시 보유가 필요하다. */
+  const sessionsRef = useRef<Partial<Record<ProviderId, SttSession>>>({});
   const micRef = useRef<MicHandle | null>(null);
   const stopRef = useRef(false);
 
@@ -83,7 +84,6 @@ export default function Page() {
     const saved = localStorage.getItem("delphi-stt-lab");
     if (!saved) return;
     try {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- 마운트 시 1회 복원
       setSettings(JSON.parse(saved));
     } catch {
       /* 손상된 값은 무시 */
@@ -109,9 +109,41 @@ export default function Page() {
     stopRef.current = true;
     micRef.current?.stop();
     micRef.current = null;
-    sessionRef.current?.finish();
-    setTimeout(() => { sessionRef.current?.close(); sessionRef.current = null; }, 1200);
+    // 지역 변수로 캡처한 뒤 ref를 비운다 — 직후 새로 연 세션을 타이머가 닫아버리지 않게.
+    const live = Object.values(sessionsRef.current).filter(Boolean) as SttSession[];
+    sessionsRef.current = {};
+    live.forEach((s) => s.finish());
+    setTimeout(() => live.forEach((s) => s.close()), 1200);
   }, []);
+
+  /** provider 하나를 연결하고 콜백을 붙인다. 지연 계측(t0)은 provider별로 따로 잡는다. */
+  const openSession = useCallback(
+    (id: ProviderId) => {
+      const cfg = settings[id];
+      const t0 = performance.now();
+      let firstSeen = false;
+      return providerById(id).connect(
+        {
+          apiKey: cfg.apiKey, model: cfg.model, endpoint: cfg.endpoint,
+          languages, boostTerms, diarize, sampleRate: TARGET_SAMPLE_RATE,
+        },
+        {
+          onSegment: (s) => {
+            if (!firstSeen && s.text.trim()) {
+              firstSeen = true;
+              patch(id, { firstTokenMs: Math.round(performance.now() - t0) });
+            }
+            setRuns((prev) => ({ ...prev, [id]: { ...prev[id], segments: [...prev[id].segments, s] } }));
+            if (s.isFinal) patch(id, { finalMs: Math.round(performance.now() - t0) });
+          },
+          onRaw: (j) => setRuns((prev) => ({ ...prev, [id]: { ...prev[id], raw: [...prev[id].raw.slice(-120), j] } })),
+          onError: (e) => patch(id, { status: "error", error: e.message }),
+          onClose: () => patch(id, { status: "done" }),
+        },
+      );
+    },
+    [settings, languages, boostTerms, diarize],
+  );
 
   const run = useCallback(
     async (id: ProviderId, source: "mic" | "file") => {
@@ -122,30 +154,10 @@ export default function Page() {
       stopAll();
       stopRef.current = false;
       patch(id, { ...EMPTY, status: "connecting" });
-      const t0 = performance.now();
-      let firstSeen = false;
 
       try {
-        const session = await providerById(id).connect(
-          {
-            apiKey: cfg.apiKey, model: cfg.model, endpoint: cfg.endpoint,
-            languages, boostTerms, diarize, sampleRate: TARGET_SAMPLE_RATE,
-          },
-          {
-            onSegment: (s) => {
-              if (!firstSeen && s.text.trim()) {
-                firstSeen = true;
-                patch(id, { firstTokenMs: Math.round(performance.now() - t0) });
-              }
-              setRuns((prev) => ({ ...prev, [id]: { ...prev[id], segments: [...prev[id].segments, s] } }));
-              if (s.isFinal) patch(id, { finalMs: Math.round(performance.now() - t0) });
-            },
-            onRaw: (j) => setRuns((prev) => ({ ...prev, [id]: { ...prev[id], raw: [...prev[id].raw.slice(-120), j] } })),
-            onError: (e) => patch(id, { status: "error", error: e.message }),
-            onClose: () => patch(id, { status: "done" }),
-          },
-        );
-        sessionRef.current = session;
+        const session = await openSession(id);
+        sessionsRef.current[id] = session;
         patch(id, { status: "running" });
 
         if (source === "mic") {
@@ -154,20 +166,79 @@ export default function Page() {
           const pcm = await fileToPcm16(file as File);
           await streamPcmRealtime(pcm, (c) => session.send(c), { shouldStop: () => stopRef.current });
           session.finish();
-          setTimeout(() => { session.close(); sessionRef.current = null; }, 1500);
+          setTimeout(() => { session.close(); delete sessionsRef.current[id]; }, 1500);
         }
       } catch (e) {
         patch(id, { status: "error", error: e instanceof Error ? e.message : String(e) });
       }
     },
-    [settings, file, languages, boostTerms, diarize, micMode, stopAll],
+    [settings, file, micMode, openSession, stopAll],
   );
+
+  /** 마이크 하나 → 세 서비스 동시. 한 번 말하거나 한 번 재생한 **같은 소리**를 셋이 같이 듣는다. */
+  const runAllMic = useCallback(async () => {
+    const ready = PROVIDERS.filter((p) => settings[p.id].apiKey);
+    if (!ready.length) {
+      PROVIDERS.forEach((p) => patch(p.id, { ...EMPTY, status: "error", error: "API 키를 입력하세요" }));
+      return;
+    }
+    stopAll();
+    stopRef.current = false;
+    PROVIDERS.forEach((p) =>
+      patch(p.id, ready.includes(p)
+        ? { ...EMPTY, status: "connecting" }
+        : { ...EMPTY, status: "error", error: "API 키가 없어 이번 실행에서 빠졌습니다" }));
+
+    const opened = await Promise.all(ready.map(async (p) => {
+      try {
+        return [p.id, await openSession(p.id)] as const;
+      } catch (e) {
+        patch(p.id, { status: "error", error: e instanceof Error ? e.message : String(e) });
+        return null;
+      }
+    }));
+    const live = opened.filter((x): x is readonly [ProviderId, SttSession] => x !== null);
+    if (!live.length) return;
+
+    live.forEach(([id, session]) => {
+      sessionsRef.current[id] = session;
+      patch(id, { status: "running" });
+    });
+
+    try {
+      micRef.current = await startMic((pcm) => {
+        for (const [, session] of live) session.send(pcm);
+      }, micMode);
+    } catch (e) {
+      live.forEach(([id]) => patch(id, { status: "error", error: e instanceof Error ? e.message : String(e) }));
+      stopAll();
+    }
+  }, [settings, micMode, openSession, stopAll]);
+
+  const anyBusy = PROVIDERS.some((p) => runs[p.id].status === "connecting" || runs[p.id].status === "running");
 
   return (
     <div className="space-y-5">
       <SharedControls
         {...{ script, setScript, micMode, setMicMode, langMode, setLangMode, diarize, setDiarize, useBoost, setUseBoost, boostText, setBoostText, file, setFile, boostCount: boostTerms.length }}
       />
+
+      <div className="flex flex-wrap items-center gap-3 rounded-2xl border-2 border-navy/25 bg-card p-4">
+        <div className="min-w-[260px] flex-1">
+          <div className="text-sm font-bold text-navy">3종 동시 실행 — 이걸로 비교합니다</div>
+          <p className="mt-1 text-[11px] leading-relaxed text-muted">
+            마이크 하나를 세 서비스에 동시에 흘립니다. <b>한 번 말하거나 한 번 재생한 같은 소리</b>를 셋이 같이 들으므로,
+            실제 시연 조건 그대로이면서 점수 차이가 곧 서비스 차이입니다.
+            {micMode === "speaker"
+              ? " 지금 설정: 스피커로 재생 — WAV를 틀고 시작하세요."
+              : " 지금 설정: 사람이 말함 — 두 분이 대본을 번갈아 읽으세요."}
+          </p>
+        </div>
+        <button onClick={() => void runAllMic()} disabled={anyBusy}
+          className="rounded-xl bg-navy px-5 py-2.5 text-xs font-bold text-white disabled:opacity-40">동시 시작</button>
+        <button onClick={stopAll} disabled={!anyBusy}
+          className="rounded-xl border border-line px-5 py-2.5 text-xs font-bold text-ink disabled:opacity-40">중지</button>
+      </div>
 
       <div className="flex gap-2">
         {PROVIDERS.map((p) => {
