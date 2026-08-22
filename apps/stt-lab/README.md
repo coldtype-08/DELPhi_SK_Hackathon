@@ -25,12 +25,12 @@ brew install espeak-ng
 sudo apt-get install -y espeak-ng
 
 python3 scripts/stt_eval/gen_test_audio.py
-# → scripts/stt_eval/audio/P1_hyp003_pgtc.wav   (HYP-003 정본 7턴, 75초)
+# → scripts/stt_eval/audio/P1_hyp003_pgtc.wav   (HYP-003 초안 7턴, 75초)
 # → scripts/stt_eval/audio/D1_korean.wav        (실제 시나리오 7턴, 43초)
 # → scripts/stt_eval/audio/T1_ko_en_mixed.wav   (한·영 혼용 + PII 8턴, 63초)
 ```
 
-**P1이 정본입니다** — 8/24 비교뿐 아니라 통합 테스트·제출물·발표 라이브 입력까지 같은 파일을 씁니다 (4단계 재사용과 테스트 데이터 삭제 규칙은 `TEST_SCRIPTS.md`).
+**P1은 초안입니다** — 확정 용도는 8/24 STT 3종 비교 하나뿐이고, 통합 테스트·제출물·발표 입력으로 쓸지는 오너 판단입니다 (`TEST_SCRIPTS.md`).
 
 합성음은 배선 확인용입니다. **판정은 사람이 `scripts/stt_eval/TEST_SCRIPTS.md`의 대본을 2인이 읽어 녹음한 파일로** 하세요 (녹음 지침이 그 문서에 있습니다).
 
@@ -47,7 +47,7 @@ npm run dev        # http://localhost:3002
 ## 4. 쓰는 순서
 
 1. **공통 조건**에서 정합니다
-   - 채점 대본: `P1`(HYP-003 정본, 기본값) · `D1`(실제 시나리오) · `T1`(한·영 혼용) — 재생할 WAV와 맞춥니다
+   - 채점 대본: `P1`(HYP-003 초안, 기본값) · `D1`(실제 시나리오) · `T1`(한·영 혼용) — 재생할 WAV와 맞춥니다
    - 언어 설정 / 화자 분리 / 부스팅 on-off
    - **WAV 파일**을 고릅니다 (3탭에 같은 파일을 흘려야 공정한 비교)
 2. 탭을 고르고 **API 키**를 붙여넣습니다 (한 번 넣으면 브라우저에 저장됩니다)

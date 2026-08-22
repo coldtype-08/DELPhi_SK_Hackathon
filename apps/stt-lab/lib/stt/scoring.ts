@@ -5,7 +5,7 @@
  * 모든 evidence 오프셋의 기준이므로(docs/02 §1) 되돌릴 수 없다.
  *
  * 대본 3종:
- *   P1 — HYP-003(PGTC) 정본 7턴. 제출·발표까지 같은 파일을 쓴다 (scripts/stt_eval/P1_reference.txt)
+ *   P1 — HYP-003(PGTC) 초안 7턴. TTS로 만들어 STT 3종 비교에 쓴다 (scripts/stt_eval/P1_reference.txt)
  *   D1 — apps/field/lib/capture-demo.ts 의 SCRIPT 7턴 그대로 (실제 시나리오)
  *   T1 — D1 + 영어 용어 혼용 + PII (코드스위칭·마스킹 테스트)
  */
@@ -46,7 +46,7 @@ const T1_ONLY: TokenSpec[] = [
   { label: "010-4132-7789", category: "PII", patterns: ["01041327789", "010-4132-7789"], why: "masked_spans 정규식" },
 ];
 
-/** P1 전용 — HYP-003(PGTC) 정본. 이 대본이 발표 라이브 입력이므로 ★가 곧 시연 리스크다. */
+/** P1 전용 — HYP-003(PGTC) 초안. ★는 틀리면 HYP-003 서사가 깨지는 항목이다. */
 const P1_TOKENS: TokenSpec[] = [
   { label: "전신 강직-간대발작", category: "환자군 ★", critical: true, patterns: ["전신강직-간대발작", "전신강직간대발작"], why: "GENERALIZED_PGTC — 놓치면 HYP-003 신호 소멸" },
   { label: "전신발작", category: "환자군", critical: true, patterns: ["전신발작"], why: "GENERALIZED_PGTC 재확인 (2회 등장)" },

@@ -1,9 +1,8 @@
 """TEST_SCRIPTS.md의 대본 → WAV (오너: 인혁).
 
-P1(HYP-003 정본)은 네 곳에서 같은 파일을 재사용한다 — ① 8/24 STT 3종 비교
-② 시스템 완성 후 통합 테스트(끝나면 적재 데이터 삭제) ③ 제출물 첨부 음성
-④ 경연 발표 라이브 입력. 그래서 P1은 사람이 읽어 녹음한 파일이 정본이고,
-여기서 만드는 WAV는 그 전까지의 배선·동작 확인용이다.
+P1(HYP-003)은 **초안**이다 — 확정 용도는 ① 8/24 STT 3종 비교 하나뿐이고,
+② 통합 테스트 ③ 제출물 ④ 발표 라이브 입력으로 쓸지는 오너 판단이다
+(시연 대본=소정 `docs/06` §85, 데모 각본·제출물=건태 CLAUDE.md §60).
 
 espeak-ng를 쓴다 — 무료·오프라인(설치 후 외부 호출 없음)·라이선스 제약 없음.
 edge-tts(Microsoft)·piper(모델이 huggingface.co)는 사내망/프록시에서 막혀 채택하지 못했다.
@@ -28,7 +27,7 @@ from pathlib import Path
 OUT = Path(__file__).resolve().parent / "audio"
 OUT.mkdir(exist_ok=True)
 
-P1 = [  # HYP-003(PGTC) 정본 7턴 — scripts/stt_eval/P1_reference.txt 와 문장이 같아야 한다
+P1 = [  # HYP-003(PGTC) 초안 7턴 — scripts/stt_eval/P1_reference.txt 와 문장이 같아야 한다
     ("MSL", "안녕하세요 선생님, 외래 끝나고 잠시 괜찮으세요?"),
     ("HCP", "네, 오늘은 좀 일찍 끝났어요. 앉으세요."),
     ("MSL", "요즘 난치성 환자분들 중에 특히 손 쓰기 어려운 케이스가 있으세요?"),
