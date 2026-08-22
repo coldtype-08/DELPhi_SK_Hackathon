@@ -1,12 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: January 14, 2022   |   MSL: Dana Cho
-HCP: Lukas Tavernier, MD, Vantage Park Regional Epilepsy Program, Boise, ID (RSM)
+HCP: Darius Kirkpatrick, MD, Ironwood Neurology Associates, Akron, OH (RSM)
 
-A compressed visit by the scheduling desk; the schedule was tight.
+This practice is still building familiarity with teh product and had no clinical points to raise.
 
-Formulary placement was the only product-adjacent topic, and only in general terms.
+Nothing actionable this visit. Safety items asked about adn confirmed none.
 
-Most of the discussion was about the referral intake process, which is still being sorted out.
+Described how newly referred patients is triaged now compared wtih before.
 
-Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+Benefit verification is teh step that most often delays a start here.
+
+Referenced a session summary from a colleague in passing.

@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: September 20, 2021   |   MSL: Rachel Suh
-HCP: Imani Okafor, MD, Smoky Ridge Medical Center, Knoxville, TN (RSM)
+HCP: Selin Danforth, MD, Willowmere Neuroscience Center, Bakersfield, CA (RSM)
 
-A clipped visit in the workroom; the schedule was tight.
+Titration habits came up in general terms; no specifics were discussed and none were offered.
 
-Formulary placement was the only product-adjacent topic, and only in general terms.
+Compared notes on which sessions were worth the time.
 
-The referral queue looks better than last year since the summer, which shapes how much time there is for anything else.
+Closed there — no product discussion.
+
+The appeals process varies by payer, which came up as a general frustration.

@@ -5,4 +5,6 @@
 - LLM 호출은 `app/llm.py` 단일 래퍼만 (모델·프롬프트 버전·스키마·parser·외부시점을 `llm_runs`에 기록 — docs/01 §7). 프롬프트는 `app/prompts/*.md` [도메인 오너: 건태 — 수정 시 `[cross]` 태그].
 - 수치는 SQL만 계산(절대 규칙 #1), **ANSI SQL만** 사용(Snowflake 이관 대비 — docs/01 §2), 집계는 APPROVED만(#3), AE는 safety 경로 분리(#6).
 - 상태 머신·자동 생성 임계값·Action Item 흐름은 `docs/01 §3`. Contract는 `app/contract/*.yaml` — 실행 후 변경은 SCP 경로만(#4).
-- 지금 상태는 스캐폴딩 stub — 교체 순서는 `docs/00 §3` 주차별 일정, 오늘 칸부터.
+- **Sense 추출은 08/22부터 실물이다** (`app/llm.py` 실제 호출 · `app/sense.py` 파이프라인 · `POST /documents/{id}/extract`). LLM 응답은 `data/llm_cache/`에 저장하고 **그 폴더를 커밋한다** — 심사위원 환경은 키·네트워크 없이 이 캐시로 재현된다. `DEMO_OFFLINE=1`이면 캐시 미적중 시 조용히 넘어가지 않고 실패한다.
+- 코퍼스 전체 추출: `uv run --project backend python scripts/extract_corpus.py`. 테스트: `uv run --project backend --with pytest python -m pytest backend/tests -q` (LLM 없이 결정론 부분만 검증).
+- Screen·Board는 아직 stub — 교체 순서는 `docs/00 §3` 주차별 일정, 오늘 칸부터.

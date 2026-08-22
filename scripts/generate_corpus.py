@@ -363,7 +363,8 @@ def assert_scenario(docs):
 
     assert len(docs) == 320, f"문서 수 {len(docs)} != 320"
     assert 1000 <= len(units) <= 1200, f"인사이트 단위 {len(units)} 범위 밖"
-    # 임계값(반복 ≥5 ∧ 독립 HCP ≥3, UNMET_NEED·TREATMENT_BARRIER)을 넘는 조합이 정확히 4개여야 한다.
+    # 임계값(반복 ≥5 ∧ 독립 HCP ≥3, UNMET_NEED·TREATMENT_BARRIER)을 넘는 조합이 정확히 4개,
+    # 그리고 임계에 1건 모자란 조합이 정확히 1개(S9 가임기 여성)여야 한다 — docs/03 §2.
     # UNSPECIFIED 환자군은 가설 생성 대상에서 제외된다 (docs/01 §3) — S3(post-stroke)가 여기 해당.
     combos = {}
     for d, b in units:
@@ -386,6 +387,16 @@ def assert_scenario(docs):
     expect = sorted([("PEDIATRIC_TRANSITION", "UNMET_NEED"), ("ELDERLY_65_PLUS", "TREATMENT_BARRIER"),
                      ("GENERALIZED_PGTC", "UNMET_NEED"), ("LGS", "UNMET_NEED")])
     assert crossed == expect, f"임계 통과 조합 불일치: {crossed}"
+
+    # 임계 −1: 가임기 여성 × UNMET_NEED — 독립 HCP는 ≥3을 채우고 반복만 1건 모자라야 한다.
+    # 가설이 되지 못한 후보가 화면에 남는 장면(docs/03 §2)이 이 한 건에 걸려 있으므로 값까지 고정한다.
+    near = combos.get(("FEMALE_CHILDBEARING", "UNMET_NEED"))
+    assert near, "임계 −1 신호(FEMALE_CHILDBEARING×UNMET_NEED)가 코퍼스에 없다"
+    assert near["n"] == 4 and len(near["hcps"]) == 3, \
+        f"임계 −1 신호 분포 불일치: 반복 {near['n']}건(=4) / 독립 HCP {len(near['hcps'])}인(=3)"
+    nearly = sorted(k for k, v in combos.items()
+                    if k not in expect and v["n"] >= 4 and len(v["hcps"]) >= 3)
+    assert nearly == [("FEMALE_CHILDBEARING", "UNMET_NEED")], f"임계 근접 조합 불일치: {nearly}"
 
     # 문서 내 HCP 중복 금지 (헤딩 파싱 안정성)
     for d in docs:
@@ -420,6 +431,8 @@ def assert_scenario(docs):
         "by_type": st_count,
         "signals": {k: {"n": v[0], "hcp": v[1], "regions": v[2]} for k, v in got.items()},
         "hypotheses_crossed": [f"{a}×{b}" for a, b in crossed],
+        "near_threshold": {f"{a}×{b}": {"n": near["n"], "hcp": len(near["hcps"])}
+                           for a, b in [("FEMALE_CHILDBEARING", "UNMET_NEED")]},
         "noise_units": noise,
         "docx": sum(1 for d in docs if "DOCX" in d["formats"]),
         "pdf": sum(1 for d in docs if "PDF" in d["formats"]),

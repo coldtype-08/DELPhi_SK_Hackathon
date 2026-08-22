@@ -5,87 +5,87 @@ Date: October 13, 2024   |   From: Sam Becker, Sam Becker
 
 FIELD MEDICAL INSIGHTS
 
-Arvind Corliss, MD, Bluestem Comprehensive Epilepsy Clinic, Lakeland, FL (RSM)
-> An unhurried convo in workroom, mostly logistics.
-> Described how the surgical workup list is triaged now compared with before.
-> Asked whether I would be at the meeting later this year.
-
-Caleb Munson, MD, Cedar Ridge Medical Group, Springfield, IL (AR)
-> Caught an unexpectedly long window in shared office between pts.
-> The composition of the surgical workup list has shifted over the last year or two.
-> The practice lost one of the nurse practitioners and has not backfilled, so routine f/u slots looks better than last year.
-> Titration scheduling is handled by nursing staff, which the practice finds workable.
-
-Ulrike Oakhurst, MD, Lakeshore Neurological Care Center, Provo, UT (RSM)
-> No materials requested this time. Asked about safety and confirmed nothing to report.
-> Described how the refractory group is triaged now compared with before.
-> Noted that formulary questions has improved somewhat and that this is not specific to any one product.
-> The travel schedule this year came up, and little else.
-
-Ilse Norrington, MD, Ironwood Neurology Associates, Spokane, WA (RSM)
-> A half-hour visit between clinic blocks; schedule was tight.
-> The prior-authorization workflow went live without much warning, and that took up the first part of the conversation.
-> Talked through newly referred pts in general terms, without any specific case.
-> Benefit verification is the step that most often delays a start here.
-
-Josefina Abernathy, MD, Riverstone Comprehensive Epilepsy Clinic, Hartford, CT (RSM)
-> Caught a compressed window between clinic blocks between pts.
-> Closed there — nothing actionable this visit.
-> Described how the surgical workup list is triaged now compared with before.
-> Referral patterns into this clinic have changed, and older half of panel is a bigger share than it was.
-> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
-
-Alastair Harkness, MD, Quarry Hill Epilepsy Center, Scranton, PA (RSM)
-> Caught a fragmented window in workroom between pts.
-> The composition of pediatric-to-adult transfers has shifted over last year or two.
-> Closed there — nothing actionable this visit.
-> Titration habits came up in general terms; no specifics were discussed and none were offered.
-
-Lachlan Stanhope, MD, Palmetto Neurology Institute, Syracuse, NY (AR)
-> A half-hour meeting in corridor, first one this quarter.
-> Titration habits came up in general terms; no specifics were discussed and none were offered.
+Gaspar Ostrander, MD, Riverstone Comprehensive Epilepsy Clinic, Burlington, VT (RSM)
 > Asked about my travel schedule, since visits keep landing on the busiest clinic days.
-> Asked whether I would be at the meeting later this year.
+> Described how refractory group is triaged now compared with before.
+> Onboarding epilepsy fellow is current preoccupation here.
+> Nothing actionable this visit this time. Asked about safety and confirmed nothing to report.
+
+Zubin Abernathy, MD, Cedar Ridge Regional Epilepsy Program, Little Rock, AR (RSM)
+> Stopped by by scheduling desk for a fragmented convo.
+> Coverage paperwork is handled by one person here, which came up as general frustration.
+> Onboarding a rotating resident is current preoccupation here.
+
+Felicity Bellweather, MD, Sandhill Neuroscience Center, Tacoma, WA (RSM)
+> No product discussion this time. Asked about safety and confirmed nothing to report.
+> Onboarding a rotating resident is current preoccupation here.
+> Talked through older half of panel in general terms, without any specific case.
+> Asked whether I would be at meeting later this year.
+
+Eloise Underhill, MD, Northgate Neurology Partners, Fort Wayne, IN (RSM)
+> A half-hour convo over a quick coffee, mostly logistics.
+> Benefit verification is step that most often delays a start here.
+> Talked through teh surgical workup list in general terms, without any specific case.
+> The composition of newly referred pts has shifted over teh last year or two.
+
+Jaromir Steinmetz, MD, Windrow Neuroscience Center, Lakeland, FL (AR)
+> A brief convo in the back office, mostly logistics.
+> Spent some time on newly referred pts and how workup decisions get sequenced.
+> Closed there — no materials requested.
 
 Anouk Pemberton, MD, Windrow Neuroscience Center, Missoula, MT (RSM)
-> An unhurried conversation at the nurses' station, mostly logistics.
-> Titration scheduling is handled by nursing staff, which the practice finds workable.
-> Asked whether I had seen review that circulated on the service; I had not, and offered nothing in return.
-> The composition of surgical workup list has shifted over last year or two.
-> The practice lost one of nurse practitioners and has not backfilled, so clinic throughput keeps slipping.
-
-Imani Lindenmuth, MD, Sable Creek Medical Group, Lexington, KY (RSM)
+> A rushed convo at the nurses' station, mostly logistics.
+> The practice lost front-desk coordinator and has not backfilled, so clinic throughput looks better than last year.
+> Referenced guideline update discussed at journal club in passing.
 > Described preference for slower titration in general, unrelated to any particular pt.
-> Clinic throughput keeps slipping since the summer, which shapes how much time there is for anything else.
-> Agreed to reconnect at a call later this month; nothing that needed follow-up.
+> Referral patterns into this clinic have changed, and long-standing pts is a bigger share than it was.
 
-Valentina Danforth, MD, Beacon Hill Neurology Associates, Santa Fe, NM (RSM)
-> A productive convo in the corridor, mostly logistics.
-> Onboarding a rotating resident is the current preoccupation here.
-> Described how newly referred pts is triaged now compared with before.
+Kiara Vandergriff, MD, Beacon Hill Neurology Associates, Providence, RI (RSM)
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Referral patterns into this clinic have changed, and refractory group is a bigger share than it was.
+> Mostly small talk about the program and the venue.
+> Described how the older half of the panel is triaged now compared with before.
 
-Yannick Nakagawa, MD, Granite Bay Epilepsy Center, Toledo, OH (RSM)
-> Stopped by between clinic blocks for an unhurried conversation.
-> Asked whether I would be at meeting later this year.
-> No product discussion this time. Asked about safety and confirmed nothing to report.
+Rohan Ivanetti, MD, Palmetto Neurology Institute, Buffalo, NY (RSM)
+> A twenty-minute convo at end of clinic list, mostly logistics.
+> Talked through refractory group in general terms, without any specific case.
+> The composition of long-standing pts has shifted over last year or two.
+
+Rosalind Ivanetti, MD, Saltmarsh Neurological Care Center, Fort Collins, CO (RSM)
+> A half-hour meeting in the shared office, first one this quarter.
+> Most of discussion was about phone triage line, which changed again last month.
+> Agreed to reconnect at f/u appointment; no specific request.
+> Referral patterns into this clinic have changed, and the older half of the panel is a bigger share than it was.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Esperanza Jarreau, MD, Vantage Park Regional Epilepsy Program, Hartford, CT (RSM)
+> A brief visit over quick coffee; the schedule was tight.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Most of the discussion was about the pt portal, which is being piloted this quarter.
+> Talked through older half of panel in general terms, without any specific case.
 > Referenced a case series someone forwarded in passing.
 
-Silvio Barrowman, MD, Beacon Hill Neurology Associates, Providence, RI (AR)
-> Mentioned session summary from colleague but did not raise any specific finding.
-> Onboarding front-desk coordinator is current preoccupation here.
-> Described a preference for slower titration in general, unrelated to any particular pt.
-> Talked through long-standing pts in general terms, without any specific case.
+Robert Enloe, MD, High Desert Neurology, Boise, ID (AR)
+> Stopped by at the nurses' station for an unhurried conversation.
 > Mostly small talk about the program and the venue.
+> Closed there — nothing actionable this visit.
+> The prior-authorization workflow is being piloted this quarter, and that took up the first part of the conversation.
+> Mentioned a case series someone forwarded but did not raise any specific finding.
 
-Mei-Lin Tsang, MD, Bayview Epilepsy Associates, Oakland, CA (RSM)
-> A rushed meeting in the reading room, first one this quarter.
-> Agreed to reconnect at the following quarter; nothing actionable this visit.
-> Talked through the older half of the panel in general terms, without any specific case.
-> Described a preference for slower titration in general, unrelated to any particular patient.
-> Onboarding the epilepsy fellow is the current preoccupation here.
+Dagmar Nashwood, MD, Harborlight Epilepsy Center, Portland, ME (RSM)
+> Stopped by between clinic blocks for half-hour convo.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> Spent some time on newly referred pts and how workup decisions get sequenced.
+> The practice lost epilepsy fellow and has not backfilled, so new-pt backlog has stretched out.
 
-Nikolai Barrowman, MD, Bluestem Comprehensive Epilepsy Clinic, Springfield, MO (AR)
-> Talked through the surgical workup list in general terms, without any specific case.
-> No specific request. Safety items asked about and confirmed none.
-> Referral patterns into this clinic have changed, and refractory group is bigger share than it was.
+Mateo Ivanetti, MD, Bayview Health Neurology, Burlington, VT (RSM)
+> Agreed to reconnect at the following quarter; no product discussion.
+> The practice lost one of nurse practitioners and has not backfilled, so new-pt backlog is slowly recovering.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Talked through the refractory group in general terms, without any specific case.
+
+Saoirse Inverness, MD, Granite Bay Epilepsy Center, Chattanooga, TN (RSM)
+> A twenty-minute visit in the back office; the schedule was tight.
+> The appeals process is handled by one person here, which came up as a general frustration.
+> Left it at that, with following quarter to be scheduled.
 

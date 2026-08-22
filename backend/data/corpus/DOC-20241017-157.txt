@@ -1,10 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: October 17, 2024   |   MSL: Sunny Okafor
-HCP: Gaspar Nashwood, MD, Copperfield Neurology Institute, Omaha, NE (RSM)
+HCP: Imani Lindenmuth, MD, Sable Creek Medical Group, Lexington, KY (RSM)
 
-Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+Stopped by at the end of the clinic list for a half-hour conversation.
 
-Talked through the refractory group in general terms, without any specific case.
+Noted that the appeals process takes longer than the clinical decision and that this is not specific to any one product.
 
-The new charting templates is still being sorted out, and that took up the first part of the conversation.
+Compared notes on which sessions were worth the time.
+
+Described how the older half of the panel is triaged now compared with before.
+
+Closed there — nothing that needed follow-up.

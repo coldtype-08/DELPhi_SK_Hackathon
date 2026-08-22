@@ -1,10 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: December 23, 2024   |   MSL: Dana Cho
-HCP: Valentina Calderwood, MD, Foxglove Health Neurology, Missoula, MT (RSM)
+HCP: Cormac Grierson, MD, Palmetto Neurology Institute, Buffalo, NY (RSM)
 
-Stopped by at the end of the clinic list for a twenty-minute conversation.
+Referenced a guideline update discussed at journal club in passing.
 
-Onboarding one of the nurse practitioners is the current preoccupation here.
+Most of the discussion was about the scheduling system, which has not settled.
 
-Formulary questions remains the slowest step, which came up as a general frustration.
+Nothing actionable this visit this time. Asked about safety and confirmed nothing to report.

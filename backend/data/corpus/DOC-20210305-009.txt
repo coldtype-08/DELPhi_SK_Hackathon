@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   March 5, 2021   |   Tom Alvarez
-HCP: Hamish Marchetti, MD, Riverstone Comprehensive Epilepsy Clinic, Hartford, CT (RSM)
+HCP: Renee Calloway, MD, Palmetto Neurology Associates, Charleston, SC (RSM)
 
-Caught a fragmented window over a quick coffee between pts. Nothing that needed follow-up. Safety items asked about and confirmed none.
+A fragmented meeting in corridor, first one this quarter. Benefit verification is step that most often delays a start here.

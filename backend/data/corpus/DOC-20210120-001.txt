@@ -1,12 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: January 20, 2021   |   MSL: Tom Alvarez
-HCP: Rasmus Galbraith, MD, Marbury Neurological Care Center, Trenton, NJ (RSM)
+HCP: Lukas Eastmond, MD, Thornfield Regional Epilepsy Program, Savannah, GA (RSM)
 
-Closed there — nothing that needed follow-up.
+A productive conversation in workroom, mostly logistics.
 
-The travel schedule this year came up, and little else.
+Mentioned a review that circulated on service but did not raise any specific finding.
 
 Described the practice as early in its experience here, with nothing to report yet.
 
-Benefit verification is step that most often delays start here.
+The practice lost clinic pharmacist and has not backfilled, so new-pt backlog has stretched out.

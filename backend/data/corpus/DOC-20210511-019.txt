@@ -1,6 +1,6 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Call Memo   |   May 11, 2021   |   Tom Alvarez
-HCP: Pallavi Vasquez-Lund, MD, Northbrook Neurology Institute, Fayetteville, NC (RSM)
+HCP: Eamon Quintrell, MD, Fox Hollow Neurology Partners, Des Moines, IA (RSM)
 
-Caught an unhurried window in teh corridor between patients. Routine follow-up slots keeps slipping since summer, which shapes how much time there is for anything else.
+Mostly small talk about the program and the venue. Mentioned a guideline update discussed at journal club but did not raise any specific finding. Routine follow-up slots looks better than last year since the summer, which shapes how much time there is for anything else.

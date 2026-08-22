@@ -1,10 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: September 17, 2024   |   MSL: Rachel Suh
-HCP: Rasmus Ashgrove, MD, Northgate Neurology Partners, Waco, TX (RSM)
+HCP: Rasmus Cavanaugh, MD, Bayview Health Neurology, Boise, ID (RSM)
 
 Monitoring intervals during titration are set by clinic routine here rather than by protocol.
 
-Referral patterns into this clinic have changed, and the refractory group is a bigger share than it was.
+Onboarding the clinic pharmacist is the current preoccupation here.
 
-Formulary questions varies by payer, which came up as a general frustration.
+Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.

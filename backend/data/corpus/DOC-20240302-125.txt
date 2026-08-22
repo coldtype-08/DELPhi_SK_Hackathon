@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: March 2, 2024   |   MSL: Nadia Belhadj
-HCP: Camila Dunmore, MD, Ironwood Neurology Associates, Lexington, KY (RSM)
+HCP: Hamish Marchetti, MD, Riverstone Comprehensive Epilepsy Clinic, Hartford, CT (RSM)
 
-A clipped conversation in the shared office, mostly logistics.
+Titration habits came up in general terms; no specifics were discussed and none were offered.
 
-The composition of long-standing patients has shifted over the last year or two.
+Referenced a review that circulated on the service in passing.
 
-The prior-authorization workflow went live without much warning, and that took up the first part of the conversation.
+The composition of the refractory group has shifted over the last year or two.
+
+Nothing that needed follow-up this time. Asked about safety and confirmed nothing to report.

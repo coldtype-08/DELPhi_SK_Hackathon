@@ -1,12 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: March 14, 2023   |   MSL: Yuki Tanabe
-HCP: Mairead Rusnak, MD, Foxglove Health Neurology, Portland, ME (AR)
+HCP: Cormac Grierson, MD, Palmetto Neurology Institute, Buffalo, NY (RSM)
 
-An unexpectedly long conversation at the nurses' station, mostly logistics.
+Mostly small talk about the program and the venue.
 
-Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return.
+The patient portal is being piloted this quarter, and that took up the first part of the conversation.
+
+Closed there — nothing that needed follow-up.
 
 Monitoring intervals during titration are set by clinic routine here rather than by protocol.
-
-Agreed to reconnect at the next visit; no materials requested.

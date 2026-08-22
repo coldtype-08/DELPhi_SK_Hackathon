@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: October 2, 2023   |   MSL: Nadia Belhadj
-HCP: Xiomara Wetherby, MD, Northbrook Neurology Institute, Fort Collins, CO (RSM)
+HCP: Hadley Wycliffe, MD, Northbrook Neurology Institute, Peoria, IL (RSM)
 
-A compressed visit over a quick coffee; the schedule was tight.
+Stopped by in the corridor for a fragmented conversation.
 
-The composition of the pediatric-to-adult transfers has shifted over the last year or two.
+Mentioned a session summary from a colleague but did not raise any specific finding.
 
-Most of the discussion was about the phone triage line, which is being piloted this quarter.
+Clinic throughput has stretched out since the summer, which shapes how much time there is for anything else.
+
+Described how the older half of the panel is triaged now compared with before.

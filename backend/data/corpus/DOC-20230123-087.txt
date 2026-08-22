@@ -1,14 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: January 23, 2023   |   MSL: Ravi Chandrasek
-HCP: Fabian Lammermoor, MD, Juniper Flats Neurology Partners, Charleston, SC (RSM)
+HCP: Camila Ostrander, MD, Silver Creek Medical Group, Madison, WI (RSM)
 
-A full conversation over a quick coffee, mostly logistics.
+Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced.
 
-Talked through the pediatric-to-adult transfers in general terms, without any specific case.
+The travel schedule this year came up, and little else.
 
-Compared notes on which sessions were worth the time.
+The practice lost a front-desk coordinator and has not backfilled, so clinic throughput is slowly recovering.
 
-Onboarding a rotating resident is the current preoccupation here.
+Described a preference for slower titration in general, unrelated to any particular patient.
 
-Benefit verification is the step that most often delays a start here.
+Referral patterns into this clinic have changed, and long-standing patients is a bigger share than it was.

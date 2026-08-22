@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: August 14, 2024   |   MSL: Colin Ferreira
-HCP: Darius Eastmond, MD, Kestrel Comprehensive Epilepsy Clinic, Worcester, MA (RSM)
+HCP: Nadine Sandoval-Reyes, MD, Windrow Neuroscience Center, Springfield, MO (RSM)
 
-An unexpectedly long meeting in reading room, first one this quarter.
+A productive convo at end of clinic list, mostly logistics.
 
-Coverage paperwork remains the slowest step, which came up as general frustration.
+Referenced case series someone forwarded in passing.
 
-Most of the discussion was about the scheduling system, which is still being sorted out.
+The composition of the older half of the panel has shifted over the last year or two.
+
+Spent some time on the surgical workup list and how workup decisions get sequenced.

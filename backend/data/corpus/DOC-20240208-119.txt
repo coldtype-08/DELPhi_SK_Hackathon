@@ -1,10 +1,12 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: February 8, 2024   |   MSL: Rachel Suh
-HCP: Mairead Sandoval-Reyes, MD, Willowmere Neuroscience Center, Chattanooga, TN (RSM)
+HCP: Lukas Lammermoor, MD, Saltmarsh Neurological Care Center, Peoria, IL (AR)
 
-Stopped by in the workroom for a compressed conversation.
+Caught a productive window over a quick coffee between patients.
 
-Titration scheduling is handled by nursing staff, which the practice finds workable.
+Referral patterns into this clinic have changed, and the older half of the panel is a bigger share than it was.
 
-Benefit verification is the step that most often delays a start here.
+Nothing that needed follow-up. Safety items asked about and confirmed none.
+
+Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.

@@ -1,10 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: March 14, 2025   |   MSL: Dana Cho
-HCP: Zubin Abernathy, MD, Cedar Ridge Regional Epilepsy Program, Little Rock, AR (RSM)
+HCP: Mairead Corliss, MD, Willowmere Neuroscience Center, Hartford, CT (RSM)
 
-Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+Nothing actionable this visit. Safety items asked about and confirmed none.
 
-Noted that formulary questions varies by payer and that this is not specific to any one product.
+Onboarding a rotating resident is the current preoccupation here.
 
-Talked through the surgical workup list in general terms, without any specific case.
+Noted that benefit checks varies by payer and that this is not specific to any one product.

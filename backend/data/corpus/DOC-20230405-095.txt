@@ -1,14 +1,10 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: April 5, 2023   |   MSL: Tom Alvarez
-HCP: Wilhelmina Eastmond, MD, Fox Hollow Neurology Partners, Tucson, AZ (RSM)
+HCP: Rosalind Voskuijlen, MD, Willowmere Neuroscience Center, Grand Rapids, MI (AR)
 
-Stopped by at nurses' station for fragmented conversation.
+A clipped visit at nurses' station; schedule was tight.
 
-Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+Titration scheduling is handled by nursing staff, which practice finds workable.
 
-Titration habits came up in general terms; no specifics were discussed and none were offered.
-
-The referral intake process is still being sorted out, and that took up first part of conversation.
-
-Referral patterns into this clinic have changed, and the surgical workup list is bigger share than it was.
+Most of the discussion was about the prior-authorization workflow, which has not settled.

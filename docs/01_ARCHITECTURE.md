@@ -147,9 +147,16 @@ backend/app/
 | `/hypotheses` | 가설 보드 | 가설 카드 그리드 (상태별), Not Board-ready 별도 표시 |
 | `/hypotheses/[id]` | 가설 상세 | **5단계 구분 카드**, 지지/반대/공백 근거 리스트(원문·출처 링크), 에이전트 활동 시각화, Board 회의록, 승인·보류·기각 — **승인 시 Board 제안 중 채택할 Action Item을 확정(편집 가능)**, 이후 액션별 상태·참조 수집 카운트 표시 |
 | `/contract` | Data Contract | 현재 버전 스키마 뷰, SCP 목록·승인, 버전 diff |
-| `/contract/provenance` | Contract 유래 | 부트스트랩 판정 기록의 결정론적 렌더링(LLM 없음): 반복 매트릭스 → 원문 인용·판정 → 스키마·DB 반영 → 한 문장 추적. 데이터 원천: DECISIONS 08/19 + `docs/assets/bootstrap-ai-draft.md` (동기화 대상: `apps/console/lib/provenance.ts`) |
+| `/contract/provenance` | Contract 유래 **← 투어 ① · 심사위원 첫 화면 (08/22)** | 부트스트랩 판정 기록의 결정론적 렌더링(LLM 없음): 반복 매트릭스 → 원문 인용·판정 → 스키마·DB 반영 → 한 문장 추적. 데이터 원천: DECISIONS 08/19 + `docs/assets/bootstrap-ai-draft.md` (동기화 대상: `apps/console/lib/provenance.ts`) |
+| `/pipeline` | **처리 라인 — 에이전트 3종이 도는 것을 보는 화면 (08/22 신설)**. ① Contract 설계자가 스키마를 제안 → ② 발언 귀속자가 원석 한 파일을 의료진별로 가름(정답 대조 점수 포함) → ③ 인사이트 분석가가 스키마 항목으로 뽑음. 원문 위에 ②의 구간과 ③의 근거를 겹쳐 그린다. **버려진 건수를 같은 크기로 보여준다** — 막고 있다는 증거이므로 |
 | `/market` | 시장·경쟁 | 공개 출처만 쓰는 경쟁 환경 화면: 허가 연령 지도(openFDA 라벨), 경쟁사 청소년 시험 타임라인(CT.gov), 문헌 추이(PubMed), 모수(HIRA·CMS Part D 집계). **개인 식별 0건 · 예측선 금지 · FAERS 발생률 비교 금지** (DECISIONS 08/20). `external_refs` 테이블만 읽으므로(가설 연결 없음) COMMERCIAL 롤에도 열린다 — 강제 방식은 docs/02 §9.5 |
 | `/safety` | 안전성·차단 로그 | 분기된 AE 후보, Critic 차단 이력 |
+
+**투어 진입점은 `/contract/provenance`다 (08/22).** 홈 KPI로 시작하면 "대시보드 하나 더"로 읽힌다. 우리 차별점은 **스키마 자체를 AI가 초안 내고 사람이 확정했다**는 것이고, 그건 홈에서 상자 한 개로 축약되면 전달되지 않는다. 심사위원이 처음 여는 URL은 이 화면이고, 여기서 시작해 `/review` → Field → `/hypotheses` 순으로 간다 (`submission/2_결과물/README.md` §2 투어 ①~⑥).
+
+**Console 전 화면 상단에 처리 라인 스트립을 고정한다** — 원석 → 분석된 기록 → 신호(잠정/공식) → 가설을 한 줄로. 데이터가 `GET /aggregates/pipeline`(docs/04 §3), 룩은 `demo/processing-line.html`. 어느 화면에 있든 "지금 내가 파이프라인의 어디를 보고 있나"가 보이게 하는 장치다.
+
+**심사위원용 리셋 컨트롤** — 여러 명이 같은 배포본을 만지므로 Console 우상단에 "초기 상태로 되돌리기"를 둔다. 확인 모달 → `POST /system/reset`(docs/04 §8) → 완료 토스트. 자정 자동 리셋만으로는 앞사람이 승인해 둔 상태를 다음 사람이 그대로 받는다.
 
 ### Field (페이퍼 라이트, 모바일 우선 390px) — 소정
 | 라우트 | 화면 | 핵심 컴포넌트 |

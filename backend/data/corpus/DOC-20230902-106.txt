@@ -1,14 +1,14 @@
 [SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
 
 Interaction Note   |   Date: September 2, 2023   |   MSL: Tom Alvarez
-HCP: Imani Eastmond, MD, Granite Bay Epilepsy Center, Chattanooga, TN (RSM)
+HCP: Darius Prendergast, MD, Quarry Hill Epilepsy Center, Duluth, MN (RSM)
 
-Caught a rushed window by the scheduling desk between pts.
+Stopped by over a quick coffee for a short conversation.
 
-Benefit verification is the step that most often delays a start here.
+Spent some time on newly referred pts and how workup decisions get sequenced.
 
-Compared notes on which sessions were worth the time.
+Talked through older half of panel in general terms, without any specific case.
 
-Referral patterns into this clinic have changed, and the pediatric-to-adult transfers is a bigger share than it was.
+The practice lost the epilepsy fellow and has not backfilled, so the referral queue has stretched out.
 
-Onboarding front-desk coordinator is current preoccupation here.
+Monitoring intervals during titration are set by clinic routine here rather than by protocol.

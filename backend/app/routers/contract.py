@@ -7,7 +7,9 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from ..access import get_role
+from ..bootstrap import propose_contract
 from ..contract import load_active_contract
+from ..llm import LlmUnavailable
 from ..db import get_db
 from ..models import SchemaChangeProposal
 
@@ -54,3 +56,29 @@ def decide_proposal(proposal_id: int, role: str = Depends(get_role)):
     구현 규칙: 추가(additive)만 허용, v0.2 전환 안전 규칙 준수 (docs/02 §7.5)."""
     raise HTTPException(501, detail={"code": "NOT_IMPLEMENTED",
                                      "message_ko": "SCP 승인→버전 활성화는 stub — 8/30 [오너: 인혁]"})
+
+
+@router.post("/contract/propose")
+def propose_contract_route(
+    sampleSize: int = 12,
+    refresh: bool = False,
+    db: Session = Depends(get_db),
+    role: str = Depends(get_role),
+):
+    """Contract 부트스트랩 — 원석 표본을 읽고 **뽑을 항목 자체**를 AI가 제안한다 (08/22, 데모 ①).
+
+    활성 Contract는 변경되지 않는다 (절대 규칙 #4). 채택은 Data Steward 승인으로만.
+    각 제안 항목의 `observedInDocs`는 AI가 적은 값이 아니라 **서버가 검증된 인용으로 다시 센 값**이다.
+    """
+    if role not in ("DATA_STEWARD", "MEDICAL_AFFAIRS", "CLINICAL_STRATEGY"):
+        raise HTTPException(403, detail={
+            "code": "PURPOSE_SCOPE_VIOLATION",
+            "message_ko": f"{role} 롤은 Contract 제안을 실행할 수 없습니다."})
+    if not 3 <= sampleSize <= 40:
+        raise HTTPException(400, detail={
+            "code": "SAMPLE_SIZE_OUT_OF_RANGE",
+            "message_ko": "표본은 3~40건 사이여야 합니다."})
+    try:
+        return {"data": propose_contract(db, sample_size=sampleSize, force=refresh)}
+    except LlmUnavailable as e:
+        raise HTTPException(503, detail={"code": "LLM_UNAVAILABLE", "message_ko": str(e)})
