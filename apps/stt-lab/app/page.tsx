@@ -45,11 +45,14 @@ const DEFAULT_BOOST = [
   "전신 강직-간대발작", "PGTC", "generalized tonic-clonic", "전신발작",
   "레녹스-가스토 증후군", "LGS", "Lennox-Gastaut", "드롭발작", "drop attacks",
   "뇌졸중 후 뇌전증", "post-stroke epilepsy", "ClinicalTrials",
+  "2제", "학회",  // 08/22 실측 오인식: "이제 실패한"·"학교는" 으로 들림
 ].join(", ");
 
 type RunState = {
   status: "idle" | "connecting" | "running" | "done" | "error";
+  /** 확정(final) 세그먼트만 쌓인다 — 중간 결과는 interim 한 칸에서 교체된다 */
   segments: Segment[];
+  interim: Segment | null;
   raw: unknown[];
   error: string | null;
   firstTokenMs: number | null;
@@ -57,7 +60,7 @@ type RunState = {
 };
 
 const EMPTY: RunState = {
-  status: "idle", segments: [], raw: [], error: null, firstTokenMs: null, finalMs: null,
+  status: "idle", segments: [], interim: null, raw: [], error: null, firstTokenMs: null, finalMs: null,
 };
 
 type Settings = { apiKey: string; model: string; endpoint: string };
@@ -145,7 +148,12 @@ export default function Page() {
               firstSeen = true;
               patch(id, { firstTokenMs: Math.round(performance.now() - t0) });
             }
-            setRuns((prev) => ({ ...prev, [id]: { ...prev[id], segments: [...prev[id].segments, s] } }));
+            setRuns((prev) => ({
+              ...prev,
+              [id]: s.isFinal
+                ? { ...prev[id], segments: [...prev[id].segments, s], interim: null }
+                : { ...prev[id], interim: s },
+            }));
             if (s.isFinal) patch(id, { finalMs: Math.round(performance.now() - t0) });
           },
           onRaw: (j) => setRuns((prev) => ({ ...prev, [id]: { ...prev[id], raw: [...prev[id].raw.slice(-120), j] } })),
@@ -638,6 +646,17 @@ function ProviderPanel({
 }) {
   const finals = state.segments.filter((s) => s.isFinal);
   const transcript = finals.map((s) => s.text).join(" ");
+  // 같은 화자의 연속 확정 세그먼트를 한 문단으로 — 문장 단위로 읽히게 (채점은 transcript 기준이라 영향 없음)
+  const mergedFinals = useMemo(() => {
+    const out: Segment[] = [];
+    for (const seg of finals) {
+      const last = out[out.length - 1];
+      if (last && last.speaker === seg.speaker) last.text = `${last.text} ${seg.text}`.trim();
+      else out.push({ ...seg });
+    }
+    return out;
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- finals 는 state.segments 파생
+  }, [state.segments]);
   const rows = useMemo(() => scoreTranscript(transcript, script), [transcript, script]);
   const sum = scoreSummary(rows);
   const busy = state.status === "connecting" || state.status === "running";
@@ -704,15 +723,23 @@ function ProviderPanel({
             </span>
           </div>
           <div className="mt-3 max-h-80 space-y-1.5 overflow-y-auto">
-            {state.segments.length === 0 && <p className="text-xs text-muted">아직 없음</p>}
-            {state.segments.map((s, i) => (
-              <p key={i} className={`text-xs leading-relaxed ${s.isFinal ? "text-ink" : "text-muted italic"}`}>
+            {mergedFinals.length === 0 && !state.interim && <p className="text-xs text-muted">아직 없음</p>}
+            {mergedFinals.map((s, i) => (
+              <p key={i} className="text-xs leading-relaxed text-ink">
                 <span className="mr-1.5 rounded bg-sky-soft px-1.5 py-0.5 font-mono text-[10px] font-bold text-sky">
                   {s.speaker}
                 </span>
                 {s.text}
               </p>
             ))}
+            {state.interim && (
+              <p className="text-xs leading-relaxed text-muted italic">
+                <span className="mr-1.5 rounded bg-sky-soft px-1.5 py-0.5 font-mono text-[10px] font-bold text-sky">
+                  {state.interim.speaker}
+                </span>
+                {state.interim.text}
+              </p>
+            )}
           </div>
         </div>
 

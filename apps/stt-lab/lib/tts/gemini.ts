@@ -58,7 +58,8 @@ export const DEFAULT_STYLE_PROMPT =
   "또박또박 읽지 말고 평소 말하는 속도로, 진료실에서 대화하듯 자연스럽게 읽어라. " +
   "XCOPRI, lamotrigine, DDI, titration, ClinicalTrials 같은 영어 단어는 " +
   "영어권 발음이 아니라 한국인이 한국어 문장 안에서 말할 때의 발음으로 읽어라. " +
-  "전화번호는 숫자를 하나씩 또렷하게 읽어라.";
+  "전화번호는 숫자를 하나씩 또렷하게 읽어라. " +
+  "화자가 바뀔 때마다 1초쯤 멈춘 뒤 말하라.";
 
 /** 모델 이름을 추측하지 않는다 — 벤더에서 목록을 받아온다. */
 export async function listTtsModels(apiKey: string): Promise<{ tts: string[]; all: string[] }> {
