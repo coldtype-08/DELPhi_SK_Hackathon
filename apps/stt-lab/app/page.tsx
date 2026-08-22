@@ -570,7 +570,8 @@ function LiveColumn({ label, state, script }: { label: string; state: RunState; 
     () => state.segments.filter((s) => s.isFinal).map((s) => s.text).join(" "),
     [state.segments],
   );
-  const sum = useMemo(() => scoreSummary(scoreTranscript(transcript, script)), [transcript, script]);
+  const rows = useMemo(() => scoreTranscript(transcript, script), [transcript, script]);
+  const sum = useMemo(() => scoreSummary(rows), [rows]);
   const bottomRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ block: "nearest" });
@@ -585,10 +586,7 @@ function LiveColumn({ label, state, script }: { label: string; state: RunState; 
           {state.firstTokenMs != null && <> · 첫 {state.firstTokenMs}ms</>}
         </span>
       </div>
-      <div className="mt-1 text-[10px] font-bold text-navy">
-        토큰 {sum.hit}/{sum.total} · 치명 {sum.criticalHit}/{sum.criticalTotal}
-      </div>
-      <div className="mt-2 h-56 space-y-1 overflow-y-auto rounded-lg bg-paper p-2">
+      <div className="mt-2 h-48 space-y-1 overflow-y-auto rounded-lg bg-paper p-2">
         {merged.length === 0 && !state.interim && <p className="text-[11px] text-muted">대기 중</p>}
         {merged.map((s, i) => (
           <p key={i} className="text-[11px] leading-relaxed text-ink">
@@ -604,6 +602,24 @@ function LiveColumn({ label, state, script }: { label: string; state: RunState; 
         )}
         <div ref={bottomRef} />
       </div>
+
+      {/* 전사 아래 토큰별 채점 — ●=잡음 ○=놓침, ★=치명. 요약 숫자는 보조로만 */}
+      <div className="mt-2 flex items-baseline justify-between">
+        <span className="text-[11px] font-bold text-navy">핵심 토큰 채점</span>
+        <span className="text-[10px] font-semibold text-muted">{sum.hit}/{sum.total} · ★ {sum.criticalHit}/{sum.criticalTotal}</span>
+      </div>
+      <div className="mt-1 max-h-44 overflow-y-auto">
+        {rows.map((r) => (
+          <div key={r.spec.label} className="flex items-center gap-1.5 border-b border-line/60 py-1 last:border-0">
+            <span className={`inline-block size-1.5 shrink-0 rounded-full ${r.hit ? "bg-green" : "bg-rust"}`} />
+            <span className={`truncate text-[11px] font-bold ${r.hit ? "text-ink" : "text-rust"}`} title={`${r.spec.category} · ${r.spec.why}`}>
+              {r.spec.label}
+            </span>
+            {r.spec.critical && <span className="shrink-0 text-[10px] text-orange-deep">★</span>}
+          </div>
+        ))}
+      </div>
+
       {state.error && <p className="mt-2 text-[10px] font-semibold text-rust">{state.error}</p>}
     </div>
   );
