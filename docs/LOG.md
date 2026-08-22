@@ -49,4 +49,6 @@
 
 - 08/21 건태(Claude 세션): **Contract v0.1 Steward 승인 + COMMERCIAL 개방 설계 확정 + 실행 루프 화면 신설** — ① v0.1 재확정 승인(이후 변경은 SCP만) ② COMMERCIAL×PUBLIC_EVIDENCE를 도메인 확장이 아니라 **`external_refs` 테이블 분리**로 강제(hypothesis_id 컬럼 자체가 없음 · screen_findings는 가설 게이트 · 회귀 테스트 1개 의무화, docs/02 §9.5 · 04 §4.5) ③ 가설 보드에 **실행 루프 4단계 재생 카드** — 승인→Action Item→Field 전달→참조 수집 +1을 클릭으로 관통, Field 폰 체크리스트와 같은 ACT-001을 가리킨다. COLLECTED는 FIELD_CHECKLIST 전용 전이임을 docs/01 §3에 명시(전문조직 검토가 현장 수집으로 집계되는 오류 차단) (다음: 소정 — openFDA 커넥터 → external_refs / 인혁 — actions 라우터·access.py COMMERCIAL 게이트)
 
+- 08/21 건태(Claude 세션): **docs/08 AS-IS/TO-BE를 실측·기획서 원문·외부 근거로 확정** — 병목을 "분석이 느리다"에서 **"쌓이는 것이 보이지 않는다"**로 재정의(후보 레이더의 존재 이유가 여기서 나온다), 실데이터 규모 반영(주 7~25명·연 700~3,900건·의사 110명 → 반복이 기본값 = 독립 HCP 임계의 근거), 외부 근거 확보(업계 설문 91%/65% · 문제·해법 서술 일치 · insight half-life 지표명), 기대효과는 기획서 §6-2 원문 4개 유지 + 의사결정 속도 5번째 추가, 확장 영역을 기획서 §6-1 목록으로 교체 (다음: submission/ 골격·WBS·일일 일지 자동화)
+
 ## Week 2 (8/28–9/4)
