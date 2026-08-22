@@ -127,6 +127,7 @@ DECISIONS 08/22 [인혁]에서 확정한 4개다. 순위는 그다음, **지연�
 
 | 후보 | 탈락 사유 |
 |---|---|
+| **Deepgram Flux** (`/v2/listen`, 턴 기반 신형) | **응답 스펙에 화자 필드가 없다** — 하는 것은 말 끝 감지(end-of-turn)이지 화자 식별이 아니다 (voice agent용). 모델도 `flux-general-en/multi` 뿐 (08/22 asyncapi 확인) |
 | Whisper 계열 (오픈 가중치, 자체 호스팅) | **실시간 스트리밍이 아니다** — 배치 전용. 화자분리도 pyannote 등을 따로 붙여야 한다 |
 | Whisper + pyannote 조합 | 화자분리를 후처리로 붙이는 구조라 **실시간이 성립하지 않는다** |
 | HuggingFace · fal · Groq · OpenRouter 등 aggregator | 배치 전용이거나 실시간 화자분리 미지원. 프록시에서 접근도 막힘 |
