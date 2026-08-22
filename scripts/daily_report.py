@@ -37,6 +37,7 @@ MEMBERS = {
 IDENTITIES = {
     "geontaepark@sk.com": "건태",
     "geontaebak@gmail.com": "건태",
+    "sojeong.yang@sk.com": "소정",
 }
 
 # Claude Code 세션 커밋은 author 가 Claude 로 찍혀 사람을 구분할 수 없다.
