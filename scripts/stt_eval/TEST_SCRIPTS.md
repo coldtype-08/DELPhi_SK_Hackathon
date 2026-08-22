@@ -3,6 +3,7 @@
 > **[합성 샘플]** 인물·기관·발언·번호는 모두 실재하지 않습니다. 실제 의료진 면담 기록에서 가져오거나
 > 변형한 내용은 한 건도 없습니다 (`docs/06` §5).
 
+- **서비스 3종 비교: `SERVICE_COMPARISON.md`** (Soniox·Deepgram·Gladia 차이와 확인 근거)
 - 선택 기준·후보: `docs/01` §8.5 · `docs/DECISIONS.md` 08/22
 - 랩: `apps/stt-lab` (포트 3002, 로컬 전용) · 음성 생성: `gen_test_audio.py`
 
