@@ -1,0 +1,28 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Epilepsy Society Annual Meeting (AES) 2022
+Meeting period: December 2022   |   Author: Priya Menon
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Xiomara Wetherby, MD (Northbrook Neurology Institute)
+A hallway conversation during the afternoon break. The appeals process has improved somewhat, which came up as a general frustration. Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Conversation — Leonie Underhill, MD (Juniper Flats Neurology Partners)
+We spoke standing near the exhibit aisles, briefly. Referenced a case series someone forwarded in passing. Spent some time on the surgical workup list and how workup decisions get sequenced. Mentioned a session summary from a colleague but did not raise any specific finding.
+
+Conversation — Felicity Bellweather, MD (Sandhill Neuroscience Center)
+Approached me rather than the other way around, which is worth noting. Mentioned a case series someone forwarded but did not raise any specific finding. No specific request. Safety items asked about and confirmed none.
+
+Conversation — Rosalind Wainwright, MD (Sable Creek Medical Group)
+We spoke standing near the exhibit aisles, briefly. Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return. Described the practice as early in its experience here, with nothing to report yet.
+
+Conversation — Grace Lindqvist, MD (Riverstone Medical Group)
+Approached me rather than the other way around, which is worth noting. Most of the discussion was about the patient portal, which is still being sorted out. Monitoring intervals during titration are set by clinic routine here rather than by protocol. Noted that coverage paperwork is handled by one person here and that this is not specific to any one product.
+
+Conversation — Delphine Rothsay, MD (Copperfield Neurology Institute)
+A hallway conversation during the afternoon break. Referenced a case series someone forwarded in passing. The practice lost two medical assistants and has not backfilled, so the referral queue is slowly recovering.
+
+Follow-ups have been logged in the interaction system.

@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   June 20, 2024   |   Sam Becker
+HCP: Cormac Grierson, MD, Palmetto Neurology Institute, Buffalo, NY (RSM)
+
+Caught fragmented window in the back office between pts. Titration habits came up in general terms; no specifics were discussed and none were offered.

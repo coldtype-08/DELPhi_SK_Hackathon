@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: December 26, 2023   |   MSL: Marcus Obeng
+HCP: Dagmar Harkness, MD, Bluestem Comprehensive Epilepsy Clinic, Savannah, GA (RSM)
+
+Stopped by at the nurses' station for short convo.
+
+The referral intake process went live without much warning, and that took up first part of conversation.
+
+The composition of long-standing pts has shifted over last year or two.
+
+Agreed to reconnect at next visit; no specific request.

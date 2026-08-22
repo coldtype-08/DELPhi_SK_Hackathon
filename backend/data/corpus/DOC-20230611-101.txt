@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: June 11, 2023   |   MSL: Priya Menon
+HCP: Viraj Ashgrove, MD, Ironwood Neurology Associates, Buffalo, NY (RSM)
+
+Caught a fragmented window over a quick coffee between patients.
+
+Referenced a case series someone forwarded in passing.
+
+The appeals process takes longer than the clinical decision, which came up as a general frustration.
+
+The composition of the older half of the panel has shifted over the last year or two.

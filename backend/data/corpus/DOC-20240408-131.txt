@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: April 8, 2024   |   MSL: Colin Ferreira
+HCP: Xiomara Ostrander, MD, Harborlight Epilepsy Center, Springfield, MO (RSM)
+
+A rushed visit in shared office; schedule was tight.
+
+Titration scheduling is handled by nursing staff, which practice finds workable.
+
+Mostly small talk about the program and the venue.

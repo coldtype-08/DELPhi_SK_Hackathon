@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: February 8, 2021   |   MSL: Priya Menon
+HCP: Eloise Cavanaugh, MD, Marbury Neurological Care Center, Trenton, NJ (RSM)
+
+Caught an unhurried window in the back office between patients.
+
+The scheduling system went live without much warning, and that took up the first part of the conversation.
+
+Compared notes on which sessions were worth the time.

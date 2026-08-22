@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: October 8, 2025   |   MSL: Sam Becker
+HCP: Anjali Zabriskie, MD, Harborlight Epilepsy Center, Missoula, MT (AR)
+
+Most of discussion was about prior-authorization workflow, which changed again last month.
+
+Reported two refractory adults who had failed several medications are now months into markedly fewer seizures.
+
+Referral patterns into this clinic have changed, and long-standing pts is a bigger share than it was.
+
+Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return.

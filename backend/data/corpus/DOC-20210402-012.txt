@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: April 2, 2021   |   MSL: Dana Cho
+HCP: Zubin Grierson, MD, Marbury Neurological Care Center, Tucson, AZ (RSM)
+
+A short conversation by the scheduling desk, mostly logistics.
+
+Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Referenced a guideline update discussed at journal club in passing.
+
+Nothing actionable this visit this time. Asked about safety and confirmed nothing to report.

@@ -1,0 +1,16 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: August 17, 2025   |   MSL: Nadia Belhadj
+HCP: Gaspar Nashwood, MD, Copperfield Neurology Institute, Omaha, NE (RSM)
+
+A brief meeting in the shared office, first one this quarter.
+
+Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+The practice lost the clinic pharmacist and has not backfilled, so the referral queue keeps slipping.
+
+No product discussion. Safety items asked about and confirmed none.
+
+Wants material the nursing staff could hand to families of older patients.
+
+Mentioned a case series someone forwarded but did not raise any specific finding.

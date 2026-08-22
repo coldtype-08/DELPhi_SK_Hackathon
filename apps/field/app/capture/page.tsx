@@ -8,6 +8,7 @@
 
 import { useEffect, useState } from "react";
 import { api, ApiError } from "@/lib/api";
+import LiveTranscript from "./live-transcript";
 
 type Option = { value: string; labelKo: string; labelScope?: string; isNew?: boolean };
 type Field =
@@ -66,6 +67,20 @@ export default function CapturePage() {
           <span className="text-muted">녹음·전사는 동의가 전제 — 동의 없으면 저장이 거부된다.</span>
         </span>
       </label>
+
+      {/* ①.5 실시간 전사 — 대본 재생 폴백 (동의 후에만 재생 가능) */}
+      {consent ? (
+        <LiveTranscript
+          onComplete={(rawText) => {
+            setText(rawText);
+            setNotice("전사가 입력란에 담겼습니다 — 아래 '구조화 후보 만들기'로 제출하세요.");
+          }}
+        />
+      ) : (
+        <p className="rounded-2xl border border-dashed border-line bg-card p-3 text-[11px] text-muted">
+          동의를 확인하면 전사 재생을 사용할 수 있습니다 — 동의 없는 녹음·전사는 시작되지 않습니다.
+        </p>
+      )}
 
       {/* ② 입력 — 음성 전사(Web Speech ko-KR)는 P1, 지금은 텍스트만 */}
       <div className="rounded-2xl border border-line bg-card p-4">

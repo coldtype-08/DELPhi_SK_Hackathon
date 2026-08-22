@@ -1,0 +1,99 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: May 14, 2025   |   From: Yuki Tanabe, Dana Cho
+
+FIELD MEDICAL INSIGHTS
+
+Rasmus Galbraith, MD, Marbury Neurological Care Center, Trenton, NJ (RSM)
+> Stopped by at the end of the clinic list for a clipped conversation.
+> Mentioned a session summary from a colleague but did not raise any specific finding.
+> Follow-up requested — material the nursing staff could hand to families of older patients.
+> Closed there — nothing that needed follow-up.
+
+Xiomara Wetherby, MD, Northbrook Neurology Institute, Fort Collins, CO (RSM)
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Mentioned a case series someone forwarded but did not raise any specific finding.
+> Left it at that, with the next visit to be scheduled.
+> Onboarding one of the nurse practitioners is the current preoccupation here.
+
+Mateo Zeitler, MD, Northbrook Neurology Institute, Fayetteville, NC (RSM)
+> A full conversation in the conference room, mostly logistics.
+> Also mentioned an adult patient describing persistent dizziness after the last titration step.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Asked whether I would be at the meeting later this year.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Rosalind Voskuijlen, MD, Willowmere Neuroscience Center, Grand Rapids, MI (AR)
+> A twenty-minute conversation at the nurses' station, mostly logistics.
+> Referenced a session summary from a colleague in passing.
+> Agreed to reconnect at a call later this month; no materials requested.
+> Asked whether I would be at the meeting later this year.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Nikolai Underhill, MD, Willowmere Neuroscience Center, Bakersfield, CA (RSM)
+> Routine follow-up slots looks better than last year since the summer, which shapes how much time there is for anything else.
+> The appeals process has improved somewhat, which came up as a general frustration.
+> Asked whether I would be at the meeting later this year.
+> Mentioned a review that circulated on the service but did not raise any specific finding.
+> Brought up an adult describing double vision on the current step.
+
+Yannick Nakagawa, MD, Granite Bay Epilepsy Center, Toledo, OH (RSM)
+> Caught an unexpectedly long window in the conference room between patients.
+> Referral patterns into this clinic have changed, and the pediatric-to-adult transfers is a bigger share than it was.
+> Left it at that, with a call later this month to be scheduled.
+> Mostly small talk about the program and the venue.
+> Spent some time on long-standing patients and how workup decisions get sequenced.
+
+Delphine Dunmore, MD, Windrow Neuroscience Center, Wichita, KS (AR)
+> Referenced a case series someone forwarded in passing.
+> Spent some time on newly referred patients and how workup decisions get sequenced.
+> The new charting templates changed again last month, and that took up the first part of the conversation.
+> The appeals process varies by payer, which came up as a general frustration.
+
+Yesenia Vasquez-Lund, MD, Northgate Neurology Partners, Syracuse, NY (RSM)
+> No product discussion. Safety items asked about and confirmed none.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> Put it as strongly as saying the age limit is the only thing standing in the way for these families.
+> The referral intake process went live without much warning, and that took up the first part of the conversation.
+
+Quentin Oakhurst, MD, Northbrook Neurology Institute, Oakland, CA (RSM)
+> Left it at that, with a call later this month to be scheduled.
+> Mostly small talk about the program and the venue.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Asked for a one-page interaction reference for the geriatric panel.
+
+Cormac Quintrell, MD, Riverstone Comprehensive Epilepsy Clinic, Chattanooga, TN (RSM)
+> Caught an unexpectedly long window in the back office between patients.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Noted that formulary questions has improved somewhat and that this is not specific to any one product.
+> Referenced a review that circulated on the service in passing.
+> Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
+
+Saoirse Stanhope, MD, Northbrook Neurology Institute, Allentown, PA (AR)
+> Most of the discussion was about the phone triage line, which went live without much warning.
+> Routine follow-up slots is slowly recovering since the summer, which shapes how much time there is for anything else.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> The travel schedule this year came up, and little else.
+> Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+
+Lukas Lammermoor, MD, Saltmarsh Neurological Care Center, Peoria, IL (AR)
+> A full conversation in the reading room, mostly logistics.
+> No product discussion this time. Asked about safety and confirmed nothing to report.
+> Onboarding the epilepsy fellow is the current preoccupation here.
+
+Mairead Barrowman, MD, Foxglove Health Neurology, Eugene, OR (RSM)
+> Caught a productive window at the end of the clinic list between patients.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Noted that benefit checks takes longer than the clinical decision and that this is not specific to any one product.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Described how newly referred patients is triaged now compared with before.
+
+Odalys Corliss, MD, Ironwood Neurology Associates, Syracuse, NY (RSM)
+> Spent some time on the refractory group and how workup decisions get sequenced.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Closed there — no specific request.
+> Onboarding one of the nurse practitioners is the current preoccupation here.
+

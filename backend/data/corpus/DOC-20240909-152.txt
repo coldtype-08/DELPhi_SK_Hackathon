@@ -1,0 +1,65 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: September 9, 2024   |   From: Sam Becker, Yuki Tanabe
+
+FIELD MEDICAL INSIGHTS
+
+Wilhelmina Eastmond, MD, Fox Hollow Neurology Partners, Tucson, AZ (RSM)
+> Stopped by in the workroom for full convo.
+> Referral patterns into this clinic have changed, and the surgical workup list is bigger share than it was.
+> Talked through older half of panel in general terms, without any specific case.
+> The appeals process takes longer than the clinical decision, which came up as a general frustration.
+
+Rosalind Dellacroix, MD, Lakeshore Neurological Care Center, Fort Wayne, IN (RSM)
+> Asked whether I would be at meeting later this year.
+> Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced.
+> Talked through surgical workup list in general terms, without any specific case.
+> Onboarding the clinic pharmacist is the current preoccupation here.
+> Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+
+Renata Hollingsworth, MD, Silver Creek Medical Group, Peoria, IL (AR)
+> Compared notes on which sessions were worth time.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Routine f/u slots keeps slipping since teh summer, which shapes how much time there is for anything else.
+
+Eamon Quintrell, MD, Fox Hollow Neurology Partners, Des Moines, IA (RSM)
+> Stopped by over a quick coffee for a fragmented convo.
+> Onboarding the clinic pharmacist is the current preoccupation here.
+> Left it at that, with a call later this month to be scheduled.
+
+Dagmar Nashwood, MD, Harborlight Epilepsy Center, Portland, ME (RSM)
+> Caught a productive window at nurses' station between patients.
+> Closed there — no product discussion.
+> Compared notes on which sessions were worth the time.
+
+Yannick Thistlewood, MD, Thornfield Regional Epilepsy Program, Wichita, KS (RSM)
+> A productive convo in the reading room, mostly logistics.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> The practice lost epilepsy fellow and has not backfilled, so referral queue keeps slipping.
+
+Darius Prendergast, MD, Quarry Hill Epilepsy Center, Duluth, MN (RSM)
+> No product discussion this time. Asked about safety and confirmed nothing to report.
+> The travel schedule this year came up, and little else.
+> Benefit verification is step that most often delays start here.
+> Asked about my travel schedule, since visits keep landing on busiest clinic days.
+> The composition of the surgical workup list has shifted over the last year or two.
+
+Felicity Oyelaran, MD, Saltmarsh Neurological Care Center, Peoria, IL (RSM)
+> Caught half-hour window in the shared office between pts.
+> Onboarding the clinic pharmacist is the current preoccupation here.
+> The practice lost rotating resident and has not backfilled, so the new-patient backlog has stretched out.
+> Spent some time on pediatric-to-adult transfers and how workup decisions get sequenced.
+> Coverage paperwork has improved somewhat, which came up as general frustration.
+
+Ilse Norrington, MD, Ironwood Neurology Associates, Spokane, WA (RSM)
+> Stopped by in shared office for a fragmented conversation.
+> The travel schedule this year came up, and little else.
+> Talked through newly referred pts in general terms, without any specific case.
+> Spent some time on surgical workup list and how workup decisions get sequenced.
+
+Zubin Cavanaugh, MD, Palmetto Neurology Institute, Spokane, WA (RSM)
+> Noted that appeals process has improved somewhat and that this is not specific to any one product.
+> The composition of the surgical workup list has shifted over the last year or two.
+> Mentioned a session summary from a colleague but did not raise any specific finding.
+

@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: May 20, 2025   |   MSL: Sunny Okafor
+HCP: Rohan Barrowman, MD, Beacon Hill Neurology Associates, Roanoke, VA (AR)
+
+Most of the discussion was about the new charting templates, which went live without much warning.
+
+Described a preference for slower titration in general, unrelated to any particular patient.
+
+Described how the refractory group is triaged now compared with before.

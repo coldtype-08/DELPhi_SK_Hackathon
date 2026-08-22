@@ -2,6 +2,8 @@
 # 여섯 곳(추출 출력·서버 검증·DB·Field 폼·대시보드 필터·에이전트 입력)이 이 정의를 공유한다.
 # 변경은 SCP → Steward 승인 → 새 버전 파일로만 (추가만 허용, docs/02 §7.5). AI 자동 변경 금지 (절대 규칙 #4).
 # v0.1에는 의도적으로 POST_STROKE가 없다 — SCP → v0.2 승격 시연 각본 (DECISIONS 08/11).
+# 08/21 재확정(첫 추출 실행 전 1회): patient_segment에 GENERALIZED_PGTC·LGS 추가 — 코퍼스 v2의
+# 발굴 가설(HYP-003·004) 축. 실행 이후의 모든 변경은 SCP 경로만 유효하다 (DECISIONS 08/21).
 
 version: "0.1"
 product: XCOPRI
@@ -27,6 +29,8 @@ fields:
     field_form: true
     values:
       - { value: PEDIATRIC_TRANSITION, label_ko: 청소년(12–17세) 전환기, label_scope: OUT_OF_LABEL }
+      - { value: GENERALIZED_PGTC,     label_ko: 전신 강직-간대발작(PGTC), label_scope: OUT_OF_LABEL }   # 08/21 재확정 — 허가는 초점발작
+      - { value: LGS,                  label_ko: 레녹스-가스토 증후군(LGS), label_scope: OUT_OF_LABEL }   # 08/21 재확정
       - { value: ELDERLY_65_PLUS,      label_ko: 노인(65세 이상) }
       - { value: DRE_2PLUS,            label_ko: 약물난치성(2제 이상 실패) }
       - { value: COMORBID_PSYCH,       label_ko: 정신과 동반질환 }

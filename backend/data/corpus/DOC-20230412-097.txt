@@ -1,0 +1,31 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Academy of Neurology Annual Meeting (AAN) 2023
+Meeting period: April 2023   |   Author: Ravi Chandrasek
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Anouk Oakhurst, MD (Saltmarsh Neurological Care Center)
+A hallway conversation during the afternoon break. Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return. Mentioned a session summary from a colleague but did not raise any specific finding. No specific request this time. Asked about safety and confirmed nothing to report.
+
+Conversation — Hamish Marchetti, MD (Riverstone Comprehensive Epilepsy Clinic)
+A hallway conversation during the afternoon break. Most of the discussion was about the patient portal, which went live without much warning. Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was. Left it at that, with the next visit to be scheduled.
+
+Conversation — Renata Hollingsworth, MD (Silver Creek Medical Group)
+Caught between sessions in the poster hall; the conversation was short and entirely unprompted. Titration scheduling is handled by nursing staff, which the practice finds workable. No materials requested this time. Asked about safety and confirmed nothing to report.
+
+Conversation — Niamh Fairweather, MD (Harborlight Epilepsy Center)
+Stopped to talk on the way out of a session block, with no agenda on either side. The travel schedule this year came up, and little else. Monitoring intervals during titration are set by clinic routine here rather than by protocol. The composition of the pediatric-to-adult transfers has shifted over the last year or two.
+
+Conversation — Adaeze Brannigan, MD (Foxglove Health Neurology)
+Stopped to talk on the way out of a session block, with no agenda on either side. Talked through the older half of the panel in general terms, without any specific case. Mentioned a review that circulated on the service but did not raise any specific finding. Referral patterns into this clinic have changed, and the surgical workup list is a bigger share than it was.
+
+Conversation — Susan Ratliff, MD (Harborlight Neurology)
+Caught between sessions in the poster hall; the conversation was short and entirely unprompted. The phone triage line is still being sorted out, and that took up the first part of the conversation. Formulary questions takes longer than the clinical decision, which came up as a general frustration. Referenced a session summary from a colleague in passing.
+
+Conversation — Gaspar Oakhurst, MD (Cedar Ridge Regional Epilepsy Program)
+We spoke standing near the exhibit aisles, briefly. Benefit verification is the step that most often delays a start here. Most of the discussion was about the phone triage line, which is still being sorted out. Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Follow-ups have been logged in the interaction system.

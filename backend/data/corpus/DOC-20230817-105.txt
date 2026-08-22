@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: August 17, 2023   |   MSL: Ravi Chandrasek
+HCP: Gaspar Ostrander, MD, Riverstone Comprehensive Epilepsy Clinic, Burlington, VT (RSM)
+
+A brief meeting at the nurses' station, first one this quarter.
+
+Left it at that, with a call later this month to be scheduled.
+
+Referenced a review that circulated on the service in passing.

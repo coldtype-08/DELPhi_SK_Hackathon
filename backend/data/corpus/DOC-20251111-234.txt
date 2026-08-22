@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   November 11, 2025   |   Sam Becker
+HCP: Gaspar Ivanetti, MD, Saltmarsh Neurological Care Center, Albany, NY (RSM)
+
+Mentioned a guideline update discussed at journal club but did not raise any specific finding. The practice lost two medical assistants and has not backfilled, so routine f/u slots keeps slipping. Referral patterns into this clinic have changed, and the refractory group is a bigger share than it was. Flagged post-stroke epilepsy patients, now a visible share of new referrals.

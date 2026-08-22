@@ -32,6 +32,9 @@ import sys
 import time
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import corpus_v3 as V3   # noqa: E402  — v3 각본(인물 300인·문서 320건·조합형 산문)
+
 ROOT = Path(__file__).resolve().parent.parent
 CORPUS_DIR = ROOT / "backend" / "data" / "corpus"
 BODIES_DIR = ROOT / "scripts" / "corpus_bodies"
@@ -44,13 +47,7 @@ RNG = random.Random(42)     # 노이즈 주제 선택용 — 시드 고정으로
 # 1. 등장인물 (전원 가상)
 # ──────────────────────────────────────────────────────────────────────────────
 
-MSLS = {
-    "A1": {"name": "Rachel Suh",  "style": "narrative prose, thorough, sometimes long sentences, polite"},
-    "A2": {"name": "Tom Alvarez", "style": "terse, heavy abbreviations (pt, f/u, appt), occasional typos"},
-    "A3": {"name": "Priya Menon", "style": "formal email tone, numbered follow-ups, precise"},
-    "A4": {"name": "Sam Becker",  "style": "dry short notes, drops articles, a few typos, no fluff"},
-    "A5": {"name": "Dana Cho",    "style": "detail-oriented, quotes numbers and dates, neutral tone"},
-}
+MSLS = V3.MSL_V3   # 12인 (v1의 A1~A5 유지 + A6~A12 신규, 담당 구간 있음)
 
 # ref: (name, specialty, region, setting, institution, city_st)
 HCPS = {
@@ -80,6 +77,9 @@ HCPS = {
     "HCP-024": ("Katherine Ost",    "EPILEPTOLOGY", "WEST",      "ACADEMIC",        "Sonoran Neuroscience Institute",     "Tucson, AZ"),
 }
 ROLE_CODE = {"ACADEMIC": "RSM", "COMMUNITY": "RSM", "PRIVATE_PRACTICE": "AR", "GENERAL": "AR"}
+
+HCPS_LEGACY = dict(HCPS)
+HCPS = V3.build_roster(HCPS_LEGACY)   # 300인 (001~024 보존 + 025~300 결정론 생성)
 
 NOISE_TOPICS = [
     "upcoming regional epilepsy conference logistics and who is attending",
@@ -259,7 +259,16 @@ DOC_PLAN = [
     ("V03", "VOICE_TRANSCRIPT", "2026-07-23", ["A5"], ["HCP-020"]),
 ]
 
-DOCX_ALSO = {f"M0{i}" for i in range(1, 9)}  # M01~M08 → docx 포장 (하이라이트 12건은 자동)
+# v3 각본 전개 — legacy 63건의 키·날짜·기존 블록·손으로 쓴 본문은 그대로 보존된다.
+DOC_PLAN_LEGACY = list(DOC_PLAN)
+PLANTED_LEGACY = dict(PLANTED)
+_VOICE_SIGS = [("V01", "S1"), ("V01", "S2"), ("V01", "S4"), ("V02", "S6"), ("V03", "S5")]
+DOC_PLAN, PLANTED, GEN_BODIES, CONGRESS_META, PLAN_STATS = V3.build_plan(
+    HCPS, DOC_PLAN_LEGACY, PLANTED_LEGACY, _VOICE_SIGS)
+
+# docx 포장: 하이라이트 전건(자동) + 단일 면담형 일부. pdf: 학회 전건(자동).
+DOCX_ALSO = {f"M0{i}" for i in range(1, 9)} | {
+    k for k, st, *_ in DOC_PLAN if st == "MEETING_NOTE" and k.startswith("MX") and int(k[2:]) % 3 == 0}
 
 # 음성 전사 고정 대본 (docs/03 §6) — 한국어, Field 데모 리허설용
 VOICE_SCRIPTS = {
@@ -328,55 +337,90 @@ def build_scenario():
     return docs
 
 def assert_scenario(docs):
-    """docs/03 §2 제약을 결정론적으로 검증. 하나라도 어긋나면 즉시 실패."""
+    """docs/03 §2 v3 제약을 결정론적으로 검증. 하나라도 어긋나면 즉시 실패."""
     units = [(d, b) for d in docs for b in d["blocks"]]
-    def sig_units(sid):
-        return [(d, b, p) for d, b in units for p in b["planted"] if p["signal_id"] == sid]
-    s1 = sig_units("S1"); s2 = sig_units("S2"); s3 = sig_units("S3")
-    s4 = sig_units("S4"); s5 = sig_units("S5"); s6 = sig_units("S6")
-    # V01 대본에 심어진 신호 수동 합산 (고정 대본이라 PLANTED 사전 밖에서 관리)
-    v01 = next(d for d in docs if d["key"] == "V01")
-    v02 = next(d for d in docs if d["key"] == "V02")
-    v03 = next(d for d in docs if d["key"] == "V03")
-    s1_units = s1 + [(v01, v01["blocks"][0], None)]
-    s2_n = len(s2) + 1   # V01
-    s4_n = len(s4) + 1   # V01 청소년 자료 요청
-    s5_n = len(s5) + 1   # V03
-    s6_n = len(s6) + 1   # V02
-    assert len(units) == 118, f"인사이트 단위 {len(units)} != 118"
-    assert len(docs) == 63, f"문서 수 {len(docs)} != 63"
-    assert len(s1_units) == 14, f"S1 {len(s1_units)} != 14"
-    s1_hcps = {b["hcp"] for _, b, _ in s1_units}
-    assert len(s1_hcps) == 9, f"S1 독립 HCP {len(s1_hcps)} != 9"
-    s1_regions = {HCPS[h][2] for h in s1_hcps}
-    assert s1_regions == {"NORTHEAST", "SOUTH", "MIDWEST"}, f"S1 권역 {s1_regions}"
-    recent = [d for d, _, _ in s1_units if d["date"] >= "2026-05-01"]
-    assert len(recent) >= 8, f"S1 최근 3개월 {len(recent)} < 8 (추이 밀도 규칙)"
-    assert s2_n == 5 and len(s3) == 6 and s4_n == 8 and s5_n == 7 and s6_n == 10, \
-        f"신호 수 불일치: S2={s2_n} S3={len(s3)} S4={s4_n} S5={s5_n} S6={s6_n}"
-    assert len({b["hcp"] for _, b, _ in s3}) == 4, "S3 HCP != 4"
-    assert len({b["hcp"] for _, b, _ in s6} | {"HCP-019"}) == 6, "S6 HCP != 6"
+    by_key = {d["key"]: d for d in docs}
+
+    def rows(sid):
+        out = [(d, b, p) for d, b in units for p in b["planted"] if p["signal_id"] == sid]
+        for dk, s2 in [("V01", "S1"), ("V01", "S2"), ("V01", "S4"), ("V02", "S6"), ("V03", "S5")]:
+            if s2 == sid and dk in by_key:
+                out.append((by_key[dk], by_key[dk]["blocks"][0], None))
+        return out
+
+    got = {}
+    for sid, (cnt, dhcp, minreg) in V3.TARGETS.items():
+        r = rows(sid)
+        hcps = {b["hcp"] for _, b, _ in r}
+        regs = {HCPS[h][2] for h in hcps}
+        got[sid] = (len(r), len(hcps), len(regs))
+        assert len(r) == cnt, f"{sid} 건수 {len(r)} != {cnt}"
+        if sid in V3.CO_LOCATED:      # 동거 배치로 독립 HCP가 늘어난다 → 하한만 확인
+            assert len(hcps) >= dhcp, f"{sid} 독립 HCP {len(hcps)} < {dhcp}"
+        else:
+            assert len(hcps) == dhcp, f"{sid} 독립 HCP {len(hcps)} != {dhcp}"
+        assert len(regs) >= minreg, f"{sid} 권역 {len(regs)} < {minreg}"
+
+    assert len(docs) == 320, f"문서 수 {len(docs)} != 320"
+    assert 1000 <= len(units) <= 1200, f"인사이트 단위 {len(units)} 범위 밖"
+    # 임계값(반복 ≥5 ∧ 독립 HCP ≥3, UNMET_NEED·TREATMENT_BARRIER)을 넘는 조합이 정확히 4개여야 한다.
+    # UNSPECIFIED 환자군은 가설 생성 대상에서 제외된다 (docs/01 §3) — S3(post-stroke)가 여기 해당.
+    combos = {}
+    for d, b in units:
+        for p in b["planted"]:
+            if p["signal_type"] not in ("UNMET_NEED", "TREATMENT_BARRIER"):
+                continue
+            if not p["patient_segment"] or p["patient_segment"] == "UNSPECIFIED":
+                continue
+            k = (p["patient_segment"], p["signal_type"])
+            combos.setdefault(k, {"n": 0, "hcps": set()})
+            combos[k]["n"] += 1
+            combos[k]["hcps"].add(b["hcp"])
+    for dk, sid, seg, st in [("V01", "S1", "PEDIATRIC_TRANSITION", "UNMET_NEED"),
+                             ("V02", "S6", "ELDERLY_65_PLUS", "TREATMENT_BARRIER")]:
+        k = (seg, st)
+        combos.setdefault(k, {"n": 0, "hcps": set()})
+        combos[k]["n"] += 1
+        combos[k]["hcps"].add(by_key[dk]["blocks"][0]["hcp"])
+    crossed = sorted(k for k, v in combos.items() if v["n"] >= 5 and len(v["hcps"]) >= 3)
+    expect = sorted([("PEDIATRIC_TRANSITION", "UNMET_NEED"), ("ELDERLY_65_PLUS", "TREATMENT_BARRIER"),
+                     ("GENERALIZED_PGTC", "UNMET_NEED"), ("LGS", "UNMET_NEED")])
+    assert crossed == expect, f"임계 통과 조합 불일치: {crossed}"
+
     # 문서 내 HCP 중복 금지 (헤딩 파싱 안정성)
     for d in docs:
         hs = [b["hcp"] for b in d["blocks"]]
         assert len(hs) == len(set(hs)), f"{d['key']}: 문서 내 HCP 중복"
-    # 각본 문장 자체에 성별 대명사가 없어야 한다 (HCP 명부와의 불일치 방지 — 위 주석 참조)
+    # 성별 대명사 금지 + verbatim 전역 유일 + 용량 수치 금지
+    seen_v = {}
+    DOSE = re.compile(r"\b\d+\s?(mg|milligram)", re.IGNORECASE)
     for (dk, bi), plist in PLANTED.items():
         for p in plist:
             m = GENDERED.search(p["verbatim"])
-            assert not m, f"PLANTED {dk}.{bi}에 성별 대명사 '{m.group(0)}' 포함"
-    for dk, s in PII_SENTENCE.items():
-        m = GENDERED.search(s)
-        assert not m, f"PII_SENTENCE {dk}에 성별 대명사 '{m.group(0)}' 포함"
-    # 노이즈 비중 (신호 없는 단위 ≥ 절반)
-    signal_units = {(d["key"], b["block_index"]) for d, b in units if b["planted"]}
-    signal_units |= {("V01", 1), ("V02", 1), ("V03", 1)}
-    assert len(units) - len(signal_units) >= 59, "노이즈 단위 < 절반"
+            assert not m, f"PLANTED {dk}.{bi}에 성별 대명사 '{m.group(0) if m else ''}'"
+            assert not DOSE.search(p["verbatim"]), f"PLANTED {dk}.{bi}에 용량 수치"
+            prev = seen_v.get(p["verbatim"])
+            assert prev is None, f"verbatim 중복: {dk}.{bi} == {prev}"
+            seen_v[p["verbatim"]] = f"{dk}.{bi}"
+    for dk, s2 in PII_SENTENCE.items():
+        m = GENDERED.search(s2)
+        assert not m, f"PII_SENTENCE {dk}에 성별 대명사"
+    # 노이즈 단위가 절반 이상
+    sig_u = {(d["key"], b["block_index"]) for d, b in units if b["planted"]}
+    sig_u |= {("V01", 1), ("V02", 1), ("V03", 1)}
+    noise = len(units) - len(sig_u)
+    assert noise >= len(units) // 2, f"노이즈 단위 {noise} < 절반"
+
+    st_count = {}
+    for d in docs:
+        st_count[d["source_type"]] = st_count.get(d["source_type"], 0) + 1
     return {
-        "docs": len(docs), "units": len(units),
-        "S1": len(s1_units), "S1_hcps": len(s1_hcps), "S1_regions": len(s1_regions),
-        "S2": s2_n, "S3": len(s3), "S4": s4_n, "S5": s5_n, "S6": s6_n,
-        "noise_units": len(units) - len(signal_units),
+        "docs": len(docs), "units": len(units), "hcps": len(HCPS),
+        "span": f"{min(d['date'] for d in docs)} ~ {max(d['date'] for d in docs)}",
+        "by_type": st_count,
+        "signals": {k: {"n": v[0], "hcp": v[1], "regions": v[2]} for k, v in got.items()},
+        "hypotheses_crossed": [f"{a}×{b}" for a, b in crossed],
+        "noise_units": noise,
         "docx": sum(1 for d in docs if "DOCX" in d["formats"]),
         "pdf": sum(1 for d in docs if "PDF" in d["formats"]),
     }
@@ -411,9 +455,12 @@ def doc_header_lines(doc):
         return notice + [f"Field Medical Highlights — XCOPRI (cenobamate)",
                          f"Date: {date_h}   |   From: {authors}", "", "FIELD MEDICAL INSIGHTS", ""]
     if st == "CONGRESS_REPORT":
-        return notice + [f"Congress Attendance Report — Annual Epilepsy Care Symposium",
-                         f"Date: {date_h}   |   Author: {authors}", "",
-                         "This report summarizes scientific sessions attended and unsolicited conversations held on-site.", ""]
+        ab, full, y, mo = CONGRESS_META[doc["key"]]
+        mons = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+        return notice + [V3.CONGRESS_NOTICE, "",
+                         f"Congress Attendance Report — {full} ({ab}) {y}",
+                         f"Meeting period: {mons[mo-1]} {y}   |   Author: {authors}", "",
+                         "Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.", ""]
     if st == "MEETING_NOTE":
         return notice + [f"Interaction Note   |   Date: {date_h}   |   MSL: {authors}",
                          f"HCP: {heading_line(doc['blocks'][0]['hcp'])}", ""]
@@ -512,6 +559,10 @@ Never refer to the physician as "he" or "she" — use a role noun ("the physicia
 If a required sentence uses quotes, keep them exactly. Return ONLY the text, no preamble."""
 
 def resolve_body(client, bodies, doc, block):
+    gen = GEN_BODIES.get(doc["key"], {}).get(block["block_index"])
+    if gen is not None and not bodies.get(doc["key"], {}).get(block["block_index"]):
+        validate_block(doc, block, gen)
+        return gen
     """본문 확보: 준비된 파일 우선 → 없으면 API. 준비본이 규칙 위반이면 즉시 실패(조용히 API로 넘어가지 않는다)."""
     body = bodies.get(doc["key"], {}).get(block["block_index"])
     if body is not None:
@@ -659,7 +710,8 @@ def run(limit=None, dry=False):
         doc_id = ids[doc["key"]]
         t0 = time.time()
         if doc["source_type"] == "VOICE_TRANSCRIPT":
-            block_bodies = [VOICE_SCRIPTS[doc["key"]]]
+            block_bodies = [VOICE_SCRIPTS[doc["key"]] if doc["key"] in VOICE_SCRIPTS
+                            else GEN_BODIES[doc["key"]][1]]
         else:
             block_bodies = [resolve_body(client, bodies, doc, b) for b in doc["blocks"]]
         txt, spans = assemble_doc(doc, block_bodies)

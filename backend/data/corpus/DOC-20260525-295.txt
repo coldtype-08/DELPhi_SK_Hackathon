@@ -1,0 +1,84 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: May 25, 2026   |   From: Dana Cho, Sam Becker
+
+FIELD MEDICAL INSIGHTS
+
+Yolanda Reyes, MD, Copper Mesa Neurology, Mesa, AZ (RSM)
+> Visit on May 19. Discussion limited to volume: the clinic logged about 340 encounters in April against 290 in January, per the practice manager's dashbaord.
+> Most of the increase is attributed to two referring internists who joined the network on March 2.
+> New-patient slots are booked into the week of July 6; return visits are holding at three weeks.
+> Neutral on whether the trend holds past the summer. No clinical or product topics were discussed.
+
+Mei-Lin Tsang, MD, Bayview Epilepsy Associates, Oakland, CA (RSM)
+> Visit on May 20, about 25 minutes. The conversation stayed at the level of the antiseizure landscape in general - the observation offered was that the number of available ASMs has roughly doubled since the early 2000s.
+> The point was about choice architecture rather than any individual agent: formulary lists, teaching order, and how residents are taught to sequence options.
+> No comparative or efficacy statement was made about any product, and I made none; I record the topic only because it frames how this center builds its internal pathways.
+> Follow-up set for the week of June 15, at the request of the physician.
+
+Walter Brandt, MD, Flint Hills Neuroscience, Wichita, KS (AR)
+> Visit on May 21, 30 minutes, in office between afternoon appts.
+> About 40% of the panel is 65 or older by the practice's own estimate, and most of those patients arrive on five or more concomitant medications.
+> Triple-checks interactions before considering cenobamate in anyone over 65, which slows the decision down.
+> Routine as described: pharmacist review first, then a second pass through the XCOPRI label section on interactions, then a decision at the next visit - usually two to three weeks later.
+> Stated plainly that the hesitation is process time rather than any observed event; nothing was reported about a specific patient.
+
+Fiona Gallagher, MD, Great Lakes Epilepsy Institute, Madison, WI (RSM)
+> Visit on May 22, brief - 10 minutes at the nurses' station.
+> One of the two epilepsy fellows has been out since April 27, so Thursday clinic has been running with a single attending plus a nurse practitioner.
+> Consequence given in numbers: new referrals now wait about nine weeks, up from five in February, and the monitoring unit is holding two beds empty for lack of technologists.
+> Asked to defer any longer discussion until the fellow returns in July. No clinical topics covered.
+
+Adaeze Vasquez-Lund, MD, Alder Point Neurology Associates, Allentown, PA (RSM)
+> Stopped by over a quick coffee for a twenty-minute conversation.
+> Explained that the interaction checks required before starting anyone elderly, which slow the decision down.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> The travel schedule this year came up, and little else.
+
+Lukas Vasquez-Lund, MD, Windrow Neuroscience Center, Lakeland, FL (RSM)
+> A brief meeting over a quick coffee, first one this quarter.
+> Asked that internal teams hear about the frustration of having a well-tolerated option that the generalized population cannot access.
+> Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+
+Sonali Corliss, MD, Lakeshore Neurological Care Center, Akron, OH (RSM)
+> Noted that formulary questions remains the slowest step and that this is not specific to any one product.
+> Noted a group of primary generalized patients with nothing comparable to offer.
+> Mentioned a case series someone forwarded but did not raise any specific finding.
+> Spent some time on the surgical workup list and how workup decisions get sequenced.
+> Most of the discussion was about the referral intake process, which is being piloted this quarter.
+
+Eloise Cavanaugh, MD, Marbury Neurological Care Center, Trenton, NJ (RSM)
+> A productive conversation in the corridor, mostly logistics.
+> Clinic throughput looks better than last year since the summer, which shapes how much time there is for anything else.
+> Noted that benefit checks varies by payer and that this is not specific to any one product.
+> Also mentioned one adult reporting daytime somnolence heavy enough to affect the commute.
+> Kept returning to referrals of teenagers with drug-resistant seizures arriving faster than the options do.
+
+Arvind Pemberton, MD, Saltmarsh Neurological Care Center, Madison, WI (AR)
+> The practice lost a front-desk coordinator and has not backfilled, so routine follow-up slots is slowly recovering.
+> No materials requested. Safety items asked about and confirmed none.
+> The travel schedule this year came up, and little else.
+> Raised, without any prompting, how uncomfortable it feels to park adolescent refractory cases until a birthday.
+> Raised an adult who stopped unprompted after a week of feeling foggy and unusually sleepy.
+
+Kiara Prendergast, MD, Saltmarsh Neurological Care Center, Charleston, SC (AR)
+> Mentioned a case series someone forwarded but did not raise any specific finding.
+> Raised, without any prompting, two teenage patients still seizing after multiple medications, with the label closing the door until 18.
+> Described how the surgical workup list is triaged now compared with before.
+> Reported a patient with nausea since starting, now under observation.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Ulrike Oakhurst, MD, Lakeshore Neurological Care Center, Provo, UT (RSM)
+> A rushed conversation in the reading room, mostly logistics.
+> Raised, unprompted, the absence of an approved route for generalized tonic-clonic seizures despite similar refractoriness.
+> Left it at that, with the next visit to be scheduled.
+> The practice lost the epilepsy fellow and has not backfilled, so clinic throughput keeps slipping.
+
+Niamh Jarreau, MD, Bluestem Comprehensive Epilepsy Clinic, Portland, ME (RSM)
+> Referral patterns into this clinic have changed, and the pediatric-to-adult transfers is a bigger share than it was.
+> Compared notes on which sessions were worth the time.
+> Said the clearest limitation right now is a group of primary generalized patients with nothing comparable to offer.
+> Referenced a case series someone forwarded in passing.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+

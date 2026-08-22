@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   March 8, 2023   |   Sam Becker
+HCP: Saoirse Norrington, MD, Lakeshore Neurological Care Center, Akron, OH (AR)
+
+Mentioned a session summary from a colleague but did not raise any specific finding. Talked through long-standing patients in general terms, without any specific case.

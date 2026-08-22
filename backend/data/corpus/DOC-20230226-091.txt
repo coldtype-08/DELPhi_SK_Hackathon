@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: February 26, 2023   |   MSL: Dana Cho
+HCP: Rohan Vasquez-Lund, MD, Ember Lake Medical Group, Omaha, NE (RSM)
+
+A clipped meeting between clinic blocks, first one this quarter.
+
+The new-patient backlog has stretched out since the summer, which shapes how much time there is for anything else.
+
+Described how the pediatric-to-adult transfers is triaged now compared with before.
+
+Most of the discussion was about the patient portal, which changed again last month.

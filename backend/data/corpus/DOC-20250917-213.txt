@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   September 17, 2025   |   Rachel Suh
+HCP: Pallavi Ghiradelli, MD, Kestrel Comprehensive Epilepsy Clinic, Shreveport, LA (RSM)
+
+Caught an unexpectedly long window at the end of the clinic list between patients. Described how the refractory group is triaged now compared with before. Brought up a patient with a rash-like eruption that is being watched.

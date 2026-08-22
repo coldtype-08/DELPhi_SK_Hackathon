@@ -1,0 +1,56 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: May 15, 2022   |   From: Priya Menon, Sam Becker
+
+FIELD MEDICAL INSIGHTS
+
+Tadeo Eastmond, MD, Sable Creek Medical Group, Provo, UT (RSM)
+> Compared notes on which sessions were worth the time.
+> Nothing actionable this visit. Safety items asked about and confirmed none.
+> Coverage paperwork is handled by one person here, which came up as a general frustration.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Mairead Corliss, MD, Willowmere Neuroscience Center, Hartford, CT (RSM)
+> An unexpectedly long meeting between clinic blocks, first one this quarter.
+> The composition of long-standing patients has shifted over the last year or two.
+> The referral queue is slowly recovering since the summer, which shapes how much time there is for anything else.
+
+Bram Merriwether, MD, Willowmere Neuroscience Center, Toledo, OH (RSM)
+> A full meeting between clinic blocks, first one this quarter.
+> Benefit verification is the step that most often delays a start here.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Mentioned a review that circulated on the service but did not raise any specific finding.
+> Left it at that, with the next visit to be scheduled.
+
+Josefina Ghiradelli, MD, Sandhill Neuroscience Center, Worcester, MA (RSM)
+> A compressed visit at the nurses' station; the schedule was tight.
+> Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+> Compared notes on which sessions were worth the time.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> The new-patient backlog has stretched out since the summer, which shapes how much time there is for anything else.
+
+Orla Oyelaran, MD, Palmetto Neurology Institute, Provo, UT (RSM)
+> A compressed visit at the nurses' station; the schedule was tight.
+> Closed there — no product discussion.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Asked whether I would be at the meeting later this year.
+
+Bastian Dellacroix, MD, Bluestem Comprehensive Epilepsy Clinic, Manchester, NH (RSM)
+> Referenced a review that circulated on the service in passing.
+> The new charting templates went live without much warning, and that took up the first part of the conversation.
+> Nothing actionable this visit. Safety items asked about and confirmed none.
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+
+Malika Whitmore, MD, Highmoor Health Neurology, Sioux Falls, SD (RSM)
+> An unhurried meeting by the scheduling desk, first one this quarter.
+> The composition of newly referred patients has shifted over the last year or two.
+> Agreed to reconnect at the next visit; no materials requested.
+> Compared notes on which sessions were worth the time.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Gemma Barrowman, MD, Ember Lake Medical Group, Santa Fe, NM (RSM)
+> Stopped by at the end of the clinic list for a half-hour conversation.
+> The appeals process remains the slowest step, which came up as a general frustration.
+> Mentioned a review that circulated on the service but did not raise any specific finding.
+

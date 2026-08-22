@@ -1,0 +1,37 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Academy of Neurology Annual Meeting (AAN) 2024
+Meeting period: April 2024   |   Author: Rachel Suh
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Bram Eversholt, MD (Bayview Health Neurology)
+The conversation happened while waiting for a session room to clear. Referenced a case series someone forwarded in passing. Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return.
+
+Conversation — Imani Grierson, MD (Foxglove Health Neurology)
+A hallway conversation during the afternoon break. Monitoring intervals during titration are set by clinic routine here rather than by protocol. Onboarding the epilepsy fellow is the current preoccupation here.
+
+Conversation — Rasmus Cavanaugh, MD (Bayview Health Neurology)
+A short exchange over the coffee queue. Spent some time on the surgical workup list and how workup decisions get sequenced. Benefit verification is the step that most often delays a start here.
+
+Conversation — Katherine Ost, MD (Sonoran Neuroscience Institute)
+Caught between sessions in the poster hall; the conversation was short and entirely unprompted. Mentioned a session summary from a colleague but did not raise any specific finding. Referenced a guideline update discussed at journal club in passing.
+
+Conversation — Arvind Calderwood, MD (Sandhill Neuroscience Center)
+Stopped to talk on the way out of a session block, with no agenda on either side. The travel schedule this year came up, and little else. Mentioned a case series someone forwarded but did not raise any specific finding. Left it at that, with a call later this month to be scheduled.
+
+Conversation — Yannick Ashgrove, MD (Granite Bay Epilepsy Center)
+A hallway conversation during the afternoon break. Compared notes on which sessions were worth the time. Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return. Mentioned a review that circulated on the service but did not raise any specific finding.
+
+Conversation — Ulrike Eversholt, MD (Thornfield Regional Epilepsy Program)
+Caught between sessions in the poster hall; the conversation was short and entirely unprompted. Mentioned a session summary from a colleague but did not raise any specific finding. Compared notes on which sessions were worth the time. The appeals process varies by payer, which came up as a general frustration.
+
+Conversation — Anouk Brannigan, MD (Windrow Neuroscience Center)
+The conversation happened while waiting for a session room to clear. Noted that the appeals process varies by payer and that this is not specific to any one product. Mostly small talk about the program and the venue.
+
+Conversation — Thandiwe Barrowman, MD (Quarry Hill Epilepsy Center)
+Stopped to talk on teh way out of a session block, with no agenda on either side. Talked through teh older half of the panel in general terms, without any specific case. Onboarding teh clinic pharmacist is the current preoccupation here. Titration scheduling is handled by nursing staff, which teh practice finds workable.
+
+Follow-ups have been logged in the interaction system.

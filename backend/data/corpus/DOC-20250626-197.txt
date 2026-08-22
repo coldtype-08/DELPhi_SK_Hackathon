@@ -1,0 +1,7 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Email Summary   |   June 26, 2025   |   Logged by: Sam Becker
+Correspondent: Delphine Kirkpatrick, MD, Copperfield Neurology Institute, Mobile, AL (RSM)
+
+Onboarding rotating resident is the current preoccupation here.
+1. Spent some time on long-standing pts and how workup decisions get sequenced.

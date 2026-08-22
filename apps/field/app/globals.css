@@ -2,21 +2,21 @@
 
 /* Paper & Glass — 페이퍼 라이트 고정 (다크 금지, 팀장 확정). 토큰 상세: docs/05_DESIGN_SYSTEM.md */
 :root {
-  --paper: #FAF7F1;
+  --paper: #F4F6FC;
   --card: #FFFFFF;
   --ink: #232A47;
   --navy: #162661;
-  --muted: #5C6485;
-  --line: rgba(22, 38, 97, 0.13);
+  --muted: #5A67A0;
+  --line: rgba(22, 38, 97, 0.12);
   --orange: #EF8B1C;
-  --orange-deep: #C56E0D;
+  --orange-deep: #D9760B;
   --orange-soft: #FCF1E0;
-  --rust: #B4552D;
-  --rust-soft: #F8ECE4;
-  --green: #2F7D52;
-  --green-soft: #E9F3EC;
-  --sky: #46639F;
-  --sky-soft: #EEF2F9;
+  --rust: #E4536B;      /* counter/제외·Safety 계열 (docs/05 시맨틱) */
+  --rust-soft: #FBE9EC;
+  --green: #1FA97C;     /* support/승인 계열 */
+  --green-soft: #E2F5EE;
+  --sky: #5B7CFA;       /* 데이터·차트 기본 */
+  --sky-soft: #EAF0FF;
 }
 
 @theme inline {
@@ -50,4 +50,21 @@ mark.evidence {
   box-shadow: inset 0 -2px 0 var(--orange);
   border-radius: 3px;
   padding: 1px 2px;
+}
+
+/* 전사 재생의 구간 하이라이트 — 아래 감지 칩과 같은 색으로 짝지어진다 (evidence pointer의 시각화) */
+mark.ev {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 3px;
+  padding: 1px 2px;
+  color: inherit;
+  transition: background 0.45s ease, box-shadow 0.45s ease;
+}
+mark.ev.on.ev-segment { background: rgba(239, 139, 28, 0.22); box-shadow: inset 0 -2px 0 var(--orange); }
+mark.ev.on.ev-signal  { background: rgba(91, 124, 250, 0.18); box-shadow: inset 0 -2px 0 var(--sky); }
+mark.ev.on.ev-ae      { background: rgba(228, 83, 107, 0.18); box-shadow: inset 0 -2px 0 var(--rust); }
+mark.ev.on.ev-info    { background: rgba(31, 169, 124, 0.16); box-shadow: inset 0 -2px 0 var(--green); }
+@media (prefers-reduced-motion: reduce) {
+  mark.ev { transition: none; }
 }

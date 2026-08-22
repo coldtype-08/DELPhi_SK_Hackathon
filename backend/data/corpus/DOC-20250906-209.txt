@@ -1,0 +1,46 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+[CONFERENCE REFERENCE] The meeting named above is a real, publicly announced scientific congress and is used here only as the setting of this fictional record. No session content, abstract, poster, or presented data from that meeting is reproduced or paraphrased; every person and conversation below is invented.
+
+Congress Attendance Report — American Neurological Association Annual Meeting (ANA) 2025
+Meeting period: September 2025   |   Author: Dana Cho
+
+Scope: unsolicited conversations held on-site. Session content and presented data are deliberately not reproduced here.
+
+Conversation — Bram Merriwether, MD (Willowmere Neuroscience Center)
+We spoke standing near the exhibit aisles, briefly. Took a moment to say that one adult who had exhausted the usual combinations is now doing markedly better. Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Conversation — Yannick Harkness, MD (Granite Bay Epilepsy Center)
+We spoke standing near the exhibit aisles, briefly. Noted an adult patient describing persistent dizziness after the last titration step. Titration habits came up in general terms; no specifics were discussed and none were offered. The referral intake process is still being sorted out, and that took up the first part of the conversation.
+
+Conversation — Orla Steinmetz, MD (Sable Creek Medical Group)
+Caught between sessions in the poster hall; the conversation was short and entirely unprompted. Brought up an adult patient describing persistent dizziness after the last titration step. Closed there — nothing actionable this visit. Described a preference for slower titration in general, unrelated to any particular patient.
+
+Conversation — Anouk Underhill, MD (Highmoor Health Neurology)
+Approached me rather than the other way around, which is worth noting. Wants a concise interaction summary for elderly patients on several concomitant medications. Titration scheduling is handled by nursing staff, which the practice finds workable. Referenced a session summary from a colleague in passing.
+
+Conversation — Silvio Wycliffe, MD (Highmoor Health Neurology)
+We spoke standing near the exhibit aisles, briefly. The travel schedule this year came up, and little else. Spent some time on the surgical workup list and how workup decisions get sequenced. Offered, unprompted, that the longest-standing refractory patient in this panel has had the quietest stretch in years.
+
+Conversation — Zubin Castellane, MD (Marbury Neurological Care Center)
+A hallway conversation during the afternoon break. The practice lost a rotating resident and has not backfilled, so the new-patient backlog has stretched out. Closed by asking for something the clinic pharmacist could use when clearing older patients. Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced.
+
+Conversation — Quentin Kilbride, MD (Lakeshore Neurological Care Center)
+Stopped to talk on the way out of a session block, with no agenda on either side. Follow-up requested — a shorter interaction reference that intake staff could work from. The composition of the older half of the panel has shifted over the last year or two.
+
+Conversation — Rohan Thistlewood, MD (Foxglove Health Neurology)
+We spoke standing near the exhibit aisles, briefly. Onboarding the epilepsy fellow is the current preoccupation here. Offered, unprompted, that several drug-resistant adults finally responded after years of cycling medications.
+
+Conversation — Nikolai Zeitler, MD (Juniper Flats Neurology Partners)
+Introduced by a colleague from the same region and talked for a few minutes. Compared notes on which sessions were worth the time. Formulary questions has improved somewhat, which came up as a general frustration.
+
+Conversation — Gemma Oakhurst, MD (Palmetto Neurology Institute)
+Caught between sessions in the poster hall; the conversation was short and entirely unprompted. Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return. Raised a patient with a rash-like eruption that is being watched.
+
+Conversation — Niamh Inverness, MD (Kestrel Comprehensive Epilepsy Clinic)
+A hallway conversation during the afternoon break. The scheduling system has not settled, and that took up the first part of the conversation. Asked me to send caregiver-facing education material for older patients. The composition of long-standing patients has shifted over the last year or two.
+
+Conversation — Imani Steinmetz, MD (Bluestem Comprehensive Epilepsy Clinic)
+We spoke standing near the exhibit aisles, briefly. The travel schedule this year came up, and little else. Referral patterns into this clinic have changed, and the refractory group is a bigger share than it was. Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Follow-ups have been logged in the interaction system.

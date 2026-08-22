@@ -1,0 +1,86 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: November 11, 2023   |   From: Ravi Chandrasek, Dana Cho
+
+FIELD MEDICAL INSIGHTS
+
+Sonali Wycliffe, MD, Windrow Neuroscience Center, Eugene, OR (RSM)
+> A short visit by the scheduling desk; the schedule was tight.
+> The composition of the refractory group has shifted over the last year or two.
+> Most of the discussion was about the referral intake process, which has not settled.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Imani Okafor, MD, Smoky Ridge Medical Center, Knoxville, TN (RSM)
+> Onboarding two medical assistants is the current preoccupation here.
+> Coverage paperwork remains the slowest step, which came up as a general frustration.
+> Asked whether I would be at the meeting later this year.
+
+Eloise Wycliffe, MD, Marbury Neurological Care Center, Providence, RI (RSM)
+> Stopped by at the nurses' station for a twenty-minute conversation.
+> Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> The referral queue keeps slipping since the summer, which shapes how much time there is for anything else.
+
+Xiomara Wetherby, MD, Northbrook Neurology Institute, Fort Collins, CO (RSM)
+> Spent some time on newly referred patients and how workup decisions get sequenced.
+> Most of the discussion was about the new charting templates, which changed again last month.
+> Closed there — no product discussion.
+> Asked whether I would be at the meeting later this year.
+> Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+
+Selin Eastmond, MD, Windrow Neuroscience Center, Savannah, GA (RSM)
+> A half-hour conversation in the workroom, mostly logistics.
+> Most of the discussion was about the patient portal, which is still being sorted out.
+> Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
+
+Darius Prendergast, MD, Quarry Hill Epilepsy Center, Duluth, MN (RSM)
+> A short conversation by the scheduling desk, mostly logistics.
+> The appeals process remains the slowest step, which came up as a general frustration.
+> The composition of long-standing patients has shifted over the last year or two.
+> The practice lost the clinic pharmacist and has not backfilled, so clinic throughput keeps slipping.
+> Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.
+
+Cormac Quintrell, MD, Riverstone Comprehensive Epilepsy Clinic, Chattanooga, TN (RSM)
+> Benefit checks remains the slowest step, which came up as a general frustration.
+> Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+> The patient portal has not settled, and that took up the first part of the conversation.
+> No materials requested this time. Asked about safety and confirmed nothing to report.
+
+Naomi Feldman, MD, Twin Rivers University Hospital, Columbus, OH (RSM)
+> An unexpectedly long visit in the reading room; the schedule was tight.
+> Mostly small talk about the program and the venue.
+> Routine follow-up slots has stretched out since the summer, which shapes how much time there is for anything else.
+
+Zubin Thackeray, MD, Cedar Ridge Regional Epilepsy Program, Shreveport, LA (RSM)
+> An unexpectedly long conversation in the corridor, mostly logistics.
+> Benefit checks takes longer than the clinical decision, which came up as a general frustration.
+> Most of the discussion was about the phone triage line, which is being piloted this quarter.
+> Compared notes on which sessions were worth the time.
+
+Jaromir Merriwether, MD, Sable Creek Medical Group, Buffalo, NY (RSM)
+> Most of the discussion was about the scheduling system, which has not settled.
+> Onboarding one of the nurse practitioners is the current preoccupation here.
+> Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+> Referral patterns into this clinic have changed, and the pediatric-to-adult transfers is a bigger share than it was.
+
+Yannick Nakagawa, MD, Granite Bay Epilepsy Center, Toledo, OH (RSM)
+> A twenty-minute visit at the nurses' station; the schedule was tight.
+> Most of the discussion was about the patient portal, which has not settled.
+> Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return.
+> Left it at that, with the following quarter to be scheduled.
+> Noted that the appeals process has improved somewhat and that this is not specific to any one product.
+
+Quentin Lammermoor, MD, Riverstone Comprehensive Epilepsy Clinic, Boise, ID (AR)
+> Talked through newly referred patients in general terms, without any specific case.
+> Most of the discussion was about the scheduling system, which went live without much warning.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> The travel schedule this year came up, and little else.
+> Closed there — nothing actionable this visit.
+
+Niamh Inverness, MD, Kestrel Comprehensive Epilepsy Clinic, Worcester, MA (RSM)
+> Clinic throughput keeps slipping since the summer, which shapes how much time there is for anything else.
+> The practice lost the epilepsy fellow and has not backfilled, so the new-patient backlog has stretched out.
+> Noted that the appeals process has improved somewhat and that this is not specific to any one product.
+> Talked through the surgical workup list in general terms, without any specific case.
+

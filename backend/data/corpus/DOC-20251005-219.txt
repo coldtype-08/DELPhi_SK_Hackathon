@@ -1,0 +1,16 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: October 5, 2025   |   MSL: Sunny Okafor
+HCP: Zubin Cavanaugh, MD, Palmetto Neurology Institute, Spokane, WA (RSM)
+
+A compressed meeting outside the EEG suite, first one this quarter.
+
+Referral patterns into this clinic have changed, and long-standing patients is a bigger share than it was.
+
+Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Raised a patient with nausea since starting, now under observation.
+
+Asked whether I would be at the meeting later this year.
+
+Benefit verification is the step that most often delays a start here.

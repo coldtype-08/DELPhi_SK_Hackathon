@@ -1,0 +1,60 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: May 9, 2024   |   From: Colin Ferreira, Nadia Belhadj
+
+FIELD MEDICAL INSIGHTS
+
+Ilse Merriwether, MD, Fox Hollow Neurology Partners, Providence, RI (RSM)
+> Noted that benefit checks has improved somewhat and that this is not specific to any one product.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Asked whether I would be at the meeting later this year.
+
+Adaeze Castellane, MD, Harborlight Epilepsy Center, Savannah, GA (RSM)
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Referenced a guideline update discussed at journal club in passing.
+> Asked whether I would be at the meeting later this year.
+> The composition of newly referred pts has shifted over the last year or two.
+
+Rohan Ravenscroft, MD, Fox Hollow Neurology Partners, Omaha, NE (RSM)
+> Closed there — nothing that needed f/u.
+> Asked whether I had seen a session summary from a colleague; I had not, adn offered nothing in return.
+> The referral queue has stretched out since summer, which shapes how much time there is for anything else.
+
+Cormac Quintrell, MD, Riverstone Comprehensive Epilepsy Clinic, Chattanooga, TN (RSM)
+> A brief visit in the conference room; the schedule was tight.
+> Asked whether I would be at the meeting later this year.
+> Most of discussion was about referral intake process, which is still being sorted out.
+> The scheduling system changed again last month, and that took up the first part of the conversation.
+> Spent some time on long-standing pts and how workup decisions get sequenced.
+
+Lukas Tavernier, MD, Vantage Park Regional Epilepsy Program, Boise, ID (RSM)
+> A compressed convo over quick coffee, mostly logistics.
+> Spent some time on the refractory group and how workup decisions get sequenced.
+> Closed there — no specific request.
+
+Jaromir Grierson, MD, Saltmarsh Neurological Care Center, Allentown, PA (RSM)
+> An unexpectedly long meeting in the conference room, first one this quarter.
+> Routine f/u slots has stretched out since summer, which shapes how much time there is for anything else.
+> Mentioned review that circulated on the service but did not raise any specific finding.
+> The practice lost two medical assistants and has not backfilled, so the new-patient backlog keeps slipping.
+> The composition of pediatric-to-adult transfers has shifted over last year or two.
+
+Arvind Corliss, MD, Bluestem Comprehensive Epilepsy Clinic, Lakeland, FL (RSM)
+> Referenced a session summary from a colleague in passing.
+> Titration scheduling is handled by nursing staff, which practice finds workable.
+> Benefit verification is the step that most often delays start here.
+> Nothing actionable this visit. Safety items asked about and confirmed none.
+> Talked through long-standing patients in general terms, without any specific case.
+
+Josefina Silverthorne, MD, Ember Lake Medical Group, Des Moines, IA (AR)
+> A fragmented meeting in shared office, first one this quarter.
+> Agreed to reconnect at next visit; no materials requested.
+> Titration scheduling is handled by nursing staff, which practice finds workable.
+> Described how older half of panel is triaged now compared with before.
+
+Rosalind Dellacroix, MD, Lakeshore Neurological Care Center, Fort Wayne, IN (RSM)
+> Caught a short window in the back office between pts.
+> Referral patterns into this clinic have changed, and newly referred pts is bigger share than it was.
+> Agreed to reconnect at a follow-up appointment; no specific request.
+

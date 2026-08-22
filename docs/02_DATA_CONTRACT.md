@@ -21,6 +21,7 @@
 | consent_confirmed | bool | ✓ | VOICE_TRANSCRIPT면 반드시 true (아니면 저장 거부) |
 | raw_text | text | ✓ | 원문. **PII 마스킹 후** 저장, 이후 불변 (마스킹 전 원본은 저장하지 않는다) |
 | masked_spans | json | | `[{char_start, char_end, kind: NAME\|PHONE\|EMAIL}]` — 무엇을 가렸는지의 기록. 값 자체는 남기지 않는다 |
+| checklist_refs | json | | 제출 시 참조한 Field 체크리스트 항목(action_item id 배열, 08/21) — 실행 루프의 수집 귀속 근거. 체크리스트 없이 제출하면 null |
 | language | enum | ✓ | `EN` `KO` — 원석(기존 축적분 성격)은 EN, Field 신규 수집·음성 전사는 KO. **스키마·enum 코드는 언어 중립**, raw_text·verbatim은 원언어 보존 (08/14) |
 | block_index | int | | 다중 HCP 문서(`HIGHLIGHT_DOC`·`CONGRESS_REPORT`) 전용: 문서 내 블록 순번 (그 외 null) |
 | doc_char_start / doc_char_end | int | | 다중 HCP 문서 전용: 문서 전문(documents.raw_text) 내 이 블록의 범위 (1문서=1면담이면 null = 문서 전체) |
@@ -35,13 +36,13 @@
 | interaction_id | FK | ✓ | |
 | product | enum | ✓ | `XCOPRI` (MVP 고정) |
 | signal_type | enum | ✓ | `UNMET_NEED` `TREATMENT_BARRIER` `INFO_REQUEST` `POSITIVE_OUTCOME` `ACCESS_ISSUE` `REPURPOSING_SIGNAL`(미허가 적응증 언급 — 08/19, 자동 `OUT_OF_LABEL`) `SAFETY_CANDIDATE` `OTHER` |
-| patient_segment | enum | ✓* | `PEDIATRIC_TRANSITION`(청소년 12–17세 전환기 — **허가 범위 밖**) `ELDERLY_65_PLUS` `DRE_2PLUS`(2제 이상 실패 약물난치성) `COMORBID_PSYCH` `FEMALE_CHILDBEARING` `NEW_ONSET_ADULT` `UNSPECIFIED` |
-| label_scope | enum | 자동판정 | `IN_LABEL` `OUT_OF_LABEL` — `signal_type=REPURPOSING_SIGNAL`이거나 patient_segment가 허가 범위 밖(현재 `PEDIATRIC_TRANSITION`)이면 `OUT_OF_LABEL`로 태깅되고, 이 값을 참조하는 가설은 자동으로 `kind=DEVELOPMENT`가 되어 상업 액션 경로에서 제외된다 (절대 규칙 #5의 코드화) |
+| patient_segment | enum | ✓* | `PEDIATRIC_TRANSITION`(청소년 12–17세 전환기 — **허가 범위 밖**) `GENERALIZED_PGTC`(전신 강직-간대발작 — **허가 범위 밖**, 08/21) `LGS`(레녹스-가스토 증후군 — **허가 범위 밖**, 08/21) `ELDERLY_65_PLUS` `DRE_2PLUS`(2제 이상 실패 약물난치성) `COMORBID_PSYCH` `FEMALE_CHILDBEARING` `NEW_ONSET_ADULT` `UNSPECIFIED` |
+| label_scope | enum | 자동판정 | `IN_LABEL` `OUT_OF_LABEL` — `signal_type=REPURPOSING_SIGNAL`이거나 patient_segment가 허가 범위 밖(현재 `PEDIATRIC_TRANSITION` `GENERALIZED_PGTC` `LGS`)이면 `OUT_OF_LABEL`로 태깅되고, 이 값을 참조하는 가설은 자동으로 `kind=DEVELOPMENT`가 되어 상업 액션 경로에서 제외된다 (절대 규칙 #5의 코드화) |
 | journey_stage | enum | | `DIAGNOSIS` `INITIATION` `TITRATION` `MAINTENANCE` `SWITCH` `DISCONTINUATION` |
 | barrier_type | enum | signal_type=TREATMENT_BARRIER면 ✓ | `TITRATION_COMPLEXITY` `DDI_CONCERN`(상호작용) `MONITORING_BURDEN` `REIMBURSEMENT` `AWARENESS_GAP` `FORMULATION_NEED` |
 | solicitation | enum | | `UNSOLICITED` `SOLICITED_BY_MSL` `UNCLEAR` — 오프라벨 언급의 컴플라이언스 의미가 갈리는 축 (08/19, AI 부트스트랩 초안의 발견) |
 | sentiment | enum | | `POSITIVE` `NEUTRAL` `NEGATIVE` `MIXED` — 발언 논조. **HCP 개인별 집계 금지**(절대 규칙 #7) — 세그먼트·토픽 단위 집계만 (08/19, 도메인 오너 판단으로 채택) |
-| indication_mention | text | | 언급된 적응증·질환 원문 (autism, Lennox-Gastaut 등). **enum이 아님** — patient_segment의 SCP 각본(POST_STROKE)과 분리 유지 (08/19) |
+| indication_mention | text | | 언급된 적응증·질환 원문 (autism 등). **enum이 아님** — patient_segment의 SCP 각본(POST_STROKE)과 분리 유지 (08/19). LGS는 08/21 코퍼스 v2에서 발굴 가설 축이 되어 patient_segment enum으로 승격 |
 | concomitant_drugs | text | | 병용 약물명, 쉼표 구분 (lamotrigine 등) — "특정 약물 병용 언급 N회" 집계용. 정규화는 vocab 계층 (08/19) |
 | administration_note | text | | 투여법·제형 관찰 (분쇄 투여 등). **용량 수치는 의도적 제외** — 허위 정밀도·규제 민감 (08/19) |
 | purpose_domain | enum | 자동판정 | `MEDICAL` `COMMERCIAL` `SAFETY` `PUBLIC_EVIDENCE` — 조회 권한의 단위 (§9). signal_type에서 결정론적으로 파생: `ACCESS_ISSUE`→`COMMERCIAL`, `SAFETY_CANDIDATE`→`SAFETY`(§6로 분리), 그 외→`MEDICAL` |
@@ -87,14 +88,26 @@ schema_change_proposals(id, kind: NEW_ENUM_VALUE|NEW_FIELD, target_field, propos
 hypotheses(id, title_ko, kind: IN_LABEL|DEVELOPMENT, status, segment, driver_summary_ko, created_from_aggregate_json)
 screen_findings(id, hypothesis_id, agent: FIELD_SIGNAL|EVIDENCE|SAFETY|CRITIC,
                 finding_type: SUPPORT|COUNTER|GAP|SAFETY_SIGNAL|BLOCK, statement_ko, source_url, source_locator, created_at)
+external_refs(id, source: OPENFDA|CTGOV|PUBMED|CMS|HIRA, ref_type: LABEL_AGE|TRIAL_REG|LIT_COUNT|POP_SIZE,
+              subject, payload_json, source_url, source_as_of, caveat_ko, created_at)
+                                               # 08/21 — 시장·경쟁 화면(/market)이 읽는 **공개 참조 데이터**.
+                                               # 가설에 연결되지 않는다(hypothesis_id 자체가 없다) → COMMERCIAL 개방의 안전한 근거.
+                                               # 소정의 openFDA·CT.gov 커넥터가 여기로 쓴다 (DECISIONS 08/21)
 board_minutes(id, hypothesis_id, role: MEDICAL|DEVELOPMENT|SAFETY|MARKET_ACCESS|CEO, position_ko, action_item_json, seq)
-decisions(id, hypothesis_id, decision: APPROVED|HOLD|REJECTED, decided_by, rationale_ko, follow_up_json, decided_at)
+decisions(id, hypothesis_id, decision: APPROVED|HOLD|REJECTED, decided_by, rationale_ko, decided_at)
+                                               # 08/21: follow_up_json 제거 — 후속 액션은 action_items로 정규화
+action_items(id, hypothesis_id FK, decision_id FK, directive_ko,
+             target: FIELD_CHECKLIST|SPECIALIST_REVIEW|MEDINFO_RESPONSE,   # 상업 실행 계열 값 없음 = 절대 규칙 #5의 코드화
+             owner_role, status: PROPOSED|ACTIVE|COLLECTED|CLOSED, source: BOARD|CEO|HUMAN,
+             created_at, delivered_at)          # 08/21 — 실행 루프의 1급 레코드 (상태 머신: docs/01 §3)
 blocked_log(id, source: CRITIC, reason_code, detail_ko, payload_json, created_at)
 llm_runs(id, purpose, model, prompt_file, prompt_version, schema_name, parser_version,
          external_data_as_of, input_hash, output_hash, latency_ms, created_at)
 ```
 
 `hypotheses`에는 `not_board_ready_reason`(docs/01 §3의 사유 코드, nullable)을, `screen_findings`에는 `source_as_of`(외부 스냅샷 일시)와 `caveat_ko`(해석 한계 문구, §10)를 함께 저장한다.
+
+액션별 "참조 수집 수"는 저장하지 않고 SQL로 센다: 그 action_item id를 `interactions.checklist_refs`(§1)에 담아 제출된 면담의 claim 중 **APPROVED만** 카운트(절대 규칙 #1·#3). 이 숫자가 +1 되는 순간이 실행 루프가 닫혔다는 증거다.
 
 ## 5. 검토등급(H/M/L) 규칙 — 결정론적 계산 (LLM 아님)
 
@@ -113,6 +126,19 @@ llm_runs(id, purpose, model, prompt_file, prompt_version, schema_name, parser_ve
 - 검토 큐는 시스템이 결정론적으로 정렬한다: ① 가설 후보가 참조하는 claim → ② 미검토 신호 중 반복 수 상위 → ③ 같은 그룹 안에서는 저등급(L→M→H) 우선(원문 불일치 위험이 큰 것부터 검증).
 - 수용률(KPI 90%+) = **검토 완료분 중 승인 비율**. AI 품질 지표이지, 전수 검토를 강제하는 장치가 아니다.
 - 용어: 화면·발표에서 "필요한 부분만 검토" 같은 주관적 표현 금지 → **"위험 기반 검토(risk-based review)"**로 통일.
+
+### 5.6 후보 레이더 (candidate radar) — 잠정 신호의 유일한 두 용도 (08/20)
+
+status와 무관하게(CANDIDATE 포함) 세는 **잠정 집계**. 루프의 순서를 "검토-우선"이 아니라 "신호-우선"으로 만드는 장치다: 시스템이 먼저 반복을 감지해 가설 DRAFT를 만들고, 사람은 그 가설이 딛고 선 claim만 표적 검토한다.
+
+| 규칙 | 내용 |
+|---|---|
+| 허용 용도 ① | 검토 큐 정렬 — §5.5 ②의 "반복 수 상위"가 이 수치다 |
+| 허용 용도 ② | 가설 DRAFT 자동 생성 트리거 (임계값·대상은 docs/01 §3) |
+| 금지 | 공식 집계·순위·KPI·발표 수치에 사용 금지 (절대 규칙 #3). 잠정 수치와 공식 수치를 한 카드에 합산 표기 금지 |
+| 화면 표기 | 공식 KPI와 **분리된 카드**에 "승인 전 잠정 수치 — 공식 집계 아님" 라벨 필수 병기. 통계적 패턴(SQL) 색상 + 잠정 배지 (절대 규칙 #8) |
+| 조회 권한 | `MEDICAL_AFFAIRS` `CLINICAL_STRATEGY`만. `COMMERCIAL` 롤에는 어떤 형태로도 노출하지 않는다 (승인 전 데이터는 §9의 집계 조건을 충족하지 못함) |
+| 수렴 | `candidateCount − approvedCount` = 검토 대기량. 검토가 진행되면 잠정 수치는 공식 수치로 수렴한다 — 홈에서 이 간극 자체를 "검토 대기열" 위젯으로 보여준다 |
 
 ## 6. Safety 분리 규칙 (절대 규칙 #6)
 
@@ -141,8 +167,8 @@ Steward 승인 시: 새 `contract_versions` 레코드 ACTIVE화 → `GET /api/fi
 
 ## 8. v0.2 예정 변경 (데모 시나리오 고정)
 
-- `patient_segment`에 `POST_STROKE` 추가 (코퍼스에 6회/HCP 4인 등장하도록 설계됨)
-- Board 승인 후속 질문 → Field 체크리스트 항목: "청소년 환자 사례 시 이전 실패 약물 수 확인"
+- `patient_segment`에 `POST_STROKE` 추가 (코퍼스에 6회/HCP 4인 등장하도록 설계됨) — **v0.2 변경은 이 하나다**
+- (08/21 정정) Board 후속 질문("청소년 환자 사례 시 이전 실패 약물 수 확인")의 체크리스트 반영은 **Contract 버전 변경이 아니다** — `action_items`가 form-config 응답에 실시간으로 합류한다(실행 루프, docs/01 §3 · 04 §6). 초기 문서가 이 항목을 여기 두어 두 루프를 섞었었다. Contract가 안 바뀌어도 체크리스트는 바뀐다는 것이 두 루프가 독립이라는 증거다
 
 ## 9. 목적·권한 분리 매트릭스 (기획서 3-1 사용자 5부류 · 차별점 ②)
 
@@ -153,8 +179,37 @@ Steward 승인 시: 새 `contract_versions` 레코드 ACTIVE화 → `GET /api/fi
 | `MEDICAL_AFFAIRS` (면담 담당) | MEDICAL, PUBLIC_EVIDENCE | 자신이 수집한 interaction의 원문 + 승인 데이터. AE는 "분기됨" 사실만 보이고 내용은 못 봄 |
 | `CLINICAL_STRATEGY` (임상·Medical 전략) | MEDICAL, PUBLIC_EVIDENCE | 가설 승인·보류·기각 권한 보유. Development Hypothesis 검토 대상 |
 | `SAFETY` (PV 담당) | SAFETY | `safety_candidates`의 유일한 조회자. 성장 가설 화면 접근 불필요 |
-| `COMMERCIAL` (상업 전략) | COMMERCIAL | **원문(raw_text)·verbatim_quote 접근 불가.** 지역·기관 단위 집계 행만 (`distinct_hcp ≥ 3`인 그룹만 반환 — 개인 역추정 차단). Development 가설 목록 접근 불가 |
+| `COMMERCIAL` (상업 전략) | COMMERCIAL, PUBLIC_EVIDENCE | **원문(raw_text)·verbatim_quote 접근 불가.** 지역·기관 단위 집계 행만 (`distinct_hcp ≥ 3`인 그룹만 반환 — 개인 역추정 차단). Development 가설 목록 접근 불가. `PUBLIC_EVIDENCE`는 08/21 승인 — 아래 §9.5의 술어 한 줄로 강제한다 |
 | `DATA_STEWARD` (거버넌스) | 전 영역의 **스키마·SCP·버전** | 값 자체가 아니라 구조를 다룸. SCP의 원문 사례는 열람 가능(승인 판단에 필요) |
+| `ADMIN` (시연·운영 — 08/20 추가) | 전 영역 **열람 전용** | 데모·운영 점검용 전체 열람 계정. **쓰기·승인 권한 없음**(승인은 각 롤의 행위로만 기록). 시연 기본 계정이며, 롤 전환 스위처로 "각 롤에게 보이는 것"을 대조 시연한다. 파일럿에서는 사내 SSO + 접근 로그 필수 |
+
+### 9.5 COMMERCIAL × PUBLIC_EVIDENCE — 무엇으로 막는가 (08/21 확정)
+
+"상업 전략도 시장 정보는 봐야 한다"와 "Development 가설은 상업에 노출하지 않는다"를 동시에 지키는 방법은 **도메인을 넓히는 것이 아니라 데이터를 나누는 것**이다. `PUBLIC_EVIDENCE`에는 성격이 다른 두 종류가 섞여 있었다.
+
+| | 시장 참조 데이터 | 가설 연결 근거 |
+|---|---|---|
+| 테이블 | `external_refs` (신설) | `screen_findings` |
+| 내용 | 허가 라벨 연령·시험 등록·문헌 수·모수 — **누구나 조회 가능한 공개 사실** | "이 가설을 지지/반박하는 근거" — 가설의 존재와 주제를 드러낸다 |
+| 가설 연결 | **없다** (`hypothesis_id` 컬럼 자체가 없다) | 있다 (`hypothesis_id` FK) |
+| COMMERCIAL | 전면 허용 | 그 **가설의 게이트를 따른다** → DEVELOPMENT면 차단 |
+
+게이트는 `access.py` 한 곳에서 술어 하나로 강제한다. 조인을 빠뜨려 새는 경로를 만들지 않기 위해, **가설 연결 여부를 컬럼 존재로 갈라놓은 것이 핵심**이다.
+
+```sql
+-- COMMERCIAL 롤의 PUBLIC_EVIDENCE 조회 (ANSI SQL)
+-- external_refs: 가설 개념이 없으므로 조건 없이 허용
+SELECT ... FROM external_refs WHERE ref_type = ?;
+
+-- screen_findings: 가설의 kind를 따른다. DEVELOPMENT는 행 자체가 빠지고 억제 수를 알려준다
+SELECT f.* FROM screen_findings f
+  JOIN hypotheses h ON h.id = f.hypothesis_id
+ WHERE h.kind <> 'DEVELOPMENT';       -- 억제된 행 수는 suppressedRowCount로 반환 (§9 · docs/04 §3)
+```
+
+- **직접 지목한 조회는 빈 배열이 아니라 403이다**: `GET /hypotheses/HYP-003/screen`처럼 DEVELOPMENT 가설을 명시한 요청은 `403 PURPOSE_SCOPE_VIOLATION`. 목록 조회에서만 행 억제 + `suppressedRowCount`를 쓴다(조용한 누락 금지 원칙, §9).
+- **회귀 테스트 1개를 반드시 둔다** (`backend/tests/test_access_commercial.py`): COMMERCIAL 롤로 모든 PUBLIC_EVIDENCE 경로를 훑어 DEVELOPMENT 가설의 `hypothesis_id`·`statement_ko`가 단 한 건도 응답에 나타나지 않음을 확인. 이 테스트가 이 개방의 안전장치다.
+- 왜 이렇게까지 하나: 이 개방이 새면 절대 규칙 #5가 무너진다. 반대로 제대로 되면 **"권한 분리는 무조건 차단이 아니라 목적에 맞는 범위"**를 보여주는 가장 좋은 장면이 된다 — 같은 롤이 시장·경쟁 탭은 보고 데이터 원장은 403을 받는 대비.
 
 - 절대 규칙 #7의 코드화: `COMMERCIAL` 롤에는 개별 HCP 식별자(`hcp_ref`)를 어떤 응답에서도 내보내지 않는다.
 - MVP 구현: 로그인 없이 헤더 `X-Delphi-Role`로 롤을 주입(docs/04 §0). 시연은 `CLINICAL_STRATEGY`가 기본, 권한 분리 장면에서만 `COMMERCIAL`로 전환.

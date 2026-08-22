@@ -42,6 +42,30 @@
 
 ## 3. 핵심 상태 머신
 
+### 루프는 두 개다 (08/21 — 프레이밍 정정)
+
+"폐쇄 루프"라고 할 때 닫히는 경로가 두 개이고, 무게가 다르다. 초기 문서는 구조 루프에 기울어 있었는데, **매일 도는 것은 실행 루프다** — 스키마 변경은 드물게 일어나는 게 정상이고(자주 돌면 오히려 거버넌스 실패), 레이턴시 단축 주장(docs/00 §1)의 본체도 실행 루프다.
+
+| | **실행 루프 (상시)** | **구조 루프 (드묾)** |
+|---|---|---|
+| 닫히는 경로 | Board 권고 → 사람 승인 → **Action Item** → Field 브리핑·체크리스트 → 표적 수집 → 집계 재유입 | 반복되는 스키마 밖 개념 → SCP → Steward 승인 → v0.2 → form-config 변경 |
+| 빈도 | 매 심의마다 | 코퍼스 전체에서 1건(POST_STROKE)이 되도록 설계 |
+| 스키마 변경 | 없음 — Contract 버전 그대로 | 있음 (추가만, §7.5) |
+| 데모 | ⑤에서 닫힘 | ⑥에서 닫힘 |
+| 닫힘의 증거 | 액션별 **참조 수집 카운트**(SQL) +1 | Field 폼에 새 옵션 등장 |
+
+### Action Item (Board 후속 — 실행 루프의 단위)
+```
+PROPOSED (Board·CEO가 회의록에서 제안 — board_minutes.action_item_json)
+    └─ 사람이 결정에 채택 ──▶ ACTIVE ── /field/briefing 응답에 포함 ──▶ delivered_at 기록
+ACTIVE ──이 액션을 참조한 수집(interactions.checklist_refs)의 claim이 APPROVED──▶ COLLECTED
+ACTIVE ──가설 HOLD·REJECTED 또는 수동 종료──▶ CLOSED
+```
+- **Board·CEO는 제안까지만이다.** 액션이 ACTIVE가 되는 유일한 경로는 사람의 decision에 채택되는 것 (기획서 리스크 표: "Board·CEO Agent에 승인 권한 없음").
+- `target`은 `FIELD_CHECKLIST` `SPECIALIST_REVIEW` `MEDINFO_RESPONSE` 셋뿐 — **상업 실행 계열 값이 enum에 없다.** Development 가설의 액션이 상업 액션으로 연결될 수 없음을 타입 수준에서 강제한다(절대 규칙 #5의 코드화).
+- 전이는 전부 결정론적(API 호출·SQL 조건)이고, "참조 수집 카운트"는 APPROVED claim만 센다(절대 규칙 #3).
+- **`COLLECTED`는 `target = FIELD_CHECKLIST`에만 있는 전이다** (08/21 명시). `SPECIALIST_REVIEW`·`MEDINFO_RESPONSE`는 Field 수집으로 닫히지 않으므로 `ACTIVE`(전달됨)에 머물고 참조 수집 카운트는 `해당 없음`으로 표기한다 — 종료는 사람이 `CLOSED`로 처리한다. 이 구분이 없으면 "전문조직에 넘긴 것"이 "현장에서 수집된 것"으로 집계된다.
+
 ### Claim (추출값)
 ```
 CANDIDATE ──승인──▶ APPROVED ──┐
@@ -59,6 +83,20 @@ DRAFT(Sense 생성) → SCREENING(에이전트 조사 중) → BOARD_READY → I
                           └─ 근거 부족 → NOT_BOARD_READY (순위 없음, 사유 표시)
 IN_REVIEW → APPROVED / HOLD / REJECTED   (+ In-label vs Development 라벨 필수)
 ```
+
+**DRAFT 생성은 사람이 아니라 임계값이 한다 (08/20 — "신호-우선" 재배열).** 사람이 전수 검토를 마쳐야 가설이 나오는 것이 아니다. `sense/aggregate.py`가 추출 완료 시·claim 상태 변경 시마다 **잠정 신호(CANDIDATE 포함 — docs/02 §5.6 후보 레이더)**를 재계산하고, 아래 조건을 모두 만족하는 (patient_segment × signal_type) 조합에 열린 가설이 없으면 DRAFT를 자동 생성한다. 멱등: 같은 조합의 가설이 이미 있으면 새로 만들지 않고 잠정 수치만 갱신한다.
+
+| 생성 조건 | 기본값 (`backend/app/config.py` 상수 — 결정론, LLM 관여 없음) |
+|---|---|
+| 대상 signal_type | `UNMET_NEED` `TREATMENT_BARRIER` — 성장 가설 후보군. `INFO_REQUEST`는 Field 체크리스트로, `SAFETY_CANDIDATE`는 docs/02 §6 분리 경로로, `POSITIVE_OUTCOME` 등은 대시보드 표시만 |
+| 잠정 반복 수 | ≥ 5 |
+| 잠정 독립 HCP | ≥ 3 |
+| 대상 patient_segment | **`UNSPECIFIED` 제외** (08/21 명시) — 환자군이 특정되지 않은 신호는 가설의 주체가 될 수 없다. 스키마 밖 표현(post-stroke 등)은 `UNSPECIFIED`로 떨어지고 `unmapped_terms` 반복이 **SCP 경로**를 탄다. 이 규칙이 없으면 코퍼스의 S3 19건이 "미지정 환자군 가설"을 만든다 |
+
+- 생성 직후 참조 claim 중 APPROVED가 0건이면 그대로 `NOT_BOARD_READY(NO_APPROVED_BASIS)` 사유를 달고 가설 보드에 노출된다 — **승인은 가설의 탄생 조건이 아니라 Board행의 관문이다.** 생성과 동시에 그 가설이 참조하는 claim들이 검토 큐 최상단으로 올라간다(docs/02 §5.5 ①).
+- 잠정 수치의 용도는 DRAFT 생성 트리거와 검토 큐 정렬, 딱 두 가지다. **공식 집계·순위·KPI는 여전히 APPROVED만 계산한다(절대 규칙 #3 불변).** 가설 카드의 `statisticalPatterns`도 항상 승인 기준 SQL 재계산 값을 쓰고, 생성 당시의 잠정 스냅샷은 `created_from_aggregate_json`에 참고용으로만 보존한다.
+- 검산 (08/21 코퍼스 v3 실측 — 문서 320건·단위 1,118): 이 기본값이면 정확히 **넷만** 생성된다 — HYP-001(S1 청소년: **52건/34인**, 검증 축)·HYP-002(S6 노인: **41건/27인**, In-label 대비)·HYP-003(S7 PGTC: **34건/23인**, 완주 대표)·HYP-004(S8 LGS: **21건/15인**, 두 번째 발굴). S4(INFO_REQUEST 47건)·S5(POSITIVE_OUTCOME 38건)는 대상 signal_type이 아니고, S3(post-stroke 19건)는 `UNSPECIFIED`라 위 규칙으로 제외되어 SCP 경로를 탄다. **`scripts/generate_corpus.py --dry-run`이 이 4개 집합을 문자 그대로 검증**하므로 각본을 잘못 고치면 코퍼스 생성 자체가 실패한다 (docs/03 §2).
+
 **NOT_BOARD_READY 판정도 결정론적이다** (기획서 4-2 ③ "근거가 충분하지 않으면 순위를 부여하지 않는다"). 아래 중 하나라도 걸리면 Board로 넘기지 않고 사유 코드를 화면에 표시한다.
 
 | 사유 코드 | 조건 |
@@ -90,7 +128,7 @@ backend/app/
 ├── screen/            # orchestrator.py + agents/{field_signal, evidence, safety, critic}.py
 ├── board/             # deliberate.py (Board 다중 관점 + CEO 종합)
 ├── connectors/        # pubmed.py · ctgov.py · openfda.py — 전부 cache.py 경유
-└── routers/           # documents · claims · aggregates · hypotheses · contract · field
+└── routers/           # documents · claims · aggregates · hypotheses · contract · field · market(external_refs) · actions
 ```
 
 ### 에이전트 실행 규칙 (기획서 반영)
@@ -104,12 +142,13 @@ backend/app/
 ### Console (페이퍼 라이트, 데스크톱 우선) — 건태
 | 라우트 | 화면 | 핵심 컴포넌트 |
 |---|---|---|
-| `/` | 홈 대시보드 | KPI 스트립(승인 데이터 수·신호 수·가설 수), 신호 추이 차트, 최근 활동 |
-| `/review` | Data Review | 문서 리스트 → claim 카드 ↔ 원문 하이라이트 양분할, 승인/수정/반려 |
+| `/` | 홈 대시보드 | KPI 스트립(승인 데이터 수·신호 수·가설 수), 신호 추이 차트, **후보 레이더 카드(잠정 라벨 필수 — 임계 도달 시 가설 링크, docs/02 §5.6)**, 검토 대기열 위젯, 최근 활동 |
+| `/review` | Data Review | **첫 화면은 검토 큐(위험 기반 정렬 + `queueReasonKo` 표시)** — 문서 리스트·원문 하이라이트 양분할은 큐에서 진입하는 상세. 승인/수정/반려 |
 | `/hypotheses` | 가설 보드 | 가설 카드 그리드 (상태별), Not Board-ready 별도 표시 |
-| `/hypotheses/[id]` | 가설 상세 | **5단계 구분 카드**, 지지/반대/공백 근거 리스트(원문·출처 링크), 에이전트 활동 시각화, Board 회의록, 승인·보류·기각 |
+| `/hypotheses/[id]` | 가설 상세 | **5단계 구분 카드**, 지지/반대/공백 근거 리스트(원문·출처 링크), 에이전트 활동 시각화, Board 회의록, 승인·보류·기각 — **승인 시 Board 제안 중 채택할 Action Item을 확정(편집 가능)**, 이후 액션별 상태·참조 수집 카운트 표시 |
 | `/contract` | Data Contract | 현재 버전 스키마 뷰, SCP 목록·승인, 버전 diff |
 | `/contract/provenance` | Contract 유래 | 부트스트랩 판정 기록의 결정론적 렌더링(LLM 없음): 반복 매트릭스 → 원문 인용·판정 → 스키마·DB 반영 → 한 문장 추적. 데이터 원천: DECISIONS 08/19 + `docs/assets/bootstrap-ai-draft.md` (동기화 대상: `apps/console/lib/provenance.ts`) |
+| `/market` | 시장·경쟁 | 공개 출처만 쓰는 경쟁 환경 화면: 허가 연령 지도(openFDA 라벨), 경쟁사 청소년 시험 타임라인(CT.gov), 문헌 추이(PubMed), 모수(HIRA·CMS Part D 집계). **개인 식별 0건 · 예측선 금지 · FAERS 발생률 비교 금지** (DECISIONS 08/20). `external_refs` 테이블만 읽으므로(가설 연결 없음) COMMERCIAL 롤에도 열린다 — 강제 방식은 docs/02 §9.5 |
 | `/safety` | 안전성·차단 로그 | 분기된 AE 후보, Critic 차단 이력 |
 
 ### Field (페이퍼 라이트, 모바일 우선 390px) — 소정
@@ -121,6 +160,9 @@ backend/app/
 | `/history` | 내 기록 | 승인 완료 interaction 목록 |
 
 - Field의 입력 항목은 하드코딩 금지 — 반드시 `GET /api/field/form-config`(활성 contract 버전) 기반 렌더. **v0.2 전환 데모가 여기서 터진다.**
+
+**Field가 자유 메모를 대체하는 이유 (08/21 명시)** — 기존 방식은 면담 후 자유 서술 메모를 쓰고, 나중에 누군가 그것을 다시 읽어 분류한다. 두 번의 손실이 생긴다: ① 메모를 쓸 때 **무엇을 남겨야 하는지 기준이 없어** 빠뜨리고, ② 나중에 읽는 사람이 **그 자리에 없었기 때문에** 맥락을 복원하지 못한다. Field는 같은 Contract가 정의한 항목을 **대화 직후 그 자리에서** 채우게 하므로, 빠뜨림은 폼이 막고 맥락은 당사자가 채운다. 사후 정리 단계가 아예 없어지는 것이 Data Latency 축소의 실제 메커니즘이다 (docs/00 §1.2).
+- 놓치지 않게 하는 장치 세 개: **동적 폼**(Contract가 항목을 강제) · **Board 후속 질문 체크리스트**(무엇을 물어야 하는지를 시스템이 알려준다, §3 실행 루프) · **AE 자동 분기**(안전성 발언이 일반 카드에 섞여 사라지지 않는다, 절대 규칙 #6).
 
 ## 6. 환경 변수 (.env)
 

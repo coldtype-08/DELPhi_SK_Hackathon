@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   September 14, 2025   |   Nadia Belhadj
+HCP: Felicity Fairweather, MD, Northgate Neurology Partners, Lexington, KY (RSM)
+
+Most of the discussion was about the referral intake process, which changed again last month. Talked through the surgical workup list in general terms, without any specific case. Mentioned one adult who had exhausted the usual combinations is now doing markedly better.

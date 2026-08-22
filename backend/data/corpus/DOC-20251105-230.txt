@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: November 5, 2025   |   MSL: Ravi Chandrasek
+HCP: Lachlan Zeitler, MD, Bluestem Comprehensive Epilepsy Clinic, Wichita, KS (AR)
+
+A compressed visit at the end of the clinic list; the schedule was tight.
+
+Spent some time on the pediatric-to-adult transfers and how workup decisions get sequenced.
+
+Referenced a session summary from a colleague in passing.
+
+The composition of the surgical workup list has shifted over the last year or two.
+
+Raised an adult patient describing persistent dizziness after the last titration step.

@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: February 14, 2025   |   MSL: Colin Ferreira
+HCP: Delphine Kettleborn, MD, Copperfield Neurology Institute, Providence, RI (AR)
+
+A twenty-minute meeting in the reading room, first one this quarter.
+
+Mentioned a review that circulated on service but did not raise any specific finding.
+
+Titration scheduling is handled by nursing staff, which practice finds workable.
+
+Described how refractory group is triaged now compared with before.

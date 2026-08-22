@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: June 26, 2024   |   MSL: Tom Alvarez
+HCP: Caleb Munson, MD, Cedar Ridge Medical Group, Springfield, IL (AR)
+
+Benefit checks is handled by one person here, which came up as general frustration.
+
+Referral patterns into this clinic have changed, and older half of panel is a bigger share than it was.
+
+Clinic throughput has stretched out since summer, which shapes how much time there is for anything else.

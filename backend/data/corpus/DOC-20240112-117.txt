@@ -1,0 +1,74 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: January 12, 2024   |   From: Sam Becker, Rachel Suh
+
+FIELD MEDICAL INSIGHTS
+
+Rohan Vasquez-Lund, MD, Ember Lake Medical Group, Omaha, NE (RSM)
+> Caught brief window in workroom between pts.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> The composition of newly referred pts has shifted over the last year or two.
+
+Tadeo Ravenscroft, MD, Alder Point Neurology Associates, Peoria, IL (RSM)
+> Caught half-hour window in the corridor between patients.
+> Asked whether I would be at the meeting later this year.
+> Referral patterns into this clinic have changed, and the refractory group is a bigger share than it was.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+> Described how long-standing pts is triaged now compared with before.
+
+Imani Eastmond, MD, Granite Bay Epilepsy Center, Chattanooga, TN (RSM)
+> A twenty-minute meeting in the workroom, first one this quarter.
+> Described how newly referred pts is triaged now compared with before.
+> Described preference for slower titration in general, unrelated to any particular patient.
+> Closed there — nothing actionable this visit.
+
+Kenji Dunmore, MD, Windrow Neuroscience Center, Manchester, NH (RSM)
+> Caught a compressed window at the end of the clinic list between patients.
+> Benefit checks takes longer than the clinical decision, which came up as a general frustration.
+> Referral patterns into this clinic have changed, and newly referred pts is bigger share than it was.
+
+Priya Raghavan, MD, North Star Neurology, Minneapolis, MN (RSM)
+> Caught clipped window in corridor between patients.
+> Talked through newly referred pts in general terms, without any specific case.
+> Routine follow-up slots is slowly recovering since summer, which shapes how much time there is for anything else.
+
+Zubin Castellane, MD, Marbury Neurological Care Center, Omaha, NE (RSM)
+> Asked whether I would be at the meeting later this year.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Left it at that, with the following quarter to be scheduled.
+
+Lukas Vasquez-Lund, MD, Windrow Neuroscience Center, Lakeland, FL (RSM)
+> Talked through long-standing pts in general terms, without any specific case.
+> Nothing actionable this visit. Safety items asked about and confirmed none.
+> Mostly small talk about program and venue.
+> The referral intake process has not settled, and that took up the first part of the conversation.
+> Spent some time on surgical workup list and how workup decisions get sequenced.
+
+Hamish Marchetti, MD, Riverstone Comprehensive Epilepsy Clinic, Hartford, CT (RSM)
+> A half-hour visit in the shared office; the schedule was tight.
+> Onboarding rotating resident is current preoccupation here.
+> Closed there — nothing that needed follow-up.
+> The appeals process varies by payer, which came up as a general frustration.
+
+Nikolai Merriwether, MD, Bayview Health Neurology, Hartford, CT (RSM)
+> The practice lost clinic pharmacist adn has not backfilled, so referral queue keeps slipping.
+> Left it at that, wtih call later this month to be scheduled.
+> The travel schedule this year came up, adn little else.
+
+Lachlan Stanhope, MD, Palmetto Neurology Institute, Syracuse, NY (AR)
+> Caught a productive window between clinic blocks between pts.
+> Asked whether I had seen session summary from colleague; I had not, and offered nothing in return.
+> No specific request this time. Asked about safety and confirmed nothing to report.
+> Most of discussion was about pt portal, which changed again last month.
+
+Adaeze Brannigan, MD, Foxglove Health Neurology, Springfield, MO (RSM)
+> Caught a twenty-minute window in the corridor between pts.
+> Agreed to reconnect at a f/u appointment; no specific request.
+> Compared notes on which sessions were worth time.
+
+Niamh Fairweather, MD, Harborlight Epilepsy Center, Eugene, OR (AR)
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Spent some time on long-standing pts and how workup decisions get sequenced.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+

@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: November 20, 2022   |   MSL: Priya Menon
+HCP: Robert Enloe, MD, High Desert Neurology, Boise, ID (AR)
+
+Stopped by in the back office for a twenty-minute conversation.
+
+The travel schedule this year came up, and little else.
+
+Described a preference for slower titration in general, unrelated to any particular patient.
+
+Onboarding a rotating resident is the current preoccupation here.
+
+Described the practice as early in its experience here, with nothing to report yet.

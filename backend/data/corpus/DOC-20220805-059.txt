@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   August 5, 2022   |   Marcus Obeng
+HCP: Alastair Whitmore, MD, Vantage Park Regional Epilepsy Program, Hartford, CT (AR)
+
+An unexpectedly long visit at the end of the clinic list; the schedule was tight. Most of discussion was about prior-authorization workflow, which changed again last month.

@@ -1,0 +1,83 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: October 13, 2025   |   From: Tom Alvarez, Sam Becker
+
+FIELD MEDICAL INSIGHTS
+
+Fiona Gallagher, MD, Great Lakes Epilepsy Institute, Madison, WI (RSM)
+> 20 min, mostly admin. Prior auth paperwork is the complaint.
+> One coordinator now does appeals full time. Says the payer forms ask the same thing three diffrent ways.
+> No product specifics discussed. Nothing requested.
+
+Marcus Boudreaux, MD, Bayou Regional Epilepsy Center, Baton Rouge, LA (RSM)
+> Adolescent DRE came up early, unprompted.
+> Said, and I quote, 'my hardest clinic days are telling parents of a seventeen-year-old that we have nothing new to offer until adulthood.'
+> Two such pts in clinic this month, both f/u in Nov.
+> Framed as a label limit, not a request to go around it. Confirmed CNB is adult only, no discussion of use under 18. Logging as recurring.
+
+Yolanda Reyes, MD, Copper Mesa Neurology, Mesa, AZ (RSM)
+> Quick stop, clinic running behind. Down one MA and one front desk since Aug.
+> New pt wait out to nine weeks. f/u appts get bumped first when someone calls out.
+> Asked me to keep visits under 15 min until they backfill. No requests.
+
+Peter Kowalczyk, MD, Green Mountain Neuroscience, Burlington, VT (RSM)
+> Most of the appt on referral mix.
+> Asked whether anyone is looking at post-stroke epilepsy, since more referrals lately are seizures after stroke.
+> Stroke unit sends them straight over now, no pathway back. Guessed 5 or 6 in the last yr.
+> Told them I would check what published lit exists. Promised nothing else, no product claims either side.
+
+Jorge Maldonado, MD, Redwood Basin Medical Group, Sacramento, CA (RSM)
+> End of day, 10 min. Volume up vs last quarter, mostly outside referrals.
+> Two new pts a week on the epilepsy side, up from one. Says the mix is shifting older.
+> Nothing clinical. Next visit Dec.
+
+Delphine Kirkpatrick, MD, Copperfield Neurology Institute, Mobile, AL (RSM)
+> An unhurried meeting in the reading room, first one this quarter.
+> Mentioned session summary from colleague but did not raise any specific finding.
+> Reported a long-refractory adult has been able to return to driving after a sustained quiet period.
+> Closed there — no specific request.
+
+Felicity Fairweather, MD, Northgate Neurology Partners, Lexington, KY (RSM)
+> An unexpectedly long conversation over quick coffee, mostly logistics.
+> Volunteered that several drug-resistant adults finally responded after years of cycling medications.
+> Talked through older half of panel in general terms, without any specific case.
+
+Bram Merriwether, MD, Willowmere Neuroscience Center, Toledo, OH (RSM)
+> Described how the older half of the panel is triaged now compared with before.
+> No materials requested this time. Asked about safety and confirmed nothing to report.
+> Mentioned session summary from colleague but did not raise any specific finding.
+> Reported another refractory adult is holding steady on the current regimen.
+
+Eamon Hollingsworth, MD, Silver Creek Medical Group, Fort Collins, CO (RSM)
+> The composition of long-standing pts has shifted over the last year or two.
+> Mentioned case series someone forwarded but did not raise any specific finding.
+> Reported a treatment-resistant adult went from weekly seizures to rare breakthroughs.
+
+Eloise Quintrell, MD, Beacon Hill Neurology Associates, Des Moines, IA (RSM)
+> Described how surgical workup list is triaged now compared with before.
+> Mentioned review that circulated on service but did not raise any specific finding.
+> The appeals process is handled by one person here, which came up as a general frustration.
+> Requested a summary of interaction considerations for the over-65 group.
+
+Yesenia Vasquez-Lund, MD, Northgate Neurology Partners, Syracuse, NY (RSM)
+> Caught a clipped window in reading room between pts.
+> Was pleased to report that two refractory adults who had failed several medications are now months into markedly fewer seizures.
+> Talked through the older half of the panel in general terms, without any specific case.
+
+Gaspar Ivanetti, MD, Saltmarsh Neurological Care Center, Albany, NY (RSM)
+> An unhurried visit in the back office; the schedule was tight.
+> Raised the post-stroke epilepsy group, described as sitting outside the usual buckets.
+> Described preference for slower titration in general, unrelated to any particular patient.
+
+Arvind Wainwright, MD, Bayview Health Neurology, Jackson, MS (RSM)
+> Asked whether I had seen a review that circulated on service; I had not, and offered nothing in return.
+> Closed there — no materials requested.
+> Shared that the longest-standing refractory patient in this panel has had the quietest stretch in years.
+> Clinic throughput looks better than last year since summer, which shapes how much time there is for anything else.
+
+Renata Cavanaugh, MD, Northbrook Neurology Institute, Albany, NY (RSM)
+> Caught twenty-minute window in the back office between pts.
+> Referenced a case series someone forwarded in passing.
+> Noted a patient with a rash-like eruption that is being watched.
+

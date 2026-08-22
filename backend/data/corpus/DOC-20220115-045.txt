@@ -1,0 +1,72 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: January 15, 2022   |   From: Priya Menon, Dana Cho
+
+FIELD MEDICAL INSIGHTS
+
+Viraj Corliss, MD, Lakeshore Neurological Care Center, Lexington, KY (AR)
+> Stopped by at the nurses' station for a compressed conversation.
+> Referenced a case series someone forwarded in passing.
+> Referral patterns into this clinic have changed, and the surgical workup list is a bigger share than it was.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Most of the discussion was about the prior-authorization workflow, which changed again last month.
+
+Bastian Pemberton, MD, Granite Bay Epilepsy Center, Jackson, MS (RSM)
+> An unexpectedly long visit in the back office; the schedule was tight.
+> Clinic throughput has stretched out since the summer, which shapes how much time there is for anything else.
+> The practice lost the clinic pharmacist and has not backfilled, so the referral queue keeps slipping.
+> The appeals process has improved somewhat, which came up as a general frustration.
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+
+Selin Danforth, MD, Willowmere Neuroscience Center, Bakersfield, CA (RSM)
+> Benefit verification is the step that most often delays a start here.
+> Clinic throughput is slowly recovering since the summer, which shapes how much time there is for anything else.
+> Described the practice as early in its experience here, with nothing to report yet.
+> Referenced a review that circulated on the service in passing.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Camila Larkspur, MD, Kestrel Comprehensive Epilepsy Clinic, Little Rock, AR (RSM)
+> Stopped by in the conference room for a brief conversation.
+> Onboarding the clinic pharmacist is the current preoccupation here.
+> Mentioned a case series someone forwarded but did not raise any specific finding.
+> Nothing that needed follow-up. Safety items asked about and confirmed none.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+Yannick Nakagawa, MD, Granite Bay Epilepsy Center, Toledo, OH (RSM)
+> The referral intake process is still being sorted out, and that took up the first part of the conversation.
+> Asked whether I would be at the meeting later this year.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> Referral patterns into this clinic have changed, and the surgical workup list is a bigger share than it was.
+
+Ulrike Eversholt, MD, Thornfield Regional Epilepsy Program, Portland, ME (AR)
+> An unexpectedly long conversation in the workroom, mostly logistics.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> The practice lost a rotating resident and has not backfilled, so the referral queue looks better than last year.
+> Spent some time on the refractory group and how workup decisions get sequenced.
+> Mentioned a session summary from a colleague but did not raise any specific finding.
+
+Gemma Steinmetz, MD, Vantage Park Regional Epilepsy Program, Chattanooga, TN (RSM)
+> A short meeting in the conference room, first one this quarter.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> Referral patterns into this clinic have changed, and the surgical workup list is a bigger share than it was.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+
+Omar Haddad, MD, Beacon Hill Epilepsy Center, Providence, RI (RSM)
+> Routine follow-up slots is slowly recovering since the summer, which shapes how much time there is for anything else.
+> Referral patterns into this clinic have changed, and the refractory group is a bigger share than it was.
+> Described the practice as early in its experience here, with nothing to report yet.
+> Asked whether I would be at the meeting later this year.
+> Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return.
+
+Renee Calloway, MD, Palmetto Neurology Associates, Charleston, SC (RSM)
+> An unexpectedly long meeting between clinic blocks, first one this quarter.
+> Spent some time on teh surgical workup list and how workup decisions get sequenced.
+> Agreed to reconnect at a follow-up appointment; no product discussion.
+
+Fabian Galbraith, MD, Palmetto Neurology Institute, Akron, OH (RSM)
+> Stopped by in the workroom for a twenty-minute conversation.
+> Described the practice as early in its experience here, with nothing to report yet.
+> Onboarding a front-desk coordinator is the current preoccupation here.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+

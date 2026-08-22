@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   November 8, 2022   |   Yuki Tanabe
+HCP: Saoirse Wycliffe, MD, Granite Bay Epilepsy Center, Bakersfield, CA (RSM)
+
+Caught a twenty-minute window in the corridor between patients. Noted that formulary questions is handled by one person here and that this is not specific to any one product.

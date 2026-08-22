@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: April 23, 2022   |   MSL: Priya Menon
+HCP: Ulrike Dellacroix, MD, Silver Creek Medical Group, Allentown, PA (RSM)
+
+A full conversation between clinic blocks, mostly logistics.
+
+Most of the discussion was about the referral intake process, which changed again last month.
+
+Formulary placement was the only product-adjacent topic, and only in general terms.
+
+Described a preference for slower titration in general, unrelated to any particular patient.

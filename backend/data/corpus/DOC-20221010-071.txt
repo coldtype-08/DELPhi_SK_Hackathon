@@ -1,0 +1,84 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: October 10, 2022   |   From: Ingrid Halvorsen, Ravi Chandrasek
+
+FIELD MEDICAL INSIGHTS
+
+Eloise Eversholt, MD, Quarry Hill Epilepsy Center, Tacoma, WA (RSM)
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> Referenced a review that circulated on the service in passing.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Noted that the appeals process is handled by one person here and that this is not specific to any one product.
+> Asked whether I would be at the meeting later this year.
+
+Leonie Eversholt, MD, Silver Creek Medical Group, Albany, NY (RSM)
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Asked whether I would be at the meeting later this year.
+> No product discussion this time. Asked about safety and confirmed nothing to report.
+
+Imani Kilbride, MD, Northgate Neurology Partners, Spokane, WA (AR)
+> A clipped meeting between clinic blocks, first one this quarter.
+> Mostly small talk about the program and the venue.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+
+Silvio Prendergast, MD, Silver Creek Medical Group, Fayetteville, NC (RSM)
+> An unexpectedly long visit in the conference room; the schedule was tight.
+> Asked whether I would be at the meeting later this year.
+> Coverage paperwork has improved somewhat, which came up as a general frustration.
+> The practice lost the clinic pharmacist and has not backfilled, so routine follow-up slots looks better than last year.
+> Onboarding the epilepsy fellow is the current preoccupation here.
+
+Valentina Kirkpatrick, MD, Fox Hollow Neurology Partners, Santa Fe, NM (AR)
+> Stopped by in the shared office for an unexpectedly long conversation.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> Nothing that needed follow-up this time. Asked about safety and confirmed nothing to report.
+> Formulary questions is handled by one person here, which came up as a general frustration.
+
+Esperanza Bellweather, MD, Thornfield Regional Epilepsy Program, Manchester, NH (AR)
+> A short conversation in the corridor, mostly logistics.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Odalys Eversholt, MD, Alder Point Neurology Associates, Charleston, SC (RSM)
+> An unexpectedly long conversation in the shared office, mostly logistics.
+> Onboarding the epilepsy fellow is the current preoccupation here.
+> Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+
+Camila Ostrander, MD, Silver Creek Medical Group, Madison, WI (RSM)
+> Caught a clipped window outside the EEG suite between patients.
+> Formulary questions varies by payer, which came up as a general frustration.
+> The travel schedule this year came up, and little else.
+
+Adaeze Castellane, MD, Harborlight Epilepsy Center, Savannah, GA (RSM)
+> Stopped by in the back office for a compressed conversation.
+> The composition of newly referred patients has shifted over the last year or two.
+> Compared notes on which sessions were worth the time.
+
+Lachlan Dunmore, MD, Sandhill Neuroscience Center, Reno, NV (RSM)
+> An unhurried conversation in teh corridor, mostly logistics.
+> Described teh practice as early in its experience here, with nothing to report yet.
+> Onboarding a front-desk coordinator is teh current preoccupation here.
+> Referral patterns into this clinic have changed, and teh refractory group is a bigger share than it was.
+
+Kiara Quintrell, MD, Harborlight Epilepsy Center, Portland, ME (AR)
+> Formulary questions has improved somewhat, which came up as a general frustration.
+> The practice lost one of the nurse practitioners and has not backfilled, so routine follow-up slots is slowly recovering.
+> Closed there — no product discussion.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> The patient portal is still being sorted out, and that took up the first part of the conversation.
+
+Tobias Rusnak, MD, Sable Creek Medical Group, Akron, OH (AR)
+> The composition of the older half of the panel has shifted over the last year or two.
+> Referenced a review that circulated on the service in passing.
+> Onboarding a rotating resident is the current preoccupation here.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> The travel schedule this year came up, and little else.
+
+Katherine Ost, MD, Sonoran Neuroscience Institute, Tucson, AZ (RSM)
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+> Asked whether I would be at the meeting later this year.
+> Benefit verification is the step that most often delays a start here.
+> Most of the discussion was about the new charting templates, which changed again last month.
+

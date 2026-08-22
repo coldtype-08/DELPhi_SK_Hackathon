@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   July 14, 2025   |   Sam Becker
+HCP: Esperanza Jarreau, MD, Vantage Park Regional Epilepsy Program, Hartford, CT (RSM)
+
+Mostly small talk about the program and the venue. Follow-up requested — whatever exists on managing long medication lists in older adults. Monitoring intervals during titration are set by clinic routine here rather than by protocol. Referral patterns into this clinic have changed, and older half of panel is a bigger share than it was.

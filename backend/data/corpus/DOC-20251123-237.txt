@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: November 23, 2025   |   MSL: Priya Menon
+HCP: Gaspar Ostrander, MD, Riverstone Comprehensive Epilepsy Clinic, Burlington, VT (RSM)
+
+A short conversation in the shared office, mostly logistics.
+
+Referenced a review that circulated on the service in passing.
+
+Described how the older half of the panel is triaged now compared with before.
+
+Asked whether anyone is looking at post-stroke epilepsy, which this clinic sees more of every year.
+
+Described a preference for slower titration in general, unrelated to any particular patient.

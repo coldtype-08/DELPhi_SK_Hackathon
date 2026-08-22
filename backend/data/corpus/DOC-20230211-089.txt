@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   February 11, 2023   |   Ingrid Halvorsen
+HCP: Josefina Silverthorne, MD, Ember Lake Medical Group, Des Moines, IA (AR)
+
+Mostly small talk about the program and the venue. Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.

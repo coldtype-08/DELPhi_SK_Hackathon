@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: November 11, 2024   |   MSL: Sam Becker
+HCP: Felicity Fairweather, MD, Northgate Neurology Partners, Lexington, KY (RSM)
+
+A clipped visit in workroom; schedule was tight.
+
+The scheduling system is being piloted this quarter, and that took up the first part of the conversation.
+
+Benefit verification is step that most often delays a start here.
+
+Talked through pediatric-to-adult transfers in general terms, without any specific case.

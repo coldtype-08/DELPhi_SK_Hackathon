@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: January 2, 2025   |   MSL: Ravi Chandrasek
+HCP: Anouk Brannigan, MD, Windrow Neuroscience Center, Eugene, OR (RSM)
+
+Caught a twenty-minute window between clinic blocks between patients.
+
+Benefit verification is the step that most often delays a start here.
+
+Talked through the pediatric-to-adult transfers in general terms, without any specific case.
+
+Described a preference for slower titration in general, unrelated to any particular patient.
+
+Mostly small talk about the program and the venue.

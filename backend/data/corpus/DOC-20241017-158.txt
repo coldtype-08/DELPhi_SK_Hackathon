@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: October 17, 2024   |   MSL: Sam Becker
+HCP: Tadeo Ravenscroft, MD, Alder Point Neurology Associates, Peoria, IL (RSM)
+
+The composition of the pediatric-to-adult transfers has shifted over the last year or two.
+
+Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+
+Talked through surgical workup list in general terms, without any specific case.
+
+Closed there — nothing that needed follow-up.

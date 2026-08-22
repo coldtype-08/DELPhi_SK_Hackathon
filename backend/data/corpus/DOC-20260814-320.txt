@@ -1,0 +1,16 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: August 14, 2026   |   MSL: Nadia Belhadj
+HCP: Fabian Galbraith, MD, Palmetto Neurology Institute, Akron, OH (RSM)
+
+A compressed visit at the end of the clinic list; the schedule was tight.
+
+Mentioned a guideline update discussed at journal club but did not raise any specific finding.
+
+The composition of the pediatric-to-adult transfers has shifted over the last year or two.
+
+Compared notes on which sessions were worth the time.
+
+Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Framed the biggest gap in this panel as the adolescents with drug-resistant focal seizures who simply wait until 18 before cenobamate is an option.

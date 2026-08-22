@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   March 2, 2026   |   Tom Alvarez
+HCP: Lukas Lammermoor, MD, Saltmarsh Neurological Care Center, Peoria, IL (AR)
+
+Stopped by outside EEG suite for clipped convo. Titration scheduling is handled by nursing staff, which practice finds workable. Called it concomitant medication review in geriatric patients as the step that stalls every start.

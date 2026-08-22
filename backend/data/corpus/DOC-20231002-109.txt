@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: October 2, 2023   |   MSL: Nadia Belhadj
+HCP: Xiomara Wetherby, MD, Northbrook Neurology Institute, Fort Collins, CO (RSM)
+
+A compressed visit over a quick coffee; the schedule was tight.
+
+The composition of the pediatric-to-adult transfers has shifted over the last year or two.
+
+Most of the discussion was about the phone triage line, which is being piloted this quarter.

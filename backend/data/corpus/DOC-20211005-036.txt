@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   October 5, 2021   |   Rachel Suh
+HCP: Rosalind Wainwright, MD, Sable Creek Medical Group, Syracuse, NY (RSM)
+
+This practice is still building familiarity with the product and had no clinical points to raise. Titration habits came up in general terms; no specifics were discussed and none were offered.

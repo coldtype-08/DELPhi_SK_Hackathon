@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: September 20, 2022   |   MSL: Sam Becker
+HCP: Fabian Brannigan, MD, Cedar Ridge Regional Epilepsy Program, Reno, NV (RSM)
+
+Caught a productive window in the back office between patients.
+
+The travel schedule this year came up, and little else.
+
+The appeals process is handled by one person here, which came up as a general frustration.

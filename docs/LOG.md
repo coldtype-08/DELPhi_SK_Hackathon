@@ -30,8 +30,34 @@
 
 ## Week 1 (8/21–8/27)
 
+- 08/20 건태(Claude 세션): **Console 디자인 초안 v1 반입 + 토큰 동기화** — `demo/design-draft.html`(6탭 인터랙티브: 레이더·환자군 도넛·전문가 관여(가명·원값)·추이(사내+PubMed)·안전성 라벨대조 차트, 공식 팔레트·Paper&Glass). console·field `globals.css` 토큰을 docs/05 공식 팔레트로 동기화 `[cross]` (다음: 킥오프 공유 → 소정 화면 이식)
+- 08/20 건태(Claude 세션): **"신호-우선" 재배열 스펙 초안** — 후보 레이더(docs/02 §5.6)·가설 DRAFT 자동 생성 임계값(docs/01 §3)·`GET /aggregates/radar` 계약(docs/04 §3)·홈/Review 화면 맵 개정. 팀 확인 후 main 병합 예정 (다음: 인혁 8/24 칸에서 구현, 소정 홈·Review 반영)
 - 08/20 건태(Claude 세션): **Console에 Contract 유래(Provenance) 화면 신설** — `/contract/provenance`: 부트스트랩 판정(채택 9·제외·보류)의 인터랙티브 렌더링(반복 매트릭스 → 원문 인용·판정 → YAML·DB 컬럼·여섯 소비처 → "한 문장 따라가기" 5단계). 데이터는 DECISIONS 08/19·bootstrap-ai-draft를 옮긴 정적 모듈, LLM 호출 없음 (다음: 팀 리뷰 후 발표 각본 ①에 편입 여부 결정)
 
+- 08/20 건태(Claude 세션): **초안 8탭 확장 + Field 앱 룩 정합 + 면담 재생 데모** — 탭별 개요 대시보드·안전성 탭 신설, 차트 전면 공식 팔레트, 프론트 문구를 사용자 언어로 교체. Field는 `/capture`에 전사 재생 폴백을 실물로 넣어 **발언 속 구간만 아래 감지 칩과 같은 색으로 하이라이트**(범례 포함) `[cross]` — 배포본 `delphi-field-production`에서 확인 가능 (다음: 소정에게 이관, 8/25~ 서버 AE 분기와 연결)
+- 08/20 건태(Claude 세션): **시연 로그인·ADMIN 권한·데이터 원장 탭** — 계정 5종 로그인 오버레이 + 상단 권한 전환, 14개 테이블 전 컬럼을 Snowflake풍으로 조회(권한별 403·행 억제·SQL 주석 게이트 표시). `ADMIN`(전 영역 열람 전용, 쓰기·승인 없음)을 docs/02 §9·04 §0에 추가. 초안을 `apps/console/public/draft.html`로 복사해 배포본 `/draft.html`에서 열람 가능(docs/07 §1.6) (다음: 인혁 — 원장 조회 라우터를 access.py 게이트 뒤에 실물 구현)
+
+- 08/20 건태(Claude 세션): **시장·경쟁 탭 신설 — 경쟁 축을 개인이 아니라 공개 집계로** — 개별 HCP 처방량·Open Payments 조회 제안을 기각하고(절대 규칙 #7·반부패 리스크·가명 해제 불가), 집계 축을 제조사로 뒤집어 채택. 화면은 허가 연령 지도(우리 18세+ 확정 + 공백 12–17 강조, 경쟁 5종은 스냅샷 대기 트랙)·외부 질의 명세 4건·제조사 축 집계 쿼리·규칙 아코디언. COMMERCIAL에 `PUBLIC_EVIDENCE` 개방(DEVELOPMENT 연결 근거는 억제) — docs/01 §5·02 §9·DECISIONS 2건 (다음: 8/26 fixture 작업에서 openFDA·CT.gov 실 스냅샷으로 연령 지도 채우기)
+
+- 08/21 건태(Claude 세션): **폐쇄 루프 재정의 — 실행 루프(상시)와 구조 루프(드묾) 분리** — Board 승인 후속 액션을 action_items 테이블·상태 머신·API(`GET /actions`, decision body의 actionItems 배열, briefing/interactions의 checklistRefs)로 1급화. target enum에 상업 실행 값 없음(#5 코드화), 수집 귀속 카운트는 SQL·APPROVED만. CLAUDE.md 요약·데모 ⑤·P0 컷라인 갱신 (다음: 인혁 8/29 Board API에 action_items 포함 구현, 소정 Field 브리핑 화면)
+
+- 08/21 건태(Claude 세션): **코퍼스 v2 설계 + 서사 재편(검증→발굴) + v0.1 재확정 docs 반영** — S7(PGTC)·S8(LGS) 발굴 신호 신설(가설 4개 자동 생성), 90문서/≈165단위, 완주 대표 HYP-003 재지정, patient_segment에 GENERALIZED_PGTC·LGS 추가(YAML·docs/02 동기), 캐시 쿼리에 PGTC·LGS 추가. backend/·scripts/에 폴더 CLAUDE.md 신설(킥오프 온보딩) (다음: 8/22 코퍼스 v2 각본·본문 작성 착수)
+
+- 08/21 건태(Claude 세션): **코퍼스 v3 생성 완료 — 320문서 / 1,118단위 / HCP 300인 / 2021~2026.** 조합형 산문 엔진 신설(`scripts/corpus_v3.py`, LLM 없이 재현), 학회 보고서 22건에 실제 학회명(AES·AAN·ANA)+참조 고지, 문서당 의사 8~14인, 음성 전사 18건. 렌더 검증(docx 99·pdf 22 재추출 대조) 통과, DB 시드 확인(documents 320·interactions 1,118). 임계 통과 조합 4개 검증, UNSPECIFIED 제외 규칙 명시 (다음: 8/22 3인 리얼리티 검수 → 조각 풀 보강 · 목업 수치 v3로 갱신)
+
+- 08/21 건태(Claude 세션): **목업 수치 v3 정합 + 시나리오 반영 감사** — 목업의 v1 숫자를 코퍼스 v3(320/1,118/168승인)로 전면 교체, 발굴 가설 화면(PGTC·LGS) 신설, 가설 보드 4장·COMMERCIAL 억제 3건. 감사에서 찾은 공백 3개 보강: ① CLAUDE.md 한줄요약에 '스키마도 AI 초안+사람 확정' 명시 ② **docs/00 §1.2 레이턴시 4종 정의·메커니즘·화면 증명 매핑 신설**(실행 지연 추가) ③ docs/01 §5에 Field가 자유 메모를 대체하는 이유(손실 2단계) 명시 (다음: 8/22 코퍼스 리얼리티 검수)
+
+- 08/21 건태(Claude 세션): **Contract v0.1 Steward 승인 + COMMERCIAL 개방 설계 확정 + 실행 루프 화면 신설** — ① v0.1 재확정 승인(이후 변경은 SCP만) ② COMMERCIAL×PUBLIC_EVIDENCE를 도메인 확장이 아니라 **`external_refs` 테이블 분리**로 강제(hypothesis_id 컬럼 자체가 없음 · screen_findings는 가설 게이트 · 회귀 테스트 1개 의무화, docs/02 §9.5 · 04 §4.5) ③ 가설 보드에 **실행 루프 4단계 재생 카드** — 승인→Action Item→Field 전달→참조 수집 +1을 클릭으로 관통, Field 폰 체크리스트와 같은 ACT-001을 가리킨다. COLLECTED는 FIELD_CHECKLIST 전용 전이임을 docs/01 §3에 명시(전문조직 검토가 현장 수집으로 집계되는 오류 차단) (다음: 소정 — openFDA 커넥터 → external_refs / 인혁 — actions 라우터·access.py COMMERCIAL 게이트)
+
+- 08/21 건태(Claude 세션): **docs/08 AS-IS/TO-BE를 실측·기획서 원문·외부 근거로 확정** — 병목을 "분석이 느리다"에서 **"쌓이는 것이 보이지 않는다"**로 재정의(후보 레이더의 존재 이유가 여기서 나온다), 실데이터 규모 반영(주 7~25명·연 700~3,900건·의사 110명 → 반복이 기본값 = 독립 HCP 임계의 근거), 외부 근거 확보(업계 설문 91%/65% · 문제·해법 서술 일치 · insight half-life 지표명), 기대효과는 기획서 §6-2 원문 4개 유지 + 의사결정 속도 5번째 추가, 확장 영역을 기획서 §6-1 목록으로 교체 (다음: submission/ 골격·WBS·일일 일지 자동화)
+
+- 08/21 건태(Claude 세션): **데이터 규모 표기 확정 — 집계 범위 명시가 뭉개기보다 강하다** — 의사 110명은 2021~2024년 집계분이고 2020 일부·2025~26은 미집계임을 명시. **미집계 구간의 존재를 AS-IS의 실물 증거로 전환**(세는 일이 사람 손이라 멈춘 것 = "쌓이는 것이 보이지 않는다"의 직접 사례). XCOPRI 기간 기준 확정(FDA 2019-11-21 승인 · 미국 출시 2020 Q2 → 약 6년 3개월), 표기는 "SK 직접 판매 미국 시장 기준"으로 — 유럽 파트너 공급 때문 (다음: submission/ 골격·WBS·일일 일지 자동화)
+
+- 08/21 건태(Claude 세션): **규모 표기 정정 — 110명은 KOL 명부 수, 만나는 의료진은 연간 수백 명.** 두 모집단을 분리(①접점 주 7~25명→연 수백 명 ②KOL 명부 110명, 2025.9 집계분). **두 숫자의 간격이 AS-IS의 위치**임을 새로 세움 — 신호는 명부 밖 일반 처방의에게서 더 많이 나오는데 관리 체계는 KOL만 따라간다. 우리 임계값의 '독립 HCP ≥3'이 KOL 여부를 묻지 않는다는 점이 여기에 대응(개인 점수화 금지 규칙이 명부 밖 신호 포착 능력과 같은 뿌리). 표기 원칙: 의료진 수는 규모로만, KOL 수는 집계 시점 병기 (다음: submission/ 골격·WBS·일일 일지 자동화)
+
+- 08/22 건태(Claude 세션): **제출물 골격 신설 — `submission/` 폴더 0~4 미러 + WBS + 일지 자동화.** ① 주최측 구조와 1:1로 이름 고정(바꾸면 미제출 처리), `0_본선_안내문`은 읽기 전용 ② `1_기획서`·`2_결과물`·`3_검증결과` README 초안 — 특히 **2번은 심사위원 셀프 투어 문서**(URL 3개·비밀번호 없는 역할 선택 로그인·6단계 12분·역할별로 덜 보이는 것이 기능이라는 안내) ③ `3_검증결과`에 **검증 6종 설계**(완주 3회·재현성·ground truth 대조·규칙 위반 시도·환경 다양성·**팀원 아닌 사람 완주**) + 기록 양식 ④ `4_제작과정`에 **WBS 8묶음 + 계획 변경 이력**(배포 앞당김·코퍼스 5배 재생성·누락 P0 승격)과 **`BLOCKERS.md` 10건 소급 작성**(항목마다 "어떻게 찾았나" 필수 — 우리 오류 3건 포함) ⑤ **`scripts/daily_report.py`** — 커밋·LOG·DECISIONS에서 3인분 일지 초안 생성, Claude 세션 커밋은 경로 오너십으로 귀속 추정 후 `※` 표시. docs/00 §8·06 §2·CLAUDE.md 연결 (다음: 8/21분 일지 인혁·소정 소급 · 코퍼스 리얼리티 검수)
+
+- 08/22 인혁(Claude 세션): **STT 3종 비교 랩 구현 — 8/24 실기 테스트(DECISIONS 08/21 [소정])용 판정 도구.** `apps/stt-lab`(포트 3002, 로컬 전용·배포 안 함 / Next 16.3.1·React 19.2.8, Field와 동일 스택·페이퍼 라이트 토큰) + `lib/stt/` provider 3종(Soniox·Deepgram·Gladia)·오디오(마이크 AudioWorklet·WAV→16kHz PCM16)·핵심 토큰 채점. 키는 화면 입력 후 브라우저 localStorage 보관이라 백엔드 불필요. `scripts/stt_eval/` 대본 2종 + espeak-ng 음성 생성기. 빌드·타입체크·린트 통과(실 STT 호출은 키 없어 미검증). 벤더 확인은 SDK 소스·정본 스펙 기준 — Deepgram `nova-3-medical`은 ko 미지원 확인, Gladia 실시간 화자분리는 스펙에 없어 랩에서 실측. 실행법 `apps/stt-lab/README.md` (다음: 키 발급 → 8/24 실측 → 결과 소정에게 · provider 확정 후 `lib/stt/`를 Field로 이식)
+
 ## Week 2 (8/28–9/4)
-- 08/20 인혁(Claude 세션): **STT 3종 비교 랩 구현** — `apps/stt-lab`(Next 16.3.1·React 19.2.8, Field와 동일 스택·페이퍼 라이트 토큰) + `lib/stt/` provider 3종·오디오(마이크·WAV→16kHz PCM16)·핵심 토큰 채점. 빌드·타입체크·린트 통과. `scripts/stt_eval/` 대본 2종 + espeak-ng 음성 생성기. 실행법은 `apps/stt-lab/README.md` (다음: 키 발급 후 실측 → Gladia 화자분리 판정 · Soniox WS 경로 교정 · provider 확정 후 Field 이식)
 

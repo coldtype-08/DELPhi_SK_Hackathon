@@ -1,0 +1,14 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: July 8, 2025   |   MSL: Tom Alvarez
+HCP: Jaromir Merriwether, MD, Sable Creek Medical Group, Buffalo, NY (RSM)
+
+An unhurried meeting in corridor, first one this quarter.
+
+Shared that another refractory adult is holding steady on the current regimen.
+
+The composition of the refractory group has shifted over the last year or two.
+
+Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+
+The appeals process has improved somewhat, which came up as a general frustration.

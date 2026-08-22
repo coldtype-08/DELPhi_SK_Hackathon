@@ -1,0 +1,63 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: May 15, 2023   |   From: Ravi Chandrasek, Dana Cho
+
+FIELD MEDICAL INSIGHTS
+
+Esperanza Calderwood, MD, Vantage Park Regional Epilepsy Program, Burlington, VT (AR)
+> A brief conversation outside the EEG suite, mostly logistics.
+> Noted that benefit checks varies by payer and that this is not specific to any one product.
+> Asked whether I would be at the meeting later this year.
+
+Eloise Underhill, MD, Northgate Neurology Partners, Fort Wayne, IN (RSM)
+> A rushed visit between clinic blocks; the schedule was tight.
+> The composition of newly referred patients has shifted over the last year or two.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+> Compared notes on which sessions were worth the time.
+
+Tobias Adeyemi-Cole, MD, Windrow Neuroscience Center, Portland, ME (RSM)
+> Benefit verification is the step that most often delays a start here.
+> The referral queue is slowly recovering since the summer, which shapes how much time there is for anything else.
+> Talked through the pediatric-to-adult transfers in general terms, without any specific case.
+> The travel schedule this year came up, and little else.
+
+Malika Fairweather, MD, Highmoor Health Neurology, Worcester, MA (RSM)
+> Referenced a guideline update discussed at journal club in passing.
+> Referral patterns into this clinic have changed, adn long-standing patients is a bigger share than it was.
+> Noted that formulary questions varies by payer adn that this is not specific to any one product.
+> Asked about my travel schedule, since visits keep landing on teh busiest clinic days.
+
+Saoirse Zeitler, MD, Sandhill Neuroscience Center, Tacoma, WA (RSM)
+> Described how the refractory group is triaged now compared with before.
+> Asked whether I would be at the meeting later this year.
+> Closed there — no specific request.
+> Asked whether I had seen a case series someone forwarded; I had not, and offered nothing in return.
+
+Adaeze Tavernier, MD, Juniper Flats Neurology Partners, Fort Collins, CO (AR)
+> A twenty-minute visit in the conference room; the schedule was tight.
+> Clinic throughput keeps slipping since the summer, which shapes how much time there is for anything else.
+> Asked whether I would be at the meeting later this year.
+
+Fabian Marchetti, MD, Northbrook Neurology Institute, Albany, NY (AR)
+> Caught a short window by the scheduling desk between patients.
+> Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
+> No materials requested. Safety items asked about and confirmed none.
+
+Zubin Grierson, MD, Marbury Neurological Care Center, Tucson, AZ (RSM)
+> The practice lost a front-desk coordinator and has not backfilled, so routine follow-up slots keeps slipping.
+> Monitoring intervals during titration are set by clinic routine here rather than by protocol.
+> Asked whether I would be at the meeting later this year.
+> Described how the surgical workup list is triaged now compared with before.
+
+Gaspar Yoshimura, MD, Vantage Park Regional Epilepsy Program, Bakersfield, CA (RSM)
+> The new charting templates changed again last month, and that took up the first part of the conversation.
+> No product discussion. Safety items asked about and confirmed none.
+> Titration habits came up in general terms; no specifics were discussed and none were offered.
+
+Ulrike Dellacroix, MD, Silver Creek Medical Group, Allentown, PA (RSM)
+> A twenty-minute conversation in the workroom, mostly logistics.
+> Agreed to reconnect at the next visit; no specific request.
+> Asked whether I would be at the meeting later this year.
+> Most of the discussion was about the new charting templates, which went live without much warning.
+

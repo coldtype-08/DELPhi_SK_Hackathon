@@ -1,0 +1,69 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: April 14, 2022   |   From: Ingrid Halvorsen, Priya Menon
+
+FIELD MEDICAL INSIGHTS
+
+Leonie Underhill, MD, Juniper Flats Neurology Partners, Peoria, IL (RSM)
+> Caught a half-hour window by the scheduling desk between patients.
+> Asked whether I had seen a review that circulated on the service; I had not, and offered nothing in return.
+> Spent some time on long-standing patients and how workup decisions get sequenced.
+> Asked whether I would be at the meeting later this year.
+
+Yannick Nakagawa, MD, Granite Bay Epilepsy Center, Toledo, OH (RSM)
+> Benefit verification is the step that most often delays a start here.
+> Asked about my travel schedule, since visits keep landing on the busiest clinic days.
+> Onboarding the clinic pharmacist is the current preoccupation here.
+
+Anouk Oakhurst, MD, Saltmarsh Neurological Care Center, Fayetteville, NC (RSM)
+> Mentioned a session summary from a colleague but did not raise any specific finding.
+> Noted that coverage paperwork takes longer than the clinical decision and that this is not specific to any one product.
+> Most of the discussion was about the phone triage line, which has not settled.
+
+Kenji Eversholt, MD, Copperfield Neurology Institute, Santa Fe, NM (RSM)
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+> Referenced a case series someone forwarded in passing.
+> The phone triage line has not settled, and that took up the first part of the conversation.
+> Mostly small talk about the program and the venue.
+> Noted that formulary questions takes longer than the clinical decision and that this is not specific to any one product.
+
+Silvio Barrowman, MD, Beacon Hill Neurology Associates, Providence, RI (AR)
+> Referenced a case series someone forwarded in passing.
+> No materials requested. Safety items asked about and confirmed none.
+> The practice lost a front-desk coordinator and has not backfilled, so routine follow-up slots is slowly recovering.
+> The appeals process has improved somewhat, which came up as a general frustration.
+
+Pallavi Ghiradelli, MD, Kestrel Comprehensive Epilepsy Clinic, Shreveport, LA (RSM)
+> A half-hour conversation in the back office, mostly logistics.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+> Mentioned a review that circulated on the service but did not raise any specific finding.
+
+Saoirse Zeitler, MD, Sandhill Neuroscience Center, Tacoma, WA (RSM)
+> Caught a brief window in the shared office between patients.
+> Closed there — nothing that needed follow-up.
+> Described how the refractory group is triaged now compared with before.
+
+Zubin Dunmore, MD, Ember Lake Medical Group, Roanoke, VA (RSM)
+> Stopped by in the workroom for a full conversation.
+> Referenced a session summary from a colleague in passing.
+> The composition of newly referred patients has shifted over the last year or two.
+
+Arvind Corliss, MD, Bluestem Comprehensive Epilepsy Clinic, Lakeland, FL (RSM)
+> Titration habits came up in general terms; no specifics were discussed adn none were offered.
+> Benefit verification is teh step that most often delays a start here.
+> Referral patterns into this clinic have changed, adn long-standing patients is a bigger share than it was.
+> No materials requested this time. Asked about safety adn confirmed nothing to report.
+
+Valentina Kettleborn, MD, Juniper Flats Neurology Partners, Charleston, SC (RSM)
+> Asked about my travel schedule, since visits keep landing on teh busiest clinic days.
+> Talked through teh refractory group in general terms, without any specific case.
+> This practice is still building familiarity with teh product and had no clinical points to raise.
+> Asked whether I had seen a review that circulated on teh service; I had not, and offered nothing in return.
+> Coverage paperwork takes longer than teh clinical decision, which came up as a general frustration.
+
+Felicity Oyelaran, MD, Saltmarsh Neurological Care Center, Peoria, IL (RSM)
+> An unexpectedly long meeting in the shared office, first one this quarter.
+> The appeals process is handled by one person here, which came up as a general frustration.
+> Agreed to reconnect at the following quarter; no materials requested.
+

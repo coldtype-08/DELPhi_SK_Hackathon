@@ -1,0 +1,10 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: February 8, 2024   |   MSL: Rachel Suh
+HCP: Mairead Sandoval-Reyes, MD, Willowmere Neuroscience Center, Chattanooga, TN (RSM)
+
+Stopped by in the workroom for a compressed conversation.
+
+Titration scheduling is handled by nursing staff, which the practice finds workable.
+
+Benefit verification is the step that most often delays a start here.

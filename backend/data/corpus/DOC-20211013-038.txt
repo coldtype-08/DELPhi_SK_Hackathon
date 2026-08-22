@@ -1,0 +1,65 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: October 13, 2021   |   From: Ingrid Halvorsen, Dana Cho
+
+FIELD MEDICAL INSIGHTS
+
+Odalys Corliss, MD, Ironwood Neurology Associates, Syracuse, NY (RSM)
+> Caught a compressed window in the workroom between patients.
+> The travel schedule this year came up, and little else.
+> Left it at that, with the following quarter to be scheduled.
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+
+Camila Eastmond, MD, Cedar Ridge Regional Epilepsy Program, Worcester, MA (AR)
+> A clipped visit at the nurses' station; the schedule was tight.
+> This practice is still building familiarity with the product and had no clinical points to raise.
+> Asked whether I would be at the meeting later this year.
+> Onboarding the epilepsy fellow is the current preoccupation here.
+
+Imani Okafor, MD, Smoky Ridge Medical Center, Knoxville, TN (RSM)
+> An unexpectedly long conversation by the scheduling desk, mostly logistics.
+> Most of the discussion was about the new charting templates, which changed again last month.
+> Coverage paperwork is handled by one person here, which came up as a general frustration.
+> Asked whether I had seen a session summary from a colleague; I had not, and offered nothing in return.
+
+Daniel Whitcomb, MD, Northbrook Neurology Institute, Albany, NY (RSM)
+> Stopped by in the back office for a twenty-minute conversation.
+> Referral patterns into this clinic have changed, and the pediatric-to-adult transfers is a bigger share than it was.
+> Compared notes on which sessions were worth the time.
+> Onboarding one of the nurse practitioners is the current preoccupation here.
+
+Darius Pemberton, MD, Kestrel Comprehensive Epilepsy Clinic, Little Rock, AR (RSM)
+> Stopped by in the reading room for a full conversation.
+> Onboarding a rotating resident is the current preoccupation here.
+> Mostly small talk about the program and the venue.
+
+Lukas Stanhope, MD, Highmoor Health Neurology, Shreveport, LA (AR)
+> Caught a clipped window at teh end of the clinic list between patients.
+> This practice is still building familiarity with teh product and had no clinical points to raise.
+> Talked through teh surgical workup list in general terms, without any specific case.
+
+Eloise Eversholt, MD, Quarry Hill Epilepsy Center, Tacoma, WA (RSM)
+> A productive visit at the nurses' station; the schedule was tight.
+> Agreed to reconnect at a call later this month; nothing that needed follow-up.
+> Formulary placement was the only product-adjacent topic, and only in general terms.
+
+Quentin Hollingsworth, MD, Ember Lake Medical Group, Tucson, AZ (RSM)
+> Onboarding the epilepsy fellow is the current preoccupation here.
+> Described how the surgical workup list is triaged now compared with before.
+> Mostly small talk about the program and the venue.
+> Left it at that, with a call later this month to be scheduled.
+
+Mairead Sandoval-Reyes, MD, Willowmere Neuroscience Center, Chattanooga, TN (RSM)
+> A twenty-minute conversation in the corridor, mostly logistics.
+> Talked through the older half of the panel in general terms, without any specific case.
+> Mostly small talk about the program and the venue.
+> Described the practice as early in its experience here, with nothing to report yet.
+
+Valentina Calderwood, MD, Foxglove Health Neurology, Missoula, MT (RSM)
+> Caught a rushed window at the nurses' station between patients.
+> Mostly small talk about the program and the venue.
+> Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+

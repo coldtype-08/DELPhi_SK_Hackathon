@@ -1,0 +1,55 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Field Medical Highlights — XCOPRI (cenobamate)
+Date: April 14, 2025   |   From: Sunny Okafor, Nadia Belhadj
+
+FIELD MEDICAL INSIGHTS
+
+Zubin Dunmore, MD, Ember Lake Medical Group, Roanoke, VA (RSM)
+> Caught a productive window over a quick coffee between patients.
+> The referral queue looks better than last year since the summer, which shapes how much time there is for anything else.
+> Referral patterns into this clinic have changed, and the pediatric-to-adult transfers is a bigger share than it was.
+
+Anouk Brannigan, MD, Windrow Neuroscience Center, Eugene, OR (RSM)
+> A twenty-minute meeting in the reading room, first one this quarter.
+> No product discussion this time. Asked about safety and confirmed nothing to report.
+> Asked whether I had seen a guideline update discussed at journal club; I had not, and offered nothing in return.
+
+Lukas Eastmond, MD, Thornfield Regional Epilepsy Program, Savannah, GA (RSM)
+> A rushed conversation by the scheduling desk, mostly logistics.
+> Benefit verification is the step that most often delays a start here.
+> The practice lost two medical assistants and has not backfilled, so clinic throughput keeps slipping.
+
+Esperanza Jarreau, MD, Vantage Park Regional Epilepsy Program, Hartford, CT (RSM)
+> Talked through long-standing patients in general terms, without any specific case.
+> Most of the discussion was about the scheduling system, which went live without much warning.
+> Noted that formulary questions varies by payer and that this is not specific to any one product.
+> Referral patterns into this clinic have changed, and newly referred patients is a bigger share than it was.
+> Referenced a case series someone forwarded in passing.
+
+Odalys Corliss, MD, Ironwood Neurology Associates, Syracuse, NY (RSM)
+> Spent some time on the older half of the panel and how workup decisions get sequenced.
+> Referral patterns into this clinic have changed, and long-standing patients is a bigger share than it was.
+> The practice lost a rotating resident and has not backfilled, so clinic throughput is slowly recovering.
+> Agreed to reconnect at a follow-up appointment; no product discussion.
+
+Anjali Rusnak, MD, Ironwood Neurology Associates, Provo, UT (RSM)
+> Caught a fragmented window in the corridor between patients.
+> Benefit verification is the step that most often delays a start here.
+> The referral intake process is still being sorted out, and that took up the first part of the conversation.
+> Routine follow-up slots has stretched out since the summer, which shapes how much time there is for anything else.
+> Described a preference for slower titration in general, unrelated to any particular patient.
+
+Eloise Wycliffe, MD, Marbury Neurological Care Center, Providence, RI (RSM)
+> Caught a rushed window in the back office between patients.
+> Agreed to reconnect at the next visit; no materials requested.
+> Described how the pediatric-to-adult transfers is triaged now compared with before.
+> Onboarding two medical assistants is the current preoccupation here.
+
+Ulrike Wetherby, MD, Juniper Flats Neurology Partners, Fayetteville, NC (RSM)
+> The scheduling system changed again last month, and that took up the first part of the conversation.
+> Mentioned a session summary from a colleague but did not raise any specific finding.
+> No product discussion this time. Asked about safety and confirmed nothing to report.
+> Formulary questions varies by payer, which came up as a general frustration.
+> Titration scheduling is handled by nursing staff, which the practice finds workable.
+

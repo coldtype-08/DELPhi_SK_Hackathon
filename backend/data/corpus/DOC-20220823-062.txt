@@ -1,0 +1,12 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Interaction Note   |   Date: August 23, 2022   |   MSL: Tom Alvarez
+HCP: Wilhelmina Corliss, MD, Marbury Neurological Care Center, Roanoke, VA (AR)
+
+The practice lost front-desk coordinator and has not backfilled, so the new-patient backlog looks better than last year.
+
+Benefit verification is the step that most often delays a start here.
+
+Described practice as early in its experience here, with nothing to report yet.
+
+Described preference for slower titration in general, unrelated to any particular patient.

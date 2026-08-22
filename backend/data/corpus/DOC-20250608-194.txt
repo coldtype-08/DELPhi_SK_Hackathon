@@ -1,0 +1,6 @@
+[SYNTHETIC SAMPLE] Fictional record generated for the DELPHi prototype demo. Names, institutions, and statements are invented; the layout imitates a generic field-medical format. Not a real document and not derived from any real record.
+
+Call Memo   |   June 8, 2025   |   Ravi Chandrasek
+HCP: Anjali Zabriskie, MD, Harborlight Epilepsy Center, Missoula, MT (AR)
+
+Caught an unexpectedly long window in the reading room between patients. Shared that two refractory adults who had failed several medications are now months into markedly fewer seizures. Titration scheduling is handled by nursing staff, which the practice finds workable. The practice lost a rotating resident and has not backfilled, so clinic throughput looks better than last year.
