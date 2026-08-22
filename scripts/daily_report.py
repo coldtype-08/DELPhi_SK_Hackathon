@@ -37,6 +37,7 @@ MEMBERS = {
 IDENTITIES = {
     "geontaepark@sk.com": "건태",
     "geontaebak@gmail.com": "건태",
+    "inhyeok.jeon@sk.com": "인혁",
 }
 
 # Claude Code 세션 커밋은 author 가 Claude 로 찍혀 사람을 구분할 수 없다.
@@ -62,6 +63,8 @@ PATH_RULES = [
     ("apps/console/public/draft.html",  "건태", "8.x", "디자인 초안 배포본"),
     ("apps/console/",                   "건태", "2.x", "Console"),
     ("apps/field/",                     "소정", "3.x", "Field"),
+    ("apps/stt-lab/",                   "인혁", "3.5", "STT 3종 비교 랩"),
+    ("scripts/stt_eval",                "인혁", "3.5", "STT 평가 대본·음성"),
     ("scripts/corpus",                  "건태", "0.6", "합성 코퍼스 생성기"),
     ("scripts/generate",                "건태", "0.6", "합성 코퍼스 생성기"),
     ("scripts/reset_demo",              "인혁", "7.1", "데모 리셋"),
