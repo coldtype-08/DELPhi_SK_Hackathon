@@ -91,7 +91,9 @@ export const deepgram: SttProvider = {
     };
 
     ws.onerror = () => ev.onError(new Error("Deepgram WebSocket 오류 — API 키·모델·언어 조합을 확인하세요"));
-    ws.onclose = () => {
+    ws.onclose = (e) => {
+      // 연결 실패의 유일한 단서가 close code 다 — 1006=핸드셰이크 거부(키·네트워크), 1008/1011=서버 거부
+      ev.onRaw({ _close: { code: e.code, reason: e.reason || "(없음)", wasClean: e.wasClean } });
       if (keepalive) clearInterval(keepalive);
       ev.onClose?.();
     };
@@ -99,7 +101,7 @@ export const deepgram: SttProvider = {
     await new Promise<void>((resolve, reject) => {
       const t = setTimeout(() => reject(new Error("Deepgram 연결 시간 초과")), 10000);
       ws.addEventListener("open", () => { clearTimeout(t); resolve(); }, { once: true });
-      ws.addEventListener("error", () => { clearTimeout(t); reject(new Error("Deepgram 연결 실패")); }, { once: true });
+      ws.addEventListener("error", () => { clearTimeout(t); reject(new Error("Deepgram 연결 실패 — 원시 응답의 _close.code 확인 (1006이면 키 거부·네트워크 차단 가능성)")); }, { once: true });
     });
     ev.onOpen?.();
     keepalive = setInterval(() => {

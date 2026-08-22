@@ -102,7 +102,10 @@ export const gladia: SttProvider = {
     };
 
     ws.onerror = () => ev.onError(new Error("Gladia WebSocket 오류"));
-    ws.onclose = () => ev.onClose?.();
+    ws.onclose = (e) => {
+      ev.onRaw({ _close: { code: e.code, reason: e.reason || "(없음)", wasClean: e.wasClean } });
+      ev.onClose?.();
+    };
 
     await new Promise<void>((resolve, reject) => {
       const t = setTimeout(() => reject(new Error("Gladia 연결 시간 초과")), 10000);
