@@ -106,7 +106,8 @@ def classify(paths: list[str]) -> tuple[str | None, str, str]:
 def commits_on(date: str) -> list[dict]:
     """해당 날짜(로컬)의 커밋 목록. 파일 목록 포함."""
     raw = sh([
-        "git", "log", "--no-merges",
+        # quotepath=false: 한글 경로가 "\355\225..." 로 인용되면 경로 매칭이 전부 실패한다
+        "git", "-c", "core.quotepath=false", "log", "--no-merges",
         f"--since={date} 00:00:00", f"--until={date} 23:59:59",
         "--format=__C__%h\x1f%an\x1f%ae\x1f%ad\x1f%s", "--date=format:%H:%M",
         "--name-only",
@@ -121,7 +122,7 @@ def commits_on(date: str) -> list[dict]:
             cur = {"hash": h, "an": an, "ae": ae, "time": ad,
                    "subject": subject, "files": []}
         elif line.strip() and cur is not None:
-            cur["files"].append(line.strip())
+            cur["files"].append(line.strip().strip('"'))
     if cur:
         out.append(cur)
     return out
