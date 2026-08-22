@@ -98,6 +98,7 @@ bash scripts/reset_demo.sh
 | `docs/05_DESIGN_SYSTEM.md` | 디자인 토큰, 애니메이션 규칙, 레퍼런스 | 화면 만들 때 (필수) |
 | `docs/06_TEAM_WORKFLOW.md` | 3인 협업 규칙, Claude Code 활용법 | 협업이 꼬였을 때 |
 | `docs/07_DEPLOYMENT.md` | Railway 배포 구성·일정·운용, 태그·롤백 규칙 | 배포·심사 URL 관련 작업할 때 |
+| `docs/08_PROBLEM_AND_IMPACT.md` | AS-IS/TO-BE, AI Readable 정의, 목표·측정 설계, 확장성 | 기획서·제출물 쓸 때 / **왜 이걸 만드는지** 설명할 때 (배점 50점) |
 | `docs/LOG.md` | 일일 진행 로그 | 매일 push 전 한 줄 추가 |
 
 ## 데모 시나리오 (모든 기능은 이 6단계 시연에 복무한다)
