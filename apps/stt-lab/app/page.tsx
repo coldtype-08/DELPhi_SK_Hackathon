@@ -19,6 +19,7 @@ import {
   startMic,
   streamPcmRealtime,
   type MicHandle,
+  type MicMode,
   type ProviderId,
   type ScriptId,
   type Segment,
@@ -55,6 +56,7 @@ type Settings = { apiKey: string; model: string; endpoint: string };
 export default function Page() {
   const [tab, setTab] = useState<ProviderId>("soniox");
   const [script, setScript] = useState<ScriptId>("P1");
+  const [micMode, setMicMode] = useState<MicMode>("voice");
   const [langMode, setLangMode] = useState<"ko" | "en" | "koen">("ko");
   const [diarize, setDiarize] = useState(true);
   const [useBoost, setUseBoost] = useState(true);
@@ -147,7 +149,7 @@ export default function Page() {
         patch(id, { status: "running" });
 
         if (source === "mic") {
-          micRef.current = await startMic((pcm) => session.send(pcm));
+          micRef.current = await startMic((pcm) => session.send(pcm), micMode);
         } else {
           const pcm = await fileToPcm16(file as File);
           await streamPcmRealtime(pcm, (c) => session.send(c), { shouldStop: () => stopRef.current });
@@ -158,13 +160,13 @@ export default function Page() {
         patch(id, { status: "error", error: e instanceof Error ? e.message : String(e) });
       }
     },
-    [settings, file, languages, boostTerms, diarize, stopAll],
+    [settings, file, languages, boostTerms, diarize, micMode, stopAll],
   );
 
   return (
     <div className="space-y-5">
       <SharedControls
-        {...{ script, setScript, langMode, setLangMode, diarize, setDiarize, useBoost, setUseBoost, boostText, setBoostText, file, setFile, boostCount: boostTerms.length }}
+        {...{ script, setScript, micMode, setMicMode, langMode, setLangMode, diarize, setDiarize, useBoost, setUseBoost, boostText, setBoostText, file, setFile, boostCount: boostTerms.length }}
       />
 
       <div className="flex gap-2">
@@ -224,6 +226,7 @@ function StatusDot({ status }: { status: RunState["status"] }) {
 
 type SharedProps = {
   script: ScriptId; setScript: (s: ScriptId) => void;
+  micMode: MicMode; setMicMode: (m: MicMode) => void;
   langMode: "ko" | "en" | "koen"; setLangMode: (m: "ko" | "en" | "koen") => void;
   diarize: boolean; setDiarize: (b: boolean) => void;
   useBoost: boolean; setUseBoost: (b: boolean) => void;
@@ -248,6 +251,15 @@ function SharedControls(p: SharedProps) {
           <Seg options={[["ko", "한국어"], ["en", "영어"], ["koen", "한국어+영어"]]} value={p.langMode} onChange={(v) => p.setLangMode(v as "ko" | "en" | "koen")} />
         </Field>
       </div>
+
+      <Field label="마이크 입력 방식" className="mt-4">
+        <Seg options={[["voice", "사람이 말함"], ["speaker", "스피커로 재생"]]} value={p.micMode} onChange={(v) => p.setMicMode(v as MicMode)} />
+        <p className="mt-1.5 text-[11px] text-muted">
+          {p.micMode === "voice"
+            ? "에코 제거·잡음 억제·자동 게인을 켭니다. 8/24 판정용 — 두 사람이 대본을 번갈아 읽으세요."
+            : "전처리를 전부 끕니다. 켜두면 브라우저가 스피커 소리를 에코로 판정해 지워버립니다. 스피커 볼륨은 60~70%, 마이크와 30cm 이내로 두세요."}
+        </p>
+      </Field>
 
       <div className="mt-4 flex flex-wrap items-center gap-5">
         <Check label="화자 분리" checked={p.diarize} onChange={p.setDiarize} />

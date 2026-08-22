@@ -25,10 +25,26 @@ registerProcessor('pcm-tap', PcmTap);
 
 export type MicHandle = { stop: () => void };
 
+/** 마이크 입력 방식.
+ *  voice   — 사람이 마이크에 대고 말한다. 브라우저 전처리(에코 제거·잡음 억제·자동 게인)를 켠다.
+ *  speaker — WAV를 스피커로 틀어 마이크로 받는다. **전처리를 전부 꺼야 한다** —
+ *            에코 제거가 스피커에서 나온 소리를 에코로 판정해 지워버리기 때문이다.
+ */
+export type MicMode = "voice" | "speaker";
+
 /** 마이크 → PCM16 청크. AudioContext가 16kHz로 리샘플한다. */
-export async function startMic(onPcm: (pcm: Int16Array) => void): Promise<MicHandle> {
+export async function startMic(
+  onPcm: (pcm: Int16Array) => void,
+  mode: MicMode = "voice",
+): Promise<MicHandle> {
+  const processed = mode === "voice";
   const stream = await navigator.mediaDevices.getUserMedia({
-    audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true },
+    audio: {
+      channelCount: 1,
+      echoCancellation: processed,
+      noiseSuppression: processed,
+      autoGainControl: processed,
+    },
   });
   const ctx = new AudioContext({ sampleRate: TARGET_SAMPLE_RATE });
   const url = URL.createObjectURL(new Blob([WORKLET_SRC], { type: "application/javascript" }));
