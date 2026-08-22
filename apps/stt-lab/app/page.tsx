@@ -135,7 +135,8 @@ export default function Page() {
       let firstSeen = false;
       return providerById(id).connect(
         {
-          apiKey: cfg.apiKey, model: cfg.model, endpoint: cfg.endpoint,
+          // 붙여넣기에 딸려 온 공백·줄바꿈이 인증을 조용히 깨뜨린다 — 사용 시점에 항상 제거
+          apiKey: cfg.apiKey.trim(), model: cfg.model.trim(), endpoint: cfg.endpoint.trim(),
           languages, boostTerms, diarize, sampleRate: TARGET_SAMPLE_RATE,
         },
         {
